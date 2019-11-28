@@ -1,18 +1,27 @@
 package com.Dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import com.Bean.UserBean;
 import com.Interface.IUserDao;
 
 public class UserDaoImpl implements IUserDao {
+	
+	Connection conn;
 
+	public UserDaoImpl(Connection conn) {
+		this.conn = conn;
+	}
+	
+	
 	@Override
-<<<<<<< HEAD
-	public UserBean register() {
-
-=======
 	public UserBean register(UserBean u) {
 		String sqlstmt = "insert into Members (Name, Account,Pwd,Birth,Gender,Mobile,Tel,UID,Mail,Address) values (?,?,?,?,?,?,?,?,?,?)";
-	
+		
+		
+		
 		try {
 			PreparedStatement rs = conn.prepareStatement(sqlstmt);
 			rs.setString(1, u.getName());
@@ -25,32 +34,28 @@ public class UserDaoImpl implements IUserDao {
 			rs.setString(8, u.getUid());
 			rs.setString(9, u.getMail());
 			rs.setString(10, u.getAddress());
-			
-			boolean result = rs.execute();
-			
-			
-				
 		} catch (SQLException e) {
-			
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		
 		
->>>>>>> 635c5f0e43733cbcd01634b7047e20316e761593
 		return null;
 	}
 
 	@Override
-	public UserBean updateUserData() {
+	public UserBean updateUserData(UserBean u) {
 
 		return null;
 	}
 
 	@Override
-	public UserBean userLogin() {
+	public UserBean userLogin(String account, String pwd) {
 
 		return null;
 	}
 
 }
+
+
