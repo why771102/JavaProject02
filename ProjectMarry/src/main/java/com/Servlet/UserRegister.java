@@ -7,14 +7,17 @@ import java.sql.SQLException;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import com.Bean.UserBean;
+import com.Dao.UserDaoImpl;
 
 
 @WebServlet("/UserRegister")
@@ -56,6 +59,22 @@ public class UserRegister extends HttpServlet {
 		ub.setMail(Mail);
 		ub.setAddress(Address);
 		
+		UserDaoImpl udi = new UserDaoImpl(conn);
+		UserBean rub = udi.register(ub);
+		
+		if(rub == null) {
+			
+			request.setAttribute("user", rub);
+			RequestDispatcher rd = request.getRequestDispatcher("JSP");   //JSP
+			rd.forward(request, response);
+			
+			
+		}else {
+			HttpSession session = request.getSession();
+			response.sendRedirect(request.getContextPath() + "JSP");
+			return;
+			
+		}
 		
 		
 	}
