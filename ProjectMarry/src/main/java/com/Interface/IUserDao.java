@@ -4,10 +4,11 @@ import com.Bean.UserBean;
 
 public interface IUserDao {
 	
-	public UserBean register();
+	public UserBean register(UserBean u);
 
-	public UserBean updateUserData();
+	public UserBean updateUserData(UserBean u);
 
-	public UserBean userLogin();
+
+	public UserBean userLogin(String account, String pwd);
 
 }

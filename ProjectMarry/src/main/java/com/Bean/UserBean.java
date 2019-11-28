@@ -6,9 +6,10 @@ public class UserBean {
 	
 	private int id;
 	private String name;
+	private String account;
 	private String pwd;
-	private Date birth;
-	private int gender;
+	private String birth;
+	private String gender;
 	private String mobile;
 	private String tel;
 	
@@ -30,16 +31,16 @@ public class UserBean {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	public Date getBirth() {
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(Date birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
-	public int getGender() {
+	public String getGender() {
 		return gender;
 	}
-	public void setGender(int gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 	public String getMobile() {
@@ -77,6 +78,12 @@ public class UserBean {
 	}
 	public void setMemberImage(String memberImage) {
 		this.memberImage = memberImage;
+	}
+	public String getAccount() {
+		return account;
+	}
+	public void setAccount(String account) {
+		this.account = account;
 	}
 	private String uid;
 	private String mail;
