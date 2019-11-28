@@ -11,9 +11,22 @@ public class OrderBean {
 	private String InvoiceTitle;
 	private String VATnumber;
 	private int PaymentStatus;
+	
+	public OrderBean (int OrderID, int ID, Date StartDate, Date EndDate, 
+			String InvoiceTtitle, String VATnumber, int PaymentStatus, String InvoiceTitle) {
+		this.OrderID = OrderID;
+		this.ID = ID;
+		this.StartDate = StartDate;
+		this.EndDate = EndDate;
+		this.InvoiceTitle = InvoiceTitle;
+		this.VATnumber = VATnumber;
+		this.PaymentStatus = PaymentStatus;
+	}
+	
 	public int getOrderID() {
 		return OrderID;
 	}
+	
 	public void setOrderID(int orderID) {
 		OrderID = orderID;
 	}
