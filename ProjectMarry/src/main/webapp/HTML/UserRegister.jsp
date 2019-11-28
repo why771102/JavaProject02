@@ -9,6 +9,7 @@
 </head>
 <body>
 <h2>註冊帳號</h2>
+<form>
  <table border=1>
   <tr>
    <td>姓名</td>
@@ -24,13 +25,13 @@
 
   <tr>
    <td>密碼</td>
-   <td><input type="text" id="pwd" name="Pwd"
+   <td><input type="password" id="pwd" name="Pwd"
     value="${param.Pwd}" /></td>
   </tr>
   
   <tr>
    <td>確認密碼</td>
-   <td><input type="text" id="pwd2" name="Pwd2"
+   <td><input type="password" id="pwd2" name="Pwd2"
     value="${param.Pwd2}" /></td>
   </tr>
 
@@ -80,6 +81,7 @@
   </tr>
 
  </table>
-
+<input type="submit" value="確定送出"/><input type="reset" value="清除重填"/>
+</form>
 </body>
 </html>
