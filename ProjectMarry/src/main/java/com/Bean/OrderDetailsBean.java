@@ -16,6 +16,24 @@ public class OrderDetailsBean {
 	private char CancelTag;
 	private String Memo;
 	private int ProductStatus;
+	
+	public OrderDetailsBean(int OrderID, int ProductID, String ProductName,
+			int Quantity, int UnitPrice, int Subtotal, float Discount, Date OrderDate, 
+			Date ShippingDate,char CancelTag, String Memo, int ProductStatus) {
+		this.OrderID = OrderID;
+		this.ProductID = ProductID;
+		this.ProductName = ProductName;
+		this.Quantity = Quantity;
+		this.UnitPrice = UnitPrice;
+		this.Subtotal = Subtotal;
+		this.Discount = Discount;
+		this.OrderDate = OrderDate;
+		this.ShippingDate = ShippingDate;
+		this.CancelTag = CancelTag;
+		this.Memo = Memo;
+		this.ProductStatus = ProductStatus;
+	}
+	
 	public int getOrderID() {
 		return OrderID;
 	}
