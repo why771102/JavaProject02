@@ -10,6 +10,19 @@ public class VenueBean {
 	private int InOutdoor;
 	private int LunchPrice;
 	private int DinnerPrice;
+	
+	public VenueBean (int VendorID, int ProductID, String VenueAddress, String Hall,
+			int Tables, int InOutdoor, int LunchPrice, int DinnerPrice) {
+		this.VendorID = VendorID;
+		this.ProductID= ProductID;
+		this.VenueAddress = VenueAddress;
+		this.Hall = Hall;
+		this.Tables = Tables;
+		this.InOutdoor = InOutdoor;
+		this.LunchPrice = LunchPrice;
+		this.DinnerPrice = DinnerPrice;
+	}
+	
 	public int getVendorID() {
 		return VendorID;
 	}
