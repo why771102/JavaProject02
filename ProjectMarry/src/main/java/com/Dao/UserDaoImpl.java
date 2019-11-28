@@ -19,9 +19,7 @@ public class UserDaoImpl implements IUserDao {
 	@Override
 	public UserBean register(UserBean u) {
 		String sqlstmt = "insert into Members (Name, Account,Pwd,Birth,Gender,Mobile,Tel,UID,Mail,Address) values (?,?,?,?,?,?,?,?,?,?)";
-		
-		
-		
+	
 		try {
 			PreparedStatement rs = conn.prepareStatement(sqlstmt);
 			rs.setString(1, u.getName());
@@ -34,8 +32,13 @@ public class UserDaoImpl implements IUserDao {
 			rs.setString(8, u.getUid());
 			rs.setString(9, u.getMail());
 			rs.setString(10, u.getAddress());
+			
+			boolean result = rs.execute();
+			
+			
+				
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
