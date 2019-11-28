@@ -1,5 +1,6 @@
 package com.Bean;
 
+import java.sql.Blob;
 import java.util.Date;
 
 public class OrderDetailsBean {
@@ -16,10 +17,11 @@ public class OrderDetailsBean {
 	private char CancelTag;
 	private String Memo;
 	private int ProductStatus;
+	private Blob VenueImage;
 	
 	public OrderDetailsBean(int OrderID, int ProductID, String ProductName,
 			int Quantity, int UnitPrice, int Subtotal, float Discount, Date OrderDate, 
-			Date ShippingDate,char CancelTag, String Memo, int ProductStatus) {
+			Date ShippingDate,char CancelTag, String Memo, int ProductStatus, Blob VenueImage) {
 		this.OrderID = OrderID;
 		this.ProductID = ProductID;
 		this.ProductName = ProductName;
@@ -32,6 +34,7 @@ public class OrderDetailsBean {
 		this.CancelTag = CancelTag;
 		this.Memo = Memo;
 		this.ProductStatus = ProductStatus;
+		this.VenueImage = VenueImage;
 	}
 	
 	public int getOrderID() {
@@ -105,6 +108,14 @@ public class OrderDetailsBean {
 	}
 	public void setProductStatus(int productStatus) {
 		ProductStatus = productStatus;
+	}
+
+	public Blob getVenueImage() {
+		return VenueImage;
+	}
+
+	public void setVenueImage(Blob venueImage) {
+		VenueImage = venueImage;
 	}
 	
 	
