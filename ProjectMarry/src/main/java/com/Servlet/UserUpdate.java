@@ -20,7 +20,7 @@ import com.Bean.UserBean;
 import com.Dao.UserDaoImpl;
 
 
-@WebServlet("/UserRegister")
+@WebServlet("/UserUpdate")
 public class UserUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     Connection conn;
