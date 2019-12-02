@@ -8,7 +8,10 @@ public interface IUserDao {
 
 	public UserBean updateUserData(UserBean u);
 
-
 	public UserBean userLogin(String account, String pwd);
+	
+	public boolean accountExists(UserBean u);
+	
+	public boolean uidExists(UserBean u);
 
 }

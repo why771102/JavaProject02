@@ -79,7 +79,7 @@ public class UserRegister extends HttpServlet {
 			errorMsgMap.put("BirthEmptyError", "生日欄位不得空白！");
 		}
 		if(Gender == null || Gender.trim().length() == 0) {
-			errorMsgMap.put("GenderEmptyError", "Gender欄位必須勾選！");
+			errorMsgMap.put("GenderEmptyError", "性別欄位必須勾選！");
 		}
 		if(Mobile == null || Mobile.trim().length() == 0) {
 			errorMsgMap.put("MobileEmptyError", "行動電話欄位不得空白！");
@@ -93,6 +93,19 @@ public class UserRegister extends HttpServlet {
 		if(Address == null || Address.trim().length() == 0) {
 			errorMsgMap.put("AddressEmptyError", "住址欄位不得空白！");
 		}
+		
+		
+		
+		UserDaoImpl udi = new UserDaoImpl(conn);
+		if(udi.accountExists(ub) == false) {
+			errorMsgMap.put("AccountEmptyError2", "帳號已存在!");
+		}
+		
+		if(udi.uidExists(ub) == false) {
+			errorMsgMap.put("UIDEmptyError2", "身分證字號已被使用!");
+		}
+		UserBean rub = udi.register(ub);
+		
 		request.setAttribute("errorMsgMap", errorMsgMap);
 		if(!errorMsgMap.isEmpty()) {
 			
@@ -100,10 +113,6 @@ public class UserRegister extends HttpServlet {
 			rd.forward(request, response);
 			return;
 		}
-		
-		
-		UserDaoImpl udi = new UserDaoImpl(conn);
-		UserBean rub = udi.register(ub);
 		
 		if(rub == null) {
 			

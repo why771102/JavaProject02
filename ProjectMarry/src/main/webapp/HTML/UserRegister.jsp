@@ -20,13 +20,13 @@
   <tr>
    <td>帳號</td>
    <td><input type="text" id="account" name="Account"
-    value="${param.Account}" /></td>
+    value="${param.Account}" />${errorMsgMap.AccountEmptyError}${errorMsgMap.AccountEmptyError2}</td>
   </tr>
 
   <tr>
    <td>密碼</td>
    <td><input type="password" id="pwd" name="Pwd"
-    value="${param.Pwd}" /></td>
+    value="${param.Pwd}" />${errorMsgMap.PwdEmptyError}</td>
   </tr>
   
   <tr>
@@ -38,7 +38,7 @@
   <tr>
    <td>生日</td>
    <td><input type="text" id="birth" name="Birth"
-    value="${param.Birth}" /></td>
+    value="${param.Birth}" />${errorMsgMap.BirthEmptyError}</td>
   </tr>
 
   <tr>
@@ -47,37 +47,38 @@
    <input type="radio" id="male" name="Gender" ${(param.Gender == 0) ? 'cheched' : ''} /><label for="male" >男性</label>
    <input type="radio" id="female" name="Gender" ${(param.Gender == 1) ? 'cheched' : ''} /><label for="female" >女性</label> 
    <input type="radio" id="other" name="Gender" ${(param.Gender == 2) ? 'cheched' : ''} /><label for="other" >其他</label>
+   ${errorMsgMap.GenderEmptyError}
    </td>
   </tr>
 
   <tr>
    <td>行動電話</td>
    <td><input type="text" id="mobile" name="Mobile"
-    value="${param.Mobile}" /></td>
+    value="${param.Mobile}" />${errorMsgMap.MobileEmptyError}</td>
   </tr>
 
   <tr>
    <td>市話</td>
    <td><input type="text" id="tel" name="Tel"
-    value="${param.Tel}" /></td>
+    value="${param.Tel}" />${errorMsgMap.TelEmptyError}</td>
   </tr>
 
   <tr>
    <td>身分證字號</td>
    <td><input type="text" id="uid" name="Uid"
-    value="${param.Uid}" /></td>
+    value="${param.Uid}" />${errorMsgMap.UIDEmptyError}${errorMsgMap.UIDEmptyError2}</td>
   </tr>
 
   <tr>
    <td>電子郵件</td>
    <td><input type="text" id="mail" name="Mail"
-    value="${param.Mail}" /></td>
+    value="${param.Mail}" />${errorMsgMap.MailEmptyError}</td>
   </tr>
 
   <tr>
    <td>住址</td>
    <td><input type="text" id="address" name="Address"
-    value="${param.Address}" /></td>
+    value="${param.Address}" />${errorMsgMap.AddressEmptyError}</td>
   </tr>
 
  </table>
