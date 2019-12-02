@@ -20,12 +20,12 @@ import com.Bean.UserBean;
 import com.Dao.UserDaoImpl;
 
 
-@WebServlet("/UserUpdate")
-public class UserUpdate extends HttpServlet {
+@WebServlet("/UserLogin")
+public class UserLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     Connection conn;
 
-    public UserUpdate() {
+    public UserLogin() {
         super();
     }
 
@@ -60,7 +60,7 @@ public class UserUpdate extends HttpServlet {
 		ub.setAddress(Address);
 		
 		UserDaoImpl udi = new UserDaoImpl(conn);
-		UserBean rub = udi.updateUserData(ub);
+		UserBean rub = udi.register(ub);
 		
 		if(rub == null) {
 			
