@@ -9,12 +9,12 @@
 </head>
 <body>
 <h2>註冊帳號</h2>
-<form>
+<form action="<c:url value='/UserRegister'/>" method="POST">
  <table border=1>
   <tr>
    <td>姓名</td>
    <td><input type="text" id="name" name="Name"
-    value="${param.Name}" /></td>
+    value="${param.Name}" />${errorMsgMap.NameEmptyError}</td>
   </tr>
 
   <tr>
@@ -44,9 +44,9 @@
   <tr>
    <td>性別</td>
    <td>
-   <input type="radio" id="male" name="Gender" value="${param.Gender}" /><label for="male" >男性</label>
-   <input type="radio" id="female" name="Gender" value="${param.Gender}" /><label for="female" >女性</label> 
-   <input type="radio" id="other" name="Gender" value="${param.Gender}" /><label for="other" >其他</label>
+   <input type="radio" id="male" name="Gender" ${(param.Gender == 0) ? 'cheched' : ''} /><label for="male" >男性</label>
+   <input type="radio" id="female" name="Gender" ${(param.Gender == 1) ? 'cheched' : ''} /><label for="female" >女性</label> 
+   <input type="radio" id="other" name="Gender" ${(param.Gender == 2) ? 'cheched' : ''} /><label for="other" >其他</label>
    </td>
   </tr>
 

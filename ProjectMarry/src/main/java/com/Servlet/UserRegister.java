@@ -3,6 +3,8 @@ package com.Servlet;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -32,6 +34,8 @@ public class UserRegister extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session;
+		init();
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("txex/html;charset=UTF-8");
 		
@@ -59,20 +63,63 @@ public class UserRegister extends HttpServlet {
 		ub.setMail(Mail);
 		ub.setAddress(Address);
 		
+		Map<String, String> errorMsgMap = new HashMap<String, String>();
+
+		
+		if(Name == null || Name.trim().length() == 0) {
+			errorMsgMap.put("NameEmptyError", "姓名欄位不得空白！");
+		}
+		if(Account == null || Account.trim().length() == 0) {
+			errorMsgMap.put("AccountEmptyError", "帳號欄位不得空白！");
+		}
+		if(Pwd == null || Pwd.trim().length() == 0) {
+			errorMsgMap.put("PwdEmptyError", "密碼欄位不得空白！");
+		}
+		if(Birth == null || Birth.trim().length() == 0) {
+			errorMsgMap.put("BirthEmptyError", "生日欄位不得空白！");
+		}
+		if(Gender == null || Gender.trim().length() == 0) {
+			errorMsgMap.put("GenderEmptyError", "Gender欄位必須勾選！");
+		}
+		if(Mobile == null || Mobile.trim().length() == 0) {
+			errorMsgMap.put("MobileEmptyError", "行動電話欄位不得空白！");
+		}
+		if(UID == null || UID.trim().length() == 0) {
+			errorMsgMap.put("UIDEmptyError", "身分證字號欄位不得空白！");
+		}
+		if(Mail == null || Mail.trim().length() == 0) {
+			errorMsgMap.put("MailEmptyError", "電子郵件欄位不得空白！");
+		}
+		if(Address == null || Address.trim().length() == 0) {
+			errorMsgMap.put("AddressEmptyError", "住址欄位不得空白！");
+		}
+		request.setAttribute("errorMsgMap", errorMsgMap);
+		if(!errorMsgMap.isEmpty()) {
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserRegister.jsp");   //JSP
+			rd.forward(request, response);
+			return;
+		}
+		
+		
 		UserDaoImpl udi = new UserDaoImpl(conn);
 		UserBean rub = udi.register(ub);
 		
 		if(rub == null) {
 			
 			request.setAttribute("user", rub);
-			RequestDispatcher rd = request.getRequestDispatcher("JSP");   //JSP
+			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserRegister.jsp");   //JSP
 			rd.forward(request, response);
 			
 			
 		}else {
-			HttpSession session = request.getSession();
-			response.sendRedirect(request.getContextPath() + "JSP");
-			return;
+//			session = request.getSession();
+//			response.sendRedirect(request.getContextPath() + "/HTML/UserRegister.jsp");
+//			return;
+			request.setAttribute("user", rub);
+			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserRegister.jsp");   //JSP
+			rd.forward(request, response);
+
 			
 		}
 		

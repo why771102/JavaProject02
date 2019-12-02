@@ -22,7 +22,10 @@ public class UserDaoImpl implements IUserDao {
 		
 		
 		
+		
+		
 		try {
+			
 			PreparedStatement rs = conn.prepareStatement(sqlstmt);
 			rs.setString(1, u.getName());
 			rs.setString(2, u.getAccount());
@@ -34,8 +37,9 @@ public class UserDaoImpl implements IUserDao {
 			rs.setString(8, u.getUid());
 			rs.setString(9, u.getMail());
 			rs.setString(10, u.getAddress());
+			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
