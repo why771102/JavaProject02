@@ -46,7 +46,7 @@ public class UserRegister extends HttpServlet {
 		String Gender = request.getParameter("Gender");
 		String Mobile = request.getParameter("Mobile");
 		String Tel = request.getParameter("Tel");
-		String UID = request.getParameter("UID");
+		String UID = request.getParameter("Uid");
 		String Mail = request.getParameter("Mail");
 		String Address = request.getParameter("Address");
 	
@@ -101,7 +101,7 @@ public class UserRegister extends HttpServlet {
 			errorMsgMap.put("AccountEmptyError2", "帳號已存在!");
 		}
 		
-		if(udi.uidExists(ub) == false) {
+		if(udi.uidExists(ub) == true) {
 			errorMsgMap.put("UIDEmptyError2", "身分證字號已被使用!");
 		}
 		UserBean rub = udi.register(ub);

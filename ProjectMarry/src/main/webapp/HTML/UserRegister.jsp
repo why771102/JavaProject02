@@ -44,9 +44,9 @@
   <tr>
    <td>性別</td>
    <td>
-   <input type="radio" id="male" name="Gender" ${(param.Gender == 0) ? 'cheched' : ''} /><label for="male" >男性</label>
-   <input type="radio" id="female" name="Gender" ${(param.Gender == 1) ? 'cheched' : ''} /><label for="female" >女性</label> 
-   <input type="radio" id="other" name="Gender" ${(param.Gender == 2) ? 'cheched' : ''} /><label for="other" >其他</label>
+   <input type="radio" id="male" name="Gender" ${(param.Gender == 0) ? 'cheched' : ''} value="0" /><label for="male" >男性</label>
+   <input type="radio" id="female" name="Gender" ${(param.Gender == 1) ? 'cheched' : ''} value="1" /><label for="female" >女性</label> 
+   <input type="radio" id="other" name="Gender" ${(param.Gender == 2) ? 'cheched' : ''} value="2"/><label for="other" >其他</label>
    ${errorMsgMap.GenderEmptyError}
    </td>
   </tr>
