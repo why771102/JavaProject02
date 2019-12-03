@@ -36,7 +36,7 @@ public class UserDaoImpl implements IUserDao {
 			rs.setString(10, u.getAddress());
 			int status = rs.executeUpdate();
 			
-			
+			return u;
 		} catch (SQLException e) {
 			
 			e.printStackTrace();

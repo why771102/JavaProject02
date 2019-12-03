@@ -97,7 +97,7 @@ public class UserRegister extends HttpServlet {
 		
 		
 		UserDaoImpl udi = new UserDaoImpl(conn);
-		if(udi.accountExists(ub) == false) {
+		if(udi.accountExists(ub) == true) {
 			errorMsgMap.put("AccountEmptyError2", "帳號已存在!");
 		}
 		
@@ -122,12 +122,15 @@ public class UserRegister extends HttpServlet {
 			
 			
 		}else {
-//			session = request.getSession();
-//			response.sendRedirect(request.getContextPath() + "/HTML/UserRegister.jsp");
-//			return;
-			request.setAttribute("user", rub);
-			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserRegister.jsp");   //JSP
-			rd.forward(request, response);
+			
+			session = request.getSession();
+			session.setAttribute("user", rub);
+			response.sendRedirect(request.getContextPath() + "/HTML/UserRegisterSucess.jsp");
+			
+			return;
+//			request.setAttribute("user", rub);
+//			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserRegisterSucess.jsp");   //JSP
+//			rd.forward(request, response);
 
 			
 		}
