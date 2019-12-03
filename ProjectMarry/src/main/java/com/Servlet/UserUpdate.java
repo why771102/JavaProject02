@@ -42,7 +42,7 @@ public class UserUpdate extends HttpServlet {
 		String Gender = request.getParameter("Gender");
 		String Mobile = request.getParameter("Mobile");
 		String Tel = request.getParameter("Tel");
-		String UID = request.getParameter("UID");
+		String UID = request.getParameter("Uid");
 		String Mail = request.getParameter("Mail");
 		String Address = request.getParameter("Address");
 	
