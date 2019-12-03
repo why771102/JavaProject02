@@ -26,7 +26,7 @@
   <tr>
    <td>密碼</td>
    <td><input type="password" id="pwd" name="Pwd"
-    value="${param.Pwd}" />${errorMsgMap.PwdEmptyError}</td>
+    value="${param.Pwd}" />${errorMsgMap.PwdEmptyError}${errorMsgMap.PwdNotSameError}</td>
   </tr>
   
   <tr>

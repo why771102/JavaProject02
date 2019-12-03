@@ -42,6 +42,7 @@ public class UserRegister extends HttpServlet {
 		String Name = request.getParameter("Name");
 		String Account = request.getParameter("Account");
 		String Pwd = request.getParameter("Pwd");
+		String Pwd2 = request.getParameter("Pwd2");
 		String Birth = request.getParameter("Birth");
 		String Gender = request.getParameter("Gender");
 		String Mobile = request.getParameter("Mobile");
@@ -74,6 +75,8 @@ public class UserRegister extends HttpServlet {
 		}
 		if(Pwd == null || Pwd.trim().length() == 0) {
 			errorMsgMap.put("PwdEmptyError", "密碼欄位不得空白！");
+		}else if(Pwd != Pwd2) {
+			errorMsgMap.put("PwdNotSameError", "密碼必須相同！");
 		}
 		if(Birth == null || Birth.trim().length() == 0) {
 			errorMsgMap.put("BirthEmptyError", "生日欄位不得空白！");
