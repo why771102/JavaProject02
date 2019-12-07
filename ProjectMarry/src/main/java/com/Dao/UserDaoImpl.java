@@ -76,11 +76,8 @@ public class UserDaoImpl implements IUserDao {
 			return null;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		
 		}
-		
 		return null;
-
 	}
 
 

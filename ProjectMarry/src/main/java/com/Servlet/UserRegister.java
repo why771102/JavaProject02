@@ -21,24 +21,23 @@ import javax.sql.DataSource;
 import com.Bean.UserBean;
 import com.Dao.UserDaoImpl;
 
-
 @WebServlet("/UserRegister")
 public class UserRegister extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    Connection conn;
+	Connection conn;
 
-    public UserRegister() {
-        super();
-    }
+	public UserRegister() {
+		super();
+	}
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		HttpSession session;
 		init();
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("txex/html;charset=UTF-8");
-		
+
 		String Name = request.getParameter("Name");
 		String Account = request.getParameter("Account");
 		String Pwd = request.getParameter("Pwd");
@@ -50,9 +49,9 @@ public class UserRegister extends HttpServlet {
 		String UID = request.getParameter("Uid");
 		String Mail = request.getParameter("Mail");
 		String Address = request.getParameter("Address");
-	
+
 		UserBean ub = new UserBean();
-	
+
 		ub.setName(Name);
 		ub.setAccount(Account);
 		ub.setPwd(Pwd);
@@ -63,97 +62,91 @@ public class UserRegister extends HttpServlet {
 		ub.setUid(UID);
 		ub.setMail(Mail);
 		ub.setAddress(Address);
-		
+
 		Map<String, String> errorMsgMap = new HashMap<String, String>();
 
-		
-		if(Name == null || Name.trim().length() == 0) {
+		if (Name == null || Name.trim().length() == 0) {
 			errorMsgMap.put("NameEmptyError", "姓名欄位不得空白！");
 		}
-		if(Account == null || Account.trim().length() == 0) {
+		if (Account == null || Account.trim().length() == 0) {
 			errorMsgMap.put("AccountEmptyError", "帳號欄位不得空白！");
 		}
-		if(Pwd == null || Pwd.trim().length() == 0) {
+		if (Pwd == null || Pwd.trim().length() == 0) {
 			errorMsgMap.put("PwdEmptyError", "密碼欄位不得空白！");
-		}else if(Pwd != Pwd2) {
+		} else if (!Pwd.equals(Pwd2)) {
 			errorMsgMap.put("PwdNotSameError", "密碼必須相同！");
 		}
-		if(Birth == null || Birth.trim().length() == 0) {
+		if (Birth == null || Birth.trim().length() == 0) {
 			errorMsgMap.put("BirthEmptyError", "生日欄位不得空白！");
 		}
-		if(Gender == null || Gender.trim().length() == 0) {
+		if (Gender == null || Gender.trim().length() == 0) {
 			errorMsgMap.put("GenderEmptyError", "性別欄位必須勾選！");
 		}
-		if(Mobile == null || Mobile.trim().length() == 0) {
+		if (Mobile == null || Mobile.trim().length() == 0) {
 			errorMsgMap.put("MobileEmptyError", "行動電話欄位不得空白！");
 		}
-		if(UID == null || UID.trim().length() == 0) {
+		if (UID == null || UID.trim().length() == 0) {
 			errorMsgMap.put("UIDEmptyError", "身分證字號欄位不得空白！");
 		}
-		if(Mail == null || Mail.trim().length() == 0) {
+		if (Mail == null || Mail.trim().length() == 0) {
 			errorMsgMap.put("MailEmptyError", "電子郵件欄位不得空白！");
 		}
-		if(Address == null || Address.trim().length() == 0) {
+		if (Address == null || Address.trim().length() == 0) {
 			errorMsgMap.put("AddressEmptyError", "住址欄位不得空白！");
 		}
-		
-		
-		
+
 		UserDaoImpl udi = new UserDaoImpl(conn);
-		if(udi.accountExists(ub) == true) {
+		if (udi.accountExists(ub) == true) {
 			errorMsgMap.put("AccountEmptyError2", "帳號已存在!");
 		}
-		
-		if(udi.uidExists(ub) == true) {
+
+		if (udi.uidExists(ub) == true) {
 			errorMsgMap.put("UIDEmptyError2", "身分證字號已被使用!");
 		}
-		UserBean rub = udi.register(ub);
 		
-		request.setAttribute("errorMsgMap", errorMsgMap);
-		if(!errorMsgMap.isEmpty()) {
-			
-			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserRegister.jsp");   //JSP
+		if (!errorMsgMap.isEmpty()) {
+			request.setAttribute("errorMsgMap", errorMsgMap);
+			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserRegister.jsp"); // JSP
 			rd.forward(request, response);
 			return;
 		}
-		
-		if(rub == null) {
-			
+
+		UserBean rub = udi.register(ub);
+
+		if (rub == null) {
+
 			request.setAttribute("user", rub);
-			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserRegister.jsp");   //JSP
+			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserRegister.jsp"); // JSP
 			rd.forward(request, response);
-			
-			
-		}else {
-			
+
+		} else {
+
 			session = request.getSession();
 			session.setAttribute("user", rub);
+			System.out.println(request.getContextPath() + "/HTML/UserRegisterSucess.jsp");
 			response.sendRedirect(request.getContextPath() + "/HTML/UserRegisterSucess.jsp");
-			
+
 			return;
 //			request.setAttribute("user", rub);
 //			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserRegisterSucess.jsp");   //JSP
 //			rd.forward(request, response);
 
-			
 		}
-		
-		
+
 	}
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
-	
 	public void init() {
-		
+
 		Context context;
 		try {
 			context = new InitialContext();
-			DataSource ds = (DataSource)context.lookup("java:/comp/env/jdbc/servdb");
-			 try {
+			DataSource ds = (DataSource) context.lookup("java:/comp/env/jdbc/servdb");
+			try {
 				conn = ds.getConnection();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -163,5 +156,5 @@ public class UserRegister extends HttpServlet {
 		}
 
 	}
-	
+
 }

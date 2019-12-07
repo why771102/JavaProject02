@@ -12,6 +12,7 @@ import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -62,31 +63,40 @@ public class UserLogin extends HttpServlet {
 		}
 		
 		if(!errorMsgMap.isEmpty()) {
-			RequestDispatcher rd = request.getRequestDispatcher("login jsp");   //JSP
+			request.setAttribute("errorMsgMap", errorMsgMap);
+			RequestDispatcher rd = request.getRequestDispatcher("/HTML/LogIn.jsp");   //JSP
 			rd.forward(request, response);
 			return;
 		}
 		
 		UserBean rub = udi.userLogin(ub);
 		
-		if(rub != null) {
+		if(rub == null) {
 			//基本上不會抵達的錯誤區
 			session = request.getSession();
 			session.setAttribute("user", rub);
-			response.sendRedirect(request.getContextPath() + "/HTML/UserLoginSucess.jsp");
+			response.sendRedirect(request.getContextPath() + "/HTML/UserLogin.jsp");
 			return;
 		}else {
 			//成功登入，導向登入後頁面
+			Cookie cookie = new Cookie("account",ub.getAccount());
+		    cookie.setMaxAge(7 * 24 * 60 * 60);
+		    response.addCookie(cookie);
+		    
+		    cookie = new Cookie("name",ub.getName());
+		    cookie.setMaxAge(7 * 24 * 60 * 60);
+		    response.addCookie(cookie);
+		    
+		    cookie = new Cookie("loginStatus","1");
+		    cookie.setMaxAge(7 * 24 * 60 * 60);
+		    response.addCookie(cookie);
+		    
 			request.setAttribute("user", rub);
-			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserLogin.jsp");   //JSP
+			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserLoginSucess.jsp");   //JSP
 			rd.forward(request, response);
 			
 		}
-		
-		
-		
-		
-		
+
 	}
 
 

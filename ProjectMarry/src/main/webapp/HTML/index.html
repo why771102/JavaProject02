@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p><span id="name"></span>，你好！</p>
+	
+	
+	<a href="LogIn.jsp"><input type="button" value="立即登入"/></a>
+	
+	<script>
+		
+	
+		cookieArray = document.cookie.split(";");
+		console.log(cookieArray);
+		if(cookieArray == "") {
+			document.getElementById("name").innerText = "訪客";
+		}else{
+			nameArrays = cookieArray[1].split("=");
+			document.getElementById("name").innerText = nameArrays[1];
+		}
+		
+		
+		
+		
+	</script>
+</body>
+</html>
