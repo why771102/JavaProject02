@@ -3,6 +3,8 @@ package com.Servlet;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -32,49 +34,55 @@ public class UserLogin extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		init();
+		HttpSession session;
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("txex/html;charset=UTF-8");
 		
-		String Name = request.getParameter("Name");
+		
 		String Account = request.getParameter("Account");
 		String Pwd = request.getParameter("Pwd");
-		String Birth = request.getParameter("Birth");
-		String Gender = request.getParameter("Gender");
-		String Mobile = request.getParameter("Mobile");
-		String Tel = request.getParameter("Tel");
-		String UID = request.getParameter("UID");
-		String Mail = request.getParameter("Mail");
-		String Address = request.getParameter("Address");
 	
 		UserBean ub = new UserBean();
 	
-		ub.setName(Name);
 		ub.setAccount(Account);
 		ub.setPwd(Pwd);
-		ub.setBirth(Birth);
-		ub.setGender(Gender);
-		ub.setMobile(Mobile);
-		ub.setTel(Tel);
-		ub.setUid(UID);
-		ub.setMail(Mail);
-		ub.setAddress(Address);
+
 		
 		UserDaoImpl udi = new UserDaoImpl(conn);
-		UserBean rub = udi.register(ub);
 		
-		if(rub == null) {
-			
+		Map<String, String> errorMsgMap = new HashMap<String, String>();
+		
+		boolean existed = udi.accountExists(ub);
+		
+		if(existed == false) {
+			errorMsgMap.put("noAccount", "帳號不存在！");
+		}else if(udi.pwdMatch(ub) == false) {
+			errorMsgMap.put("PwdNoMatch", "密碼錯誤！");
+		}
+		
+		if(!errorMsgMap.isEmpty()) {
+			RequestDispatcher rd = request.getRequestDispatcher("login jsp");   //JSP
+			rd.forward(request, response);
+			return;
+		}
+		
+		UserBean rub = udi.userLogin(ub);
+		
+		if(rub != null) {
+			session = request.getSession();
+			session.setAttribute("user", rub);
+			response.sendRedirect(request.getContextPath() + "/HTML/UserLoginSucess.jsp");
+			return;
+		}else {
 			request.setAttribute("user", rub);
-			RequestDispatcher rd = request.getRequestDispatcher("JSP");   //JSP
+			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserLogin.jsp");   //JSP
 			rd.forward(request, response);
 			
-			
-		}else {
-			HttpSession session = request.getSession();
-			response.sendRedirect(request.getContextPath() + "JSP");
-			return;
-			
 		}
+		
+		
+		
 		
 		
 	}

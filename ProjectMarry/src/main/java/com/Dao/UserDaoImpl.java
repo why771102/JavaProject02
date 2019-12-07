@@ -54,9 +54,33 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	@Override
-	public UserBean userLogin(String account, String pwd) {
+	public UserBean userLogin(UserBean u) {
 
+		String sqlstmt1 = "select * from Members where Account=?";
+	 	try {
+			PreparedStatement stmt = conn.prepareStatement(sqlstmt1);
+			stmt.setString(1, u.getAccount());
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) {
+				u.setId(rs.getInt("ID"));
+				u.setName(rs.getString("Name"));
+				u.setBirth(rs.getString("Birth"));
+				u.setMobile(rs.getString("Mobile"));
+				u.setTel(rs.getString("Tel"));
+				u.setUid(rs.getString("UID"));
+				u.setMail(rs.getString("Mail"));
+				u.setAddress(rs.getString("Address"));
+				u.setGender(rs.getString("Gender"));
+				return u;
+			}
+			return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		
+		}
+		
 		return null;
+
 	}
 
 
@@ -100,6 +124,34 @@ public class UserDaoImpl implements IUserDao {
 		
 		return exist;
 	}
+
+
+	@Override
+	public boolean pwdMatch(UserBean u) {
+		
+		boolean match = false;
+		String sqlstmt1 = "select * from Members where Account=? and Pwd=?";
+	 	try {
+			PreparedStatement stmt = conn.prepareStatement(sqlstmt1);
+			stmt.setString(1, u.getAccount());
+			stmt.setString(2, u.getPwd());
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) {
+				match = true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		
+		}
+		
+		return match;
+		
+		
+	
+	}
+	
+	
 
 }
 
