@@ -70,11 +70,13 @@ public class UserLogin extends HttpServlet {
 		UserBean rub = udi.userLogin(ub);
 		
 		if(rub != null) {
+			//基本上不會抵達的錯誤區
 			session = request.getSession();
 			session.setAttribute("user", rub);
 			response.sendRedirect(request.getContextPath() + "/HTML/UserLoginSucess.jsp");
 			return;
 		}else {
+			//成功登入，導向登入後頁面
 			request.setAttribute("user", rub);
 			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserLogin.jsp");   //JSP
 			rd.forward(request, response);
