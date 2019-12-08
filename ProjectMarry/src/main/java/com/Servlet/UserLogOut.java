@@ -41,12 +41,27 @@ public class UserLogOut extends HttpServlet {
 		response.setContentType("txex/html;charset=UTF-8");
 		
 		
-			Cookie[] cookie =  request.getCookies();
+			Cookie[] cookies =  request.getCookies();
 			
-			for(int i = 0; i > cookie.length; i++) {
-				System.out.println(cookie[i]);
+			for(int i = 0; i > cookies.length; i++) {
+				System.out.println(cookies[i]);
 			}
 			
+			
+			Cookie cookie = new Cookie("account","");
+		    cookie.setMaxAge(0);
+		    response.addCookie(cookie);
+		    
+		    cookie = new Cookie("name","");
+		    cookie.setMaxAge(0);
+		    response.addCookie(cookie);
+		    
+		    cookie = new Cookie("loginStatus","0");
+		    cookie.setMaxAge(0);
+		    response.addCookie(cookie);
+		    
+			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserLoginSucess.jsp");   //JSP
+			rd.forward(request, response);
 			
 		
 
