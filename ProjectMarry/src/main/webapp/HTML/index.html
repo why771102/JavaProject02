@@ -9,7 +9,8 @@
 	
 	
 	<a href="LogIn.jsp"><input type="button" value="立即登入"/></a>
-	
+	<a href="../UserLogOut"><input type="button"  value="servlet登出"/></a>
+	<input type="button" onclick="eraseCookie(name)" value="登出" />
 	<script>
 		
 	
@@ -22,8 +23,31 @@
 			document.getElementById("name").innerText = nameArrays[1];
 		}
 		
-		
-		
+		function readCookie(name) {
+			   var nameEQ = name + "=";
+			   var ca = document.cookie.split(';');
+			   for (var i = 0; i < ca.length; i++) {
+			      var c = ca[i];
+			      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+			      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+			   }
+			   return null;
+			}
+			//刪除
+			function eraseCookie(name) {
+			   createCookie(name, "", -1);
+			}	
+			
+			function createCookie(name, value, days, path) {
+				  if (days) {
+				    var date = new Date();
+				    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+				    var expires = "; expires=" + date.toGMTString();
+				  }
+				  else var expires = "";
+				  document.cookie = name + "=" + value + expires + "; path=/";
+				}
+	
 		
 	</script>
 </body>
