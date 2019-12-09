@@ -10,6 +10,8 @@ public interface IUserDao {
 
 	public UserBean userLogin(UserBean u);
 	
+	public UserBean userQuery(String account);
+	
 	public boolean accountExists(UserBean u);
 	
 	public boolean uidExists(UserBean u);
