@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<style>
+.modal_block1 {
+	background-color: rgb(235, 235, 235);
+	border-block-end: rgb(201, 201, 201) solid 1px;
+	border-block-start: rgb(201, 201, 201) solid 1px;
+	padding: 1vh;
+}
+
+.modal_block2 {
+	border-block-end: rgb(201, 201, 201) solid 1px;
+	border-block-start: rgb(201, 201, 201) solid 1px;
+	padding: 1vh;
+}
+</style>
+</head>
+
+
+<body>
+
+	<div class="container">
+		<h2>Modal Example</h2>
+		<!-- Button to Open the Modal -->
+		<button type="button" class="btn btn-primary" data-toggle="modal"
+			data-target="#myModal">立即登入</button>
+
+		<!-- The Modal  選擇地址-->
+		<div class="modal" id="myModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h4 class="modal-title">請選擇收件人與購買人資料</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+
+					<div class="modal-body">
+						<!-- 						<div class="modal_block1"> -->
+						<!-- 							<p>收件人</p> -->
+						<!-- 							<p>Ally</p> -->
+						<!-- 							<p>0912456789</p> -->
+						<!-- 							<p>新北市大安區</p> -->
+						<!-- 							<p>購買人</p> -->
+						<!-- 							<p>同收件人</p> -->
+						<!-- 							<p>發票類型</p> -->
+						<!-- 							<p>二聯式發票</p> -->
+
+						<!-- 						</div> -->
+						<div class="modal_block2">
+							<form method="POST" action="<c:url value='/UserLogin'/>">
+								<h2>會員登入</h2>
+								<table border=1>
+
+									<tr>
+										<td>帳號</td>
+										<td><input type="text" id="account" name="Account"
+											value="${param.Account}" />${errorMsgMap.noAccount}</td>
+									</tr>
+									<tr>
+										<td>密碼</td>
+										<td><input type="password" id="pwd" name="Pwd"
+											value="${param.Pwd}" />${errorMsgMap.PwdNoMatch}</td>
+									</tr>
+								</table>
+								<input type="submit" value="登入"> <input type="reset"
+									value="取消">
+							</form>
+
+						</div>
+
+					</div>
+
+
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+						<button type="button" class="btn btn-primary" data-dismiss="modal"
+							data-toggle="modal" data-target="#myModal2">新增地址</button>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- The Modal2 新增地址 -->
+		<div class="modal" id="myModal2">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h4 class="modal-title">新增地址</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body">Modal body..</div>
+
+					<!-- Modal footer -->
+					<div class="modal-footer">
+
+						<button type="button" class="btn btn-danger" data-dismiss="modal"
+							data-toggle="modal" data-target="#myModal">Close</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal"
+							data-toggle="modal" data-target="#myModal">使用地址</button>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+
+</html>
