@@ -50,23 +50,24 @@ public class UserDaoImpl implements IUserDao {
 	@Override
 	public UserBean updateUserData(UserBean u) {
 		
-		String salstmt3 = "Update Members set  Name=?, Pwd=?, Birth=?, Mobile=?, Tel=?, Mail=?, Address=?, Gender=?";
-		try {
-			PreparedStatement stmt = conn.prepareStatement(salstmt3);
-			stmt.setString(1, u.getName());
-			stmt.setString(2, u.getPwd());
-			stmt.setString(3, u.getBirth());
-			stmt.setString(4, u.getMobile());
-			stmt.setString(5, u.getTel());
-			stmt.setString(6, u.getMail());
-			stmt.setString(7, u.getAddress());
-			stmt.setString(8, u.getGender());
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
+		 String salstmt3 = "Update Members set  Name=?, Birth=?, Mobile=?, Tel=?, Mail=?, Address=? where Account=?";
+		  try {
+		   PreparedStatement stmt = conn.prepareStatement(salstmt3);
+		   stmt.setString(1, u.getName());
+		   stmt.setString(2, u.getBirth());
+		   stmt.setString(3, u.getMobile());
+		   stmt.setString(4, u.getTel());
+		   stmt.setString(5, u.getMail());
+		   stmt.setString(6, u.getAddress());
+		   stmt.setString(7, u.getAccount());
+		   stmt.executeUpdate();
+		   return u;
+		  } catch (SQLException e) {
+		   
+		   e.printStackTrace();
+		  }
 
-		return null;
+		  return null;
 	}
 
 	@Override
@@ -167,7 +168,7 @@ public class UserDaoImpl implements IUserDao {
 
 	@Override
 	public UserBean userQuery(String account) {
-		String sqlstmt = "select * from Memebers where account=?";
+		String sqlstmt = "select * from Members where account=?";
 		UserBean u = new UserBean();
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sqlstmt);

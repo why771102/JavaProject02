@@ -267,7 +267,7 @@ p.text {
 /* 	 margin-right: 50px; */
 	position:fixed;
 	top:40px; 
-	right:0px;
+	right:40px;
 	 
 }
 
@@ -288,7 +288,7 @@ p.text {
 					<p class="tital">MARY ME | 場地選項</p>
 				</div>
 				<div>
-					<p class="text">場地|配件｜樣式｜婚禮小物｜新秘｜攝影</p>
+					<p class="text">場地｜配件｜樣式｜婚禮小物｜新秘｜攝影</p>
 
 				</div>
 				
@@ -298,9 +298,12 @@ p.text {
 					<span id="name"></span>，你好！
 				</p>
 				<a href="UserRegister.jsp"><input type="button" value="立即註冊"
-					id="register" /></a> <a href="LogIn.jsp"><input type="button"
-					value="立即登入" id="login" /></a> <a href="../UserLogOut"><input
+					id="register" /></a> 
+				<a href="LogIn.jsp"><input type="button"
+					value="立即登入" id="login" /></a> 
+				<a href="../UserLogOut"><input
 					type="button" value="servlet登出" id="logout" /></a>
+				<a href="../UserDataQuery"><input type="button"  value="會員資料修改" id="Query"/></a>
 
 			</div>
 		</div>
@@ -400,6 +403,7 @@ p.text {
 		if (cookieArray == "") {
 			document.getElementById("name").innerText = "訪客";
 			document.getElementById("logout").style.display = "none";
+			document.getElementById("Query").style.display = "none";
 		} else {
 			nameArrays = cookieArray[1].split("=");
 			document.getElementById("name").innerText = nameArrays[1];

@@ -32,50 +32,48 @@ public class UserUpdate extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("txex/html;charset=UTF-8");
-		
-		String Name = request.getParameter("Name");
-		String Account = request.getParameter("Account");
-		String Pwd = request.getParameter("Pwd");
-		String Birth = request.getParameter("Birth");
-		String Gender = request.getParameter("Gender");
-		String Mobile = request.getParameter("Mobile");
-		String Tel = request.getParameter("Tel");
-		String UID = request.getParameter("Uid");
-		String Mail = request.getParameter("Mail");
-		String Address = request.getParameter("Address");
-	
-		UserBean ub = new UserBean();
-	
-		ub.setName(Name);
-		ub.setAccount(Account);
-		ub.setPwd(Pwd);
-		ub.setBirth(Birth);
-		ub.setGender(Gender);
-		ub.setMobile(Mobile);
-		ub.setTel(Tel);
-		ub.setUid(UID);
-		ub.setMail(Mail);
-		ub.setAddress(Address);
-		
-		UserDaoImpl udi = new UserDaoImpl(conn);
-		UserBean rub = udi.updateUserData(ub);
-		
-		if(rub == null) {
-			
-			request.setAttribute("user", rub);
-			RequestDispatcher rd = request.getRequestDispatcher("JSP");   //JSP
-			rd.forward(request, response);
-			
-			
-		}else {
-			HttpSession session = request.getSession();
-			response.sendRedirect(request.getContextPath() + "JSP");
-			return;
-			
-		}
-		
+		 init();
+		 request.setCharacterEncoding("UTF-8");
+		  response.setContentType("txex/html;charset=UTF-8");
+		  
+		  String Name = request.getParameter("Name");
+		  String Birth = request.getParameter("Birth");
+		  String Mobile = request.getParameter("Mobile");
+		  String Tel = request.getParameter("Tel");
+		  String Mail = request.getParameter("Mail");
+		  String Address = request.getParameter("Address");
+		  String Account = request.getParameter("Account");
+		 
+		  UserBean ub = new UserBean();
+		 
+		  ub.setName(Name);
+		  ub.setBirth(Birth);
+		  ub.setMobile(Mobile);
+		  ub.setTel(Tel);
+		  ub.setMail(Mail);
+		  ub.setAddress(Address);
+		  ub.setAccount(Account);
+		  
+		  UserDaoImpl udi = new UserDaoImpl(conn);
+		  UserBean rub = udi.updateUserData(ub);
+		  
+		  if(rub == null) {
+		   
+		   request.setAttribute("user", rub);
+		   RequestDispatcher rd = request.getRequestDispatcher("JSP");   //JSP
+		   rd.forward(request, response);
+		   
+		   
+		  }else {
+		//   request.setAttribute("User", rub);
+		//   HttpSession session = request.getSession();
+		//   response.sendRedirect(request.getContextPath() + "/HTML/UserDataUpdate.jsp");
+		//   return;
+		   request.setAttribute("User", rub);
+		   RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserDataUpdate.jsp");   //JSP
+		   rd.forward(request, response);
+		   
+		  }
 		
 	}
 
