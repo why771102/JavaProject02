@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<style>
+/* CSS reset */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form,
+	fieldset, input, textarea, p, blockquote, th, td {
+	margin: 0;
+	padding: 0;
+}
+
+html, /* 這邊做初始化設定 全部字體為正黑體  並且字體大小以百分比控制  */ body {
+	margin: 0;
+	padding: 0;
+	font-family: arial, "Microsoft JhengHei", "微軟正黑體", sans-serif !important;
+	font-size: 100%;
+}
+
+/* warp 如何對齊 系列 */
+
+/* 排版垂直column置中 */
+.wrap {
+	/*Flex屬性區*/
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+	border: solid 1px black;
+	border-block-end-color: brown;
+	box-sizing: border-box;
+}
+
+/* 排版垂直column向左 */
+.wrapStart {
+	/*Flex屬性區*/
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	border: solid 1px black;
+	border-block-end-color: brown;
+	/* 撐開長寬 */
+	/* width: 100%; */
+	height: 100%;
+	/* border and padding in box */
+	box-sizing: border-box;
+}
+/* 排版一列row 向左 */
+.wrapRowStart {
+	/*Flex屬性區*/
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	border: solid 1px black;
+	border-block-end-color: brown;
+	/* 撐開長寬 */
+	width: 100%;
+	height: 100%;
+	/* border and padding in box */
+	box-sizing: border-box;
+}
+
+/* 排版同列row 置中 */
+.wrapRow {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
+	order: solid 1px black;
+	border-block-end-color: brown;
+}
+
+/* in article have padding */
+.wrapList {
+	/*Flex屬性區*/
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	border: solid 1px black;
+	border-block-end-color: brown;
+	/* 撐開長寬 */
+	width: 100%;
+	/* height: 100%; */
+	/* border and padding in box */
+	box-sizing: border-box;
+	padding: 0% 1% 1% 1%;
+}
+/* warp 如何對齊 系列 */
+
+/* 按鈕 選單系列  */
+select {
+	background-color: #fc6d6d;
+	color: white;
+	padding: 0.5% 4%;
+	width: 100%;
+	height: 4vh;
+	border: none;
+	font-size: 100%;
+	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+	-webkit-appearance: button;
+	appearance: button;
+	outline: none;
+	text-align: center;
+	border-radius: 5px;
+}
+
+label {
+	width: 100%;
+}
+
+.submitButton {
+	/* 送出按鈕 */
+	margin: 0px 0px 0px;
+	border: none;
+	border-radius: 5px;
+	background-color: #fc6d6d;
+	width: 100%;
+	height: 100%;
+	color: white;
+	font-size: 2vh;
+}
+/* 按鈕 選單系列 */
+#bg {
+	width: 100%;
+	height: 100%;
+}
+/*  跟header 網頭 有關系列 */
+#head {
+	width: 100%;
+	height: 150px;
+	padding: 10px 0px;
+}
+/*  跟header 網頭 有關系列 */
+#cartShopList {
+	width: 65%;
+	height: 100%;
+}
+
+#chooseAll {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+	height: 10%;
+}
+
+/* 中間內文 */
+#content {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+}
+/* 中間內文 的左邊 還有 右邊 */
+#left {
+	width: 100%;
+	height: 100vh;
+}
+
+#right {
+	width: 50%;
+	height: 100ｂvh;
+	padding: 0% 3% 2%;
+}
+/* 跟img 有關系列 */
+#pictureBG {
+	background-color: #d8d8d8;
+	width: 100%;
+	height: 75%;
+}
+
+.Bimg {
+	width: 100%;
+	height: 65%;
+	background-color: #949393;
+}
+
+.Simg {
+	width: 20%;
+	height: 50%;
+	background-color: #949393;
+	padding: 1% 1%;
+}
+/* 跟img 有關系列 */
+/* 跟 a 連結 有關系列 */
+a {
+	width: 100%;
+}
+/* foot 網頁最底層有關  */
+#footBG {
+	background-color: #d8d8d8;
+	width: 100%;
+	height: 400px;
+}
+/* foot  */
+
+/* 文字相關大小*/
+p.BTital {
+	color: black;
+	text-align: left;
+	font-size: 4.5vh;
+	font-weight: bold;
+}
+
+p.tital {
+	color: black;
+	text-align: left;
+	font-size: 4vh;
+	font-weight: bold;
+	width: 100%;
+}
+
+p.STital {
+	color: black;
+	text-align: left;
+	font-size: 3vh;
+	width: 100%;
+}
+
+p.text {
+	color: black;
+	text-align: left;
+	font-size: 2vh;
+	width: 100%;
+}
+/* 文字相關大小*/
+
+/* map 相關設定 */
+.map {
+	width: 100%;
+	height: 600px;
+	background-color: cadetblue;
+}
+/* map 相關設定 */
+
+/* product &deliver 相關設定 */
+#deliverInfo {
+	width: 50%;
+	height: 100%;
+	background-color: #d8d8d8;
+	padding: 1vh;
+	/* border and padding in box */
+	box-sizing: border-box;
+	border-radius: 5px;
+}
+
+#productInfo {
+	width: 100%;
+	height: 200px;
+	padding: 1vh;
+	/* border and padding in box */
+	box-sizing: border-box;
+}
+
+.headright {
+/* 	border: 2px green solid; */
+/* 	 display:block; */
+/* 	 margin-right: 50px; */
+	position:fixed;
+	top:40px; 
+	right:0px;
+	 
+}
+
+.headcenter {
+	display: inline-block;
+}
+
+/* map 相關設定 */
+</style>
+</head>
+
+<body>
+	<div class="wrap" id="bg">
+		<!-- header -->
+		<div class="wrap" id="head">
+			<div class="headcenter">
+				<div class="wrap">
+					<p class="tital">MARY ME | 場地選項</p>
+				</div>
+				<div>
+					<p class="text">場地|配件｜樣式｜婚禮小物｜新秘｜攝影</p>
+
+				</div>
+				
+			</div>
+			<div class="headright">
+				<p>
+					<span id="name"></span>，你好！
+				</p>
+				<a href="UserRegister.jsp"><input type="button" value="立即註冊"
+					id="register" /></a> <a href="LogIn.jsp"><input type="button"
+					value="立即登入" id="login" /></a> <a href="../UserLogOut"><input
+					type="button" value="servlet登出" id="logout" /></a>
+
+			</div>
+		</div>
+		<!-- article -->
+		<div class="wrap" id="cartShopList">
+			<!-- top  -->
+			<div class="wrap" id="chooseAll">
+				<input type="checkbox"> <label for=""> 全部選取</label>
+			</div>
+			<!-- content  -->
+			<div class="wrap" id="content">
+
+				<!-- product && deliver  -->
+				<div class="wrapStart" id="left">
+					<div class="wrapList">
+						<p class="STital">店家名稱</p>
+					</div>
+
+					<div class="wrapRow" style="width: 100%;">
+						<div class="wrapRow" id="productInfo">
+							<!--same shop   diffrent product  -->
+							<div class="wrapStart" style="width: 50%;">
+								<!-- same shop unit product  -->
+								<div class="wrapRowStart"></div>
+
+							</div>
+							<!-- deliver  -->
+							<div class="wrapList" id="deliverInfo"></div>
+
+						</div>
+
+
+					</div>
+					<!-- 預定時間 -->
+					<div class="wrapList">
+						<div class="wrapList">
+							<div class="wrapList" style="height: 100%">
+								<p class="STital">可預訂時間</p>
+								<div class="wrapRow">
+									<div class="wrap"
+										style="padding: 0px 100px 0px 0px; width: 100%;">
+										<p class="text">商品材質</p>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 預定時間 -->
+					<div class="wrapList">
+						<p></p>
+						<br> <br>
+					</div>
+					<!-- 分隔商品資訊框框 -->
+					<div class="wrapList">
+						<div class="wrapList">
+							<p class="STital">場地資訊</p>
+							<div class="wrapRow">
+								<div class="wrapStart" style="padding: 0px 100px 0px 0px;">
+
+									<p class="text">商品材質</p>
+									<p class="text">商品來源</p>
+									<p class="text">庫存</p>
+								</div>
+								<div class="wrapStart">
+									<p class="text">不鏽鋼</p>
+									<p class="text">商品來源</p>
+									<p class="text">庫存</p>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+					<!-- 分隔商品資訊框框 -->
+				</div>
+
+
+
+			</div>
+
+		</div>
+		<!-- foot -->
+		<div class="wrap" id="footBG">
+			<div class="wrap">MARY ME |錢不會消失 ,, 只是變成你喜歡的樣子</div>
+			<div>場地|配件｜樣式｜婚禮小物｜新秘｜攝影</div>
+		</div>
+
+
+	</div>
+
+
+	<script>
+		cookieArray = document.cookie.split(";");
+		console.log(cookieArray);
+		if (cookieArray == "") {
+			document.getElementById("name").innerText = "訪客";
+			document.getElementById("logout").style.display = "none";
+		} else {
+			nameArrays = cookieArray[1].split("=");
+			document.getElementById("name").innerText = nameArrays[1];
+			document.getElementById("register").style.display = "none";
+			document.getElementById("login").style.display = "none";
+		}
+	</script>
+
+
+
+</body>
+
+</html>
