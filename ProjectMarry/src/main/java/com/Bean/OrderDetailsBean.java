@@ -1,27 +1,23 @@
 package com.Bean;
 
-import java.sql.Blob;
 import java.util.Date;
 
 public class OrderDetailsBean {
 
-	private int OrderID;
-	private int ProductID;
+	private Integer OrderID;
+	private Integer ProductID;
 	private String ProductName;
-	private int Quantity;
-	private int UnitPrice;
-	private int Subtotal;
-	private float Discount;
+	private Integer Quantity;
+	private Integer UnitPrice;
+	private Integer Subtotal;
+	private Float Discount;
 	private Date OrderDate;
-	private Date ShippingDate;
-	private char CancelTag;
 	private String Memo;
-	private int ProductStatus;
-	private Blob VenueImage;
+	private Integer ShipmentStatus;
 	
 	public OrderDetailsBean(int OrderID, int ProductID, String ProductName,
 			int Quantity, int UnitPrice, int Subtotal, float Discount, Date OrderDate, 
-			Date ShippingDate,char CancelTag, String Memo, int ProductStatus) {
+			String Memo, int ShipmentStatus) {
 		this.OrderID = OrderID;
 		this.ProductID = ProductID;
 		this.ProductName = ProductName;
@@ -30,93 +26,87 @@ public class OrderDetailsBean {
 		this.Subtotal = Subtotal;
 		this.Discount = Discount;
 		this.OrderDate = OrderDate;
-		this.ShippingDate = ShippingDate;
-		this.CancelTag = CancelTag;
 		this.Memo = Memo;
-		this.ProductStatus = ProductStatus;
-		this.VenueImage = VenueImage;
 	}
-	
-	public int getOrderID() {
+
+	public Integer getOrderID() {
 		return OrderID;
 	}
-	public void setOrderID(int orderID) {
+
+	public void setOrderID(Integer orderID) {
 		OrderID = orderID;
 	}
-	public int getProductID() {
+
+	public Integer getProductID() {
 		return ProductID;
 	}
-	public void setProductID(int productID) {
+
+	public void setProductID(Integer productID) {
 		ProductID = productID;
 	}
+
 	public String getProductName() {
 		return ProductName;
 	}
+
 	public void setProductName(String productName) {
 		ProductName = productName;
 	}
-	public int getQuantity() {
+
+	public Integer getQuantity() {
 		return Quantity;
 	}
-	public void setQuantity(int quantity) {
+
+	public void setQuantity(Integer quantity) {
 		Quantity = quantity;
 	}
-	public int getUnitPrice() {
+
+	public Integer getUnitPrice() {
 		return UnitPrice;
 	}
-	public void setUnitPrice(int unitPrice) {
+
+	public void setUnitPrice(Integer unitPrice) {
 		UnitPrice = unitPrice;
 	}
-	public int getSubtotal() {
+
+	public Integer getSubtotal() {
 		return Subtotal;
 	}
-	public void setSubtotal(int subtotal) {
+
+	public void setSubtotal(Integer subtotal) {
 		Subtotal = subtotal;
 	}
-	public float getDiscount() {
+
+	public Float getDiscount() {
 		return Discount;
 	}
-	public void setDiscount(float discount) {
+
+	public void setDiscount(Float discount) {
 		Discount = discount;
 	}
+
 	public Date getOrderDate() {
 		return OrderDate;
 	}
+
 	public void setOrderDate(Date orderDate) {
 		OrderDate = orderDate;
 	}
-	public Date getShippingDate() {
-		return ShippingDate;
-	}
-	public void setShippingDate(Date shippingDate) {
-		ShippingDate = shippingDate;
-	}
-	public char getCancelTag() {
-		return CancelTag;
-	}
-	public void setCancelTag(char cancelTag) {
-		CancelTag = cancelTag;
-	}
+
 	public String getMemo() {
 		return Memo;
 	}
+
 	public void setMemo(String memo) {
 		Memo = memo;
 	}
-	public int getProductStatus() {
-		return ProductStatus;
-	}
-	public void setProductStatus(int productStatus) {
-		ProductStatus = productStatus;
+
+	public Integer getShipmentStatus() {
+		return ShipmentStatus;
 	}
 
-	public Blob getVenueImage() {
-		return VenueImage;
+	public void setShipmentStatus(Integer shipmentStatus) {
+		ShipmentStatus = shipmentStatus;
 	}
-
-	public void setVenueImage(Blob venueImage) {
-		VenueImage = venueImage;
-	}
-	
 	
 }

@@ -4,16 +4,19 @@ import java.util.Date;
 
 public class OrderBean {
 	
-	private int OrderID;
-	private int ID;
+	private Integer OrderID;
+	private Integer ID;
 	private Date StartDate;
 	private Date EndDate;
 	private String InvoiceTitle;
 	private String VATnumber;
-	private int PaymentStatus;
+	private Integer PaymentStatus;
+	private String ShippingAddress;
+	private char CancelTag;
 	
 	public OrderBean (int OrderID, int ID, Date StartDate, Date EndDate, 
-			String InvoiceTtitle, String VATnumber, int PaymentStatus, String InvoiceTitle) {
+			String InvoiceTtitle, String VATnumber, int PaymentStatus, String InvoiceTitle,
+			String ShippingAddress, char CancelTag) {
 		this.OrderID = OrderID;
 		this.ID = ID;
 		this.StartDate = StartDate;
@@ -21,6 +24,8 @@ public class OrderBean {
 		this.InvoiceTitle = InvoiceTitle;
 		this.VATnumber = VATnumber;
 		this.PaymentStatus = PaymentStatus;
+		this.ShippingAddress = ShippingAddress;
+		this.CancelTag = CancelTag;
 	}
 	
 	public int getOrderID() {
@@ -65,6 +70,22 @@ public class OrderBean {
 	}
 	public void setPaymentStatus(int paymentStatus) {
 		PaymentStatus = paymentStatus;
+	}
+
+	public String getShippingAddress() {
+		return ShippingAddress;
+	}
+
+	public void setShippingAddress(String shippingAddress) {
+		ShippingAddress = shippingAddress;
+	}
+
+	public char getCancelTag() {
+		return CancelTag;
+	}
+
+	public void setCancelTag(char cancelTag) {
+		CancelTag = cancelTag;
 	}
 	
 	
