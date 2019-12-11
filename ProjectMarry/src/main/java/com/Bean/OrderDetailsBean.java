@@ -27,6 +27,7 @@ public class OrderDetailsBean {
 		this.Discount = Discount;
 		this.OrderDate = OrderDate;
 		this.Memo = Memo;
+		this.ShipmentStatus = ShipmentStatus;
 	}
 
 	public Integer getOrderID() {

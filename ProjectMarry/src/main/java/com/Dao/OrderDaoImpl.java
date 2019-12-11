@@ -38,6 +38,13 @@ public class OrderDaoImpl implements IOrderDao{
 			stmt.setString(5, ob.getVATnumber());
 			stmt.setString(6, ob.getShippingAddress());
 			stmt.executeUpdate();
+			int id = 0;
+			generatedKeys = stmt.getGeneratedKeys();
+			if(generatedKeys.next()) {
+				id = generatedKeys.getInt(1);
+			}else {
+				throw new RuntimeException("無法取得Orders表格主鍵");
+			}
 			
 		} catch (SQLException e) {
 			
