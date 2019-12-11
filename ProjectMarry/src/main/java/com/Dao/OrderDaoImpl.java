@@ -57,7 +57,6 @@ public class OrderDaoImpl implements IOrderDao{
 	@Override
 	public void setConnection(Connection con) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
