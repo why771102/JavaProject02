@@ -6,6 +6,7 @@ import java.util.List;
 import com.Bean.OrderBean;
 
 public interface IOrderDao {
+	
 	public void insertOrder(OrderBean ob);
 	
 	public void setConnection(Connection con);

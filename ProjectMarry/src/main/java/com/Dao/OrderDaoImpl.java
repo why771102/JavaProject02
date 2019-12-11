@@ -30,9 +30,9 @@ public class OrderDaoImpl implements IOrderDao{
 			PreparedStatement stmt = 
 					con.prepareStatement(sqlOrder, Statement.RETURN_GENERATED_KEYS);
 			stmt.setInt(1, ob.getID());
-			Timestamp tsSD = new Timestamp(ob.getStartDate().getDate());
+			Timestamp tsSD = new Timestamp(ob.getStartDate().getTime());
 			stmt.setTimestamp(2, tsSD);
-			Timestamp tsED = new Timestamp(ob.getEndDate().getDate());
+			Timestamp tsED = new Timestamp(ob.getEndDate().getTime());
 			stmt.setTimestamp(3, tsED);
 			stmt.setString(4, ob.getInvoiceTitle());
 			stmt.setString(5, ob.getVATnumber());

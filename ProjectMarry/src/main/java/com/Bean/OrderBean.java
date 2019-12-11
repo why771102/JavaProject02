@@ -1,6 +1,8 @@
 package com.Bean;
 
 import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class OrderBean {
 	
@@ -10,12 +12,21 @@ public class OrderBean {
 	private Date EndDate;
 	private String InvoiceTitle;
 	private String VATnumber;
-	private Integer PaymentStatus;
+	private char PaymentStatus;
 	private String ShippingAddress;
 	private char CancelTag;
+	Set<OrderDetailsBean> orderDetail = new LinkedHashSet<>();
 	
-	public OrderBean (int OrderID, int ID, Date StartDate, Date EndDate, 
-			String InvoiceTtitle, String VATnumber, int PaymentStatus, String InvoiceTitle,
+	public Set<OrderDetailsBean> getOrderDetail() {
+		return orderDetail;
+	}
+
+	public void setOrderDetail(Set<OrderDetailsBean> orderDetail) {
+		this.orderDetail = orderDetail;
+	}
+
+	public OrderBean (Integer OrderID, Integer ID, Date StartDate, Date EndDate, 
+			String InvoiceTtitle, String VATnumber, char PaymentStatus, String InvoiceTitle,
 			String ShippingAddress, char CancelTag) {
 		this.OrderID = OrderID;
 		this.ID = ID;
@@ -27,48 +38,60 @@ public class OrderBean {
 		this.ShippingAddress = ShippingAddress;
 		this.CancelTag = CancelTag;
 	}
-	
-	public int getOrderID() {
+
+	public Integer getOrderID() {
 		return OrderID;
 	}
-	
-	public void setOrderID(int orderID) {
+
+	public void setOrderID(Integer orderID) {
 		OrderID = orderID;
 	}
-	public int getID() {
+
+	public Integer getID() {
 		return ID;
 	}
-	public void setID(int iD) {
+
+	public void setID(Integer iD) {
 		ID = iD;
 	}
+
 	public Date getStartDate() {
 		return StartDate;
 	}
+
 	public void setStartDate(Date startDate) {
 		StartDate = startDate;
 	}
+
 	public Date getEndDate() {
 		return EndDate;
 	}
+
 	public void setEndDate(Date endDate) {
 		EndDate = endDate;
 	}
+
 	public String getInvoiceTitle() {
 		return InvoiceTitle;
 	}
+
 	public void setInvoiceTitle(String invoiceTitle) {
 		InvoiceTitle = invoiceTitle;
 	}
+
 	public String getVATnumber() {
 		return VATnumber;
 	}
+
 	public void setVATnumber(String vATnumber) {
 		VATnumber = vATnumber;
 	}
-	public int getPaymentStatus() {
+
+	public char getPaymentStatus() {
 		return PaymentStatus;
 	}
-	public void setPaymentStatus(int paymentStatus) {
+
+	public void setPaymentStatus(char paymentStatus) {
 		PaymentStatus = paymentStatus;
 	}
 
