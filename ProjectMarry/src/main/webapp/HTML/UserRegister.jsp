@@ -44,7 +44,7 @@
 
   <tr>
    <td>生日</td>
-   <td><input type="text" id="birth" name="Birth"
+   <td><input type="date" id="birth" name="Birth"
     value="${param.Birth}" /><span class="notice">${errorMsgMap.BirthEmptyError}</span></td>
   </tr>
 
@@ -78,7 +78,7 @@
 
   <tr>
    <td>電子郵件</td>
-   <td><input type="text" id="mail" name="Mail"
+   <td><input type="email" id="mail" name="Mail"
     value="${param.Mail}" /><span class="notice">${errorMsgMap.MailEmptyError}</span></td>
   </tr>
 
