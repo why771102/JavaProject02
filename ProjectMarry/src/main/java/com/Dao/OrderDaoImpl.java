@@ -19,6 +19,7 @@ import com.Bean.OrderDetailsBean;
 import com.Interface.IOrderDao;
 
 public class OrderDaoImpl implements IOrderDao {
+	private String memberId = null;
 	private Connection con;
 	int orderNo = 0;
 
@@ -76,12 +77,7 @@ public class OrderDaoImpl implements IOrderDao {
 
 	@Override
 	public void setConnection(Connection con) {
-<<<<<<< HEAD
 		this.con = con;
-
-=======
-		// TODO Auto-generated method stub
->>>>>>> 401121255c87ca1602d4fcee5d764e906d66942d
 	}
 
 	@Override
@@ -95,7 +91,7 @@ public class OrderDaoImpl implements IOrderDao {
 			con = DriverManager.getConnection(connUrl, "sa", "P@ssword");
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("getOrder發生錯誤");
+			throw new RuntimeException("getOrder()發生錯誤 無法連資料庫");
 		}
 
 		String sql = "SELECT * FROM Order WHERE OrderId=?";
@@ -130,18 +126,29 @@ public class OrderDaoImpl implements IOrderDao {
 					int subtotal = rs.getInt("Subtotal");
 					float discount = rs.getInt("Discount");
 					String memo = rs.getString("Memo");
-//					int shipmentStatus = rs.getInt("ShipmentStatus");
 					OrderDetailsBean odb = new OrderDetailsBean(orderId2, productID, productName,
 							quantity, unitPrice, subtotal, discount, null, memo, null);
+					set.add(odb);
 				}
+				ob.setOrderDetail(set);
 			}
 		} catch (SQLException e) {
-			
 			e.printStackTrace();
+			throw new RuntimeException("OrderDaoImpl類別的getOrder()發生錯誤");
 		}
-		return null;
+		return ob;
 	}
 
+	public String getmemberId() {
+		return memberId;
+	}
+	
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+	
+	
+	
 	@Override
 	public List<OrderBean> getAllOrders() {
 		// TODO Auto-generated method stub
