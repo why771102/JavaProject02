@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class UserBean {
 	
-	private int id;
+	private Integer id;
 	private String name;
 	private String account;
 	private String pwd;
@@ -13,10 +13,10 @@ public class UserBean {
 	private String mobile;
 	private String tel;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {

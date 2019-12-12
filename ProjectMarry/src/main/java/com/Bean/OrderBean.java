@@ -12,9 +12,9 @@ public class OrderBean {
 	private Date EndDate;
 	private String InvoiceTitle;
 	private String VATnumber;
-	private char PaymentStatus;
+	private String PaymentStatus;
 	private String ShippingAddress;
-	private char CancelTag;
+	private String CancelTag;
 	Set<OrderDetailsBean> orderDetail = new LinkedHashSet<>();
 	
 	public Set<OrderDetailsBean> getOrderDetail() {
@@ -26,8 +26,8 @@ public class OrderBean {
 	}
 
 	public OrderBean (Integer OrderID, Integer ID, Date StartDate, Date EndDate, 
-			String InvoiceTtitle, String VATnumber, char PaymentStatus, String InvoiceTitle,
-			String ShippingAddress, char CancelTag) {
+			String InvoiceTitle, String VATnumber, String PaymentStatus,
+			String ShippingAddress, String CancelTag) {
 		this.OrderID = OrderID;
 		this.ID = ID;
 		this.StartDate = StartDate;
@@ -87,11 +87,11 @@ public class OrderBean {
 		VATnumber = vATnumber;
 	}
 
-	public char getPaymentStatus() {
+	public String getPaymentStatus() {
 		return PaymentStatus;
 	}
 
-	public void setPaymentStatus(char paymentStatus) {
+	public void setPaymentStatus(String paymentStatus) {
 		PaymentStatus = paymentStatus;
 	}
 
@@ -103,11 +103,11 @@ public class OrderBean {
 		ShippingAddress = shippingAddress;
 	}
 
-	public char getCancelTag() {
+	public String getCancelTag() {
 		return CancelTag;
 	}
 
-	public void setCancelTag(char cancelTag) {
+	public void setCancelTag(String cancelTag) {
 		CancelTag = cancelTag;
 	}
 	
