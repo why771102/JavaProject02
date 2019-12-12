@@ -30,9 +30,9 @@
 			<!-- top  -->
 			<div class="wrap spacing_b" id="chooseAll">
 				<input type="checkbox" id="CheckAll" value="checkall"> <label
-					for="">
+					for="CheckAll">
 					<p class="text3">全部選取</p>
-				</label>
+				</label>
 			</div>
 			<!-- content  -->
 			<div class="wrapRowStart " id="">
@@ -43,12 +43,12 @@
 
 					<div class="wrap sc_frame fullwidth CartPadding" id="">
 						<div class="spacingGeneral " id="chooseAll">
-							<input type="checkbox" name="Checkbox"> <label for="">
+							<input type="checkbox" id="productName" name="Checkbox"> <label for="productName">
 								<p class="text3">商品A</p>
-							</label>
+							</label>
 							<div class="remove margin1">
 								<a href="" id="delete">
-									<p class="" id="remove">X</p>
+									<p class="" id="remove" onclick="removeProduct">X</p>
 								</a>
 							</div>
 						</div>

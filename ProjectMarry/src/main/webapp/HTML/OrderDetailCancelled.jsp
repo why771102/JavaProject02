@@ -26,8 +26,8 @@
 		<div class="wrap" id="cartShopList">
 			<!-- top  -->
 			<div class="wrap" id="chooseAll">
-				<label for="selectAll"> ¥þ³¡¿ï¨ú</label>
-				<input type="checkbox" id="selectAll"> 
+<!-- 				<label for="selectAll"> ¥þ³¡¿ï¨ú</label> -->
+<!-- 				<input type="checkbox" id="selectAll">  -->
 			</div>
 			<!-- content  -->
 			<div class="wrapRow" id="content">

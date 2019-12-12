@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -100,8 +101,8 @@ public class OrderDaoImpl implements IOrderDao {
 				PreparedStatement ps = con.prepareStatement(sql);
 				PreparedStatement ps1 = con.prepareStatement(sql1);) {
 			ps.setInt(1, orderId);
-			try (ResultSet rs = ps.executeQuery();){
-				if(rs.next()) {
+			try (ResultSet rs = ps.executeQuery();) {
+				if (rs.next()) {
 					Integer oid = rs.getInt("orderID");
 					Integer id = rs.getInt("ID");
 					Date StartDate = rs.getDate("StartDate");
@@ -110,14 +111,14 @@ public class OrderDaoImpl implements IOrderDao {
 					String VATnumber = rs.getString("VATnumber");
 					String PaymentStatus = rs.getString("PaymentStatus");
 					String ShippingAddress = rs.getString("ShippingAddress");
-					ob = new OrderBean(oid, id, StartDate, EndDate, InvoiceTitle, VATnumber, 
-							PaymentStatus, ShippingAddress, null);
+					ob = new OrderBean(oid, id, StartDate, EndDate, InvoiceTitle, VATnumber, PaymentStatus,
+							ShippingAddress, null);
 				}
 			}
 			ps1.setInt(1, orderId);
-			try(ResultSet rs = ps1.executeQuery();){
+			try (ResultSet rs = ps1.executeQuery();) {
 				set = new HashSet<>();
-				while(rs.next()) {
+				while (rs.next()) {
 					int orderId2 = rs.getInt("OrderID");
 					int productID = rs.getInt("ProductID");
 					String productName = rs.getString("ProductName");
@@ -126,8 +127,8 @@ public class OrderDaoImpl implements IOrderDao {
 					int subtotal = rs.getInt("Subtotal");
 					float discount = rs.getInt("Discount");
 					String memo = rs.getString("Memo");
-					OrderDetailsBean odb = new OrderDetailsBean(orderId2, productID, productName,
-							quantity, unitPrice, subtotal, discount, null, memo, null);
+					OrderDetailsBean odb = new OrderDetailsBean(orderId2, productID, productName, quantity, unitPrice,
+							subtotal, discount, null, memo, null);
 					set.add(odb);
 				}
 				ob.setOrderDetail(set);
@@ -142,23 +143,67 @@ public class OrderDaoImpl implements IOrderDao {
 	public String getmemberId() {
 		return memberId;
 	}
-	
+
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
-	
-	
-	
+
 	@Override
 	public List<OrderBean> getAllOrders() {
-		// TODO Auto-generated method stub
-		return null;
+		DataSource ds = null;
+		try {
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String connUrl = "jdbc:sqlserver://localhost:1433;databaseName=ProjectMarry";
+			con = DriverManager.getConnection(connUrl, "sa", "P@ssword");
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("getAllOrders()發生錯誤 無法連資料庫");
+		}
+		List<OrderBean> list = new ArrayList<OrderBean>();
+		String sql = "SELECT OrderID FROM Order";
+		try (
+			Connection con = ds.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+		) {
+			while(rs.next()) {
+				Integer no = rs.getInt(1);
+				list.add(getOrder(no));
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return list;
 	}
 
 	@Override
 	public List<OrderBean> getMemberOrders(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		DataSource ds = null;
+		try {
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String connUrl = "jdbc:sqlserver://localhost:1433;databaseName=ProjectMarry";
+			con = DriverManager.getConnection(connUrl, "sa", "P@ssword");
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("getMemberOrders()發生錯誤 無法連資料庫");
+		}
+		List<OrderBean> list = new ArrayList<OrderBean>();
+		String sql = "SELECT OrderNo FROM Order where ID=? Order by orderDate desc";
+		try (
+			Connection con = ds.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+				){
+			ps.setString(1, id);
+			try (ResultSet rs = ps.executeQuery();){
+				while(rs.next()) {
+					Integer no = rs.getInt(1);
+					list.add(getOrder(no));
+				}
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return list;
 	}
 
 }

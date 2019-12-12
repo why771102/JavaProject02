@@ -9,6 +9,11 @@
 <link rel="stylesheet" href="<c:url value='/CSS/combine.css'/>">
 
 <title>orderList</title>
+<script>
+	function changeStatus(){
+		document.getElementById("status").innerText="已取消";
+	}
+</script>
 </head>
 <body>
 
@@ -152,6 +157,9 @@
                         </div>
                         <div class="refund wrapRowStart">
                             <p class="text">申請退款</p>
+                        </div>
+                        <div class="cancel_order wrapRowStart">
+                            <p class="text" onclick="changeStatus()">取消訂單</p>
                         </div>
                         <div class="order_history wrapList VH_padding1p5" >
                             <p class="text">訂單歷史</p>
