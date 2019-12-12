@@ -174,23 +174,22 @@
 														<!-- Modal body -->
 														<div class="modal-body">
 															<form method="post" action="">
-																收件人姓名<span>*</span> <br>
-																<input type="text" id="Rname" required><br>
+																收件人姓名<span>*</span> <br> <input type="text"
+																	id="Rname" required><br>
 																<div class="tel">
-																	收件人手機<span>*</span> <br>
-																	<select name="countryCode">
+																	收件人手機<span>*</span> <br> <select
+																		name="countryCode">
 																		<option>+886</option>
 																	</select> <input type="text" id="Rtel" required><br>
 																	<br>
 																</div>
 																<h5>商品寄往</h5>
-																寄往 <br>
-																<select>
+																寄往 <br> <select>
 																	<option>台灣</option>
 																	<option>海外</option>
-																</select><br> 地址<span>*</span> <br>
-																<input type="text" id="address"><br> 郵遞區號<span>*</span>
-																<input type="text" id="postalCode">
+																</select><br> 地址<span>*</span> <br> <input type="text"
+																	id="address"><br> 郵遞區號<span>*</span> <input
+																	type="text" id="postalCode">
 															</form>
 														</div>
 
@@ -270,14 +269,21 @@
 									<p class="spacing_top1 text4 spacing_b">其他付款方式</p>
 									<div class="spacingGeneral topLine">
 										<input type="radio" name="payment" id="convenient7"><label
-											for="convenient7">7-11 ibon代碼繳費</label><br> <input
-											type="radio" name="payment" id="convenient_family"
+											for="convenient7" style="display: inline;"> 7-11 ibon代碼繳費</label><br> 
+										<input type="radio" name="payment" id="convenient_family"
 											class="spacing_top1"><label for="convenient_family"
-											class="spacing_top1">全家代碼繳費</label><br> <input
+											class="spacing_top1" style="display: inline;"> 全家代碼繳費</label><br> <input
 											type="radio" name="payment" id="atm" class="spacing_top1"><label
-											for="atm">ATM 轉帳繳費</label><br> <input type="radio"
+											for="atm" style="display: inline;"> ATM 轉帳繳費</label><br> <input type="radio"
 											name="payment" id="linepay" class="spacing_top1"><label
-											for="linepay">LINE Pay</label><br>
+											for="linepay" style="display: inline;"> LINE Pay</label><br>
+									</div>
+									<div class="wrapList">
+										<a href="Checkout.jsp">
+											<div class="submitButton">
+												<p id="sc_center" style="margin-bottom: 0;">確認付款</p>
+											</div>
+										</a>
 									</div>
 								</div>
 							</div>
