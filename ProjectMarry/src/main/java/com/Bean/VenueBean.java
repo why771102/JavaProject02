@@ -2,17 +2,17 @@ package com.Bean;
 
 public class VenueBean {
 
-	private int VendorID;
-	private int ProductID;
+	private Integer VendorID;
+	private Integer ProductID;
 	private String VenueAddress;
 	private String Hall;
-	private int Tables;
-	private int InOutdoor;
-	private int LunchPrice;
-	private int DinnerPrice;
+	private Integer Tables;
+	private Integer InOutdoor;
+	private Integer LunchPrice;
+	private Integer DinnerPrice;
 	
-	public VenueBean (int VendorID, int ProductID, String VenueAddress, String Hall,
-			int Tables, int InOutdoor, int LunchPrice, int DinnerPrice) {
+	public VenueBean (Integer VendorID, Integer ProductID, String VenueAddress, String Hall,
+			Integer Tables, Integer InOutdoor, Integer LunchPrice, Integer DinnerPrice) {
 		this.VendorID = VendorID;
 		this.ProductID= ProductID;
 		this.VenueAddress = VenueAddress;
@@ -22,53 +22,68 @@ public class VenueBean {
 		this.LunchPrice = LunchPrice;
 		this.DinnerPrice = DinnerPrice;
 	}
-	
-	public int getVendorID() {
+
+	public Integer getVendorID() {
 		return VendorID;
 	}
-	public void setVendorID(int vendorID) {
+
+	public void setVendorID(Integer vendorID) {
 		VendorID = vendorID;
 	}
-	public int getProductID() {
+
+	public Integer getProductID() {
 		return ProductID;
 	}
-	public void setProductID(int productID) {
+
+	public void setProductID(Integer productID) {
 		ProductID = productID;
 	}
+
 	public String getVenueAddress() {
 		return VenueAddress;
 	}
+
 	public void setVenueAddress(String venueAddress) {
 		VenueAddress = venueAddress;
 	}
+
 	public String getHall() {
 		return Hall;
 	}
+
 	public void setHall(String hall) {
 		Hall = hall;
 	}
-	public int getTables() {
+
+	public Integer getTables() {
 		return Tables;
 	}
-	public void setTables(int tables) {
+
+	public void setTables(Integer tables) {
 		Tables = tables;
 	}
-	public int getInOutdoor() {
+
+	public Integer getInOutdoor() {
 		return InOutdoor;
 	}
-	public void setInOutdoor(int inOutdoor) {
+
+	public void setInOutdoor(Integer inOutdoor) {
 		InOutdoor = inOutdoor;
 	}
-	public int getLunchPrice() {
+
+	public Integer getLunchPrice() {
 		return LunchPrice;
 	}
-	public void setLunchPrice(int lunchPrice) {
+
+	public void setLunchPrice(Integer lunchPrice) {
 		LunchPrice = lunchPrice;
 	}
-	public int getDinnerPrice() {
+
+	public Integer getDinnerPrice() {
 		return DinnerPrice;
 	}
-	public void setDinnerPrice(int dinnerPrice) {
+
+	public void setDinnerPrice(Integer dinnerPrice) {
 		DinnerPrice = dinnerPrice;
 	}
 	

@@ -15,9 +15,9 @@ public class OrderDetailsBean {
 	private String Memo;
 	private Integer ShipmentStatus;
 	
-	public OrderDetailsBean(int OrderID, int ProductID, String ProductName,
-			int Quantity, int UnitPrice, int Subtotal, float Discount, Date OrderDate, 
-			String Memo, int ShipmentStatus) {
+	public OrderDetailsBean(Integer OrderID, Integer ProductID, String ProductName,
+			Integer Quantity, Integer UnitPrice, Integer Subtotal, Float Discount, Date OrderDate, 
+			String Memo, Integer ShipmentStatus) {
 		this.OrderID = OrderID;
 		this.ProductID = ProductID;
 		this.ProductName = ProductName;
