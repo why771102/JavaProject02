@@ -33,7 +33,7 @@
 				<p class="tital">MARY ME | 場地選項</p>
 			</div>
 			<div>
-				<p class="text">場地|配件｜樣式｜婚禮小物｜新秘｜攝影</p>
+				<p class="text" style="display: none;">場地|配件｜樣式｜婚禮小物｜新秘｜攝影</p>
 			</div>
 		</div>
 		<!-- article -->
@@ -255,7 +255,7 @@
 								<div class="wrapRow width03"></div>
 								<!-- credit card  -->
 								<div class="wrapList spacing_rl" id="deliverInfo">
-									<p class="text4">新增信用卡快速付款（首次新增送 500 點紅利)</p>
+									<p style="font-weight: bold;">新增信用卡快速付款（首次新增送 500 點紅利)</p>
 									<div class="spacingGeneral">
 										<div class="topLine ">
 											<a href="">
@@ -266,7 +266,7 @@
 									</div>
 									<div class="spacing_top">新增成功後，下次結帳免輸入卡號即可直接付款。新增信用卡時，
 										MARRY ME將會進行一筆 1 元測試交易，此筆款項不會實際扣款， 請放心依步驟進行認證。</div>
-									<p class="spacing_top1 text4 spacing_b">其他付款方式</p>
+									<p class="spacing_top1 spacing_b" style="font-weight: bold;">其他付款方式</p>
 									<div class="spacingGeneral topLine">
 										<input type="radio" name="payment" id="convenient7"><label
 											for="convenient7" style="display: inline;"> 7-11 ibon代碼繳費</label><br> 

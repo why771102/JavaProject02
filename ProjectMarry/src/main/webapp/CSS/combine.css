@@ -662,10 +662,8 @@ p.text3 {
 	width: 100%;
 }
 
-p.text4 {
-	font-size: 6vh;
-	text-align: left;
-	width: 100%;
+text4 {
+	font-weight: bold;
 }
 
 p.noChangeLine {
