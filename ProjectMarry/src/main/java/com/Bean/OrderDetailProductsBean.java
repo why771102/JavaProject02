@@ -32,11 +32,11 @@ public class OrderDetailProductsBean {
 		OrderID = orderID;
 	}
 
-	public Integer getProductID() {
+	public String getProductID() {
 		return ProductID;
 	}
 
-	public void setProductID(Integer productID) {
+	public void setProductID(String productID) {
 		ProductID = productID;
 	}
 
@@ -79,6 +79,4 @@ public class OrderDetailProductsBean {
 	public void setMemo(String memo) {
 		Memo = memo;
 	}
-
-	
 }
