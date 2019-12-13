@@ -10,21 +10,30 @@ public class OrderBean {
 	private Integer ID;
 	private String InvoiceTitle;
 	private String VATnumber;
-	private String Status;
+	private Integer Status;
 	private String ShippingAddress;
 	private Date OrderDate;
 	private Integer ShippingStatus;
-	Set<OrderDetailVenuesBean> orderDetail = new LinkedHashSet<>();
-	
-	public Set<OrderDetailVenuesBean> getOrderDetail() {
-		return orderDetail;
+	Set<OrderDetailVenuesBean> orderDetailVenue = new LinkedHashSet<>();
+	Set<OrderDetailProductsBean> orderDetailProduct = new LinkedHashSet<>();
+
+	public Set<OrderDetailVenuesBean> getOrderDetailVenue() {
+		return orderDetailVenue;
 	}
 
-	public void setOrderDetail(Set<OrderDetailVenuesBean> orderDetail) {
-		this.orderDetail = orderDetail;
+	public void setOrderDetailVenue(Set<OrderDetailVenuesBean> orderDetailVenue) {
+		this.orderDetailVenue = orderDetailVenue;
 	}
 
-	public OrderBean(Integer OrderID, Integer ID, String InvoiceTitle, String VATnumber, String Status,
+	public Set<OrderDetailProductsBean> getOrderDetailProduct() {
+		return orderDetailProduct;
+	}
+
+	public void setOrderDetailProduct(Set<OrderDetailProductsBean> orderDetailProduct) {
+		this.orderDetailProduct = orderDetailProduct;
+	}
+
+	public OrderBean(Integer OrderID, Integer ID, String InvoiceTitle, String VATnumber, Integer Status,
 			String ShippingAddress, Date OrderDate, Integer ShippingStatus) {
 		this.OrderID = OrderID;
 		this.ID = ID;
@@ -68,11 +77,11 @@ public class OrderBean {
 		VATnumber = vATnumber;
 	}
 
-	public String getStatus() {
+	public Integer getStatus() {
 		return Status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Integer status) {
 		Status = status;
 	}
 

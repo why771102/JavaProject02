@@ -1,10 +1,26 @@
 package com.Dao;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+import javax.sql.DataSource;
+
+import com.Bean.ProductBean;
 import com.Bean.VenueBean;
-import com.Interface.ProductBean;
 import com.Interface.ShoppingCartDao;
 
 public class ShoppingCartDaoImpl implements ShoppingCartDao {
+	Connection con;
+	public void getConnection() {
+		try {
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String connUrl = "jdbc:sqlserver://localhost:1433;databaseName=ProjectMarry";
+			con = DriverManager.getConnection(connUrl, "sa", "P@ssword");
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("");
+		}
+	}
 
 	@Override
 	public int getShoppingCart(int Id) {
@@ -38,7 +54,8 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 
 	@Override
 	public boolean deleteShop(int orderId, int ShopID) {
-		// TODO Auto-generated method stub
+		DataSource ds = null;
+		
 		return false;
 	}
 
