@@ -7,18 +7,27 @@ public class ProductBean {
 	private Integer PSupplierID;
 	private Integer Quantity;
 	private Integer ProductStatus;
+	private Double Discount;
 	
 	public ProductBean(String ProductID, String ProductName, Integer UnitPrice,
-			Integer PSupplierID, Integer Quantity, Integer ProductStatus) {
+			Integer PSupplierID, Integer Quantity, Integer ProductStatus, Double Discount) {
 		this.ProductID = ProductID;
 		this.ProductName = ProductName;
 		this.UnitPrice = UnitPrice;
 		this.PSupplierID = PSupplierID;
 		this.Quantity = Quantity;
 		this.ProductStatus = ProductStatus;
+		this.Discount = Discount;
 	}
 	
-	
+	public Double getDiscount() {
+		return Discount;
+	}
+
+	public void setDiscount(Double discount) {
+		Discount = discount;
+	}
+
 	public String getProductID() {
 		return ProductID;
 	}
@@ -55,6 +64,4 @@ public class ProductBean {
 	public void setProductStatus(Integer productStatus) {
 		ProductStatus = productStatus;
 	}
-	
-	
 }

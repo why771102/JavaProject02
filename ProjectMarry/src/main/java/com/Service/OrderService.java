@@ -9,6 +9,7 @@ public interface OrderService {
 public void insertOrder(OrderBean ob);
 	
 	public OrderBean getOrder(int orderNo);
+
 	
 	public List<OrderBean> getAllOrders();
 	

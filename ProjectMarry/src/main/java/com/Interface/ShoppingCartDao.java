@@ -1,7 +1,8 @@
 package com.Interface;
 
+import java.sql.Blob;
+
 import com.Bean.ProductBean;
-import com.Bean.ShoppingCartBean;
 import com.Bean.VenueBean;
 
 public interface ShoppingCartDao {
@@ -16,7 +17,7 @@ public interface ShoppingCartDao {
 	public boolean  deleteVendor(int orderId , int vendorID);
 	public boolean  deleteVenue(int orderId , int venueID );
 	//刪除product table裡面的資料 (記得要先刪掉fk)
-	public boolean  deleteShop(int orderId ,int ShopID);
+	public boolean  deleteSupplier(int orderId ,int supplierID);
 	public boolean  deleteProduct(int orderId ,int productID);
 
 
@@ -26,7 +27,7 @@ public interface ShoppingCartDao {
 	public boolean  querytime_(int[] orderId);
 	
 	//找出venue 場地單價  放進查詢裡面  因為要判斷買的時間是上午場還是下午場,所以必須購買給時間讓他判斷要取哪個值
-	public int productPrice(int venueID, int time);
+	public int venuePrice(int venueID, int time);
 	//找出純粹婚禮小物的價格
 	public int productPrice(int ProductID);
 	//把購物車存進order table   status 從0改1
@@ -42,4 +43,7 @@ public interface ShoppingCartDao {
 	public boolean saveVenue(VenueBean vb);
 	//存商品
 	public boolean saveProduct(ProductBean pb);
+	
+	//抓DB照片
+	public Blob queryImage(int productId);
 }
