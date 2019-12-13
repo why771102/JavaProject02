@@ -16,7 +16,7 @@ import java.util.Set;
 import javax.sql.DataSource;
 
 import com.Bean.OrderBean;
-import com.Bean.OrderDetailsBean;
+import com.Bean.OrderDetailVenuesBean;
 import com.Interface.IOrderDao;
 
 public class OrderDaoImpl implements IOrderDao {
@@ -51,9 +51,9 @@ public class OrderDaoImpl implements IOrderDao {
 			} else {
 				throw new RuntimeException("無法取得Orders表格主鍵");
 			}
-			Set<OrderDetailsBean> details = ob.getOrderDetail();
+			Set<OrderDetailVenuesBean> details = ob.getOrderDetail();
 			try (PreparedStatement stmt2 = con.prepareStatement(sqlOrderDetails);) {
-				for (OrderDetailsBean odb : details) {
+				for (OrderDetailVenuesBean odb : details) {
 					stmt2.setInt(1, id);
 					stmt2.setInt(2, odb.getProductID());
 					stmt2.setString(3, odb.getProductName());
@@ -85,7 +85,7 @@ public class OrderDaoImpl implements IOrderDao {
 	public OrderBean getOrder(int orderId) {
 		OrderBean ob = null;
 		DataSource ds = null;
-		Set<OrderDetailsBean> set = null;
+		Set<OrderDetailVenuesBean> set = null;
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			String connUrl = "jdbc:sqlserver://localhost:1433;databaseName=ProjectMarry";
@@ -127,7 +127,7 @@ public class OrderDaoImpl implements IOrderDao {
 					int subtotal = rs.getInt("Subtotal");
 					float discount = rs.getInt("Discount");
 					String memo = rs.getString("Memo");
-					OrderDetailsBean odb = new OrderDetailsBean(orderId2, productID, productName, quantity, unitPrice,
+					OrderDetailVenuesBean odb = new OrderDetailVenuesBean(orderId2, productID, productName, quantity, unitPrice,
 							subtotal, discount, null, memo, null);
 					set.add(odb);
 				}

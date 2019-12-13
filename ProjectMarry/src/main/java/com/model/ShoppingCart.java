@@ -3,7 +3,7 @@ package com.model;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import com.Bean.OrderDetailsBean;
+import com.Bean.OrderDetailVenuesBean;
 import com.Bean.ShoppingCartBean;
 import com.Bean.VenueBean;
 

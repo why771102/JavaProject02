@@ -2,20 +2,17 @@ package com.Bean;
 
 import java.util.Date;
 
-public class OrderDetailsBean {
+public class OrderDetailProductsBean {
 
 	private Integer OrderID;
-	private Integer ProductID;
+	private String ProductID;
 	private String ProductName;
 	private Integer Quantity;
 	private Integer UnitPrice;
-	private Integer Subtotal;
 	private Float Discount;
-	private Date OrderDate;
 	private String Memo;
-	private Integer ShipmentStatus;
 	
-	public OrderDetailsBean(Integer OrderID, Integer ProductID, String ProductName,
+	public OrderDetailProductsBean(Integer OrderID, String ProductID, String ProductName,
 			Integer Quantity, Integer UnitPrice, Integer Subtotal, Float Discount, Date OrderDate, 
 			String Memo, Integer ShipmentStatus) {
 		this.OrderID = OrderID;
@@ -23,11 +20,8 @@ public class OrderDetailsBean {
 		this.ProductName = ProductName;
 		this.Quantity = Quantity;
 		this.UnitPrice = UnitPrice;
-		this.Subtotal = Subtotal;
 		this.Discount = Discount;
-		this.OrderDate = OrderDate;
 		this.Memo = Memo;
-		this.ShipmentStatus = ShipmentStatus;
 	}
 
 	public Integer getOrderID() {
@@ -70,28 +64,12 @@ public class OrderDetailsBean {
 		UnitPrice = unitPrice;
 	}
 
-	public Integer getSubtotal() {
-		return Subtotal;
-	}
-
-	public void setSubtotal(Integer subtotal) {
-		Subtotal = subtotal;
-	}
-
 	public Float getDiscount() {
 		return Discount;
 	}
 
 	public void setDiscount(Float discount) {
 		Discount = discount;
-	}
-
-	public Date getOrderDate() {
-		return OrderDate;
-	}
-
-	public void setOrderDate(Date orderDate) {
-		OrderDate = orderDate;
 	}
 
 	public String getMemo() {
@@ -102,12 +80,5 @@ public class OrderDetailsBean {
 		Memo = memo;
 	}
 
-	public Integer getShipmentStatus() {
-		return ShipmentStatus;
-	}
-
-	public void setShipmentStatus(Integer shipmentStatus) {
-		ShipmentStatus = shipmentStatus;
-	}
 	
 }

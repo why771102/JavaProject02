@@ -12,6 +12,7 @@
 
 <link rel="stylesheet" type="text/css" href="../CSS/combine.css">
 <title>購物車</title>
+
 </head>
 <body>
 
@@ -44,15 +45,15 @@
 					<div class="wrap sc_frame fullwidth CartPadding" id="">
 						<div class="spacingGeneral " id="chooseAll">
 							<input type="checkbox" id="productName" name="Checkbox"> <label for="productName">
-								<p class="text3">商品A</p>
+								<p class="text3">店家A</p>
 							</label>
 							<div class="remove margin1">
 								<a href="" id="delete">
-									<p class="" id="remove" onclick="removeProduct">X</p>
+									<p class="" id="remove_shop" onclick="remove_shop()">X</p>
 								</a>
 							</div>
 						</div>
-						<div class=" wrapRowStart topLine">
+						<div class=" wrapRowStart topLine" id="SC_products">
 
 							<div class="width25">
 								<div class="Pimg2 fullwidth">
@@ -88,16 +89,16 @@
 								<div class="width02"></div>
 
 								<div class="width05 margin2">
-									<a href="" id="delete">
-										<p id="remove">X</p>
-									</a>
+<!-- 									<a href="" id="delete"> -->
+										<p id="remove_product" onclick="remove_product()">X</p>
+<!-- 									</a> -->
 								</div>
 							</div>
 						</div>
 
 
 						<div class="Pimg1">
-							<div class="spacing_top adjPadding">
+							<div class="spacing_top adjPadding" id="SC_shipping">
 								<p>選擇運送方式</p>
 								<div class="custom-select spacingGeneral" style="width: 200px;">
 									<select>
@@ -167,5 +168,15 @@
 
 
 	</div>
+<script type="text/javascript">
+	function remove_shop(){
+		
+	}
+	
+	function remove_product(){
+		document.getElementById("SC_products").remove();
+		document.getElementById("SC_shipping").remove();
+	}
+</script>
 </body>
 </html>

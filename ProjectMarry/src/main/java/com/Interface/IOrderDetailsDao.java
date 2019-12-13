@@ -1,11 +1,11 @@
 package com.Interface;
 
 import java.sql.Connection;
-import com.Bean.OrderDetailsBean;
+import com.Bean.OrderDetailVenuesBean;
 
 public interface IOrderDetailsDao {
 	
 	public void setConnection(Connection conn);
-	Double getOrderSubtotal(OrderDetailsBean odb);
+	Double getOrderSubtotal(OrderDetailVenuesBean odb);
 
 }

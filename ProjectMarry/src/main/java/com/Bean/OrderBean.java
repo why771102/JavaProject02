@@ -8,37 +8,34 @@ public class OrderBean {
 	
 	private Integer OrderID;
 	private Integer ID;
-	private Date StartDate;
-	private Date EndDate;
 	private String InvoiceTitle;
 	private String VATnumber;
-	private String PaymentStatus;
+	private String Status;
 	private String ShippingAddress;
-	private String CancelTag;
-	Set<OrderDetailsBean> orderDetail = new LinkedHashSet<>();
+	private Date OrderDate;
+	private Integer ShippingStatus;
+	Set<OrderDetailVenuesBean> orderDetail = new LinkedHashSet<>();
 	
-	public Set<OrderDetailsBean> getOrderDetail() {
+	public Set<OrderDetailVenuesBean> getOrderDetail() {
 		return orderDetail;
 	}
 
-	public void setOrderDetail(Set<OrderDetailsBean> orderDetail) {
+	public void setOrderDetail(Set<OrderDetailVenuesBean> orderDetail) {
 		this.orderDetail = orderDetail;
 	}
 
-	public OrderBean (Integer OrderID, Integer ID, Date StartDate, Date EndDate, 
-			String InvoiceTitle, String VATnumber, String PaymentStatus,
-			String ShippingAddress, String CancelTag) {
+	public OrderBean(Integer OrderID, Integer ID, String InvoiceTitle, String VATnumber, String Status,
+			String ShippingAddress, Date OrderDate, Integer ShippingStatus) {
 		this.OrderID = OrderID;
 		this.ID = ID;
-		this.StartDate = StartDate;
-		this.EndDate = EndDate;
 		this.InvoiceTitle = InvoiceTitle;
 		this.VATnumber = VATnumber;
-		this.PaymentStatus = PaymentStatus;
+		this.Status = Status;
 		this.ShippingAddress = ShippingAddress;
-		this.CancelTag = CancelTag;
+		this.OrderDate = OrderDate;
+		this.ShippingStatus = ShippingStatus;
 	}
-
+	
 	public Integer getOrderID() {
 		return OrderID;
 	}
@@ -53,22 +50,6 @@ public class OrderBean {
 
 	public void setID(Integer iD) {
 		ID = iD;
-	}
-
-	public Date getStartDate() {
-		return StartDate;
-	}
-
-	public void setStartDate(Date startDate) {
-		StartDate = startDate;
-	}
-
-	public Date getEndDate() {
-		return EndDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		EndDate = endDate;
 	}
 
 	public String getInvoiceTitle() {
@@ -87,12 +68,12 @@ public class OrderBean {
 		VATnumber = vATnumber;
 	}
 
-	public String getPaymentStatus() {
-		return PaymentStatus;
+	public String getStatus() {
+		return Status;
 	}
 
-	public void setPaymentStatus(String paymentStatus) {
-		PaymentStatus = paymentStatus;
+	public void setStatus(String status) {
+		Status = status;
 	}
 
 	public String getShippingAddress() {
@@ -103,13 +84,21 @@ public class OrderBean {
 		ShippingAddress = shippingAddress;
 	}
 
-	public String getCancelTag() {
-		return CancelTag;
+	public Date getOrderDate() {
+		return OrderDate;
 	}
 
-	public void setCancelTag(String cancelTag) {
-		CancelTag = cancelTag;
+	public void setOrderDate(Date orderDate) {
+		OrderDate = orderDate;
 	}
-	
-	
+
+	public Integer getShippingStatus() {
+		return ShippingStatus;
+	}
+
+	public void setShippingStatus(Integer shippingStatus) {
+		ShippingStatus = shippingStatus;
+	}
+
+		
 }
