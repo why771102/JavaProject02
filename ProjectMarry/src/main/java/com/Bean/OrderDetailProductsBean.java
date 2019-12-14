@@ -1,30 +1,20 @@
 package com.Bean;
 
-import java.util.Date;
-
 public class OrderDetailProductsBean {
 
 	private Integer OrderID;
 	private String ProductID;
-	private String ProductName;
 	private Integer Quantity;
-	private Integer UnitPrice;
-	private Float Discount;
-	private String Memo;
+
 	
 	public OrderDetailProductsBean() {
 		
 	}
 	
-	public OrderDetailProductsBean(Integer OrderID, String ProductID, String ProductName,
-			Integer Quantity, Integer UnitPrice, Float Discount, String Memo) {
+	public OrderDetailProductsBean(Integer OrderID, String ProductID, Integer Quantity) {
 		this.OrderID = OrderID;
 		this.ProductID = ProductID;
-		this.ProductName = ProductName;
 		this.Quantity = Quantity;
-		this.UnitPrice = UnitPrice;
-		this.Discount = Discount;
-		this.Memo = Memo;
 	}
 
 	public Integer getOrderID() {
@@ -43,14 +33,6 @@ public class OrderDetailProductsBean {
 		ProductID = productID;
 	}
 
-	public String getProductName() {
-		return ProductName;
-	}
-
-	public void setProductName(String productName) {
-		ProductName = productName;
-	}
-
 	public Integer getQuantity() {
 		return Quantity;
 	}
@@ -59,27 +41,6 @@ public class OrderDetailProductsBean {
 		Quantity = quantity;
 	}
 
-	public Integer getUnitPrice() {
-		return UnitPrice;
-	}
 
-	public void setUnitPrice(Integer unitPrice) {
-		UnitPrice = unitPrice;
-	}
 
-	public Float getDiscount() {
-		return Discount;
-	}
-
-	public void setDiscount(Float discount) {
-		Discount = discount;
-	}
-
-	public String getMemo() {
-		return Memo;
-	}
-
-	public void setMemo(String memo) {
-		Memo = memo;
-	}
 }
