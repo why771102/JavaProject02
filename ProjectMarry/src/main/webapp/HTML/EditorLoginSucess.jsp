@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Refresh"
-	content="3;URL=../ProjectMarry/HTML/index.html" />
+	content="3;URL=../ProjectMarry/HTML/backstagemain.html" />
 <title>登入成功</title>
 </head>
 <body>

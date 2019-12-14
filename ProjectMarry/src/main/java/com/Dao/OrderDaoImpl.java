@@ -58,7 +58,7 @@ public class OrderDaoImpl implements IOrderDao {
 			if (generatedKeys.next()) {
 				id = generatedKeys.getInt(1);
 			} else {
-				throw new RuntimeException("µLªk¨ú±oOrdersªí®æ¥DÁä");
+				throw new RuntimeException("ï¿½Lï¿½kï¿½ï¿½ï¿½oOrdersï¿½ï¿½ï¿½Dï¿½ï¿½");
 			}
 			Set<OrderDetailVenuesBean> details = ob.getOrderDetailVenue();
 			try (PreparedStatement stmt2 = con.prepareStatement(sqlOrderDetailVenues);) {
@@ -90,7 +90,7 @@ public class OrderDaoImpl implements IOrderDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("#insertOrder()µo¥ÍSQL¨Ò¥~:  " + e.getMessage());
+			throw new RuntimeException("#insertOrder()ï¿½oï¿½ï¿½SQLï¿½Ò¥~:  " + e.getMessage());
 		}
 		
 
@@ -100,8 +100,21 @@ public class OrderDaoImpl implements IOrderDao {
 	@Override
 	public OrderBean getOrder(int orderId) {
 		OrderBean ob = null;
+
+		DataSource ds = null;
+		Set<OrderDetailsBean> set = null;
+		try {
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String connUrl = "jdbc:sqlserver://localhost:1433;databaseName=ProjectMarry";
+			con = DriverManager.getConnection(connUrl, "sa", "P@ssword");
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("getOrder()ï¿½oï¿½Í¿ï¿½ï¿½~ ï¿½Lï¿½kï¿½sï¿½ï¿½Æ®w");
+		}
+
 		Set<OrderDetailVenuesBean> set1 = null;
 		Set<OrderDetailProductsBean> set2 = null;
+
 
 		String sql = "SELECT * FROM Order WHERE OrderID=?";
 		String sql1 = "SELECT * FROM OrderDetailVenuesBean WHERE OrderID = ?";
@@ -118,10 +131,14 @@ public class OrderDaoImpl implements IOrderDao {
 					String VATnumber = rs.getString("VATnumber");
 					Integer Status = rs.getInt("Status");
 					String ShippingAddress = rs.getString("ShippingAddress");
+
+					ob = new OrderBean();
+
 					Date OrderDate = rs.getDate("OrderDate");
 					Integer ShippingStatus = rs.getInt("ShippingStatus");
 					ob = new OrderBean(orderId, id, InvoiceTitle, VATnumber, Status,
 							ShippingAddress, OrderDate, null);
+
 				}
 			}
 			ps1.setInt(1, orderId);
@@ -159,7 +176,7 @@ public class OrderDaoImpl implements IOrderDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("OrderDaoImplÃþ§OªºgetOrder()µo¥Í¿ù»~");
+			throw new RuntimeException("OrderDaoImplï¿½ï¿½ï¿½Oï¿½ï¿½getOrder()ï¿½oï¿½Í¿ï¿½ï¿½~");
 		}
 		return ob;
 	}
@@ -174,8 +191,20 @@ public class OrderDaoImpl implements IOrderDao {
 
 	@Override
 	public List<OrderBean> getAllOrders() {
+<<<<<<< HEAD
+		DataSource ds = null;
+		try {
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String connUrl = "jdbc:sqlserver://localhost:1433;databaseName=ProjectMarry";
+			con = DriverManager.getConnection(connUrl, "sa", "P@ssword");
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("getAllOrders()ï¿½oï¿½Í¿ï¿½ï¿½~ ï¿½Lï¿½kï¿½sï¿½ï¿½Æ®w");
+		}
+=======
 //		DataSource ds = null;
 
+>>>>>>> ca7be84f1c49daf5041b51886edbbb821959c2da
 		List<OrderBean> list = new ArrayList<OrderBean>();
 		String sql = "SELECT OrderID FROM Order";
 		try (
@@ -193,8 +222,21 @@ public class OrderDaoImpl implements IOrderDao {
 	}
 
 	@Override
+<<<<<<< HEAD
+	public List<OrderBean> getMemberOrders(String id) {
+		DataSource ds = null;
+		try {
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String connUrl = "jdbc:sqlserver://localhost:1433;databaseName=ProjectMarry";
+			con = DriverManager.getConnection(connUrl, "sa", "P@ssword");
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("getMemberOrders()ï¿½oï¿½Í¿ï¿½ï¿½~ ï¿½Lï¿½kï¿½sï¿½ï¿½Æ®w");
+		}
+=======
 	public List<OrderBean> getMemberUnpaidOrders(String id) {
 //		DataSource ds = null;
+>>>>>>> ca7be84f1c49daf5041b51886edbbb821959c2da
 		List<OrderBean> list = new ArrayList<OrderBean>();
 		String sql = "SELECT OrderID FROM Order where ID=?, Status=? Order by orderDate desc";
 		try (
