@@ -6,6 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
+<link href="css/slider.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-3.4.1.min.js"></script>
+
+
 <style>
 /* CSS reset */
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form,
@@ -19,6 +23,7 @@ html, /* 這邊做初始化設定 全部字體為正黑體  並且字體大小�
 	padding: 0;
 	font-family: arial, "Microsoft JhengHei", "微軟正黑體", sans-serif !important;
 	font-size: 100%;
+	background-color: white;
 }
 
 /* warp 如何對齊 系列 */
@@ -26,11 +31,11 @@ html, /* 這邊做初始化設定 全部字體為正黑體  並且字體大小�
 /* 排版垂直column置中 */
 .wrap {
 	/*Flex屬性區*/
+	width: 540px;
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
 	align-items: center;
-	border: solid 1px black;
 	border-block-end-color: brown;
 	box-sizing: border-box;
 }
@@ -50,6 +55,7 @@ html, /* 這邊做初始化設定 全部字體為正黑體  並且字體大小�
 	/* border and padding in box */
 	box-sizing: border-box;
 }
+
 /* 排版一列row 向左 */
 .wrapRowStart {
 	/*Flex屬性區*/
@@ -92,6 +98,7 @@ html, /* 這邊做初始化設定 全部字體為正黑體  並且字體大小�
 	box-sizing: border-box;
 	padding: 0% 1% 1% 1%;
 }
+
 /* warp 如何對齊 系列 */
 
 /* 按鈕 選單系列  */
@@ -126,17 +133,25 @@ label {
 	color: white;
 	font-size: 2vh;
 }
+
 /* 按鈕 選單系列 */
 #bg {
 	width: 100%;
 	height: 100%;
 }
+
 /*  跟header 網頭 有關系列 */
 #head {
 	width: 100%;
-	height: 150px;
+	height: 100px;
 	padding: 10px 0px;
+	/*    border:1px solid;*/
+	background-color: azure;
+	position: fixed;
+	top: 0px;
+	z-index: 10;
 }
+
 /*  跟header 網頭 有關系列 */
 #cartShopList {
 	width: 65%;
@@ -160,6 +175,7 @@ label {
 	align-items: flex-start;
 	width: 100%;
 }
+
 /* 中間內文 的左邊 還有 右邊 */
 #left {
 	width: 100%;
@@ -171,6 +187,7 @@ label {
 	height: 100ｂvh;
 	padding: 0% 3% 2%;
 }
+
 /* 跟img 有關系列 */
 #pictureBG {
 	background-color: #d8d8d8;
@@ -190,17 +207,22 @@ label {
 	background-color: #949393;
 	padding: 1% 1%;
 }
+
 /* 跟img 有關系列 */
 /* 跟 a 連結 有關系列 */
 a {
 	width: 100%;
 }
+
 /* foot 網頁最底層有關  */
 #footBG {
 	background-color: #d8d8d8;
 	width: 100%;
-	height: 400px;
+	height: 110px;
+	/*            position: fixed;*/
+	bottom: 0;
 }
+
 /* foot  */
 
 /* 文字相關大小*/
@@ -213,7 +235,7 @@ p.BTital {
 
 p.tital {
 	color: black;
-	text-align: left;
+	text-align: center;
 	font-size: 4vh;
 	font-weight: bold;
 	width: 100%;
@@ -228,10 +250,11 @@ p.STital {
 
 p.text {
 	color: black;
-	text-align: left;
+	text-align: center;
 	font-size: 2vh;
 	width: 100%;
 }
+
 /* 文字相關大小*/
 
 /* map 相關設定 */
@@ -240,6 +263,7 @@ p.text {
 	height: 600px;
 	background-color: cadetblue;
 }
+
 /* map 相關設定 */
 
 /* product &deliver 相關設定 */
@@ -261,136 +285,194 @@ p.text {
 	box-sizing: border-box;
 }
 
+.headleft {
+	float: left;
+	width: 33%;
+	background-color: antiquewhite;
+	/*    border: solid 1px;*/
+	margin-top: 2vh;
+}
+
 .headright {
-/* 	border: 2px green solid; */
-/* 	 display:block; */
-/* 	 margin-right: 50px; */
-/* 	position:fixed; */
-	top:50px; 
-	right:45px;
-	 
+	width: 33%;
+	float: left;
+	/*	border: solid 1px;*/
+	margin-top: 4vh;
+	text-align: center;
+	/*    padding-right: 50px;*/
+	/*    display: inline-block;*/
 }
 
 .headcenter {
-	display: inline-block;
+	float: left;
+	align-content: center;
+	margin-top: 2vh;
+	width: 33%;
 }
 
-/* map 相關設定 */
+.placelist {
+	width: 1000px;
+/*	border: 1px solid;*/
+	padding-left: 12px;
+	margin-top: 30px;
+}
+
+.place {
+	float: left;
+	width: 32%;
+	height: 300px;
+	/*            border: 1px solid;*/
+	margin-right: 10px;
+	margin-bottom: 20px;
+	background-image: url(img/1.jpg);
+	background-repeat: no-repeat;
+	background-size: 300px 200px;
+	background-position: top center;
+}
+
+.placeimg {
+	
+}
+
+.plassimg1 {
+	/*            object-fit: fill;*/
+	width: 200px;
+	height: 200px;
+	float: none;
+}
+
+.placename {
+	border: 1px solid;
+	height: 50px;
+	/*            margin-bottom: 2px;*/
+	margin-top: 205px;
+	text-align: center;
+	font-size: 2em;
+}
+
+.placedetail {
+	border: 1px solid;
+	height: 50px;
+	/*            margin-bottom: 0px;*/
+	/*            position:absolute;*/
+	/*            margin-top: 195px;*/
+	text-align: center;
+	font-size: 1em;
+}
 </style>
 </head>
 
 <body>
 	<div class="wrap" id="bg">
 		<!-- header -->
-		<div class="wrap" id="head" style="position: relative;">
+		<div id="head">
+			<div class="headleft"></div>
 			<div class="headcenter">
-				<div class="wrap">
-					<p class="tital">MARY ME | 場地選項</p>
+				<div>
+					<p class="tital">MARY ME</p>
 				</div>
 				<div>
 					<p class="text">場地｜配件｜樣式｜婚禮小物｜新秘｜攝影</p>
 
 				</div>
-				
+
 			</div>
-			<div class="headright" style="position: absolute;">
+			<div class="headright">
 				<p>
 					<span id="name"></span>，你好！
 				</p>
-				<a href="UserRegister.jsp"><input type="button" value="立即註冊"
-					id="register" /></a> 
-				<a href="LogIn.jsp"><input type="button"
-					value="立即登入" id="login" /></a> 
-				<a href="../UserLogOut"><input
-					type="button" value="servlet登出" id="logout" /></a>
-				<a href="../UserDataQuery"><input type="button"  value="會員資料修改" id="Query"/></a>
+				<a href="UserRegister.jsp">註冊</a> <a href="LogIn.jsp">登入</a> <a
+					href="../UserLogOut"><input type="button" value="servlet登出"
+					id="logout" /></a> <a href="../UserDataQuery"><input type="button"
+					value="會員資料修改" id="Query" /></a>
 
 			</div>
 		</div>
 		<!-- article -->
-		<div class="wrap" id="cartShopList">
-			<!-- top  -->
-			<div class="wrap" id="chooseAll">
-				<input type="checkbox"> <label for=""> 全部選取</label>
-			</div>
-			<!-- content  -->
-			<div class="wrap" id="content">
-
-				<!-- product && deliver  -->
-				<div class="wrapStart" id="left">
-					<div class="wrapList">
-						<p class="STital">店家名稱</p>
-					</div>
-
-					<div class="wrapRow" style="width: 100%;">
-						<div class="wrapRow" id="productInfo">
-							<!--same shop   diffrent product  -->
-							<div class="wrapStart" style="width: 50%;">
-								<!-- same shop unit product  -->
-								<div class="wrapRowStart"></div>
-
-							</div>
-							<!-- deliver  -->
-							<div class="wrapList" id="deliverInfo"></div>
-
-						</div>
 
 
-					</div>
-					<!-- 預定時間 -->
-					<div class="wrapList">
-						<div class="wrapList">
-							<div class="wrapList" style="height: 100%">
-								<p class="STital">可預訂時間</p>
-								<div class="wrapRow">
-									<div class="wrap"
-										style="padding: 0px 100px 0px 0px; width: 100%;">
-										<p class="text">商品材質</p>
+		<div class="box">
 
-
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- 預定時間 -->
-					<div class="wrapList">
-						<p></p>
-						<br> <br>
-					</div>
-					<!-- 分隔商品資訊框框 -->
-					<div class="wrapList">
-						<div class="wrapList">
-							<p class="STital">場地資訊</p>
-							<div class="wrapRow">
-								<div class="wrapStart" style="padding: 0px 100px 0px 0px;">
-
-									<p class="text">商品材質</p>
-									<p class="text">商品來源</p>
-									<p class="text">庫存</p>
-								</div>
-								<div class="wrapStart">
-									<p class="text">不鏽鋼</p>
-									<p class="text">商品來源</p>
-									<p class="text">庫存</p>
-								</div>
-							</div>
-						</div>
-
-
-					</div>
-					<!-- 分隔商品資訊框框 -->
-				</div>
-
-
-
+			<div class="list">
+				<ul>
+					<li class="p7"><a href="#"><img src="img/1.jpg" alt="" /></a></li>
+					<li class="p6"><a href="#"><img src="img/2.jpg" alt="" /></a></li>
+					<li class="p5"><a href="#"><img src="img/3.jpg" alt="" /></a></li>
+					<li class="p4"><a href="#"><img src="img/44.jpg" alt="" /></a></li>
+					<li class="p3"><a href="#"><img src="img/55.jpg" alt="" /></a></li>
+					<li class="p2"><a href="#"><img src="img/66.jpg" alt="" /></a></li>
+				</ul>
 			</div>
 
+			<a href="javascript:;" class="prev btn"> <</a> <a href="javascript:;"
+				class="next btn">> </a>
+
+			<div class="buttons">
+				<a href="javascript:;"><span class="blue span"></span></a> <a
+					href="javascript:;"><span class="span"></span></a> <a
+					href="javascript:;"><span class="span"></span></a> <a
+					href="javascript:;"><span class="span"></span></a> <a
+					href="javascript:;"><span class="span"></span></a> <a
+					href="javascript:;"><span class="span"></span></a>
+
+			</div>
 		</div>
+
+		<div class="placelist" style="margin-bottom: 200px;">
+			<div class="place">
+				<div class="placeimg">
+					<!--                    <img class="plassimg1" src="img/1.jpg" alt="">-->
+				</div>
+				<div class="placename">典華-大直館</div>
+				<div class="placedetail">此場地小而美，適合宴客桌數少的新人。</div>
+			</div>
+			<div class="place">
+				<div class="placeimg">
+					<!--                    <img class="plassimg1" src="img/2.jpg" alt="">-->
+				</div>
+				<div class="placename"></div>
+				<div class="placedetail"></div>
+			</div>
+			<div class="place">
+				<div class="placeimg">
+					<!--                    <img class="plassimg1" src="img/44.jpg" alt="">-->
+				</div>
+				<div class="placename"></div>
+				<div class="placedetail"></div>
+			</div>
+			<div class="place">
+				<div class="placeimg">
+					<!--                    <img class="plassimg1" src="img/55.jpg" alt="">-->
+				</div>
+				<div class="placename"></div>
+				<div class="placedetail"></div>
+			</div>
+			<div class="place">
+				<div class="placeimg">
+					<!--                    <img class="plassimg1" src="img/66.jpg" alt="">-->
+				</div>
+				<div class="placename"></div>
+				<div class="placedetail"></div>
+			</div>
+			<div class="place">
+				<div class="placeimg">
+					<!--                    <img class="plassimg1" src="img/3.jpg" alt="">-->
+				</div>
+				<div class="placename"></div>
+				<div class="placedetail"></div>
+			</div>
+		</div>
+
+
+
+
+
+
+
 		<!-- foot -->
 		<div class="wrap" id="footBG">
-			<div class="wrap">MARY ME |錢不會消失 ,, 只是變成你喜歡的樣子</div>
-			<div>場地|配件｜樣式｜婚禮小物｜新秘｜攝影</div>
+			<div class="wrap">MARY ME |錢沒有不見 &emsp; 只是變成你喜歡的樣子</div>
+			<div>場地｜配件｜樣式｜婚禮小物｜新秘｜攝影</div>
 		</div>
 
 
@@ -401,15 +483,139 @@ p.text {
 		cookieArray = document.cookie.split(";");
 		console.log(cookieArray);
 		if (cookieArray == "") {
-			document.getElementById("name").innerText = "訪客";
-			document.getElementById("logout").style.display = "none";
-			document.getElementById("Query").style.display = "none";
+			$("#name").text("訪客");
+			$("#logout").hide();
+			$("#Query").hide();
 		} else {
 			nameArrays = cookieArray[1].split("=");
-			document.getElementById("name").innerText = nameArrays[1];
-			document.getElementById("register").style.display = "none";
-			document.getElementById("login").style.display = "none";
+			$("#name").text = nameArrays[1];
+			$("#register").hide();
+			$("#login").hide();
 		}
+
+		$(function() {
+			$(".flexslider").flexslider({
+				slideshowSpeed : 5000, //展示时间间隔ms
+				animationSpeed : 500, //滚动时间ms
+				touch : true
+			//是否支持触屏滑动
+			});
+		});
+
+		var $a = $(".buttons a");
+		var $s = $(".buttons span");
+		var cArr = [ "p7", "p6", "p5", "p4", "p3", "p2" ];
+		var index = 0;
+		$(".next").click(function() {
+			nextimg();
+		})
+		$(".prev").click(function() {
+			previmg();
+		})
+		//上一张
+		function previmg() {
+			cArr.unshift(cArr[6]);
+			cArr.pop();
+			//i是元素的索引，从0开始
+			//e为当前处理的元素
+			//each循环，当前处理的元素移除所有的class，然后添加数组索引i的class
+			$("li").each(function(i, e) {
+				$(e).removeClass().addClass(cArr[i]);
+			})
+			index--;
+			if (index < 0) {
+				index = 6;
+			}
+			show();
+		}
+
+		//下一张
+		function nextimg() {
+			cArr.push(cArr[0]);
+			cArr.shift();
+			$("li").each(function(i, e) {
+				$(e).removeClass().addClass(cArr[i]);
+			})
+			index++;
+			if (index > 6) {
+				index = 0;
+			}
+			show();
+		}
+
+		//通过底下按钮点击切换
+		$a.each(function() {
+			$(this).click(function() {
+				var myindex = $(this).index();
+				var b = myindex - index;
+				if (b == 0) {
+					return;
+				} else if (b > 0) {
+					/*
+					 * splice(0,b)的意思是从索引0开始,取出数量为b的数组
+					 * 因为每次点击之后数组都被改变了,所以当前显示的这个照片的索引才是0
+					 * 所以取出从索引0到b的数组,就是从原本的这个照片到需要点击的照片的数组
+					 * 这时候原本的数组也将这部分数组进行移除了
+					 * 再把移除的数组添加的原本的数组的后面
+					 */
+					var newarr = cArr.splice(0, b);
+					cArr = $.merge(cArr, newarr);
+					$("li").each(function(i, e) {
+						$(e).removeClass().addClass(cArr[i]);
+					})
+					index = myindex;
+					show();
+				} else if (b < 0) {
+					/*
+					 * 因为b<0,所以取数组的时候是倒序来取的,也就是说我们可以先把数组的顺序颠倒一下
+					 * 而b现在是负值,所以取出索引0到-b即为需要取出的数组
+					 * 也就是从原本的照片到需要点击的照片的数组
+					 * 然后将原本的数组跟取出的数组进行拼接
+					 * 再次倒序,使原本的倒序变为正序
+					 */
+					cArr.reverse();
+					var oldarr = cArr.splice(0, -b)
+					cArr = $.merge(cArr, oldarr);
+					cArr.reverse();
+					$("li").each(function(i, e) {
+						$(e).removeClass().addClass(cArr[i]);
+					})
+					index = myindex;
+					show();
+				}
+			})
+		})
+
+		//改变底下按钮的背景色
+		function show() {
+			$($s).eq(index).addClass("blue").parent().siblings().children()
+					.removeClass("blue");
+		}
+
+		//点击class为p2的元素触发上一张照片的函数
+		$(document).on("click", ".p2", function() {
+			previmg();
+			return false; //返回一个false值，让a标签不跳转
+		});
+
+		//点击class为p4的元素触发下一张照片的函数
+		$(document).on("click", ".p4", function() {
+			nextimg();
+			return false;
+		});
+
+		//			鼠标移入box时清除定时器
+		$(".box").mouseover(function() {
+			clearInterval(timer);
+		})
+
+		//			鼠标移出box时开始定时器
+		$(".box").mouseleave(function() {
+			timer = setInterval(nextimg, 4000);
+		})
+
+		//			进入页面自动开始定时器
+		timer = setInterval(nextimg, 4000);
 	</script>
 
 

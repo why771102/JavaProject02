@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Refresh"
-	content="3;URL=../ProjectMarry/HTML/1202結帳明細.html" />
+	content="3;URL=../ProjectMarry/HTML/index.html" />
 <title>登入成功</title>
 </head>
 <body>
