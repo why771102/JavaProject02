@@ -2,6 +2,10 @@ package com.Service;
 
 import java.util.Set;
 
+<<<<<<< HEAD:ProjectMarry/src/main/java/com/model/ShoppingCart.java
+import com.Bean.OrderDetailVenuesBean;
+=======
+>>>>>>> bfdd051b71b73d72388376a9e55ecba98c4db778:ProjectMarry/src/main/java/com/Service/ShoppingCartServiceImpl.java
 import com.Bean.ShoppingCartBean;
 import com.Dao.ShoppingCartImpl;
 

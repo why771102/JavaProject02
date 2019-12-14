@@ -3,21 +3,21 @@ package com.Bean;
 public class VenueBean {
 
 	private Integer VendorID;
-	private Integer ProductID;
-	private String VenueAddress;
+	private String ProductID;
+	private String Location;
 	private String Hall;
-	private Integer Tables;
+	private Integer TableCount;
 	private Integer InOutdoor;
 	private Integer LunchPrice;
 	private Integer DinnerPrice;
 	
-	public VenueBean (Integer VendorID, Integer ProductID, String VenueAddress, String Hall,
-			Integer Tables, Integer InOutdoor, Integer LunchPrice, Integer DinnerPrice) {
+	public VenueBean (Integer VendorID, String ProductID, String Location, String Hall,
+			Integer TableCount, Integer InOutdoor, Integer LunchPrice, Integer DinnerPrice) {
 		this.VendorID = VendorID;
 		this.ProductID= ProductID;
-		this.VenueAddress = VenueAddress;
+		this.Location = Location;
 		this.Hall = Hall;
-		this.Tables = Tables;
+		this.TableCount = TableCount;
 		this.InOutdoor = InOutdoor;
 		this.LunchPrice = LunchPrice;
 		this.DinnerPrice = DinnerPrice;
@@ -31,20 +31,20 @@ public class VenueBean {
 		VendorID = vendorID;
 	}
 
-	public Integer getProductID() {
+	public String getProductID() {
 		return ProductID;
 	}
 
-	public void setProductID(Integer productID) {
+	public void setProductID(String productID) {
 		ProductID = productID;
 	}
 
-	public String getVenueAddress() {
-		return VenueAddress;
+	public String getLocation() {
+		return Location;
 	}
 
-	public void setVenueAddress(String venueAddress) {
-		VenueAddress = venueAddress;
+	public void setLocation(String location) {
+		Location = location;
 	}
 
 	public String getHall() {
@@ -55,12 +55,12 @@ public class VenueBean {
 		Hall = hall;
 	}
 
-	public Integer getTables() {
-		return Tables;
+	public Integer getTableCount() {
+		return TableCount;
 	}
 
-	public void setTables(Integer tables) {
-		Tables = tables;
+	public void setTableCount(Integer tableCount) {
+		TableCount = tableCount;
 	}
 
 	public Integer getInOutdoor() {
@@ -86,6 +86,6 @@ public class VenueBean {
 	public void setDinnerPrice(Integer dinnerPrice) {
 		DinnerPrice = dinnerPrice;
 	}
-	
+
 	
 }

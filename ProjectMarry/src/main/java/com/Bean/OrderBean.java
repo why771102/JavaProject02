@@ -8,37 +8,43 @@ public class OrderBean {
 	
 	private Integer OrderID;
 	private Integer ID;
-	private Date StartDate;
-	private Date EndDate;
 	private String InvoiceTitle;
 	private String VATnumber;
-	private String PaymentStatus;
+	private Integer Status;
 	private String ShippingAddress;
-	private String CancelTag;
-	Set<OrderDetailsBean> orderDetail = new LinkedHashSet<>();
-	
-	public Set<OrderDetailsBean> getOrderDetail() {
-		return orderDetail;
+	private Date OrderDate;
+	private Integer ShippingStatus;
+	Set<OrderDetailVenuesBean> orderDetailVenue = new LinkedHashSet<>();
+	Set<OrderDetailProductsBean> orderDetailProduct = new LinkedHashSet<>();
+
+	public Set<OrderDetailVenuesBean> getOrderDetailVenue() {
+		return orderDetailVenue;
 	}
 
-	public void setOrderDetail(Set<OrderDetailsBean> orderDetail) {
-		this.orderDetail = orderDetail;
+	public void setOrderDetailVenue(Set<OrderDetailVenuesBean> orderDetailVenue) {
+		this.orderDetailVenue = orderDetailVenue;
 	}
 
-	public OrderBean (Integer OrderID, Integer ID, Date StartDate, Date EndDate, 
-			String InvoiceTitle, String VATnumber, String PaymentStatus,
-			String ShippingAddress, String CancelTag) {
+	public Set<OrderDetailProductsBean> getOrderDetailProduct() {
+		return orderDetailProduct;
+	}
+
+	public void setOrderDetailProduct(Set<OrderDetailProductsBean> orderDetailProduct) {
+		this.orderDetailProduct = orderDetailProduct;
+	}
+
+	public OrderBean(Integer OrderID, Integer ID, String InvoiceTitle, String VATnumber, Integer Status,
+			String ShippingAddress, Date OrderDate, Integer ShippingStatus) {
 		this.OrderID = OrderID;
 		this.ID = ID;
-		this.StartDate = StartDate;
-		this.EndDate = EndDate;
 		this.InvoiceTitle = InvoiceTitle;
 		this.VATnumber = VATnumber;
-		this.PaymentStatus = PaymentStatus;
+		this.Status = Status;
 		this.ShippingAddress = ShippingAddress;
-		this.CancelTag = CancelTag;
+		this.OrderDate = OrderDate;
+		this.ShippingStatus = ShippingStatus;
 	}
-
+	
 	public Integer getOrderID() {
 		return OrderID;
 	}
@@ -53,22 +59,6 @@ public class OrderBean {
 
 	public void setID(Integer iD) {
 		ID = iD;
-	}
-
-	public Date getStartDate() {
-		return StartDate;
-	}
-
-	public void setStartDate(Date startDate) {
-		StartDate = startDate;
-	}
-
-	public Date getEndDate() {
-		return EndDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		EndDate = endDate;
 	}
 
 	public String getInvoiceTitle() {
@@ -87,12 +77,12 @@ public class OrderBean {
 		VATnumber = vATnumber;
 	}
 
-	public String getPaymentStatus() {
-		return PaymentStatus;
+	public Integer getStatus() {
+		return Status;
 	}
 
-	public void setPaymentStatus(String paymentStatus) {
-		PaymentStatus = paymentStatus;
+	public void setStatus(Integer status) {
+		Status = status;
 	}
 
 	public String getShippingAddress() {
@@ -103,13 +93,21 @@ public class OrderBean {
 		ShippingAddress = shippingAddress;
 	}
 
-	public String getCancelTag() {
-		return CancelTag;
+	public Date getOrderDate() {
+		return OrderDate;
 	}
 
-	public void setCancelTag(String cancelTag) {
-		CancelTag = cancelTag;
+	public void setOrderDate(Date orderDate) {
+		OrderDate = orderDate;
 	}
-	
-	
+
+	public Integer getShippingStatus() {
+		return ShippingStatus;
+	}
+
+	public void setShippingStatus(Integer shippingStatus) {
+		ShippingStatus = shippingStatus;
+	}
+
+		
 }
