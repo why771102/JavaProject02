@@ -9,6 +9,10 @@ public class ProductBean {
 	private Integer ProductStatus;
 	private Double Discount;
 	
+	public ProductBean() {
+		
+	}
+	
 	public ProductBean(String ProductID, String ProductName, Integer UnitPrice,
 			Integer PSupplierID, Integer Quantity, Integer ProductStatus, Double Discount) {
 		this.ProductID = ProductID;

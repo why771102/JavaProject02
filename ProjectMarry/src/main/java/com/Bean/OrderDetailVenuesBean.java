@@ -10,6 +10,8 @@ public class OrderDetailVenuesBean {
 	private String Date;
 	private Integer TableCount;
 	
+	
+	
 	public OrderDetailVenuesBean(Integer OrderID, String ProductID,
 			Integer StartTime, String Date, Integer TableCount) {
 		this.OrderID = OrderID;

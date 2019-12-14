@@ -7,6 +7,15 @@ public class VenueImageBean {
 	private Blob VenueImage;
 	private String imageName;
 	
+	public VenueImageBean() {
+		
+	}
+	
+	public VenueImageBean(String ProductID, Blob VenueImage, String imageName) {
+		this.ProductID = ProductID;
+		this.VenueImage = VenueImage;
+		this.imageName = imageName;
+	}
 	
 	public String getProductID() {
 		return ProductID;

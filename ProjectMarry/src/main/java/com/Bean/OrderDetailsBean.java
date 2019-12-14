@@ -19,6 +19,10 @@ public class OrderDetailsBean {
 	private int ProductStatus;
 	private Blob VenueImage;
 	
+	public OrderDetailsBean() {
+		
+	}
+	
 	public OrderDetailsBean(int OrderID, int ProductID, String ProductName,
 			int Quantity, int UnitPrice, int Subtotal, float Discount, Date OrderDate, 
 			Date ShippingDate,char CancelTag, String Memo, int ProductStatus) {

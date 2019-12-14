@@ -5,6 +5,10 @@ public class VenueVendorBean {
 	private String Vendor;
 	private Integer Stars;
 	
+	public VenueVendorBean() {
+		
+	}
+	
 	public VenueVendorBean(Integer VendorID, String Vendor, Integer Stars) {
 		this.VendorID = VendorID;
 		this.Vendor = Vendor;

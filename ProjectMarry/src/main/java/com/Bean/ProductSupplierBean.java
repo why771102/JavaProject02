@@ -4,6 +4,10 @@ public class ProductSupplierBean {
 	public Integer PSupplierID;
 	public String PSupplierName;
 	
+	public ProductSupplierBean() {
+		
+	}
+	
 	public ProductSupplierBean(Integer PSupplierID, String PSupplierName) {
 		this.PSupplierID = PSupplierID;
 		this.PSupplierName = PSupplierName;
