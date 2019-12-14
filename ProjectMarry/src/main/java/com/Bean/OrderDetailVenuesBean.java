@@ -7,11 +7,13 @@ public class OrderDetailVenuesBean {
 	private Integer OrderID;
 	private String ProductID;
 	private Integer StartTime;
-	private Date Date;
+	private String Date;
 	private Integer TableCount;
 	
+	
+	
 	public OrderDetailVenuesBean(Integer OrderID, String ProductID,
-			Integer StartTime, Date Date, Integer TableCount) {
+			Integer StartTime, String Date, Integer TableCount) {
 		this.OrderID = OrderID;
 		this.ProductID = ProductID;
 		this.StartTime = StartTime;
@@ -28,11 +30,11 @@ public class OrderDetailVenuesBean {
 		OrderID = orderID;
 	}
 
-	public Integer getProductID() {
+	public String getProductID() {
 		return ProductID;
 	}
 
-	public void setProductID(Integer productID) {
+	public void setProductID(String productID) {
 		ProductID = productID;
 	}
 
@@ -44,11 +46,11 @@ public class OrderDetailVenuesBean {
 		StartTime = startTime;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return Date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		Date = date;
 	}
 

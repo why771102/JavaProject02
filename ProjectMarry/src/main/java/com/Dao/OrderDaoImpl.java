@@ -16,126 +16,167 @@ import java.util.Set;
 import javax.sql.DataSource;
 
 import com.Bean.OrderBean;
+import com.Bean.OrderDetailProductsBean;
 import com.Bean.OrderDetailVenuesBean;
 import com.Interface.IOrderDao;
 
 public class OrderDaoImpl implements IOrderDao {
 	private String memberId = null;
-	private Connection con;
+	Connection con;
 	int orderNo = 0;
 
+	
+	public OrderDaoImpl(Connection con) {
+		this.con = con;
+	}
+	
 	@Override
 	public void insertOrder(OrderBean ob) {
-		String sqlOrder = "Insert Into Order" + "(ID, StartDate, EndDate, InvoiceTitle, "
-				+ "VATnumber, ShippingAddress) values(?, ?, ?, ?, ?, ?)";
-		String sqlOrderDetails = "Insert Into OrderDetails" + "(OrderID, ProductID, ProductName, Quantity, "
-				+ "UnitPrice, SubTotal, Discount, OrderDate, Memo, "
-				+ "ShipmentStatus) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sqlOrder = "Insert Into Order(ID, InvoiceTitle, VATnumber,"
+				+ "Status, ShippingAddress, OrderDate, ShippingStatus) "
+				+ "values(?, ?, ?, ?, ?, ?, ?)";
+		String sqlOrderDetailProducts = "Insert Into OrderDetailProducts("
+				+ "OrderID, ProductID, ProductName, Quantity, UnitPrice,"
+				+ "Discount, Memo) values(?, ?, ?, ?, ?, ?, ?)";
 
+		String sqlOrderDetailVenues = "Insert Into OrderDetailVenues(OrderID,"
+				+ "ProductID, StartTime, Date, TableCount) values(?, ?, ?, ?, ?)";
 		ResultSet generatedKeys = null;
 
 		try (PreparedStatement stmt1 = con.prepareStatement(sqlOrder, Statement.RETURN_GENERATED_KEYS);) {
 			stmt1.setInt(1, ob.getID());
-			Timestamp tsSD = new Timestamp(ob.getStartDate().getTime());
-			stmt1.setTimestamp(2, tsSD);
-			Timestamp tsED = new Timestamp(ob.getEndDate().getTime());
-			stmt1.setTimestamp(3, tsED);
-			stmt1.setString(4, ob.getInvoiceTitle());
-			stmt1.setString(5, ob.getVATnumber());
-			stmt1.setString(6, ob.getShippingAddress());
+			stmt1.setString(2, ob.getInvoiceTitle());
+			stmt1.setString(3, ob.getVATnumber());
+			stmt1.setInt(4, 1);
+			stmt1.setString(5, ob.getShippingAddress());
+			Timestamp tsOD = new Timestamp(ob.getOrderDate().getTime());
+			stmt1.setTimestamp(6, tsOD);
+			stmt1.setInt(7, ob.getShippingStatus());
 			stmt1.executeUpdate();
 			int id = 0;
 			generatedKeys = stmt1.getGeneratedKeys();
 			if (generatedKeys.next()) {
 				id = generatedKeys.getInt(1);
 			} else {
-				throw new RuntimeException("µLªk¨ú±oOrdersªí®æ¥DÁä");
+				throw new RuntimeException("ï¿½Lï¿½kï¿½ï¿½ï¿½oOrdersï¿½ï¿½ï¿½Dï¿½ï¿½");
 			}
-			Set<OrderDetailVenuesBean> details = ob.getOrderDetail();
-			try (PreparedStatement stmt2 = con.prepareStatement(sqlOrderDetails);) {
-				for (OrderDetailVenuesBean odb : details) {
+			Set<OrderDetailVenuesBean> details = ob.getOrderDetailVenue();
+			try (PreparedStatement stmt2 = con.prepareStatement(sqlOrderDetailVenues);) {
+				for (OrderDetailVenuesBean odvb : details) {
 					stmt2.setInt(1, id);
-					stmt2.setInt(2, odb.getProductID());
-					stmt2.setString(3, odb.getProductName());
-					stmt2.setInt(4, odb.getQuantity());
-					stmt2.setInt(5, odb.getUnitPrice());
-					stmt2.setInt(6, odb.getSubtotal());
-					stmt2.setFloat(7, odb.getDiscount());
-					Timestamp tsOD = new Timestamp(odb.getOrderDate().getTime());
-					stmt2.setTimestamp(8, tsOD);
-					stmt2.setString(9, odb.getMemo());
-					stmt2.setInt(10, odb.getShipmentStatus());
+					stmt2.setString(2, odvb.getProductID());
+					stmt2.setInt(3, odvb.getStartTime());
+					Timestamp tsD = new Timestamp(odvb.getDate().getTime());
+					stmt2.setTimestamp(4, tsD);
+					stmt2.setInt(5, odvb.getTableCount());
 					stmt2.executeUpdate();
 					stmt2.clearParameters();
 				}
 			}
+			Set<OrderDetailProductsBean> details1 = ob.getOrderDetailProduct();
+			try(PreparedStatement stmt3 = con.prepareStatement(sqlOrderDetailProducts);){
+				for(OrderDetailProductsBean odpb : details1) {
+					stmt3.setInt(1, id);
+					stmt3.setString(2, odpb.getProductID());
+					stmt3.setString(3, odpb.getProductName());
+					stmt3.setInt(4, odpb.getQuantity());
+					stmt3.setInt(5, odpb.getUnitPrice());
+					stmt3.setFloat(6, odpb.getDiscount());
+					stmt3.setString(7, odpb.getMemo());
+					stmt3.executeUpdate();
+					stmt3.clearParameters();
+					
+				}
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("#insertOrder()µo¥ÍSQL¨Ò¥~:  " + e.getMessage());
+			throw new RuntimeException("#insertOrder()ï¿½oï¿½ï¿½SQLï¿½Ò¥~:  " + e.getMessage());
 		}
+		
 
 	}
 
-	@Override
-	public void setConnection(Connection con) {
-		this.con = con;
-	}
 
 	@Override
 	public OrderBean getOrder(int orderId) {
 		OrderBean ob = null;
+
 		DataSource ds = null;
-		Set<OrderDetailVenuesBean> set = null;
+		Set<OrderDetailsBean> set = null;
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			String connUrl = "jdbc:sqlserver://localhost:1433;databaseName=ProjectMarry";
 			con = DriverManager.getConnection(connUrl, "sa", "P@ssword");
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("getOrder()µo¥Í¿ù»~ µLªk³s¸ê®Æ®w");
+			throw new RuntimeException("getOrder()ï¿½oï¿½Í¿ï¿½ï¿½~ ï¿½Lï¿½kï¿½sï¿½ï¿½Æ®w");
 		}
 
-		String sql = "SELECT * FROM Order WHERE OrderId=?";
-		String sql1 = "SELECT * FROM OrderDetails WHERE OrderId = ?";
-		try (Connection con = ds.getConnection();
-				PreparedStatement ps = con.prepareStatement(sql);
-				PreparedStatement ps1 = con.prepareStatement(sql1);) {
+		Set<OrderDetailVenuesBean> set1 = null;
+		Set<OrderDetailProductsBean> set2 = null;
+
+
+		String sql = "SELECT * FROM Order WHERE OrderID=?";
+		String sql1 = "SELECT * FROM OrderDetailVenuesBean WHERE OrderID = ?";
+		String sql2 = "SELECT * FROM OrderDetailProductsBean WHERE OrderID = ?";
+		try (	PreparedStatement ps = con.prepareStatement(sql);
+				PreparedStatement ps1 = con.prepareStatement(sql1);
+				PreparedStatement ps2 = con.prepareStatement(sql2);) {
 			ps.setInt(1, orderId);
 			try (ResultSet rs = ps.executeQuery();) {
 				if (rs.next()) {
-					Integer oid = rs.getInt("orderID");
+//					Integer oid = rs.getInt("OrderID");
 					Integer id = rs.getInt("ID");
-					Date StartDate = rs.getDate("StartDate");
-					Date EndDate = rs.getDate("EndDate");
 					String InvoiceTitle = rs.getString("InvoiceTitle");
 					String VATnumber = rs.getString("VATnumber");
-					String PaymentStatus = rs.getString("PaymentStatus");
+					Integer Status = rs.getInt("Status");
 					String ShippingAddress = rs.getString("ShippingAddress");
-					ob = new OrderBean(oid, id, StartDate, EndDate, InvoiceTitle, VATnumber, PaymentStatus,
-							ShippingAddress, null);
+
+					ob = new OrderBean();
+
+					Date OrderDate = rs.getDate("OrderDate");
+					Integer ShippingStatus = rs.getInt("ShippingStatus");
+					ob = new OrderBean(orderId, id, InvoiceTitle, VATnumber, Status,
+							ShippingAddress, OrderDate, null);
+
 				}
 			}
 			ps1.setInt(1, orderId);
 			try (ResultSet rs = ps1.executeQuery();) {
-				set = new HashSet<>();
+				set1 = new HashSet<>();
 				while (rs.next()) {
-					int orderId2 = rs.getInt("OrderID");
-					int productID = rs.getInt("ProductID");
-					String productName = rs.getString("ProductName");
-					int quantity = rs.getInt("Quantity");
-					int unitPrice = rs.getInt("UnitPrice");
-					int subtotal = rs.getInt("Subtotal");
-					float discount = rs.getInt("Discount");
-					String memo = rs.getString("Memo");
-					OrderDetailVenuesBean odb = new OrderDetailVenuesBean(orderId2, productID, productName, quantity, unitPrice,
-							subtotal, discount, null, memo, null);
-					set.add(odb);
+//					Integer orderId2 = rs.getInt("OrderID");
+					String productIDV = rs.getString("ProductID");
+					Integer StartTime = rs.getInt("StartTime");
+					Date Date = rs.getDate("Date");
+					Integer TableCount = rs.getInt("TableCount");
+					OrderDetailVenuesBean odb = new OrderDetailVenuesBean(orderId, productIDV, StartTime,
+							Date, TableCount);
+					set1.add(odb);
 				}
-				ob.setOrderDetail(set);
+				ob.setOrderDetailVenue(set1);
+			}
+			ps2.setInt(1, orderId);
+			try (ResultSet rs = ps2.executeQuery();){
+				set2 = new HashSet<>();
+				while(rs.next()) {
+//					Integer orderId3 = rs.getInt("OrderID");
+					String productIDP = rs.getString("ProductID");
+					String productName = rs.getString("ProductName");
+					Integer quantity = rs.getInt("Quantity");
+					Integer unitPrice = rs.getInt("UnitPrice");
+					Float discount = rs.getFloat("Discount");
+					String memo = rs.getString("Memo");
+					OrderDetailProductsBean odpb = new OrderDetailProductsBean(orderId, productIDP, 
+							productName, quantity, unitPrice, discount, memo);
+					set2.add(odpb);
+				}
+				ob.setOrderDetailProduct(set2);
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("OrderDaoImplÃþ§OªºgetOrder()µo¥Í¿ù»~");
+			throw new RuntimeException("OrderDaoImplï¿½ï¿½ï¿½Oï¿½ï¿½getOrder()ï¿½oï¿½Í¿ï¿½ï¿½~");
 		}
 		return ob;
 	}
@@ -150,6 +191,7 @@ public class OrderDaoImpl implements IOrderDao {
 
 	@Override
 	public List<OrderBean> getAllOrders() {
+<<<<<<< HEAD
 		DataSource ds = null;
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -157,16 +199,19 @@ public class OrderDaoImpl implements IOrderDao {
 			con = DriverManager.getConnection(connUrl, "sa", "P@ssword");
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("getAllOrders()µo¥Í¿ù»~ µLªk³s¸ê®Æ®w");
+			throw new RuntimeException("getAllOrders()ï¿½oï¿½Í¿ï¿½ï¿½~ ï¿½Lï¿½kï¿½sï¿½ï¿½Æ®w");
 		}
+=======
+//		DataSource ds = null;
+
+>>>>>>> ca7be84f1c49daf5041b51886edbbb821959c2da
 		List<OrderBean> list = new ArrayList<OrderBean>();
 		String sql = "SELECT OrderID FROM Order";
 		try (
-			Connection con = ds.getConnection();
-			PreparedStatement ps = con.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-		) {
-			while(rs.next()) {
+//				Connection con = ds.getConnection();
+				PreparedStatement ps = con.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery();) {
+			while (rs.next()) {
 				Integer no = rs.getInt(1);
 				list.add(getOrder(no));
 			}
@@ -177,6 +222,7 @@ public class OrderDaoImpl implements IOrderDao {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public List<OrderBean> getMemberOrders(String id) {
 		DataSource ds = null;
 		try {
@@ -185,25 +231,113 @@ public class OrderDaoImpl implements IOrderDao {
 			con = DriverManager.getConnection(connUrl, "sa", "P@ssword");
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new RuntimeException("getMemberOrders()µo¥Í¿ù»~ µLªk³s¸ê®Æ®w");
+			throw new RuntimeException("getMemberOrders()ï¿½oï¿½Í¿ï¿½ï¿½~ ï¿½Lï¿½kï¿½sï¿½ï¿½Æ®w");
 		}
+=======
+	public List<OrderBean> getMemberUnpaidOrders(String id) {
+//		DataSource ds = null;
+>>>>>>> ca7be84f1c49daf5041b51886edbbb821959c2da
 		List<OrderBean> list = new ArrayList<OrderBean>();
-		String sql = "SELECT OrderNo FROM Order where ID=? Order by orderDate desc";
+		String sql = "SELECT OrderID FROM Order where ID=?, Status=? Order by orderDate desc";
 		try (
-			Connection con = ds.getConnection();
+//			Connection con = ds.getConnection(); 
 			PreparedStatement ps = con.prepareStatement(sql);
-				){
+		) {
 			ps.setString(1, id);
-			try (ResultSet rs = ps.executeQuery();){
-				while(rs.next()) {
+			ps.setInt(2, 1);
+			try (ResultSet rs = ps.executeQuery();) {
+				while (rs.next()) {
 					Integer no = rs.getInt(1);
 					list.add(getOrder(no));
 				}
 			}
+			ps.close();
+			con.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+		
 		return list;
+		
 	}
 
+	@Override
+	public List<OrderBean> getMemberPaidOrders(String id) {
+//		DataSource ds = null;
+		List<OrderBean> list = new ArrayList<OrderBean>();
+		String sql = "SELECT OrderID FROM Order where ID=?, Status=? Order by orderDate desc";
+		try (
+//			Connection con = ds.getConnection(); 
+			PreparedStatement ps = con.prepareStatement(sql);
+		) {
+			ps.setString(1, id);
+			ps.setInt(2, 2);
+			try (ResultSet rs = ps.executeQuery();) {
+				while (rs.next()) {
+					Integer no = rs.getInt(1);
+					list.add(getOrder(no));
+				}
+			}
+			ps.close();
+			con.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return list;
+		
+	}
+	@Override
+	public List<OrderBean> getMemberCompletedOrders(String id) {
+//		DataSource ds = null;
+		List<OrderBean> list = new ArrayList<OrderBean>();
+		String sql = "SELECT OrderID FROM Order where ID=?, Status=? Order by orderDate desc";
+		try (
+//			Connection con = ds.getConnection(); 
+			PreparedStatement ps = con.prepareStatement(sql);
+		) {
+			ps.setString(1, id);
+			ps.setInt(2, 3);
+			try (ResultSet rs = ps.executeQuery();) {
+				while (rs.next()) {
+					Integer no = rs.getInt(1);
+					list.add(getOrder(no));
+				}
+			}
+			ps.close();
+			con.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return list;
+		
+	}
+	
+	@Override
+	public List<OrderBean> getMemberCancelledOrders(String id) {
+//		DataSource ds = null;
+		List<OrderBean> list = new ArrayList<OrderBean>();
+		String sql = "SELECT OrderID FROM Order where ID=?, Status=? Order by orderDate desc";
+		try (
+//			Connection con = ds.getConnection(); 
+			PreparedStatement ps = con.prepareStatement(sql);
+		) {
+			ps.setString(1, id);
+			ps.setInt(2, 4);
+			try (ResultSet rs = ps.executeQuery();) {
+				while (rs.next()) {
+					Integer no = rs.getInt(1);
+					list.add(getOrder(no));
+				}
+			}
+			ps.close();
+			con.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return list;
+		
+	}
 }

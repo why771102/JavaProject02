@@ -1,17 +1,25 @@
 package com.Service;
 
-import java.sql.Connection;
 import java.util.List;
+
 import com.Bean.OrderBean;
 
 public interface OrderService {
 
-	public void setConnection(Connection conn);
+public void insertOrder(OrderBean ob);
 	
-	public OrderBean getOrder(int OrderID);
+	public OrderBean getOrder(int orderNo);
 
+	
 	public List<OrderBean> getAllOrders();
-
-	public List<OrderBean> getMemberOrders(String MemberID);
 	
+	public List<OrderBean> getMemberOrders(String id);
+
+	List<OrderBean> getMemberUnpaidOrders(String id);
+
+	List<OrderBean> getMemberPaidOrders(String id);
+
+	List<OrderBean> getMemberCompletedOrders(String id);
+
+	List<OrderBean> getMemberCancelledOrders(String id);
 }

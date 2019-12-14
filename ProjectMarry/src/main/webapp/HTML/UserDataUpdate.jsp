@@ -40,7 +40,7 @@
 </table>
  <input type="submit" value="確定修改資料">
 </form>
-<a href="/ProjectMarry/HTML/1202結帳明細.html"><input type="button"  value="返回首頁" id="Index"/></a>
+<a href="/ProjectMarry/HTML/index.html"><input type="button"  value="返回首頁" id="Index"/></a>
 
 </body>
 </html>

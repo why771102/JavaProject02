@@ -12,9 +12,12 @@ public class OrderDetailProductsBean {
 	private Float Discount;
 	private String Memo;
 	
+	public OrderDetailProductsBean() {
+		
+	}
+	
 	public OrderDetailProductsBean(Integer OrderID, String ProductID, String ProductName,
-			Integer Quantity, Integer UnitPrice, Integer Subtotal, Float Discount, Date OrderDate, 
-			String Memo, Integer ShipmentStatus) {
+			Integer Quantity, Integer UnitPrice, Float Discount, String Memo) {
 		this.OrderID = OrderID;
 		this.ProductID = ProductID;
 		this.ProductName = ProductName;
@@ -32,11 +35,11 @@ public class OrderDetailProductsBean {
 		OrderID = orderID;
 	}
 
-	public Integer getProductID() {
+	public String getProductID() {
 		return ProductID;
 	}
 
-	public void setProductID(Integer productID) {
+	public void setProductID(String productID) {
 		ProductID = productID;
 	}
 
@@ -79,6 +82,4 @@ public class OrderDetailProductsBean {
 	public void setMemo(String memo) {
 		Memo = memo;
 	}
-
-	
 }

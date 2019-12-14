@@ -1,44 +1,68 @@
 package com.Interface;
 
-import com.Bean.ShoppingCartBean;
-import com.Bean.VenueBean;
+import java.util.List;
+
+import com.Bean.OrderBean;
+import com.Bean.OrderDetailProductsBean;
+import com.Bean.OrderDetailVenuesBean;
+import com.Bean.ProductBean;
 
 public interface ShoppingCartDao {
-//	//¬d¸ß¦¹member ¦border table¸Ì­±status = 0 ¬O§_¦³ªF¦è ªğ¦^orderID
-	public int  getShoppingCart(int Id);
-	//¦pªG¦³ªF¦è¦bDB §âshoppingCart table ¥ş³¡¼´¥X
-	public VenueBean getVenue(int orderId);
-	public ProductBean getProduct(int orderId);
-	//¥ş¼Æ§R°£order table¸Ì­±ªº¸ê®Æ (°O±o­n¥ı§R±¼fk)
-	public boolean  deleteShoppingCart(int Id);
-	//§R°£venue table¸Ì­±ªº¸ê®Æ (°O±o­n¥ı§R±¼fk)
-	public boolean  deleteVendor(int orderId , int vendorID);
-	public boolean  deleteVenue(int orderId , int venueID );
-	//§R°£product table¸Ì­±ªº¸ê®Æ (°O±o­n¥ı§R±¼fk)
-	public boolean  deleteShop(int orderId ,int ShopID);
-	public boolean  deleteProduct(int orderId ,int productID);
+	// æŸ¥è©¢æ­¤member åœ¨order tableè£¡é¢status = 0 æ˜¯å¦æœ‰æ±è¥¿ è¿”å›orderID
+	public int getShoppingCart(int Id);
 
+	// å¦‚æœæœ‰æ±è¥¿åœ¨DB æŠŠshoppingCart table å…¨éƒ¨æ’ˆå‡º
+	public OrderDetailVenuesBean getVenue(int orderId);
 
-    //­n¦b venue detail table¬d³õ¦a¦³¨S¦³³Q¹w­q(¨ú¥X®É¶¡¤ñ¹ï)
-	public int[]  querytime_orderID(int venueID  , int time ,String date);
-	//­n¦b order table¬d³õ¦a¦³¨S¦³³Q¹w­q(¨ú¥X®É¶¡¤ñ¹ï)§ästatus ¬° 1 or 2
-	public boolean  querytime_(int[] orderId);
-	
-	//§ä¥Xvenue ³õ¦a³æ»ù  ©ñ¶i¬d¸ß¸Ì­±  ¦]¬°­n§PÂ_¶Rªº®É¶¡¬O¤W¤È³õÁÙ¬O¤U¤È³õ,©Ò¥H¥²¶·ÁÊ¶Rµ¹®É¶¡Åı¥L§PÂ_­n¨ú­ş­Ó­È
-	public int productPrice(int venueID, int time);
-	//§ä¥X¯Âºé±BÂ§¤pª«ªº»ù®æ
-	public int productPrice(int ProductID);
-	//§âÁÊª«¨®¦s¶iorder table   status ±q0§ï1
-	public boolean updateStatus(int ID, int orderId);
-	//«ö¤FÁÊ¶R«á  ¦pªG¦³¼Æ¶qªº§ó§ï
-	public boolean updateQty(int orderId,int productId);
-	public boolean updateTable(int orderId,int venueId);
-	//¬d¸ß®w¦s(°²³]®w¦s³£¨S¤F deleteÁÊª«¨®°Ó«~)
-	public int queryQty(int productId,int quantity);
-	//¬d¸ß®w¦s(°²³]®w¦s ¤Ö©óÁÊ¶R¼Æ¶q updateÁÊª«¨®¼Æ¶q)
-	
-	//¦s³õ¦a
-	public boolean saveVenue(VenueBean vb);
-	//¦s°Ó«~
-	public boolean saveProduct(ProductBean pb);
+	public JSONObject getProduct(int orderId);
+
+	// å…¨æ•¸åˆªé™¤order tableè£¡é¢çš„è³‡æ–™ (è¨˜å¾—è¦å…ˆåˆªæ‰fk)
+	public boolean deleteShoppingCart(int Id);
+
+	// åˆªé™¤venue tableè£¡é¢çš„è³‡æ–™ (è¨˜å¾—è¦å…ˆåˆªæ‰fk)
+	public boolean deleteVendor(int orderId, int vendorID);
+
+	public boolean deleteVenue(int orderId, String productID);
+
+	// åˆªé™¤product tableè£¡é¢çš„è³‡æ–™ (è¨˜å¾—è¦å…ˆåˆªæ‰fk)
+	public boolean deleteSupplier(int orderId, int supplierID);
+
+	public boolean deleteProduct(int orderId, String productID);
+
+	// è¦åœ¨ venue detail tableæŸ¥å ´åœ°æœ‰æ²’æœ‰è¢«é è¨‚(å–å‡ºæ™‚é–“æ¯”å°)
+	public List<Integer> querytime_orderID(String productID, int time, String date);
+
+	// è¦åœ¨ order tableæŸ¥å ´åœ°æœ‰æ²’æœ‰è¢«é è¨‚(å–å‡ºæ™‚é–“æ¯”å°)æ‰¾status ç‚º 1 or 2
+	public boolean querytime_VenueStatus(List<Integer> orderIds);
+
+	// æ‰¾å‡ºvenue å ´åœ°å–®åƒ¹ æ”¾é€²æŸ¥è©¢è£¡é¢ å› ç‚ºè¦åˆ¤æ–·è²·çš„æ™‚é–“æ˜¯ä¸Šåˆå ´é‚„æ˜¯ä¸‹åˆå ´,æ‰€ä»¥å¿…é ˆè³¼è²·çµ¦æ™‚é–“è®“ä»–åˆ¤æ–·è¦å–å“ªå€‹å€¼
+	public int getVenuePrice(int orderId, String productId);
+
+	// æ‰¾å‡ºç´”ç²¹å©šç¦®å°ç‰©çš„åƒ¹æ ¼
+	public double getProductPrice(ProductBean pb);
+
+	// æŠŠè³¼ç‰©è»Šå­˜é€²order table status å¾0æ”¹1
+	public boolean updateStatus(OrderBean ob);
+
+	// æŒ‰äº†è³¼è²·å¾Œ å¦‚æœæœ‰æ•¸é‡çš„æ›´æ”¹
+	public boolean updateQty(OrderDetailProductsBean odpb);
+
+	public boolean updateTable(OrderDetailVenuesBean odvb);
+
+	// æŸ¥è©¢åº«å­˜(å‡è¨­åº«å­˜éƒ½æ²’äº† deleteè³¼ç‰©è»Šå•†å“)
+	public int queryQty(OrderDetailProductsBean odpb);
+	// æŸ¥è©¢åº«å­˜(å‡è¨­åº«å­˜ å°‘æ–¼è³¼è²·æ•¸é‡ updateè³¼ç‰©è»Šæ•¸é‡)
+
+	// å­˜å ´åœ°
+	public boolean saveVenue(int orderId, OrderDetailVenuesBean odvb);
+
+	// å­˜å•†å“
+	public boolean saveProduct(int orderId, OrderDetailProductsBean pb);
+
+	public boolean saveShoppingCart(OrderBean ob);
+
+	public OrderDetailProductsBean querySameProduct(int orderId, ProductBean pb);
+
+	// æŠ“DBç…§ç‰‡
+//	public Blob queryImage(String productId);
 }
