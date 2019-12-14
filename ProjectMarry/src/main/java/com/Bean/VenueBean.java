@@ -11,6 +11,10 @@ public class VenueBean {
 	private Integer LunchPrice;
 	private Integer DinnerPrice;
 	
+	public VenueBean() {
+		
+	}
+	
 	public VenueBean (Integer VendorID, String ProductID, String Location, String Hall,
 			Integer TableCount, Integer InOutdoor, Integer LunchPrice, Integer DinnerPrice) {
 		this.VendorID = VendorID;

@@ -12,6 +12,10 @@ public class OrderDetailProductsBean {
 	private Float Discount;
 	private String Memo;
 	
+	public OrderDetailProductsBean() {
+		
+	}
+	
 	public OrderDetailProductsBean(Integer OrderID, String ProductID, String ProductName,
 			Integer Quantity, Integer UnitPrice, Float Discount, String Memo) {
 		this.OrderID = OrderID;
