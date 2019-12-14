@@ -33,6 +33,10 @@ public class OrderBean {
 		this.orderDetailProduct = orderDetailProduct;
 	}
 
+	public OrderBean() {
+		
+	}
+	
 	public OrderBean(Integer OrderID, Integer ID, String InvoiceTitle, String VATnumber, Integer Status,
 			String ShippingAddress, Date OrderDate, Integer ShippingStatus) {
 		this.OrderID = OrderID;
