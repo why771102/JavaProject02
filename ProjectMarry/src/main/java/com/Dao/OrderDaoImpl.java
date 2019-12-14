@@ -100,7 +100,7 @@ public class OrderDaoImpl implements IOrderDao {
 	@Override
 	public OrderBean getOrder(int orderId) {
 		OrderBean ob = null;
-<<<<<<< HEAD
+
 		DataSource ds = null;
 		Set<OrderDetailsBean> set = null;
 		try {
@@ -111,10 +111,10 @@ public class OrderDaoImpl implements IOrderDao {
 			ex.printStackTrace();
 			throw new RuntimeException("getOrder()�o�Ϳ��~ �L�k�s��Ʈw");
 		}
-=======
+
 		Set<OrderDetailVenuesBean> set1 = null;
 		Set<OrderDetailProductsBean> set2 = null;
->>>>>>> ca7be84f1c49daf5041b51886edbbb821959c2da
+
 
 		String sql = "SELECT * FROM Order WHERE OrderID=?";
 		String sql1 = "SELECT * FROM OrderDetailVenuesBean WHERE OrderID = ?";
@@ -131,14 +131,14 @@ public class OrderDaoImpl implements IOrderDao {
 					String VATnumber = rs.getString("VATnumber");
 					Integer Status = rs.getInt("Status");
 					String ShippingAddress = rs.getString("ShippingAddress");
-<<<<<<< HEAD
+
 					ob = new OrderBean();
-=======
+
 					Date OrderDate = rs.getDate("OrderDate");
 					Integer ShippingStatus = rs.getInt("ShippingStatus");
 					ob = new OrderBean(orderId, id, InvoiceTitle, VATnumber, Status,
 							ShippingAddress, OrderDate, null);
->>>>>>> ca7be84f1c49daf5041b51886edbbb821959c2da
+
 				}
 			}
 			ps1.setInt(1, orderId);
