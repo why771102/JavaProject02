@@ -23,7 +23,7 @@ public class IvenueImpl implements Ivenue {
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			String connUrl = "jdbc:sqlserver://localhost:1433;databaseName=GetMarry";
-			conn = DriverManager.getConnection(connUrl, "sa", "sa123456");
+			conn = DriverManager.getConnection(connUrl, "sa", "P@ssw0rd");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

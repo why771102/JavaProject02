@@ -191,7 +191,7 @@ public class OrderDaoImpl implements IOrderDao {
 
 	@Override
 	public List<OrderBean> getAllOrders() {
-<<<<<<< HEAD
+
 		DataSource ds = null;
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -201,10 +201,10 @@ public class OrderDaoImpl implements IOrderDao {
 			ex.printStackTrace();
 			throw new RuntimeException("getAllOrders()�o�Ϳ��~ �L�k�s��Ʈw");
 		}
-=======
+
 //		DataSource ds = null;
 
->>>>>>> ca7be84f1c49daf5041b51886edbbb821959c2da
+
 		List<OrderBean> list = new ArrayList<OrderBean>();
 		String sql = "SELECT OrderID FROM Order";
 		try (
@@ -222,7 +222,7 @@ public class OrderDaoImpl implements IOrderDao {
 	}
 
 	@Override
-<<<<<<< HEAD
+
 	public List<OrderBean> getMemberOrders(String id) {
 		DataSource ds = null;
 		try {
@@ -233,10 +233,10 @@ public class OrderDaoImpl implements IOrderDao {
 			ex.printStackTrace();
 			throw new RuntimeException("getMemberOrders()�o�Ϳ��~ �L�k�s��Ʈw");
 		}
-=======
+	}
 	public List<OrderBean> getMemberUnpaidOrders(String id) {
 //		DataSource ds = null;
->>>>>>> ca7be84f1c49daf5041b51886edbbb821959c2da
+
 		List<OrderBean> list = new ArrayList<OrderBean>();
 		String sql = "SELECT OrderID FROM Order where ID=?, Status=? Order by orderDate desc";
 		try (
