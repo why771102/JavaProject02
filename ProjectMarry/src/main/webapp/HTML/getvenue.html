@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>查詢場地資料</h2>
+<form method="post" action="getvenue">
+	場地編號:<input type="text" name="productid"/><p>
+	<input type="submit" value="確定"/>
+</form>
+<h2>查詢全場地資料</h2>
+<form method="post" action="getallvenue">
+	<input type="submit" value="確定"/>
+</form>
+<h2>新增場地資料</h2>
+<form method="post" action="createvenue">
+	廠商編號:<input type="text" name="vendorid"/><p>
+	地址:<input type="text" name="venueaddress"/><p>
+	廳:<input type="text" name="hall"/><p>
+	桌數:<input type="text" name="tables"/><p>
+	室內室外:<input type="text" name="inoutdoor"/><p>
+	午價錢:<input type="text" name="lunchprice"/><p>
+	晚價錢:<input type="text" name="dinnerprice"/><p>
+	<input type="submit" value="確定"/>
+</form>
+<h2>更新場地資料</h2>
+<form method="post" action="updatevenue">
+	廠商編號:<input type="text" name="vendorid"/><p>
+	場地編號:<input type="text" name="productid"/><p>
+	地址:<input type="text" name="venueaddress"/><p>
+	廳:<input type="text" name="hall"/><p>
+	桌數:<input type="text" name="tables"/><p>
+	室內室外:<input type="text" name="inoutdoor"/><p>
+	午價錢:<input type="text" name="lunchprice"/><p>
+	晚價錢:<input type="text" name="dinnerprice"/><p>
+	<input type="submit" value="確定"/>
+</form>
+<h2>刪除場地資料</h2>
+<form method="post" action="deletevenue">
+	場地編號:<input type="text" name="productid"/><p>
+	<input type="submit" value="確定"/>
+</form>
+</body>
+</html>
