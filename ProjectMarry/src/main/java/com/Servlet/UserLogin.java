@@ -87,7 +87,7 @@ public class UserLogin extends HttpServlet {
 		    cookie.setMaxAge(7 * 24 * 60 * 60);
 		    response.addCookie(cookie);
 		    
-		    cookie = new Cookie("loginStatus","1");
+		    cookie = new Cookie("memberId",ub.getId().toString());
 		    cookie.setMaxAge(7 * 24 * 60 * 60);
 		    response.addCookie(cookie);
 		    
