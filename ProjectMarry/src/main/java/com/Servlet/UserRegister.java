@@ -20,6 +20,7 @@ import javax.sql.DataSource;
 
 import com.Bean.UserBean;
 import com.Dao.UserDaoImpl;
+import com.Service.UserServiceImpl;
 
 @WebServlet("/UserRegister")
 public class UserRegister extends HttpServlet {
@@ -95,7 +96,8 @@ public class UserRegister extends HttpServlet {
 			errorMsgMap.put("AddressEmptyError", "住址欄位不得空白！");
 		}
 
-		UserDaoImpl udi = new UserDaoImpl(conn);
+		 UserServiceImpl udi = new UserServiceImpl(conn);
+		
 		if (udi.accountExists(ub) == true) {
 			errorMsgMap.put("AccountEmptyError2", "帳號已存在!");
 		}

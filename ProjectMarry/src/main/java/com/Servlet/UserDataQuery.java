@@ -18,6 +18,7 @@ import javax.sql.DataSource;
 
 import com.Bean.UserBean;
 import com.Dao.UserDaoImpl;
+import com.Service.UserServiceImpl;
 
 @WebServlet("/UserDataQuery")
 public class UserDataQuery extends HttpServlet {
@@ -33,7 +34,7 @@ public class UserDataQuery extends HttpServlet {
 		init();
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("txex/html;charset=UTF-8");
-		UserDaoImpl udi = new UserDaoImpl(conn);
+		UserServiceImpl udi = new UserServiceImpl(conn);
 		Cookie[] cookies = request.getCookies();
 		int i=0;
 		String act = "";

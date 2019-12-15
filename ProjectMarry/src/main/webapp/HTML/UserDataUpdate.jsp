@@ -49,7 +49,7 @@ html, /* 這邊做初始化設定 全部字體為正黑體  並且字體大小�
 	box-sizing: border-box;
 	height: 450px;
 	padding: auto;
-	margin:auto;
+	margin: auto;
 }
 
 /* 排版垂直column向左 */
@@ -428,14 +428,18 @@ p.text {
 					<td>住址</td>
 					<td><input type="text" value="${User.address}" name="Address" /></td>
 				</tr>
-			</table><br>
+			</table>
+			<br>
 			<div>
-				<input type="submit" value="確定修改資料" class="submitButton"  formmethod="POST" formaction="<c:url value='/UserUpdate'/>">
+				<input type="submit" value="確定修改資料" class="submitButton"
+					formmethod="POST" formaction="<c:url value='/UserUpdate'/>">
 			</div>
-			<div><a href="index.html"><input type="button" value="返回首頁" id="Index"
-			class="submitButton" /></a></div>
+			<div>
+				<a href="HTML/index.html"><input type="button" value="返回首頁"
+					id="Index" class="submitButton" /></a>
+			</div>
 		</form>
-		
+
 	</div>
 
 
@@ -444,6 +448,14 @@ p.text {
 		<div class="wrap">MARY ME |錢沒有不見 &emsp; 只是變成你喜歡的樣子</div>
 		<div>場地｜配件｜樣式｜婚禮小物｜新秘｜攝影</div>
 	</div>
+	<script>
+		cookieArray = document.cookie.split(";");
+		console.log(cookieArray);
+		if (cookieArray == "") {
+			window.location.replace("HTML/LogIn.jsp");
+		} else {
 
+		}
+	</script>
 </body>
 </html>

@@ -18,6 +18,7 @@ import javax.sql.DataSource;
 
 import com.Bean.UserBean;
 import com.Dao.UserDaoImpl;
+import com.Service.UserServiceImpl;
 
 
 @WebServlet("/UserUpdate")
@@ -54,7 +55,7 @@ public class UserUpdate extends HttpServlet {
 		  ub.setAddress(Address);
 		  ub.setAccount(Account);
 		  
-		  UserDaoImpl udi = new UserDaoImpl(conn);
+		  UserServiceImpl udi = new UserServiceImpl(conn);
 		  UserBean rub = udi.updateUserData(ub);
 		  
 		  if(rub == null) {

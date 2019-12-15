@@ -56,7 +56,7 @@ public class UserLogOut extends HttpServlet {
 		    cookie.setMaxAge(0);
 		    response.addCookie(cookie);
 		    
-		    cookie = new Cookie("loginStatus","0");
+		    cookie = new Cookie("memberId","");
 		    cookie.setMaxAge(0);
 		    response.addCookie(cookie);
 		    

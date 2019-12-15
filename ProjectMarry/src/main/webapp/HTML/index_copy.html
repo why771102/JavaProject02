@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
 	<p><span id="name"></span>，你好！</p>
@@ -14,17 +15,15 @@
 	<script>
 		
 	
-		cookieArray = document.cookie.split(";");
-		console.log(cookieArray);
-		if(cookieArray == "") {
-			document.getElementById("name").innerText = "訪客";
-			document.getElementById("logout").style.display="none";
-		}else{
-			nameArrays = cookieArray[1].split("=");
-			document.getElementById("name").innerText = nameArrays[1];
-			document.getElementById("register").style.display="none"; 
-			document.getElementById("login").style.display="none";
-		}
+	cookieArray = document.cookie.split(";");
+    console.log(cookieArray);
+    if (cookieArray == "") {
+    	window.location.replace("LogIn.jsp");
+    } else {
+
+    }
+    
+    
 		
 		
 	</script>

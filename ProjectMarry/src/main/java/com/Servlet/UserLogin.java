@@ -21,6 +21,7 @@ import javax.sql.DataSource;
 
 import com.Bean.UserBean;
 import com.Dao.UserDaoImpl;
+import com.Service.UserServiceImpl;
 
 
 @WebServlet("/UserLogin")
@@ -50,7 +51,7 @@ public class UserLogin extends HttpServlet {
 		ub.setPwd(Pwd);
 
 		
-		UserDaoImpl udi = new UserDaoImpl(conn);
+		UserServiceImpl udi = new UserServiceImpl(conn);
 		
 		Map<String, String> errorMsgMap = new HashMap<String, String>();
 		
