@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="<c:url value='/CSS/combine.css'/>">
 
-<title>Prodoct</title>
+<title>Product</title>
 </head>
 <body>
 
@@ -38,7 +38,7 @@
         <div class="wrap end_gray_border" id="Product_list">
             <!-- top  -->
             <!-- <div class="wrap end_gray_border" id="chooseAll">
-                <input type="checkbox"> <label for=""> 全部選取</label>
+                <input type="checkbox"> <label for=""> 全部選取</label>
             </div> -->
             <!-- content  -->
             <div class="wrapRow" id="content">
@@ -50,7 +50,7 @@
                     <div class="wrap" id="pictureBG">
                         <div class="w3-content wrap One_width vh_height100" >
                              
-                            <img class="mySlides P_Bimg" src="a.jpg" style=" display:none">
+                            <img class="mySlides P_Bimg" src="a.jpg" style="display:none">
                             <img class="mySlides P_Bimg" src="b.jpg">
                             <img class="mySlides P_Bimg" src="c.png" style="display:none">
                             <img class="mySlides P_Bimg" src="c.png" style="display:none">
