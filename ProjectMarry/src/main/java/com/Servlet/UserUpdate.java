@@ -75,6 +75,13 @@ public class UserUpdate extends HttpServlet {
 		   rd.forward(request, response);
 		   
 		  }
+		  
+		  try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

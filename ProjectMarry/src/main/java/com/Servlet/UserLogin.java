@@ -77,7 +77,7 @@ public class UserLogin extends HttpServlet {
 			session = request.getSession();
 			session.setAttribute("user", rub);
 			response.sendRedirect(request.getContextPath() + "/HTML/UserLogin.jsp");
-			return;
+//			return;   試試看不return，最後加close
 		}else {
 			//成功登入，導向登入後頁面
 			Cookie cookie = new Cookie("account",ub.getAccount());
@@ -95,7 +95,13 @@ public class UserLogin extends HttpServlet {
 			request.setAttribute("user", rub);
 			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserLoginSucess.jsp");   //JSP
 			rd.forward(request, response);
-			
+		}
+		
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}

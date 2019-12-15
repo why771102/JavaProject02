@@ -6,6 +6,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import com.Bean.UserBean;
+import com.Dao.UserDaoImpl;
 import com.Interface.IUserDao;
 
 public class UserServiceImpl implements UserService {
@@ -15,14 +16,9 @@ public class UserServiceImpl implements UserService {
 	
 	public UserServiceImpl(Connection conn) {
 		this.conn = conn;
+		uo = new UserDaoImpl(conn);
 	}
 	
-	public IUserDao getUo() {
-		return uo;
-	}
-	public void setUo(IUserDao uo) {
-		this.uo = uo;
-	}
 	
 	@Override
 	public UserBean register(UserBean ub) {

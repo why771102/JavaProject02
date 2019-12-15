@@ -22,67 +22,65 @@ import javax.sql.DataSource;
 import com.Bean.UserBean;
 import com.Dao.UserDaoImpl;
 
-
 @WebServlet("/UserLogOut")
 public class UserLogOut extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    Connection conn;
+	Connection conn;
 
-    public UserLogOut() {
-        super();
-    }
+	public UserLogOut() {
+		super();
+	}
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		init();
 		HttpSession session;
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("txex/html;charset=UTF-8");
-		
-		
-			Cookie[] cookies =  request.getCookies();
-			
-			for(int i = 0; i > cookies.length; i++) {
-				System.out.println(cookies[i]);
-			}
-			
-			
-			Cookie cookie = new Cookie("account","");
-		    cookie.setMaxAge(0);
-		    response.addCookie(cookie);
-		    
-		    cookie = new Cookie("name","");
-		    cookie.setMaxAge(0);
-		    response.addCookie(cookie);
-		    
-		    cookie = new Cookie("memberId","");
-		    cookie.setMaxAge(0);
-		    response.addCookie(cookie);
-		    
-			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserLoginSucess.jsp");   //JSP
-			rd.forward(request, response);
-			
-		
 
-			
+		Cookie[] cookies = request.getCookies();
+
+		for (int i = 0; i > cookies.length; i++) {
+			System.out.println(cookies[i]);
+		}
+
+		Cookie cookie = new Cookie("account", "");
+		cookie.setMaxAge(0);
+		response.addCookie(cookie);
+
+		cookie = new Cookie("name", "");
+		cookie.setMaxAge(0);
+		response.addCookie(cookie);
+
+		cookie = new Cookie("memberId", "");
+		cookie.setMaxAge(0);
+		response.addCookie(cookie);
+
+		RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserLoginSucess.jsp"); // JSP
+		rd.forward(request, response);
 		
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
-	
 	public void init() {
-		
+
 		Context context;
 		try {
 			context = new InitialContext();
-			DataSource ds = (DataSource)context.lookup("java:/comp/env/jdbc/servdb");
-			 try {
+			DataSource ds = (DataSource) context.lookup("java:/comp/env/jdbc/servdb");
+			try {
 				conn = ds.getConnection();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -92,5 +90,5 @@ public class UserLogOut extends HttpServlet {
 		}
 
 	}
-	
+
 }

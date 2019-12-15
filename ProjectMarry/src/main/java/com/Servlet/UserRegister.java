@@ -110,6 +110,12 @@ public class UserRegister extends HttpServlet {
 			request.setAttribute("errorMsgMap", errorMsgMap);
 			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserRegister.jsp"); // JSP
 			rd.forward(request, response);
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return;
 		}
 
@@ -128,11 +134,25 @@ public class UserRegister extends HttpServlet {
 			System.out.println(request.getContextPath() + "/HTML/UserRegisterSucess.jsp");
 			response.sendRedirect(request.getContextPath() + "/HTML/UserRegisterSucess.jsp");
 
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			return;
 //			request.setAttribute("user", rub);
 //			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserRegisterSucess.jsp");   //JSP
 //			rd.forward(request, response);
 
+		}
+		
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}
