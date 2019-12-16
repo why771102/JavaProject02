@@ -357,22 +357,22 @@
             width: auto;
             height: 200px;
 
-/*            border: 1px solid;*/
-            display:flex;
-            justify-content:center;
-            
+            /*            border: 1px solid;*/
+            display: flex;
+            justify-content: center;
+
         }
 
         .plassimg1 {
             /*            object-fit: fill;*/
             width: auto;
             height: 200px;
-/*            margin: auto;*/
-/*            display: block;*/
+            /*            margin: auto;*/
+            /*            display: block;*/
         }
 
         .placename {
-/*            border: 1px solid;*/
+            /*            border: 1px solid;*/
             height: 50px;
             /*            margin-bottom: 2px;*/
             margin-top: 1px;
@@ -381,18 +381,66 @@
         }
 
         .placedetail {
-/*            border: 1px solid;*/
+            /*            border: 1px solid;*/
             height: 50px;
+            width: auto;
+            padding-left: 10px;
+            padding-right: 5px;
             /*            margin-bottom: 0px;*/
             /*            position:absolute;*/
             /*            margin-top: 195px;*/
             text-align: left;
             font-size: 1em;
         }
-        .placeTitle{
-            text-align:center;
+
+        .placeTitle {
+            text-align: center;
             margin-bottom: 35px;
         }
+<<<<<<< HEAD
+        
+        .shoppingIcon{
+            width:200px;
+            margin:0 auto;
+/*             border: 1px solid; */
+            position: relative;
+/*
+=======
+
+        .shoppingIcon {
+            width: 220px;
+            margin: 0 auto;
+            /*             border: 1px solid; */
+            position: relative;
+            /*
+>>>>>>> a4203c86af88008a956e82e2196afae8e3ae034c
+            background-image: url(img/shoppingcartIcon64.png);
+            background-position: right center;
+            background-repeat: no-repeat;
+            background-size: 55px;
+*/
+<<<<<<< HEAD
+            
+=======
+
+        }
+
+        .redpoint {
+
+            height: 18px;
+            width: 18px;
+            border-radius: 18px;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.2em;
+            color: #fff;
+            background: red;
+            position: relative;
+            top: -40px;
+            right: 8px;
+>>>>>>> a4203c86af88008a956e82e2196afae8e3ae034c
+        }
+
     </style>
 </head>
 
@@ -412,11 +460,22 @@
 
             </div>
             <div class="headright">
-                <p>
-                    <span id="name"></span>，你好！
-                </p>
-                <a href="UserRegister.jsp" id="register">註冊</a> <a href="LogIn.jsp" id="login">登入</a> <a href="../UserLogOut" id="logout">登出</a> <a href="../UserDataQuery" id="Query">會員資料</a>
-
+                <div class="shoppingIcon">
+                    <div>
+                        <p><span id="name"></span>，你好！</p>
+                    </div>
+                    <div style="position: absolute;right: 0px;top:-3px;">
+<<<<<<< HEAD
+                        <a  href="../GetShoppingCartFromDBServlet"><img src="img/shoppingcartIcon64.png" width="50px" height="50px"></a>
+=======
+                        <a href="../GetShoppingCartFromDBServlet"><img src="img/shoppingcartIcon64.png" width="50px" height="50px"><span class="redpoint" id="redpoint">20</span></a>
+>>>>>>> a4203c86af88008a956e82e2196afae8e3ae034c
+                    </div>
+                    <div style="clear: both">
+                        <a href="UserRegister.jsp" id="register">註冊</a> <a href="LogIn.jsp" id="login">登入</a> <a href="../UserLogOut" id="logout">登出</a> <a href="../UserDataQuery" id="Query">會員資料</a>
+                    </div>
+                </div>
+                <!--<a href="UserRegister.jsp"><img src="img/shoppingcartIcon64.png" alt="購物車"></a> -->
             </div>
         </div>
         <!-- article -->
@@ -426,12 +485,12 @@
 
             <div class="list">
                 <ul>
-                    <li class="p7"><a href="#"><img src="img/1.jpg" alt="" /></a></li>
-                    <li class="p6"><a href="#"><img src="img/2.jpg" alt="" /></a></li>
-                    <li class="p5"><a href="#"><img src="img/3.jpg" alt="" /></a></li>
-                    <li class="p4"><a href="#"><img src="img/44.jpg" alt="" /></a></li>
-                    <li class="p3"><a href="#"><img src="img/55.jpg" alt="" /></a></li>
-                    <li class="p2"><a href="#"><img src="img/66.jpg" alt="" /></a></li>
+                    <li class="p7"><a href="#"><img class="img" src="img/1.jpg" alt="" /></a></li>
+                    <li class="p6"><a href="#"><img class="img" src="img/2.jpg" alt="" /></a></li>
+                    <li class="p5"><a href="#"><img class="img" src="img/3.jpg" alt="" /></a></li>
+                    <li class="p4"><a href="#"><img class="img" src="img/44.jpg" alt="" /></a></li>
+                    <li class="p3"><a href="#"><img class="img" src="img/55.jpg" alt="" /></a></li>
+                    <li class="p2"><a href="#"><img class="img" src="img/66.jpg" alt="" /></a></li>
                 </ul>
             </div>
 
@@ -445,54 +504,107 @@
             </div>
         </div>
 
+<<<<<<< HEAD
         <div class="placelist" style="margin-bottom: 200px;">
-            <div class="placeTitle"><h1>精選婚宴場館</h1></div>
+=======
+        <div class="placelist" style="margin-bottom: 70px;">
+>>>>>>> a4203c86af88008a956e82e2196afae8e3ae034c
+            <div class="placeTitle">
+                <h1>精選婚宴場館</h1>
+            </div>
             <div class="place">
                 <div class="placeimg">
-                    <img class="plassimg1" src="img/1.jpg" alt="">
+                    <img class="plassimg1" src="img/1.jpg" alt="" style="opacity: 0.7">
                 </div>
                 <div class="placename">典華(大直)-A廳</div>
                 <div class="placedetail">此場地小而美，適合宴客桌數少的新人。</div>
             </div>
             <div class="place">
                 <div class="placeimg">
-                    <img class="plassimg1" src="img/2.jpg" alt="">
+                    <img class="plassimg1" src="img/2.jpg" alt="" style="opacity: 0.7">
                 </div>
                 <div class="placename">典華(大直)-B廳</div>
                 <div class="placedetail">此場地天花板挑高，適合宴客有特殊表演需求的新人。</div>
             </div>
             <div class="place">
                 <div class="placeimg">
-                    <img class="plassimg1" src="img/44.jpg" alt="">
+                    <img class="plassimg1" src="img/44.jpg" alt="" style="opacity: 0.7">
                 </div>
                 <div class="placename">台北喜來登-婚宴廳</div>
                 <div class="placedetail">交通便利，婚宴場館大小適中。</div>
             </div>
             <div class="place">
                 <div class="placeimg">
-                    <img class="plassimg1" src="img/55.jpg" alt="">
+                    <img class="plassimg1" src="img/55.jpg" alt="" style="opacity: 0.7">
                 </div>
                 <div class="placename">典華(大直)-C廳</div>
                 <div class="placedetail">場地大小偏大，適合宴客桌數較多的新人。</div>
             </div>
             <div class="place">
                 <div class="placeimg">
-                    <img class="plassimg1" src="img/66.jpg" alt="">
+                    <img class="plassimg1" src="img/66.jpg" alt="" style="opacity: 0.7">
                 </div>
                 <div class="placename">典華(新莊)-花漾廳</div>
                 <div class="placedetail">場地挑高，適合宴客有特殊表演需求的新人。</div>
             </div>
             <div class="place">
                 <div class="placeimg">
-                    <img class="plassimg1" src="img/3.jpg" alt="">
+                    <img class="plassimg1" src="img/3.jpg" alt="" style="opacity: 0.7">
                 </div>
                 <div class="placename">典華(新莊)-翔鳳廳</div>
                 <div class="placedetail">此場地小而美，適合宴客桌數少的新人。</div>
             </div>
         </div>
 
+        
 
-
+        <div class="placelist" style="margin-bottom: 200px;">
+            <div class="placeTitle">
+                <h1>精選婚禮小物</h1>
+            </div>
+            <div class="place">
+                <div class="placeimg">
+                    <img class="plassimg1" src="img/Weddinggift1.jpg" alt="">
+                </div>
+                <div class="placename">甜蜜太妃餅</div>
+                <div class="placedetail">黏牙的太妃餅，希望能讓來參與婚禮的人們，永遠膩在一起。</div>
+            </div>
+            <div class="place">
+                <div class="placeimg">
+                    <img class="plassimg1" src="img/Weddinggift2.jpg" alt="">
+                </div>
+                <div class="placename">愛情徽章</div>
+                <div class="placedetail">特殊的設計，讓大家能永遠記得這場婚禮。</div>
+            </div>
+            <div class="place">
+                <div class="placeimg">
+                    <img class="plassimg1" src="img/Weddinggift3.jpg" alt="">
+                </div>
+                <div class="placename">百年好合米</div>
+                <div class="placedetail">透過這包米，希望未來面對生活也能依然記得愛情的美麗。</div>
+            </div>
+            <div class="place">
+                <div class="placeimg">
+                    <img class="plassimg1" src="img/Weddinggift4.jpg" alt="">
+                </div>
+                <div class="placename">小喜餅</div>
+                <div class="placedetail">現代人不喜過於鋪張，小喜餅剛好能符合這樣的新人。</div>
+            </div>
+            <div class="place">
+                <div class="placeimg">
+                    <img class="plassimg1" src="img/Weddinggift5.jpg" alt="">
+                </div>
+                <div class="placename">小盆栽</div>
+                <div class="placedetail">小盆栽與捧花一樣，希望拿到的人都能因此獲幸福。</div>
+            </div>
+            <div class="place">
+                <div class="placeimg">
+                    <img class="plassimg1" src="img/Weddinggift6.jpg" alt="">
+                </div>
+                <div class="placename">棒棒糖</div>
+                <div class="placedetail">希望獲得棒棒糖的人，都能想起初識愛情的甜甜滋味。</div>
+            </div>
+        </div>
 
 
 
@@ -508,18 +620,40 @@
 
 
     <script>
-        cookieArray = document.cookie.split(";");
+        cookieArray = document.cookie.split("; ");
         console.log(cookieArray);
         if (cookieArray == "") {
             $("#name").text("訪客");
             $("#logout").hide();
             $("#Query").hide();
+            $("#redpoint").hide();
         } else {
-            nameArrays = cookieArray[1].split("=");
-            $("#name").text(nameArrays[1]);
+<<<<<<< HEAD
+        	for(i = 0; i < cookieArray.length; i++) {
+        		nameArrays = cookieArray[i].split("=");
+        		console.log(nameArrays);
+				if(nameArrays[0] == "name") {
+					$("#name").text(nameArrays[1]);
+				}
+        	}
+=======
+            for (i = 0; i < cookieArray.length; i++) {
+                nameArrays = cookieArray[i].split("=");
+                console.log(nameArrays);
+                if (nameArrays[0] == "name") {
+                    $("#name").text(nameArrays[1]);
+                }
+            }
+>>>>>>> a4203c86af88008a956e82e2196afae8e3ae034c
             $("#register").hide();
             $("#login").hide();
         }
+        
+        $(function() {
+            $(".title").click(function() {
+                 
+            })
+        });
 
         $(function() {
             $(".flexslider").flexslider({
@@ -542,7 +676,7 @@
         })
         //上一张
         function previmg() {
-            cArr.unshift(cArr[6]);
+            cArr.unshift(cArr[5]);
             cArr.pop();
             //i是元素的索引，从0开始
             //e为当前处理的元素
@@ -552,7 +686,7 @@
             })
             index--;
             if (index < 0) {
-                index = 6;
+                index = 5;
             }
             show();
         }
@@ -565,7 +699,7 @@
                 $(e).removeClass().addClass(cArr[i]);
             })
             index++;
-            if (index > 6) {
+            if (index > 5) {
                 index = 0;
             }
             show();
@@ -644,8 +778,11 @@
 
         //			进入页面自动开始定时器
         timer = setInterval(nextimg, 4000);
+
     </script>
 
 
 
-</body></html>
+</body>
+
+</html>

@@ -1,16 +1,26 @@
 package com.Service;
 
+import java.sql.Connection;
 import java.util.List;
+
+import org.json.JSONArray;
 
 import com.Bean.OrderBean;
 import com.Bean.OrderDetailProductsBean;
 import com.Bean.OrderDetailVenuesBean;
 import com.Bean.ProductBean;
+import com.Dao.ShoppingCartDaoImpl;
 import com.Interface.ShoppingCartDao;
 
 public class ShoppingCartServiceImpl implements ShoppingCartService {
 
 	private ShoppingCartDao scdao;
+	Connection conn;
+	
+	public ShoppingCartServiceImpl(Connection conn) {
+		this.conn = conn;
+		scdao = new ShoppingCartDaoImpl(conn);
+	}
 	
 	@Override
 	public int getShoppingCart(int Id) {
@@ -19,9 +29,15 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 	}
 
 	@Override
-	public OrderDetailVenuesBean getVenue(int orderId) {
+	public JSONArray showVenue(int orderId) {
 		// TODO Auto-generated method stub
-		return scdao.getVenue(orderId);
+		return scdao.showVenue(orderId);
+	}
+	
+	@Override
+	public JSONArray showProduct(int orderId) {
+		// TODO Auto-generated method stub
+		return scdao.showProduct(orderId);
 	}
 
 	@Override
@@ -97,9 +113,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 	}
 
 	@Override
-	public int queryQty(OrderDetailProductsBean odpb) {
+	public int queryQty(String productId) {
 		// TODO Auto-generated method stub
-		return scdao.queryQty(odpb);
+		return scdao.queryQty(productId);
 	}
 
 	@Override
@@ -121,15 +137,27 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 	}
 
 	@Override
-	public OrderDetailProductsBean querySameProduct(int orderId, ProductBean pb) {
+	public List<OrderDetailVenuesBean> getVenue(int orderId) {
 		// TODO Auto-generated method stub
-		return scdao.querySameProduct(orderId, pb);
+		return  scdao.getVenue(orderId);
 	}
 
 	@Override
-	public JSONObject getProduct(int orderId) {
+	public List<OrderDetailProductsBean> getProduct(int orderId) {
 		// TODO Auto-generated method stub
 		return scdao.getProduct(orderId);
+	}
+
+	@Override
+	public OrderDetailProductsBean querySameProduct(int orderId, OrderDetailProductsBean odpb) {
+		// TODO Auto-generated method stub
+		return scdao.querySameProduct(orderId, odpb);
+	}
+
+	@Override
+	public OrderDetailVenuesBean querySameVenue(int orderId, OrderDetailVenuesBean odvb) {
+		// TODO Auto-generated method stub
+		return scdao.querySameVenue(orderId, odvb);
 	}
 
 }

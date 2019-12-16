@@ -37,7 +37,7 @@ public class UserRegister extends HttpServlet {
 		HttpSession session;
 		init();
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("txex/html;charset=UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 
 		String Name = request.getParameter("Name");
 		String Account = request.getParameter("Account");
