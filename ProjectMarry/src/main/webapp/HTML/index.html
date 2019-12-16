@@ -572,7 +572,7 @@
         })
         //上一张
         function previmg() {
-            cArr.unshift(cArr[6]);
+            cArr.unshift(cArr[5]);
             cArr.pop();
             //i是元素的索引，从0开始
             //e为当前处理的元素
@@ -582,7 +582,7 @@
             })
             index--;
             if (index < 0) {
-                index = 6;
+                index = 5;
             }
             show();
         }
@@ -595,7 +595,7 @@
                 $(e).removeClass().addClass(cArr[i]);
             })
             index++;
-            if (index > 6) {
+            if (index > 5) {
                 index = 0;
             }
             show();

@@ -39,7 +39,7 @@ public class UserLogin extends HttpServlet {
 		init();
 		HttpSession session;
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("txex/html;charset=UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		
 		
 		String Account = request.getParameter("Account");

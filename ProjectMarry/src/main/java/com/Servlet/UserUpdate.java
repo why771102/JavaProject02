@@ -36,7 +36,7 @@ public class UserUpdate extends HttpServlet {
 		
 		 init();
 		 request.setCharacterEncoding("UTF-8");
-		  response.setContentType("txex/html;charset=UTF-8");
+		  response.setContentType("text/html;charset=UTF-8");
 		  
 		  String Name = request.getParameter("Name");
 		  String Birth = request.getParameter("Birth");
