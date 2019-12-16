@@ -394,19 +394,34 @@
             text-align: center;
             margin-bottom: 35px;
         }
-        
-        .shoppingIcon{
-            width:200px;
-            margin:0 auto;
-/*             border: 1px solid; */
+
+        .shoppingIcon {
+            width: 220px;
+            margin: 0 auto;
+            /*             border: 1px solid; */
             position: relative;
-/*
+            /*
             background-image: url(img/shoppingcartIcon64.png);
             background-position: right center;
             background-repeat: no-repeat;
             background-size: 55px;
 */
-            
+
+        }
+
+        .redpoint {
+
+            height: 18px;
+            width: 18px;
+            border-radius: 18px;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.2em;
+            color: #fff;
+            background: red;
+            position: relative;
+            top: -40px;
+            right: 8px;
         }
 
     </style>
@@ -433,7 +448,7 @@
                         <p><span id="name"></span>，你好！</p>
                     </div>
                     <div style="position: absolute;right: 0px;top:-3px;">
-                        <a  href="../GetShoppingCartFromDBServlet"><img src="img/shoppingcartIcon64.png" width="50px" height="50px"></a>
+                        <a href="../GetShoppingCartFromDBServlet"><img src="img/shoppingcartIcon64.png" width="50px" height="50px"><span class="redpoint" id="redpoint">20</span></a>
                     </div>
                     <div style="clear: both">
                         <a href="UserRegister.jsp" id="register">註冊</a> <a href="LogIn.jsp" id="login">登入</a> <a href="../UserLogOut" id="logout">登出</a> <a href="../UserDataQuery" id="Query">會員資料</a>
@@ -468,7 +483,7 @@
             </div>
         </div>
 
-        <div class="placelist" style="margin-bottom: 200px;">
+        <div class="placelist" style="margin-bottom: 70px;">
             <div class="placeTitle">
                 <h1>精選婚宴場館</h1>
             </div>
@@ -516,8 +531,55 @@
             </div>
         </div>
 
+        
 
-
+        <div class="placelist" style="margin-bottom: 200px;">
+            <div class="placeTitle">
+                <h1>精選婚禮小物</h1>
+            </div>
+            <div class="place">
+                <div class="placeimg">
+                    <img class="plassimg1" src="img/Weddinggift1.jpg" alt="">
+                </div>
+                <div class="placename">典華(大直)-A廳</div>
+                <div class="placedetail">此場地小而美，適合宴客桌數少的新人。</div>
+            </div>
+            <div class="place">
+                <div class="placeimg">
+                    <img class="plassimg1" src="img/Weddinggift2.jpg" alt="">
+                </div>
+                <div class="placename">典華(大直)-B廳</div>
+                <div class="placedetail">此場地天花板挑高，適合宴客有特殊表演需求的新人。</div>
+            </div>
+            <div class="place">
+                <div class="placeimg">
+                    <img class="plassimg1" src="img/Weddinggift3.jpg" alt="">
+                </div>
+                <div class="placename">台北喜來登-婚宴廳</div>
+                <div class="placedetail">交通便利，婚宴場館大小適中。</div>
+            </div>
+            <div class="place">
+                <div class="placeimg">
+                    <img class="plassimg1" src="img/Weddinggift4.jpg" alt="">
+                </div>
+                <div class="placename">典華(大直)-C廳</div>
+                <div class="placedetail">場地大小偏大，適合宴客桌數較多的新人。</div>
+            </div>
+            <div class="place">
+                <div class="placeimg">
+                    <img class="plassimg1" src="img/Weddinggift5.jpg" alt="">
+                </div>
+                <div class="placename">典華(新莊)-花漾廳</div>
+                <div class="placedetail">場地挑高，適合宴客有特殊表演需求的新人。</div>
+            </div>
+            <div class="place">
+                <div class="placeimg">
+                    <img class="plassimg1" src="img/Weddinggift6.jpg" alt="">
+                </div>
+                <div class="placename">典華(新莊)-翔鳳廳</div>
+                <div class="placedetail">此場地小而美，適合宴客桌數少的新人。</div>
+            </div>
+        </div>
 
 
 
@@ -539,17 +601,24 @@
             $("#name").text("訪客");
             $("#logout").hide();
             $("#Query").hide();
+            $("#redpoint").hide();
         } else {
-        	for(i = 0; i < cookieArray.length; i++) {
-        		nameArrays = cookieArray[i].split("=");
-        		console.log(nameArrays);
-				if(nameArrays[0] == "name") {
-					$("#name").text(nameArrays[1]);
-				}
-        	}
+            for (i = 0; i < cookieArray.length; i++) {
+                nameArrays = cookieArray[i].split("=");
+                console.log(nameArrays);
+                if (nameArrays[0] == "name") {
+                    $("#name").text(nameArrays[1]);
+                }
+            }
             $("#register").hide();
             $("#login").hide();
         }
+        
+        $(function() {
+            $(".title").click(function() {
+                 
+            })
+        });
 
         $(function() {
             $(".flexslider").flexslider({
