@@ -42,7 +42,7 @@ li{
 	opacity: 0;
 	transition: all 0.3s ease-out;
 }
-img{
+.img{
 	width: 751px;
 	height: 300px;
 	border:none;
