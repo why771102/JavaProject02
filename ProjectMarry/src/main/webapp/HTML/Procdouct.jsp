@@ -26,10 +26,10 @@
         <!-- header -->
         <div class="wrap end_gray_border" id="head">
             <div class="wrap">
-                <p class="tital">MARY ME | 場地選項</p>
+                <p class="tital">MARY ME | 產品選項</p>
             </div>
             <div>
-                <p class="text">場地|配件｜樣式｜婚禮小物｜新秘｜攝影</p>
+                <p class="text">場地｜配件｜樣式｜婚禮小物｜新秘｜攝影</p>
             </div>
             <hr>
         </div>
@@ -50,31 +50,31 @@
                     <div class="wrap" id="pictureBG">
                         <div class="w3-content wrap One_width vh_height100" >
                              
-                            <img class="mySlides P_Bimg" src="a.jpg" style="display:none">
-                            <img class="mySlides P_Bimg" src="b.jpg">
-                            <img class="mySlides P_Bimg" src="c.png" style="display:none">
-                            <img class="mySlides P_Bimg" src="c.png" style="display:none">
+                            <img class="mySlides P_Bimg" src="img/5.jpg" style="display:none">
+                            <img class="mySlides P_Bimg" src="img/6.jpg">
+                            <img class="mySlides P_Bimg" src="img/7.jpg" style="display:none">
+                            <img class="mySlides P_Bimg" src="img/8.jpg" style="display:none">
 
                             <!-- small picture -->
                             <div class="wrapRow" style="height: 15vh; width: 80%; padding: 2vh;">
                                 <div class="w3-col s4 w3cpicture " >
-                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="a.jpg"
-                                        style="  cursor:pointer" onclick="currentDiv(1)">
+                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="img/5.jpg"
+                                        style="cursor:pointer" onclick="currentDiv(1)">
                                 </div>
 
                                 <div class="w3-col s4 w3cpicture ">
-                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="b.jpg"
-                                        style="  cursor:pointer" onclick="currentDiv(2)">
+                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="img/6.jpg"
+                                        style="cursor:pointer" onclick="currentDiv(2)">
                                 </div>
 
                                 <div class="w3-col s4 w3cpicture" >
-                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100 " src="c.png"
-                                        style="   cursor:pointer" onclick="currentDiv(3)">
+                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100 " src="img/7.jpg"
+                                        style="cursor:pointer" onclick="currentDiv(3)">
                                 </div>
 
                                 <div class="w3-col s4  w3cpicture " >
-                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="c.png"
-                                        style="  cursor:pointer" onclick="currentDiv(4)">
+                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="img/8.jpg"
+                                        style="cursor:pointer" onclick="currentDiv(4)">
                                 </div>
 
 
@@ -93,17 +93,17 @@
                     <!-- 分隔商品資訊框框 -->
                     <div class="wrapList end_gray_border">
 
-                        <p class="STital">場地資訊</p>
+                        <p class="STital">產品介紹</p>
                         <div class="wrapRow">
                             <div class="wrapStart VH_R_padding15">
 
-                                <p class="text">場地材質</p>
-                                <p class="text">場地來源</p>
+                                <p class="text">產品材質</p>
+                                <p class="text">產品來源</p>
                                 <p class="text">庫存</p>
                             </div>
                             <div class="wrapStart">
                                 <p class="text">不鏽鋼</p>
-                                <p class="text">商品來源</p>
+                                <p class="text">產品來源</p>
                                 <p class="text">庫存</p>
                             </div>
                         </div>
@@ -121,27 +121,27 @@
 
 
                     <!-- 預定時間 -->
-                    <div class="wrapList end_gray_border">
+<!--                     <div class="wrapList end_gray_border"> -->
 
-                        <div class="wrapList height100" >
-                            <p class="STital">可預訂時間</p>
+<!--                         <div class="wrapList height100" > -->
+<!--                             <p class="STital">可預訂時間</p> -->
 
-                            <div class="wrapRow One_width" >
-                                <div class="wrap One_width" >
+<!--                             <div class="wrapRow One_width" > -->
+<!--                                 <div class="wrap One_width" > -->
 
-                                    <div class="wrapRowStart One_width"  id="datepicker_show"></div>
-                                    <!-- <iframe src="calendar.html" width="100%" height="40" frameborder="0" scrolling="no"></iframe> -->
-
-
-
-                                </div>
+<!--                                     <div class="wrapRowStart One_width"  id="datepicker_show"></div> -->
+<!--                                     <iframe src="calendar.html" width="100%" height="40" frameborder="0" scrolling="no"></iframe> -->
 
 
 
-                            </div>
-                        </div>
+<!--                                 </div> -->
 
-                    </div>
+
+
+<!--                             </div> -->
+<!--                         </div> -->
+
+<!--                     </div> -->
                     <!-- 預定時間 -->
                 </div>
 
@@ -149,13 +149,13 @@
                 <div class="wrapStart " id="product_right">
 
                     <div class="wrapList">
-                        <p class="tital "> 場地名稱</p>
+                        <p class="tital "> 產品名稱</p>
                     </div>
                     <div class="wrapList">
                         <p class="tital">ＮＴ＄10000</p>
                     </div>
                     <form action="" method="post"  class="fullwidth">
-                    <div class="wrapList "> <label for="">場地樣式
+                    <div class="wrapList "> <label for="">產品樣式
                             <select class="product_sel" name="" id="">
                                 <option value="Taipei" selected="" disabled="">請選擇樣式</option>
                                 　<option value="Taoyuan">A</option>
@@ -164,24 +164,24 @@
                             </select>
                         </label>
                     </div>
-                    <div class="wrapList "> <label for="">桌數</label></div>
+                    <div class="wrapList "> <label for="">數量</label></div>
 
 
                     <div class="wrapList"> <select class="product_sel" name="" id="" value="商品樣式">
-                            <option value="Taipei" selected="" disabled="">桌數</option>
+                            <option value="Taipei" selected="" disabled="">數量</option>
                             <option value="Taoyuan">1</option>
                             　<option value="Taoyuan">2</option>
                             　<option value="Hsinchu">3</option>
                         </select>
                     </div>
-                    <div class="wrapList "> <label for="">選擇日期</label></div>
-                    <div class="wrapRowBtw  LR_samll_padding">
-                        <div >Date: <input type="text" id="datepicker_onlick"></div>
-                        <div>Time: <input type="text" id="Time_onlick"></div>
+<!--                     <div class="wrapList "> <label for="">選擇日期</label></div> -->
+<!--                     <div class="wrapRowBtw  LR_samll_padding"> -->
+<!--                         <div >Date: <input type="text" id="datepicker_onlick"></div> -->
+<!--                         <div>Time: <input type="text" id="Time_onlick"></div> -->
 
 
 
-                    </div>
+<!--                     </div> -->
 
 
                     <div class="wrapList ">
@@ -206,14 +206,14 @@
                     <!-- 分隔商品資訊框框 -->
                     <div class="wrapList end_gray_border">
                         <div class="wrapList">
-                            <p class="STital">關於場地</p>
+                            <p class="STital">關於產品</p>
                             <div class="wrapRow">
-                                <div class="wrapStart VH_R_padding10" >
+<!--                                 <div class="wrapStart VH_R_padding10" > -->
 
-                                    <p class="text">名稱</p>
-                                    <p class="text">捷運</p>
-                                    <p class="text">公車</p>
-                                </div>
+<!--                                     <p class="text">名稱</p> -->
+<!--                                     <p class="text">捷運</p> -->
+<!--                                     <p class="text">公車</p> -->
+<!--                                 </div> -->
                                 <div class="wrapStart">
                                     <p class="text">不鏽鋼</p>
                                     <p class="text">商品來源</p>
@@ -233,18 +233,18 @@
                     <!-- 分隔商品資訊框框 -->
                     <div class="wrapList end_gray_border">
                         <div class="wrapList">
-                            <p class="STital">交通資訊</p>
+                            <p class="STital">關於設計館</p>
                             <div class="wrapRow">
-                                <div class="wrapStart VH_R_padding10" >
+<!--                                 <div class="wrapStart VH_R_padding10" > -->
 
-                                    <p class="text">場地地址</p>
-                                    <p class="text">捷運</p>
-                                    <p class="text">公車</p>
-                                </div>
+<!--                                     <p class="text">場地地址</p> -->
+<!--                                     <p class="text">捷運</p> -->
+<!--                                     <p class="text">公車</p> -->
+<!--                                 </div> -->
                                 <div class="wrapStart">
-                                    <p class="text">不鏽鋼</p>
-                                    <p class="text">商品來源</p>
-                                    <p class="text">庫存</p>
+                                    <p class="text">OOXX設計館</p>
+                                    <p class="text">來自國家</p>
+                                    <p class="text">評價</p>
                                 </div>
                             </div>
                         </div>
@@ -257,12 +257,12 @@
                     <!-- 空白排版用 -->
 
                     <!-- 這邊是地圖 -->
-                    <div class="wrapList end_gray_border">
-                        <div class="wrapList">
-                            <p class="STital">MAP</p>
-                            <div class="map"></div>
-                        </div>
-                    </div>
+<!--                     <div class="wrapList end_gray_border"> -->
+<!--                         <div class="wrapList"> -->
+<!--                             <p class="STital">MAP</p> -->
+<!--                             <div class="map"></div> -->
+<!--                         </div> -->
+<!--                     </div> -->
                     <!-- 這邊是地圖 -->
 
 
@@ -281,8 +281,8 @@
 
          <!-- foot -->
           <div class="wrap" id="footBG">
-        <div class="wrap">MARY ME |錢不會消失 ,, 只是變成你喜歡的樣子</div>
-        <div> 場地|配件｜樣式｜婚禮小物｜新秘｜攝影</div>
+        <div class="wrap">MARY ME |錢不會消失 , 只是變成你喜歡的樣子</div>
+        <div> 場地｜配件｜樣式｜婚禮小物｜新秘｜攝影</div>
            </div>
     </div>
    
