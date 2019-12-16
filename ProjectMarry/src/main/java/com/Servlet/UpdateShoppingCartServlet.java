@@ -21,6 +21,8 @@ import com.Bean.OrderDetailProductsBean;
 import com.Bean.OrderDetailVenuesBean;
 import com.Service.ShoppingCartService;
 import com.Service.ShoppingCartServiceImpl;
+import com.Service.UserService;
+import com.Service.UserServiceImpl;
 
 @WebServlet("/UpdateShoppingCartServlet")
 public class UpdateShoppingCartServlet extends HttpServlet {
@@ -45,40 +47,35 @@ public class UpdateShoppingCartServlet extends HttpServlet {
 		}
 		
 		ShoppingCartService scs = new ShoppingCartServiceImpl(conn);
+		UserService us = new UserServiceImpl(conn);
+		Integer MemberId = us.getIdFromCookie(request);
+		Integer OrderId = scs.getShoppingCart(MemberId);
 		
 		String cmd = request.getParameter("cmd");
-		String memberID = request.getParameter("Id");//Cookie??需要再更改
-		String quantity = request.getParameter("item");//改
-		String vendor = request.getParameter("vendorID");
-		OrderDetailProductsBean odpb= new OrderDetailProductsBean ();
-		odpb.setProductID(request.getParameter("product")); 
-		OrderDetailVenuesBean odvb = request.getParameter("Venue");
+		String productID = request.getParameter("pId");
+//		OrderDetailVenuesBean odvb = request.getParameter("Venue");
 		
-		int memID = Integer.parseInt(memberID.trim());
-
 		if(cmd.equalsIgnoreCase("DELVENDOR")) {
-			int vendorID = Integer.parseInt(vendor.trim());
-			scs.deleteVendor(scs.getShoppingCart(memID), vendorID);
+			String VendorID = request.getParameter("vendorID");
+			int vendorID = Integer.parseInt(VendorID);
+			scs.deleteVendor(OrderId, vendorID);
 			RequestDispatcher rd = request.getRequestDispatcher("/ShoppingCart.jsp");
 			rd.forward(request, response);
 			return;
 		}else if(cmd.equalsIgnoreCase("DELSUPPLIER")) {
-			int supplierID = Integer.parseInt(item.trim());
-			scs.deleteSupplier(scs.getShoppingCart(memID), supplierID);
+			String supplierID = request.getParameter("supplierID");
+			int SupplierId = Integer.parseInt(supplierID);
+			scs.deleteSupplier(OrderId, SupplierId);
 			RequestDispatcher rd = request.getRequestDispatcher("/ShoppingCart.jsp");
 			rd.forward(request, response);
 			return;
 		}else if(cmd.equalsIgnoreCase("DELVENUE")) {
-			scs.deleteVenue(scs.getShoppingCart(memID), item);
+			scs.deleteVenue(OrderId, productID);
 			RequestDispatcher rd = request.getRequestDispatcher("/ShoppingCart.jsp");
 			rd.forward(request, response);
 			return;
 		}else if(cmd.equalsIgnoreCase("DELPRODUCT")) {
-			scs.deleteProduct(scs.getShoppingCart(memID), item);
-			RequestDispatcher rd = request.getRequestDispatcher("/ShoppingCart.jsp");
-			rd.forward(request, response);
-			return;
-
+			scs.deleteProduct(OrderId, productID);
 			RequestDispatcher rd = request.getRequestDispatcher("/ShoppingCart.jsp");
 			rd.forward(request, response);
 			return;
