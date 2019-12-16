@@ -431,9 +431,10 @@ p.text {
 			</table>
 			<br>
 			<div>
-				<input type="submit" value="確定修改資料" class="submitButton"
+				<input type="submit" value="確定修改資料" class="submitButton" onclick="alert('修改成功！')"
 					formmethod="POST" formaction="<c:url value='/UserUpdate'/>">
 			</div>
+			<br>
 			<div>
 				<a href="HTML/index.html"><input type="button" value="返回首頁"
 					id="Index" class="submitButton" /></a>

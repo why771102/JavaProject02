@@ -10,6 +10,7 @@ import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -70,6 +71,19 @@ public class UserUpdate extends HttpServlet {
 		//   HttpSession session = request.getSession();
 		//   response.sendRedirect(request.getContextPath() + "/HTML/UserDataUpdate.jsp");
 		//   return;
+			  
+//			  Cookie cookie = new Cookie("account",rub.getAccount());
+//			    cookie.setMaxAge(7 * 24 * 60 * 60);
+//			    response.addCookie(cookie);
+			    
+			  Cookie cookie = new Cookie("name",rub.getName());
+			    cookie.setMaxAge(7 * 24 * 60 * 60);
+			    response.addCookie(cookie);
+			    
+//			    cookie = new Cookie("memberId",rub.getId().toString());
+//			    cookie.setMaxAge(7 * 24 * 60 * 60);
+//			    response.addCookie(cookie);
+			    
 		   request.setAttribute("User", rub);
 		   RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserDataUpdate.jsp");   //JSP
 		   rd.forward(request, response);
@@ -79,7 +93,6 @@ public class UserUpdate extends HttpServlet {
 		  try {
 			conn.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
