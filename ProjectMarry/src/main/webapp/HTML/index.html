@@ -319,7 +319,7 @@
         .headright {
             width: 33%;
             float: left;
-            /*	border: solid 1px;*/
+            /*    border: solid 1px;*/
             margin-top: 4vh;
             text-align: center;
             /*    padding-right: 50px;*/
@@ -335,7 +335,7 @@
 
         .placelist {
             width: 1000px;
-            /*	border: 1px solid;*/
+            /*    border: 1px solid;*/
             padding-left: 12px;
             margin-top: 30px;
         }
@@ -347,10 +347,10 @@
             /*            border: 1px solid;*/
             margin-right: 10px;
             margin-bottom: 20px;
-            /* 	background-image: url(img/1.jpg); */
-            /* 	background-repeat: no-repeat; */
-            /* 	background-size: 300px 200px; */
-            /* 	background-position: top center; */
+            /*     background-image: url(img/1.jpg); */
+            /*     background-repeat: no-repeat; */
+            /*     background-size: 300px 200px; */
+            /*     background-position: top center; */
         }
 
         .placeimg {
@@ -397,15 +397,6 @@
             text-align: center;
             margin-bottom: 35px;
         }
-<<<<<<< HEAD
-        
-        .shoppingIcon{
-            width:200px;
-            margin:0 auto;
-/*             border: 1px solid; */
-            position: relative;
-/*
-=======
 
         .shoppingIcon {
             width: 220px;
@@ -413,15 +404,11 @@
             /*             border: 1px solid; */
             position: relative;
             /*
->>>>>>> a4203c86af88008a956e82e2196afae8e3ae034c
             background-image: url(img/shoppingcartIcon64.png);
             background-position: right center;
             background-repeat: no-repeat;
             background-size: 55px;
 */
-<<<<<<< HEAD
-            
-=======
 
         }
 
@@ -438,7 +425,6 @@
             position: relative;
             top: -40px;
             right: 8px;
->>>>>>> a4203c86af88008a956e82e2196afae8e3ae034c
         }
 
     </style>
@@ -465,11 +451,7 @@
                         <p><span id="name"></span>，你好！</p>
                     </div>
                     <div style="position: absolute;right: 0px;top:-3px;">
-<<<<<<< HEAD
-                        <a  href="../GetShoppingCartFromDBServlet"><img src="img/shoppingcartIcon64.png" width="50px" height="50px"></a>
-=======
                         <a href="../GetShoppingCartFromDBServlet"><img src="img/shoppingcartIcon64.png" width="50px" height="50px"><span class="redpoint" id="redpoint">20</span></a>
->>>>>>> a4203c86af88008a956e82e2196afae8e3ae034c
                     </div>
                     <div style="clear: both">
                         <a href="UserRegister.jsp" id="register">註冊</a> <a href="LogIn.jsp" id="login">登入</a> <a href="../UserLogOut" id="logout">登出</a> <a href="../UserDataQuery" id="Query">會員資料</a>
@@ -504,11 +486,7 @@
             </div>
         </div>
 
-<<<<<<< HEAD
-        <div class="placelist" style="margin-bottom: 200px;">
-=======
         <div class="placelist" style="margin-bottom: 70px;">
->>>>>>> a4203c86af88008a956e82e2196afae8e3ae034c
             <div class="placeTitle">
                 <h1>精選婚宴場館</h1>
             </div>
@@ -628,15 +606,6 @@
             $("#Query").hide();
             $("#redpoint").hide();
         } else {
-<<<<<<< HEAD
-        	for(i = 0; i < cookieArray.length; i++) {
-        		nameArrays = cookieArray[i].split("=");
-        		console.log(nameArrays);
-				if(nameArrays[0] == "name") {
-					$("#name").text(nameArrays[1]);
-				}
-        	}
-=======
             for (i = 0; i < cookieArray.length; i++) {
                 nameArrays = cookieArray[i].split("=");
                 console.log(nameArrays);
@@ -644,7 +613,6 @@
                     $("#name").text(nameArrays[1]);
                 }
             }
->>>>>>> a4203c86af88008a956e82e2196afae8e3ae034c
             $("#register").hide();
             $("#login").hide();
         }
@@ -766,17 +734,17 @@
             return false;
         });
 
-        //			鼠标移入box时清除定时器
+        //            鼠标移入box时清除定时器
         $(".box").mouseover(function() {
             clearInterval(timer);
         })
 
-        //			鼠标移出box时开始定时器
+        //            鼠标移出box时开始定时器
         $(".box").mouseleave(function() {
             timer = setInterval(nextimg, 4000);
         })
 
-        //			进入页面自动开始定时器
+        //            进入页面自动开始定时器
         timer = setInterval(nextimg, 4000);
 
     </script>
@@ -786,3 +754,4 @@
 </body>
 
 </html>
+

@@ -388,11 +388,10 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 		return price;
 	}
 
-	@Override
-	public double getProductPrice(ProductBean pb) {
-		double subtotal = pb.getQuantity() * pb.getUnitPrice() * pb.getDiscount();
-		return subtotal;
-	}
+//	public double getProductPrice(ProductBean pb) {
+//		double subtotal = pb.getQuantity() * pb.getUnitPrice() * pb.getDiscount();
+//		return subtotal;
+//	}
 
 	// 把購物車存進orders table status 從0改1
 	@Override
@@ -609,4 +608,8 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 		}
 		return odvb2;
 	}
+
+
+
+	
 }
