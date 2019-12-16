@@ -357,22 +357,22 @@
             width: auto;
             height: 200px;
 
-/*            border: 1px solid;*/
-            display:flex;
-            justify-content:center;
-            
+            /*            border: 1px solid;*/
+            display: flex;
+            justify-content: center;
+
         }
 
         .plassimg1 {
             /*            object-fit: fill;*/
             width: auto;
             height: 200px;
-/*            margin: auto;*/
-/*            display: block;*/
+            /*            margin: auto;*/
+            /*            display: block;*/
         }
 
         .placename {
-/*            border: 1px solid;*/
+            /*            border: 1px solid;*/
             height: 50px;
             /*            margin-bottom: 2px;*/
             margin-top: 1px;
@@ -381,7 +381,7 @@
         }
 
         .placedetail {
-/*            border: 1px solid;*/
+            /*            border: 1px solid;*/
             height: 50px;
             /*            margin-bottom: 0px;*/
             /*            position:absolute;*/
@@ -389,10 +389,26 @@
             text-align: left;
             font-size: 1em;
         }
-        .placeTitle{
-            text-align:center;
+
+        .placeTitle {
+            text-align: center;
             margin-bottom: 35px;
         }
+        
+        .shoppingIcon{
+            width:200px;
+            margin:0 auto;
+            border: 1px solid;
+            position: relative;
+/*
+            background-image: url(img/shoppingcartIcon64.png);
+            background-position: right center;
+            background-repeat: no-repeat;
+            background-size: 55px;
+*/
+            
+        }
+
     </style>
 </head>
 
@@ -412,11 +428,18 @@
 
             </div>
             <div class="headright">
-                <p>
-                    <span id="name"></span>，你好！
-                </p>
-                <a href="UserRegister.jsp" id="register">註冊</a> <a href="LogIn.jsp" id="login">登入</a> <a href="../UserLogOut" id="logout">登出</a> <a href="../UserDataQuery" id="Query">會員資料</a>
-
+                <div class="shoppingIcon">
+                    <div>
+                        <p><span id="name"></span>，你好！</p>
+                    </div>
+                    <div style="position: absolute;right: 0px;top:-3px;">
+                        <img src="img/shoppingcartIcon64.png" width="50px" height="50px" href="../GetShoppingCartFromDBServlet">
+                    </div>
+                    <div style="clear: both">
+                        <a href="UserRegister.jsp" id="register">註冊</a> <a href="LogIn.jsp" id="login">登入</a> <a href="../UserLogOut" id="logout">登出</a> <a href="../UserDataQuery" id="Query">會員資料</a>
+                    </div>
+                </div>
+                <!--<a href="UserRegister.jsp"><img src="img/shoppingcartIcon64.png" alt="購物車"></a> -->
             </div>
         </div>
         <!-- article -->
@@ -426,12 +449,12 @@
 
             <div class="list">
                 <ul>
-                    <li class="p7"><a href="#"><img src="img/1.jpg" alt="" /></a></li>
-                    <li class="p6"><a href="#"><img src="img/2.jpg" alt="" /></a></li>
-                    <li class="p5"><a href="#"><img src="img/3.jpg" alt="" /></a></li>
-                    <li class="p4"><a href="#"><img src="img/44.jpg" alt="" /></a></li>
-                    <li class="p3"><a href="#"><img src="img/55.jpg" alt="" /></a></li>
-                    <li class="p2"><a href="#"><img src="img/66.jpg" alt="" /></a></li>
+                    <li class="p7"><a href="#"><img class="img" src="img/1.jpg" alt="" /></a></li>
+                    <li class="p6"><a href="#"><img class="img" src="img/2.jpg" alt="" /></a></li>
+                    <li class="p5"><a href="#"><img class="img" src="img/3.jpg" alt="" /></a></li>
+                    <li class="p4"><a href="#"><img class="img" src="img/44.jpg" alt="" /></a></li>
+                    <li class="p3"><a href="#"><img class="img" src="img/55.jpg" alt="" /></a></li>
+                    <li class="p2"><a href="#"><img class="img" src="img/66.jpg" alt="" /></a></li>
                 </ul>
             </div>
 
@@ -446,7 +469,9 @@
         </div>
 
         <div class="placelist" style="margin-bottom: 200px;">
-            <div class="placeTitle"><h1>精選婚宴場館</h1></div>
+            <div class="placeTitle">
+                <h1>精選婚宴場館</h1>
+            </div>
             <div class="place">
                 <div class="placeimg">
                     <img class="plassimg1" src="img/1.jpg" alt="">
@@ -644,8 +669,11 @@
 
         //			进入页面自动开始定时器
         timer = setInterval(nextimg, 4000);
+
     </script>
 
 
 
-</body></html>
+</body>
+
+</html>
