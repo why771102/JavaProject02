@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: User
-=======
-Built-By: why77
->>>>>>> 1774addc692fe4886afb411f64637ff63fd4dd72
-Build-Jdk: 11.0.5
+Build-Jdk: 1.8.0_222-2-ojdkbuild
 Created-By: Maven Integration for Eclipse
 

@@ -43,7 +43,7 @@ public interface ShoppingCartService {
     public int getVenuePrice(int orderId, String productId);
 
     // 找出純粹婚禮小物的價格
-    public double getProductPrice(ProductBean pb);
+//    public double getProductPrice(ProductBean pb);
 
     // 把購物車存進order table status 從0改1
     public boolean updateStatus(OrderBean ob);
