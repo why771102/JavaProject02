@@ -28,7 +28,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
    	 int OD = 0;
    	 String sqlstr = "Select OrderID From Orders Where ID=? and Status = 0";
 //只撈status=0的 orderID 會撈少筆資料
-<<<<<<< HEAD
+
    	 try {
    		 PreparedStatement ps = conn.prepareStatement(sqlstr);
    		 ps.setInt(1, Id);
@@ -400,7 +400,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     @Override
     public boolean updateStatus(OrderBean ob) { // 會員下訂單????
    	 String sql = " update Orders set Status=? where ID=? and OrderID=?";
-=======
+
 		try {
 			PreparedStatement ps = conn.prepareStatement(sqlstr);
 			ps.setInt(1, Id);
@@ -775,8 +775,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 	// 把購物車存進orders table status 從0改1
 	@Override
 	public boolean updateStatus(OrderBean ob) { // 會員下訂單????
-		String sql = " update Orders set Status=? where ID=? and OrderID=?";
->>>>>>> 6dbcec7add8bc9619aed7d8a302dd119a43d3972
+		String sql = " update Orders set Status=? where ID=? and OrderID=?";>>>>>>> 6dbcec7add8bc9619aed7d8a302dd119a43d3972
 //String sql = “UPDATE Orders SET Status = 1 where ID=? and OrderID=?”;
    	 try {
    		 PreparedStatement state = conn.prepareStatement(sql);
@@ -897,7 +896,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 //   state.setInt(4, pb.getUnitPrice());
 //
 //   state.setDouble(5, pb.getDiscount());
-<<<<<<< HEAD
+
 //        	state.setString(7, memo);
    		 state.execute();
    		 state.close();
@@ -991,9 +990,6 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     }
 
 
-
-    
-=======
 //            state.setString(7, memo);
 			state.execute();
 			state.close();
@@ -1087,10 +1083,4 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 	}
 
 
-
-	
->>>>>>> 6dbcec7add8bc9619aed7d8a302dd119a43d3972
 }
-
-
-
