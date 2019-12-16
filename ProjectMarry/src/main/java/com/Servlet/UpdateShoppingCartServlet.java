@@ -21,6 +21,8 @@ import com.Bean.OrderDetailProductsBean;
 import com.Bean.OrderDetailVenuesBean;
 import com.Service.ShoppingCartService;
 import com.Service.ShoppingCartServiceImpl;
+import com.Service.UserService;
+import com.Service.UserServiceImpl;
 
 @WebServlet("/UpdateShoppingCartServlet")
 public class UpdateShoppingCartServlet extends HttpServlet {
@@ -32,57 +34,59 @@ public class UpdateShoppingCartServlet extends HttpServlet {
         
     }
 
-
-
-
 	protected void doGet(HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException {
 		init();
-		request.setCharacterEncoding("UFT-8");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		session = request.getSession(false);
 		if(session == null) {
 			response.sendRedirect(getServletContext().getContextPath() + "/LogIn.jsp");
 		}
 		
 		ShoppingCartService scs = new ShoppingCartServiceImpl(conn);
+		UserService us = new UserServiceImpl(conn);
+		Integer MemberId = us.getIdFromCookie(request);
+		Integer OrderId = scs.getShoppingCart(MemberId);
 		
 		String cmd = request.getParameter("cmd");
-		String memberID = request.getParameter("Id");//Cookie??需要再更改
-		String quantity = request.getParameter("item");//改
-		String vendor = request.getParameter("vendorID");
-		OrderDetailProductsBean odpb= new OrderDetailProductsBean ();
-		odpb.setProductID(request.getParameter("product")); 
-		OrderDetailVenuesBean odvb = request.getParameter("Venue");
+		System.out.println(cmd);
+		String vID = request.getParameter("vId");
+		String productID = request.getParameter("pId");
+//		OrderDetailVenuesBean odvb = request.getParameter("Venue");
 		
-		int memID = Integer.parseInt(memberID.trim());
-
 		if(cmd.equalsIgnoreCase("DELVENDOR")) {
-			int vendorID = Integer.parseInt(vendor.trim());
-			scs.deleteVendor(scs.getShoppingCart(memID), vendorID);
-			RequestDispatcher rd = request.getRequestDispatcher("/ShoppingCart.jsp");
-			rd.forward(request, response);
-			return;
+			String VendorID = request.getParameter("vendorID");
+			int vendorID = Integer.parseInt(VendorID);
+			scs.deleteVendor(OrderId, vendorID);
+//			RequestDispatcher rd = request.getRequestDispatcher("/GetShoppingCartFromDBServlet");
+//			rd.forward(request, response);
+//			return;
 		}else if(cmd.equalsIgnoreCase("DELSUPPLIER")) {
-			int supplierID = Integer.parseInt(item.trim());
-			scs.deleteSupplier(scs.getShoppingCart(memID), supplierID);
-			RequestDispatcher rd = request.getRequestDispatcher("/ShoppingCart.jsp");
-			rd.forward(request, response);
-			return;
+			String supplierID = request.getParameter("supplierID");
+			int SupplierId = Integer.parseInt(supplierID);
+			System.out.println(SupplierId);
+			scs.deleteSupplier(OrderId, SupplierId);
+//			RequestDispatcher rd = request.getRequestDispatcher("/GetShoppingCartFromDBServlet");
+//			rd.forward(request, response);
+//			return;
 		}else if(cmd.equalsIgnoreCase("DELVENUE")) {
-			scs.deleteVenue(scs.getShoppingCart(memID), item);
-			RequestDispatcher rd = request.getRequestDispatcher("/ShoppingCart.jsp");
-			rd.forward(request, response);
-			return;
+			scs.deleteVenue(OrderId, vID);
+//			RequestDispatcher rd = request.getRequestDispatcher("/GetShoppingCartFromDBServlet");
+//			rd.forward(request, response);
+//			return;
 		}else if(cmd.equalsIgnoreCase("DELPRODUCT")) {
-			scs.deleteProduct(scs.getShoppingCart(memID), item);
-			RequestDispatcher rd = request.getRequestDispatcher("/ShoppingCart.jsp");
-			rd.forward(request, response);
-			return;
-
-			RequestDispatcher rd = request.getRequestDispatcher("/ShoppingCart.jsp");
-			rd.forward(request, response);
-			return;
+			scs.deleteProduct(OrderId, productID);
+			System.out.println(OrderId);
+			System.out.println(productID);
+			System.out.println("THIS IS DELETE PRODUCT");
+//			RequestDispatcher rd = request.getRequestDispatcher("/GetShoppingCartFromDBServlet");
+//			rd.forward(request, response);
+//			return;
 		}
+		RequestDispatcher rd = request.getRequestDispatcher("/GetShoppingCartFromDBServlet");
+		rd.forward(request, response);
+		return;
 	}
 
 	

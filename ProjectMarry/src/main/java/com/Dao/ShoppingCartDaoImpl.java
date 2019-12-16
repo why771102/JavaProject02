@@ -49,8 +49,9 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 	public JSONArray showProduct(int orderId) {
 		JSONObject jo = new JSONObject();
 		JSONArray ja = new JSONArray();
-		String sqlstr = "Select * From OrderDetailProducts as odp Full Outer Join "
-				+ "Products as p on p.ProductID = odp.ProductID Where OrderID= ? order by PSupplierID";
+		String sqlstr ="Select * From OrderDetailProducts as odp Full Outer Join Products as p "
+				+ "on p.ProductID = odp.ProductID left join ProductSupplier as ps "
+				+ "on p.PSupplierID = ps.PSupplierID Where OrderID= ? Order by ps.PSupplierID";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sqlstr);
 			ps.setInt(1, orderId);
@@ -62,12 +63,14 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 				Integer unitprice = rs.getInt("UnitPrice");
 				Float discount = rs.getFloat("Discount");
 				String pSupplier = rs.getString("PSupplierID");
+				String SupplierName = rs.getString("PSupplierName");
 				jo.put("ProductID", productId);
 				jo.put("ProductName", productName);
 				jo.put("Quantity", Qty);
 				jo.put("UnitPrice", unitprice);
 				jo.put("Discount", discount);
 				jo.put("pSupplierId", pSupplier);
+				jo.put("PSupplierName", SupplierName);
 				ja.put(jo);
 			}
 			rs.close();
@@ -83,8 +86,9 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 	public JSONArray showVenue(int orderId) {
 		JSONObject jo = new JSONObject();
 		JSONArray ja = new JSONArray();
-		String sqlstr = "Select * From OrderDetailVenues as odv left join Venue as v"
-				+ " on odv.ProductID = v.ProductID Where OrderID= ?";
+		String sqlstr = "Select * From OrderDetailVenues as odv left join Venue as v "
+				+ "on odv.ProductID = v.ProductID left join VenueVendor as vv "
+				+ "on v.VendorID = vv.VendorID Where OrderID= ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sqlstr);
 			ps.setInt(1, orderId);
@@ -97,7 +101,8 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 				String location = rs.getString("Location");
 				String hall = rs.getString("Hall");
 				Integer InOutdoor = rs.getInt("InOutdoor");
-//				String vendor = rs.getString("Vendor");
+				Integer venueId = rs.getInt("VendorID");
+				String vendor = rs.getString("Vendor");
 				if (startTime == 0) {
 					Integer lunchPrice = rs.getInt("LunchPrice");
 					jo.put("Price", lunchPrice);
@@ -112,7 +117,8 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 				jo.put("Location", location);
 				jo.put("Hall", hall);
 				jo.put("InOutdoor", InOutdoor);
-//				jo.put("vendor", vendor);
+				jo.put("VendorID", venueId);
+				jo.put("Vendor", vendor);
 				ja.put(jo);
 			}
 			rs.close();

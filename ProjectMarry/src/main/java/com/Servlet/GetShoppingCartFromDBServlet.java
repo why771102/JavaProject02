@@ -35,10 +35,12 @@ public class GetShoppingCartFromDBServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		init();
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
+		
+		System.out.println("getSC");
 
 		//根據員工帳號尋找相對應ID
 		UserService us = new UserServiceImpl(conn);
@@ -80,7 +82,7 @@ public class GetShoppingCartFromDBServlet extends HttpServlet {
 							}
 						}
 						request.setAttribute("venueArray", venue);
-						System.out.println(venue);
+//						System.out.println(venue);
 					} else {
 						// 沒有場地商品不做動作
 					}
