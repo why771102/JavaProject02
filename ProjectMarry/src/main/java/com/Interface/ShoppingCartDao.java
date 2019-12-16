@@ -1,3 +1,20 @@
+<<<<<<< HEAD
+=======
+package com.Interface;
+
+import java.util.List;
+
+import org.json.JSONObject;
+
+import com.Bean.OrderBean;
+import com.Bean.OrderDetailProductsBean;
+import com.Bean.OrderDetailVenuesBean;
+import com.Bean.ProductBean;
+
+public interface ShoppingCartDao {
+	// 查詢此member 在order table裡面status = 0 是否有東西 返回orderID
+	public int getShoppingCart(int Id);
+>>>>>>> 1774addc692fe4886afb411f64637ff63fd4dd72
 
 package com.Interface;
 

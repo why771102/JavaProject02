@@ -21,6 +21,7 @@ import javax.sql.DataSource;
 
 import com.Bean.UserBean;
 import com.Dao.UserDaoImpl;
+import com.Service.UserServiceImpl;
 
 
 @WebServlet("/UserLogin")
@@ -38,7 +39,7 @@ public class UserLogin extends HttpServlet {
 		init();
 		HttpSession session;
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("txex/html;charset=UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		
 		
 		String Account = request.getParameter("Account");
@@ -50,7 +51,7 @@ public class UserLogin extends HttpServlet {
 		ub.setPwd(Pwd);
 
 		
-		UserDaoImpl udi = new UserDaoImpl(conn);
+		UserServiceImpl udi = new UserServiceImpl(conn);
 		
 		Map<String, String> errorMsgMap = new HashMap<String, String>();
 		
@@ -76,7 +77,7 @@ public class UserLogin extends HttpServlet {
 			session = request.getSession();
 			session.setAttribute("user", rub);
 			response.sendRedirect(request.getContextPath() + "/HTML/UserLogin.jsp");
-			return;
+//			return;   試試看不return，最後加close
 		}else {
 			//成功登入，導向登入後頁面
 			Cookie cookie = new Cookie("account",ub.getAccount());
@@ -87,14 +88,20 @@ public class UserLogin extends HttpServlet {
 		    cookie.setMaxAge(7 * 24 * 60 * 60);
 		    response.addCookie(cookie);
 		    
-		    cookie = new Cookie("loginStatus","1");
+		    cookie = new Cookie("memberId",ub.getId().toString());
 		    cookie.setMaxAge(7 * 24 * 60 * 60);
 		    response.addCookie(cookie);
 		    
 			request.setAttribute("user", rub);
 			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserLoginSucess.jsp");   //JSP
 			rd.forward(request, response);
-			
+		}
+		
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}

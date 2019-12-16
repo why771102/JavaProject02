@@ -20,6 +20,7 @@ import javax.sql.DataSource;
 
 import com.Bean.UserBean;
 import com.Dao.UserDaoImpl;
+import com.Service.UserServiceImpl;
 
 @WebServlet("/UserRegister")
 public class UserRegister extends HttpServlet {
@@ -36,7 +37,7 @@ public class UserRegister extends HttpServlet {
 		HttpSession session;
 		init();
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("txex/html;charset=UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 
 		String Name = request.getParameter("Name");
 		String Account = request.getParameter("Account");
@@ -95,7 +96,8 @@ public class UserRegister extends HttpServlet {
 			errorMsgMap.put("AddressEmptyError", "住址欄位不得空白！");
 		}
 
-		UserDaoImpl udi = new UserDaoImpl(conn);
+		 UserServiceImpl udi = new UserServiceImpl(conn);
+		
 		if (udi.accountExists(ub) == true) {
 			errorMsgMap.put("AccountEmptyError2", "帳號已存在!");
 		}
@@ -108,6 +110,12 @@ public class UserRegister extends HttpServlet {
 			request.setAttribute("errorMsgMap", errorMsgMap);
 			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserRegister.jsp"); // JSP
 			rd.forward(request, response);
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return;
 		}
 
@@ -126,11 +134,25 @@ public class UserRegister extends HttpServlet {
 			System.out.println(request.getContextPath() + "/HTML/UserRegisterSucess.jsp");
 			response.sendRedirect(request.getContextPath() + "/HTML/UserRegisterSucess.jsp");
 
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			return;
 //			request.setAttribute("user", rub);
 //			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserRegisterSucess.jsp");   //JSP
 //			rd.forward(request, response);
 
+		}
+		
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}

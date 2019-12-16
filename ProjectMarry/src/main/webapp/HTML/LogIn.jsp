@@ -398,8 +398,9 @@ p.text {
 				value="${param.Account}" />${errorMsgMap.noAccount} <br> <span>密碼:</span>
 
 			<input type="password" id="pwd" name="Pwd" value="${param.Pwd}" />${errorMsgMap.PwdNoMatch}
-
+			
 			<div>
+			<br>
 				<input type="submit" value="登入" class="submitButton">
 			</div>
 		</form>
