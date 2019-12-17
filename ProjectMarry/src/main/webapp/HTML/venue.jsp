@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="<c:url value='/CSS/combine.css'/>">
 
-<title>Prodoct</title>
+<title>Venue</title>
 </head>
 <body>
 
@@ -48,32 +48,32 @@
 
                     <!-- 圖片輪播  style 跟javascript 有關 不能改 -->
                     <div class="wrap" id="pictureBG">
-                        <div class="w3-content wrap One_width vh_height100" >
+                        <div class="w3-content wrap One_width vh_height100" id="bigpic" >
                              
-                            <img class="mySlides P_Bimg" src="a.jpg" style=" display:none">
-                            <img class="mySlides P_Bimg" src="b.jpg">
-                            <img class="mySlides P_Bimg" src="c.png" style="display:none">
-                            <img class="mySlides P_Bimg" src="c.png" style="display:none">
+                            <img class="mySlides P_Bimg" src="img/1.jpg" style=" display:none">
+                            <img class="mySlides P_Bimg" src="img/2.jpg">
+                            <img class="mySlides P_Bimg" src="img/3.jpg" style="display:none">
+                            <img class="mySlides P_Bimg" src="img/44.jpg" style="display:none">
 
                             <!-- small picture -->
-                            <div class="wrapRow" style="height: 15vh; width: 80%; padding: 2vh;">
+                            <div class="wrapRow" style="height: 15vh; width: 80%; padding: 2vh; "id="smallpic">
                                 <div class="w3-col s4 w3cpicture " >
-                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="a.jpg"
+                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="img/1.jpg"
                                         style="  cursor:pointer" onclick="currentDiv(1)">
                                 </div>
 
                                 <div class="w3-col s4 w3cpicture ">
-                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="b.jpg"
+                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="img/2.jpg"
                                         style="  cursor:pointer" onclick="currentDiv(2)">
                                 </div>
 
                                 <div class="w3-col s4 w3cpicture" >
-                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100 " src="c.png"
+                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100 " src="img/3.jpg"
                                         style="   cursor:pointer" onclick="currentDiv(3)">
                                 </div>
 
                                 <div class="w3-col s4  w3cpicture " >
-                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="c.png"
+                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="img/4.jpg"
                                         style="  cursor:pointer" onclick="currentDiv(4)">
                                 </div>
 
@@ -146,54 +146,60 @@
                 </div>
 
                 <!-- right  -->
-                <div class="wrapStart " id="product_right">
+              <div class="wrapStart " id="product_right">
+                    <form action="../PutItemInShoppingCartServlet" method="post" class="fullwidth" id="VenueForm">
+                        <div class="wrapList">
+                            <p class="tital ">paul a</p>
+                            <input type="hidden" name="vendor" value="paul">
+                            <input type="hidden" name="Hall" value="a">
+                            <input type="hidden" name="Price" value="600">
+                            <input type="hidden" name="ProductID" value="V1">
 
-                    <div class="wrapList">
-                        <p class="tital "> 場地名稱</p>
-                    </div>
-                    <div class="wrapList">
-                        <p class="tital">ＮＴ＄10000</p>
-                    </div>
-                    <form action="" method="post"  class="fullwidth">
-                    <div class="wrapList "> <label for="">場地樣式
-                            <select class="product_sel" name="" id="">
-                                <option value="Taipei" selected="" disabled="">請選擇樣式</option>
-                                　<option value="Taoyuan">A</option>
-                                　<option value="Taoyuan">B</option>
-                                　<option value="Hsinchu">C</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div class="wrapList "> <label for="">桌數</label></div>
+                            <input type="hidden" name="VendorID" value="1">
+                        </div>
+                        <div class="wrapList">
+                            <p class="tital">NT$600</p>
+                        </div>
 
 
-                    <div class="wrapList"> <select class="product_sel" name="" id="" value="商品樣式">
-                            <option value="Taipei" selected="" disabled="">桌數</option>
-                            <option value="Taoyuan">1</option>
-                            　<option value="Taoyuan">2</option>
-                            　<option value="Hsinchu">3</option>
-                        </select>
-                    </div>
-                    <div class="wrapList "> <label for="">選擇日期</label></div>
-                    <div class="wrapRowBtw  LR_samll_padding">
-                        <div >Date: <input type="text" id="datepicker_onlick"></div>
-                        <div>Time: <input type="text" id="Time_onlick"></div>
+                        <div class="wrapList "> <label for="">桌數</label></div>
+
+
+                        <div class="wrapList">
+                            <input  class=" fullwidth" type="number" max="100" min="0" name="Table" id="table" required>
+                        </div>
+                        <div class=""> <br></div>
+                        <div class="wrapList"> <label for="">選擇日期</label></div>
+                        <div class="wrapRowBtw  LR_samll_padding small_padding">
+                            <div class="width40">Date: <input style="width: 100%;" type="text" name="Date" id="datepicker_onlick"></div>
+                            
+                        </div>
+                    
+                        <div class=" fullwidth LR_samll_padding small_padding">
+                           Time:
+                        <select class="product_sel" name="Time" id="time"  onclick="c()">
+                                    <option value="" selected="" disabled="">請選擇時段</option>
+                                    　 <option value="0">早場</option>
+                                    　 <option value="1">晚場</option>
+
+                                </select>
+                            </label>
+                        </div>
+
+                        <div class="wrapList ">
+                            <br>
+
+
+                            <div class="submitButton"
+                                onclick="Check_Submit_Form()">
+
+                                <p>加入購物車</p>
+                            </div>
 
 
 
-                    </div>
-
-
-                    <div class="wrapList ">
-                        <br>
-                       
-                        <a href="" type="submit" > 
-                            <div class="submitButton" > 加入購物車</div>
-                        </a>
-                  
-
-                    </div>
-                </form>
+                        </div>
+                    </form>
                     <div class="wrapList end_gray_border ">
                         <p>付款後，從備貨到寄出商品為 2 個工作天。（不包含假日）
                             設計館提供統一發票或免用統一發票收據</p>
@@ -208,16 +214,16 @@
                         <div class="wrapList">
                             <p class="STital">關於場地</p>
                             <div class="wrapRow">
-                                <div class="wrapStart VH_R_padding10" >
+                                <div class="wrapStart VH_R_padding15" >
 
-                                    <p class="text">名稱</p>
-                                    <p class="text">捷運</p>
-                                    <p class="text">公車</p>
+                                    <p class="text">飯店名稱</p>
+                                    <p class="text">星級</p>
+                                    <p class="text">樓層</p>
                                 </div>
                                 <div class="wrapStart">
-                                    <p class="text">不鏽鋼</p>
-                                    <p class="text">商品來源</p>
-                                    <p class="text">庫存</p>
+                                    <p class="text">倫倫飯店</p>
+                                    <p class="text">5</p>
+                                    <p class="text">2F</p>
                                 </div>
                             </div>
                         </div>
@@ -235,16 +241,16 @@
                         <div class="wrapList">
                             <p class="STital">交通資訊</p>
                             <div class="wrapRow">
-                                <div class="wrapStart VH_R_padding10" >
+                                <div class="wrapStart VH_R_padding15" >
 
                                     <p class="text">場地地址</p>
                                     <p class="text">捷運</p>
                                     <p class="text">公車</p>
                                 </div>
                                 <div class="wrapStart">
-                                    <p class="text">不鏽鋼</p>
-                                    <p class="text">商品來源</p>
-                                    <p class="text">庫存</p>
+                                    <p class="text">台北市大安區</p>
+                                    <p class="text">捷運大安站</p>
+                                    <p class="text">258</p>
                                 </div>
                             </div>
                         </div>
@@ -324,6 +330,53 @@
             dots[slideIndex - 1].className += " w3-opacity-off";
         }
         /*輪播圖 */
+        /*檢查check Form*/
+           function Check_Submit_Form() {
+        	
+        	cookieArray = document.cookie.split(";");
+            console.log(cookieArray);
+            if (cookieArray == "") {
+                   alert("請先登入!");
+                   window.location.replace("LogIn.jsp");
+             }else{
+            	 var txt = "";
+                 if ( $("#time").val() == null){
+                     txt += "請選擇時段\n";
+                 }
+             
+                 if ( $("#datepicker_onlick").val() == ""){
+                     txt += "請選擇日期\n";
+                 }
+                 if ( $("#table").val() == ""){
+                     txt += "請選擇桌數\n";
+                 }
+                 if(txt ==""){
+                     $("#VenueForm").submit();
+                 }else{
+                     alert(txt);
+                 }
+             }
+        	   
+        }
+
+           /*塞圖進去輪播圖 */
+          function putpicture(){
+           for(let i =1 ; i<=img.length; i++){
+               if(i==1){
+                   $(function () {
+               $("#bigpic").append("<img class='mySlides P_Bimg'src='"+img[i]+"' > ");
+           });
+               }
+           $(function () {
+               $("#bigpic").append("<img class='mySlides P_Bimg'src='"+img[i]+"' style='display:none'> ");
+           });
+
+           $(function () {
+               $("#smallpic").append("<div class='w3-col s4 w3cpicture '> <img class='demo w3-opacity w3-hover-opacity-off height_width100' src='a.jpg' style=' cursor:pointer' onclick='currentDiv("+i+")'></div>");
+           });
+       }
+   }
+       /*塞圖進輪播圖 */
 
     </script>
 
