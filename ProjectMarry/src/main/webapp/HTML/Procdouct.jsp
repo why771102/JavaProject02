@@ -18,7 +18,10 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="<c:url value='/CSS/combine.css'/>">
 
-<title>Product</title>
+
+ 
+
+    <title>Product</title>
 </head>
 <body>
 
@@ -120,79 +123,50 @@
                     <!-- 空白排版用 -->
 
 
-                    <!-- 預定時間 -->
-<!--                     <div class="wrapList end_gray_border"> -->
 
-<!--                         <div class="wrapList height100" > -->
-<!--                             <p class="STital">可預訂時間</p> -->
-
-<!--                             <div class="wrapRow One_width" > -->
-<!--                                 <div class="wrap One_width" > -->
-
-<!--                                     <div class="wrapRowStart One_width"  id="datepicker_show"></div> -->
-<!--                                     <iframe src="calendar.html" width="100%" height="40" frameborder="0" scrolling="no"></iframe> -->
-
-
-
-<!--                                 </div> -->
-
-
-
-<!--                             </div> -->
-<!--                         </div> -->
-
-<!--                     </div> -->
-                    <!-- 預定時間 -->
                 </div>
 
                 <!-- right  -->
                 <div class="wrapStart " id="product_right">
-
+                    <form action="../PutItemInShoppingCartServlet" method="post" class="fullwidth" id="ProductForm">
                     <div class="wrapList">
-                        <p class="tital "> 產品名稱</p>
+                        <p class="tital ">cake</p>
                     </div>
                     <div class="wrapList">
-                        <p class="tital">ＮＴ＄10000</p>
+                        <p class="tital" >NT$100</p>
                     </div>
-                    <form action="" method="post"  class="fullwidth">
+                            <input type="hidden" name="PSupplierID" value="1">
+                            <input type="hidden" name="productName" value="cake">
+                            <input type="hidden" name="Price" value="100">
+                            <input type="hidden" name="ProductID" value="P1">
+                            <input type="hidden" name="Discount" value="0">
+                  <!-- 之後要加product 欄位 type nvarchar  -->
                     <div class="wrapList "> <label for="">產品樣式
-                            <select class="product_sel" name="" id="">
-                                <option value="Taipei" selected="" disabled="">請選擇樣式</option>
-                                　<option value="Taoyuan">A</option>
-                                　<option value="Taoyuan">B</option>
-                                　<option value="Hsinchu">C</option>
+                            <select class="product_sel" name="Type" id="type" value="">
+                                <option value="" selected="" disabled="">請選擇樣式</option>
+                                　<option value="A">巧克力</option>
+                                　<option value="B">草莓</option>
+                                　<option value="C">牛奶</option>
                             </select>
                         </label>
                     </div>
                     <div class="wrapList "> <label for="">數量</label></div>
 
 
-                    <div class="wrapList"> <select class="product_sel" name="" id="" value="商品樣式">
-                            <option value="Taipei" selected="" disabled="">數量</option>
-                            <option value="Taoyuan">1</option>
-                            　<option value="Taoyuan">2</option>
-                            　<option value="Hsinchu">3</option>
+                    <div class="wrapList"> <select class="product_sel" name="Quantity" id="quantity" value="">
+                            <option value="" selected="" disabled="">數量</option>
+                            <option value="1">1</option>
+                            　<option value="2">2</option>
+                            　<option value="3">3</option>
                         </select>
                     </div>
-<!--                     <div class="wrapList "> <label for="">選擇日期</label></div> -->
-<!--                     <div class="wrapRowBtw  LR_samll_padding"> -->
-<!--                         <div >Date: <input type="text" id="datepicker_onlick"></div> -->
-<!--                         <div>Time: <input type="text" id="Time_onlick"></div> -->
 
-
-
-<!--                     </div> -->
 
 
                     <div class="wrapList ">
                         <br>
                        
-                        <a href="" type="submit" > 
-                            <div class="submitButton" > 加入購物車</div>
-                        </a>
-                  
-
-                    </div>
+                        <div class="submitButton" onclick="Check_Submit_Form()">加入購物車</div>
                 </form>
                     <div class="wrapList end_gray_border ">
                         <p>付款後，從備貨到寄出商品為 2 個工作天。（不包含假日）
@@ -235,12 +209,7 @@
                         <div class="wrapList">
                             <p class="STital">關於設計館</p>
                             <div class="wrapRow">
-<!--                                 <div class="wrapStart VH_R_padding10" > -->
 
-<!--                                     <p class="text">場地地址</p> -->
-<!--                                     <p class="text">捷運</p> -->
-<!--                                     <p class="text">公車</p> -->
-<!--                                 </div> -->
                                 <div class="wrapStart">
                                     <p class="text">OOXX設計館</p>
                                     <p class="text">來自國家</p>
@@ -291,18 +260,7 @@
    
     <script>
 
-        /*日曆 */
-        $(function () {
-            $("#datepicker_show").datepicker({
-                numberOfMonths: 2,
-                showButtonPanel: true
-            });
-        });
-
-        $(function () {
-            $("#datepicker_onlick").datepicker();
-        });
-        /*日曆 */
+       
         /*輪播圖 */
         function currentDiv(n) {
             showDivs(slideIndex = n);
@@ -324,6 +282,36 @@
             dots[slideIndex - 1].className += " w3-opacity-off";
         }
         /*輪播圖 */
+        /*確認form */
+        function Check_Submit_Form() {
+            cookieArray = document.cookie.split(";");
+            console.log(cookieArray);
+            if (cookieArray == "") {
+                alert("請先登入!");
+                window.location.replace("LogIn.jsp");
+            }else{
+            	   var txt = "";
+                   if ( $("#type").val() == null){
+                       txt += "請選擇樣式\n";
+                   }
+               
+                   if ( $("#quantity").val() == null){
+                       txt += "請選擇數量\n";
+                   }
+                 
+                   if(txt ==""){
+                       $("#ProductForm").submit();
+                   }else{
+                       alert(txt);
+                   }
+            }
+
+
+         
+               
+        }
+
+
 
     </script>
 
