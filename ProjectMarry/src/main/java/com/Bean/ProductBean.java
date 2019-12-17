@@ -8,13 +8,14 @@ public class ProductBean {
 	private Integer Quantity;
 	private Integer ProductStatus;
 	private Double Discount;
+	private String Depiction;
 	
 	public ProductBean() {
 		
 	}
 	
 	public ProductBean(String ProductID, String ProductName, Integer UnitPrice,
-			Integer PSupplierID, Integer Quantity, Integer ProductStatus, Double Discount) {
+			Integer PSupplierID, Integer Quantity, Integer ProductStatus, Double Discount, String Depiction) {
 		this.ProductID = ProductID;
 		this.ProductName = ProductName;
 		this.UnitPrice = UnitPrice;
@@ -22,8 +23,17 @@ public class ProductBean {
 		this.Quantity = Quantity;
 		this.ProductStatus = ProductStatus;
 		this.Discount = Discount;
+		this.Depiction = Depiction;
 	}
 	
+	public String getDepiction() {
+		return Depiction;
+	}
+
+	public void setDepiction(String depiction) {
+		Depiction = depiction;
+	}
+
 	public Double getDiscount() {
 		return Discount;
 	}

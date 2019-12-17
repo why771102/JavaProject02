@@ -28,7 +28,7 @@ public class ProductDaoImpl implements ProductDao {
 			ResultSet rs = stmt.executeQuery();
 			List<ProductBean> pbl = new ArrayList<ProductBean>();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				if(rs.getInt("productStatus") == 1) {
 					ProductBean pb = new ProductBean();
 					pb.setProductID(rs.getString("ProductID"));
@@ -38,6 +38,7 @@ public class ProductDaoImpl implements ProductDao {
 					pb.setQuantity(rs.getInt("Quantity"));
 					pb.setProductStatus(rs.getInt("ProductStatus"));
 					pb.setDiscount(rs.getDouble("Discount"));
+					pb.setDepiction(rs.getString("Depiction"));
 					pbl.add(pb);
 				}
 			}
@@ -71,6 +72,7 @@ public class ProductDaoImpl implements ProductDao {
 				npb.setQuantity(rs.getInt("Quantity"));
 				npb.setProductStatus(rs.getInt("ProductStatus"));
 				npb.setDiscount(rs.getDouble("Discount"));
+				npb.setDepiction(rs.getString("Depiction"));
 			}
 			
 			return npb;			
