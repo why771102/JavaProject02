@@ -126,12 +126,12 @@
 
                 <!-- right  -->
                 <div class="wrapStart " id="product_right">
-                    <form action="../PutItemInShoppingCartServlet" method="post" class="fullwidth" id="ProductForm">
+                    <form action="PutItemInShoppingCartServlet" method="post" class="fullwidth" id="ProductForm">
                     <div class="wrapList">
                         <p class="tital ">${PB.productName }</p>
                     </div>
                     <div class="wrapList">
-                        <p class="tital" >NT$${PB.unitPrice}</p>
+                        <p class="tital" >NT$ ${PB.unitPrice }</p>
                     </div>
                             <input type="hidden" name="PSupplierID" value="1">
                             <input type="hidden" name="productName" value="cake">
@@ -187,7 +187,7 @@
 <!--                                     <p class="text">公車</p> -->
 <!--                                 </div> -->
                                 <div class="wrapStart">
-                                    <p class="text">${PB.depiction}</p>
+                                    <p class="text">${ PB.depiction }</p>
                                 </div>
                             </div>
                         </div>

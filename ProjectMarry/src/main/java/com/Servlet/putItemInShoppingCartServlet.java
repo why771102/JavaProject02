@@ -2,49 +2,24 @@
 package com.Servlet;
 
 import java.io.IOException;
-
 import java.sql.Connection;
-
 import java.sql.SQLException;
 
-import java.util.Date;
-
 import javax.naming.Context;
-
 import javax.naming.InitialContext;
-
 import javax.naming.NamingException;
-
 import javax.servlet.RequestDispatcher;
-
 import javax.servlet.ServletException;
-
 import javax.servlet.annotation.WebServlet;
-
-import javax.servlet.http.Cookie;
-
 import javax.servlet.http.HttpServlet;
-
 import javax.servlet.http.HttpServletRequest;
-
 import javax.servlet.http.HttpServletResponse;
-
 import javax.servlet.http.HttpSession;
-
 import javax.sql.DataSource;
 
 import com.Bean.OrderBean;
-
 import com.Bean.OrderDetailProductsBean;
-
 import com.Bean.OrderDetailVenuesBean;
-
-import com.Bean.ProductBean;
-
-import com.Bean.UserBean;
-
-import com.Bean.VenueBean;
-
 import com.Service.ShoppingCartServiceImpl;
 import com.Service.UserService;
 import com.Service.UserServiceImpl;
@@ -341,3 +316,5 @@ public class putItemInShoppingCartServlet extends HttpServlet {
 	}
 
 }
+
+
