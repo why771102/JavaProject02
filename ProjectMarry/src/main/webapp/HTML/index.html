@@ -527,8 +527,6 @@ a {
 			</div>
 		</div>
 
-		<div id="demo"></div>
-
 
 
 		<!-- foot -->
@@ -561,45 +559,22 @@ a {
 			$("#login").hide();
 		}
 
-		// 		var xhttp = new XMLHttpRequest();
-
-		// 		xhttp.onreadystatechange = function() {
-		// 			if (xhttp.readyState == 4 && xhttp.status == 200) {
-		// 				document.getElementById("demo").innerHTML = xhttp.responseText;
-		// 			}
-		// 		}
-
-		// 		xhttp.open("POST","ShowProduct",true);
-		// 		xhttp.send();
 
 		$(function() {
 			$.get("../ShowProduct", function(responseText) {
 
 				var jsonPro = JSON.parse(responseText);
 
-				console.log(jsonPro.length);
-				console.log(jsonPro[0]["ProductName"]);
-				console.log(jsonPro[1]["ProductName"]);
-				console.log(jsonPro[2]["ProductName"]);
 				txt = "";
 				for (i = 0; i < jsonPro.length; i++) {
-					var id = "#pro";
 					var num = (i + 1).toString();
 					txt += "<div class='place'><div class='placeimg'><img class='plassimg1' src='img/Weddinggift" + num + ".jpg'></div><div class='placename' id='pro2'>" + jsonPro[i]["ProductName"] + "</div><div class='placedetail'>" + jsonPro[i]["Depiction"] + "</div></div>";
-
 				}
-				$(id).html(txt);
+				$("#pro").html(txt);
 			});
 		});
 
-		$(function() {
-			$(".flexslider").flexslider({
-				slideshowSpeed : 5000, //展示时间间隔ms
-				animationSpeed : 500, //滚动时间ms
-				touch : true
-			//是否支持触屏滑动
-			});
-		});
+
 
 		var $a = $(".buttons a");
 		var $s = $(".buttons span");

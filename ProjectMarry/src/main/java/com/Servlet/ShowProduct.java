@@ -71,8 +71,6 @@ public class ShowProduct extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(JsonArrayString);
 		
-//		response.sendRedirect(request.getContextPath() + "/HTML/index_copy.html");
-//		return;   試試看不return，最後加close
 		
 
 	}
