@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="<c:url value='/CSS/combine.css'/>">
 
-
+<jsp:useBean id="PB" scope="request" class="com.Bean.ProductBean"/>
  
 
     <title>Product</title>
@@ -29,7 +29,7 @@
         <!-- header -->
         <div class="wrap end_gray_border" id="head">
             <div class="wrap">
-                <p class="tital">MARY ME | 產品選項</p>
+                <p class="tital">MARY ME | 產品選項 </p>
             </div>
             <div>
                 <p class="text">場地｜配件｜樣式｜婚禮小物｜新秘｜攝影</p>
@@ -40,9 +40,7 @@
         <!-- article -->
         <div class="wrap end_gray_border" id="Product_list">
             <!-- top  -->
-            <!-- <div class="wrap end_gray_border" id="chooseAll">
-                <input type="checkbox"> <label for=""> 全部選取</label>
-            </div> -->
+
             <!-- content  -->
             <div class="wrapRow" id="content">
 
@@ -130,10 +128,10 @@
                 <div class="wrapStart " id="product_right">
                     <form action="../PutItemInShoppingCartServlet" method="post" class="fullwidth" id="ProductForm">
                     <div class="wrapList">
-                        <p class="tital ">cake</p>
+                        <p class="tital ">${PB.productName }</p>
                     </div>
                     <div class="wrapList">
-                        <p class="tital" >NT$100</p>
+                        <p class="tital" >NT$${PB.unitPrice}</p>
                     </div>
                             <input type="hidden" name="PSupplierID" value="1">
                             <input type="hidden" name="productName" value="cake">
@@ -189,9 +187,7 @@
 <!--                                     <p class="text">公車</p> -->
 <!--                                 </div> -->
                                 <div class="wrapStart">
-                                    <p class="text">不鏽鋼</p>
-                                    <p class="text">商品來源</p>
-                                    <p class="text">庫存</p>
+                                    <p class="text">${PB.depiction}</p>
                                 </div>
                             </div>
                         </div>
@@ -259,7 +255,8 @@
 
    
     <script>
-
+		
+    	
        
         /*輪播圖 */
         function currentDiv(n) {

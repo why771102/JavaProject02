@@ -50,11 +50,8 @@ public class UpdateShoppingCartServlet extends HttpServlet {
 		Integer OrderId = scs.getShoppingCart(MemberId);
 		
 		String cmd = request.getParameter("cmd");
-<<<<<<< HEAD
 		System.out.println(cmd);
 		String vID = request.getParameter("vId");
-=======
->>>>>>> 22cfe77c303d907baf2002d160e355bad88ae478
 		String productID = request.getParameter("pId");
 //		OrderDetailVenuesBean odvb = request.getParameter("Venue");
 		
@@ -62,7 +59,6 @@ public class UpdateShoppingCartServlet extends HttpServlet {
 			String VendorID = request.getParameter("vendorID");
 			int vendorID = Integer.parseInt(VendorID);
 			scs.deleteVendor(OrderId, vendorID);
-<<<<<<< HEAD
 //			RequestDispatcher rd = request.getRequestDispatcher("/GetShoppingCartFromDBServlet");
 //			rd.forward(request, response);
 //			return;
@@ -87,28 +83,6 @@ public class UpdateShoppingCartServlet extends HttpServlet {
 //			RequestDispatcher rd = request.getRequestDispatcher("/GetShoppingCartFromDBServlet");
 //			rd.forward(request, response);
 //			return;
-=======
-			RequestDispatcher rd = request.getRequestDispatcher("/ShoppingCart.jsp");
-			rd.forward(request, response);
-			return;
-		}else if(cmd.equalsIgnoreCase("DELSUPPLIER")) {
-			String supplierID = request.getParameter("supplierID");
-			int SupplierId = Integer.parseInt(supplierID);
-			scs.deleteSupplier(OrderId, SupplierId);
-			RequestDispatcher rd = request.getRequestDispatcher("/ShoppingCart.jsp");
-			rd.forward(request, response);
-			return;
-		}else if(cmd.equalsIgnoreCase("DELVENUE")) {
-			scs.deleteVenue(OrderId, productID);
-			RequestDispatcher rd = request.getRequestDispatcher("/ShoppingCart.jsp");
-			rd.forward(request, response);
-			return;
-		}else if(cmd.equalsIgnoreCase("DELPRODUCT")) {
-			scs.deleteProduct(OrderId, productID);
-			RequestDispatcher rd = request.getRequestDispatcher("/ShoppingCart.jsp");
-			rd.forward(request, response);
-			return;
->>>>>>> 22cfe77c303d907baf2002d160e355bad88ae478
 		}
 		RequestDispatcher rd = request.getRequestDispatcher("/GetShoppingCartFromDBServlet");
 		rd.forward(request, response);

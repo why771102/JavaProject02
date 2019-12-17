@@ -568,7 +568,7 @@ a {
 				txt = "";
 				for (i = 0; i < jsonPro.length; i++) {
 					var num = (i + 1).toString();
-					txt += "<div class='place'><div class='placeimg'><img class='plassimg1' src='img/Weddinggift" + num + ".jpg'></div><div class='placename' id='pro2'>" + jsonPro[i]["ProductName"] + "</div><div class='placedetail'>" + jsonPro[i]["Depiction"] + "</div></div>";
+					txt += "<a href='../ProductDetail?ProductID=" + jsonPro[i]["ProductID"] +  "'><div class='place'><div class='placeimg'><img class='plassimg1' src='img/Weddinggift" + num + ".jpg'></div><div class='placename' id='pro2'>" + jsonPro[i]["ProductName"] + "</div><div class='placedetail'>" + jsonPro[i]["Depiction"] + "</div></div></a>";
 				}
 				$("#pro").html(txt);
 			});
