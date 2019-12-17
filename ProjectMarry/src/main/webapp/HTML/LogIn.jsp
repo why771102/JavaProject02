@@ -368,6 +368,10 @@ p.text {
 	text-align: center;
 	font-size: 1em;
 }
+
+a {
+	text-decoration: none;
+}
 </style>
 
 </head>
@@ -378,7 +382,7 @@ p.text {
 			<div class="headleft"></div>
 			<div class="headcenter">
 				<div>
-					<p class="tital">MARY ME</p>
+					<a href="index.html"><p class="tital">MARY ME</p></a>
 				</div>
 				<div>
 					<p class="text">場地｜配件｜樣式｜婚禮小物｜新秘｜攝影</p>
@@ -403,7 +407,10 @@ p.text {
 			<br>
 				<input type="submit" value="登入" class="submitButton">
 			</div>
+			<br>
+			<div><input type="submit" value="立刻註冊" class="submitButton" formmethod="POST" formaction="UserRegister.jsp"></div>
 		</form>
+		
 		</div>
 				<!-- foot -->
 		<div class="wrap" id="footBG">

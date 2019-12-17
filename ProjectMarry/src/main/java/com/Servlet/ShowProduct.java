@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import com.Bean.ProductBean;
 import com.Service.ProductServiceImpl;
 
@@ -41,9 +44,33 @@ public class ShowProduct extends HttpServlet {
 		ProductServiceImpl pdi = new ProductServiceImpl(conn);
 		List<ProductBean> PList = pdi.showProductList();
 		
-		request.setAttribute("PList", PList);
-		RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserLoginSucess.jsp");   //JSP
-		rd.forward(request, response);
+		System.out.println(PList.get(0).getProductName());
+		JSONArray ja = new JSONArray();
+		System.out.println(PList.size());
+		
+		for(int i = 0;i < PList.size();i++) {
+			JSONObject productJsonObject = new JSONObject();
+			productJsonObject.put("ProductID", PList.get(i).getProductID());
+			productJsonObject.put("ProductName", PList.get(i).getProductName());
+			productJsonObject.put("UnitPrice", PList.get(i).getUnitPrice());
+			productJsonObject.put("ProductID", PList.get(i).getProductID());
+			productJsonObject.put("PSupplierID", PList.get(i).getPSupplierID());
+			productJsonObject.put("Quantity", PList.get(i).getQuantity());
+			productJsonObject.put("ProductStatus", PList.get(i).getProductStatus());
+			productJsonObject.put("Discount", PList.get(i).getDiscount());
+			productJsonObject.put("Depiction", PList.get(i).getDepiction());
+			ja.put(productJsonObject);
+		}
+		
+		String JsonArrayString = ja.toString();
+		
+		
+		request.setAttribute("PList", JsonArrayString);
+		session = request.getSession();
+		
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(JsonArrayString);
+		
 		
 
 	}
