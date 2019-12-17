@@ -8,6 +8,7 @@ import java.util.List;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,7 +41,9 @@ public class ShowProduct extends HttpServlet {
 		ProductServiceImpl pdi = new ProductServiceImpl(conn);
 		List<ProductBean> PList = pdi.showProductList();
 		
-		
+		request.setAttribute("PList", PList);
+		RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserLoginSucess.jsp");   //JSP
+		rd.forward(request, response);
 		
 
 	}
