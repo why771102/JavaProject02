@@ -34,7 +34,7 @@ public class ProductDaoImpl implements ProductDao {
 					pb.setProductID(rs.getString("ProductID"));
 					pb.setProductName(rs.getString("ProductName"));
 					pb.setUnitPrice(rs.getInt("UnitPrice"));
-					pb.setPSupplierID(rs.getInt("PSupplierID"));
+					pb.setPsupplierID(rs.getInt("PSupplierID"));
 					pb.setQuantity(rs.getInt("Quantity"));
 					pb.setProductStatus(rs.getInt("ProductStatus"));
 					pb.setDiscount(rs.getDouble("Discount"));
@@ -68,7 +68,7 @@ public class ProductDaoImpl implements ProductDao {
 				npb.setProductID(rs.getString("ProductID"));
 				npb.setProductName(rs.getString("ProductName"));
 				npb.setUnitPrice(rs.getInt("UnitPrice"));
-				npb.setPSupplierID(rs.getInt("PSupplierID"));
+				npb.setPsupplierID(rs.getInt("PSupplierID"));
 				npb.setQuantity(rs.getInt("Quantity"));
 				npb.setProductStatus(rs.getInt("ProductStatus"));
 				npb.setDiscount(rs.getDouble("Discount"));

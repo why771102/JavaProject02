@@ -60,10 +60,10 @@ public class ProductBean {
 	public void setUnitPrice(Integer unitPrice) {
 		UnitPrice = unitPrice;
 	}
-	public Integer getPSupplierID() {
+	public Integer getPsupplierID() {
 		return PSupplierID;
 	}
-	public void setPSupplierID(Integer pSupplierID) {
+	public void setPsupplierID(Integer pSupplierID) {
 		PSupplierID = pSupplierID;
 	}
 	public Integer getQuantity() {

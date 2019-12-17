@@ -133,11 +133,11 @@
                     <div class="wrapList">
                         <p class="tital" >NT$ ${PB.unitPrice }</p>
                     </div>
-                            <input type="hidden" name="PSupplierID" value="1">
-                            <input type="hidden" name="productName" value="cake">
-                            <input type="hidden" name="Price" value="100">
-                            <input type="hidden" name="ProductID" value="P1">
-                            <input type="hidden" name="Discount" value="0">
+                            <input type="hidden" name="PSupplierID" value="${PB.psupplierID }">
+                            <input type="hidden" name="productName" value="${PB.productName }">
+                            <input type="hidden" name="Price" value="${PB.unitPrice }">
+                            <input type="hidden" name="ProductID" value="${PB.productID }">
+                            <input type="hidden" name="Discount" value="${PB.discount }">
                   <!-- 之後要加product 欄位 type nvarchar  -->
                     <div class="wrapList "> <label for="">產品樣式
                             <select class="product_sel" name="Type" id="type" value="">

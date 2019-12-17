@@ -54,7 +54,7 @@ public class ShowProduct extends HttpServlet {
 			productJsonObject.put("ProductName", PList.get(i).getProductName());
 			productJsonObject.put("UnitPrice", PList.get(i).getUnitPrice());
 			productJsonObject.put("ProductID", PList.get(i).getProductID());
-			productJsonObject.put("PSupplierID", PList.get(i).getPSupplierID());
+			productJsonObject.put("PSupplierID", PList.get(i).getPsupplierID());
 			productJsonObject.put("Quantity", PList.get(i).getQuantity());
 			productJsonObject.put("ProductStatus", PList.get(i).getProductStatus());
 			productJsonObject.put("Discount", PList.get(i).getDiscount());
