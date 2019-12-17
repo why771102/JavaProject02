@@ -131,7 +131,6 @@ public class UserRegister extends HttpServlet {
 
 			session = request.getSession();
 			session.setAttribute("user", rub);
-			System.out.println(request.getContextPath() + "/HTML/UserRegisterSucess.jsp");
 			response.sendRedirect(request.getContextPath() + "/HTML/UserRegisterSucess.jsp");
 
 			try {

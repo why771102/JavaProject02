@@ -52,6 +52,9 @@ public class ProductDetail extends HttpServlet {
 
 		if (npb == null) {
 
+			session = request.getSession();
+			response.sendRedirect(request.getContextPath() + "/HTML/NoProductError.jsp");
+			
 		} else {
 			
 
