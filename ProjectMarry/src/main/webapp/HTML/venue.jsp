@@ -12,12 +12,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="http://resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="<c:url value='/CSS/combine.css'/>">
+<link rel="stylesheet" href="../CSS/combine.css">
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+<style>
+  #map {
+      
+      
+        width: 100%;
+        height: 60vh;
+      
 
+    }
+
+</style>
 <title>Venue</title>
 </head>
 <body>
@@ -25,15 +35,10 @@
   <div class="wrap" id="bg">
         <!-- header -->
         <div class="wrap end_gray_border" id="head">
-            <div class="wrap">
-                <p class="tital">MARY ME | 場地選項</p>
-            </div>
-            <div>
-                <p class="text">場地|配件｜樣式｜婚禮小物｜新秘｜攝影</p>
-            </div>
-            <hr>
+           <iframe class="fullwidth" src="Header.jsp" frameborder="0"></iframe>
         </div>
-
+<br>
+<div><br></div>
         <!-- article -->
         <div class="wrap end_gray_border" id="Product_list">
             <!-- top  -->
@@ -149,7 +154,7 @@
               <div class="wrapStart " id="product_right">
                     <form action="../PutItemInShoppingCartServlet" method="post" class="fullwidth" id="VenueForm">
                         <div class="wrapList">
-                            <p class="tital ">paul a</p>
+                            <p class="tital ">典華飯店 A廳</p>
                             <input type="hidden" name="vendor" value="paul">
                             <input type="hidden" name="Hall" value="a">
                             <input type="hidden" name="Price" value="600">
@@ -262,11 +267,13 @@
                     </div>
                     <!-- 空白排版用 -->
 
-                    <!-- 這邊是地圖 -->
+                  <!-- 這邊是地圖 -->
                     <div class="wrapList end_gray_border">
-                        <div class="wrapList">
+                        <div class="wrapList fullwidth">
                             <p class="STital">MAP</p>
-                            <div class="map"></div>
+                            <div class="map" >
+                                <div id='map' ></div>
+                            </div>
                         </div>
                     </div>
                     <!-- 這邊是地圖 -->
@@ -286,16 +293,40 @@
         </div>
 
          <!-- foot -->
-          <div class="wrap" id="footBG">
-        <div class="wrap">MARY ME |錢不會消失 ,, 只是變成你喜歡的樣子</div>
-        <div> 場地|配件｜樣式｜婚禮小物｜新秘｜攝影</div>
+          <div class="wrap" id="footBG" style="background-color: #e2d4b9 !important;">
+        <div class="wrap " style="color: white">MARY ME |錢不會消失 ,, 只是變成你喜歡的樣子</div>
+        <div style="color: white"> 場地|配件｜樣式｜婚禮小物｜新秘｜攝影</div>
            </div>
+             <!-- foot -->
     </div>
    
 
 
    
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+
     <script>
+/*map*/
+function map(){
+            
+            map = L.map('map').setView([25.0837472,121.5548008], 20);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	attribution: '<a href="https://www.openstreetmap.org/">OSM</a>',
+	maxZoom: 18,
+    
+}).addTo(map);
+L.marker([25.0837472,121.5548008],'典華飯店').addTo(map);
+        }
+    map();
+
+        function c(){
+            console.log("========================")
+        console.log("text:" + $("#time").text);
+        console.log("value:" + $("#time").val());
+        console.log("========================")
+        }
+   
 
         /*日曆 */
         $(function () {
