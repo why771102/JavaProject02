@@ -12,7 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="http://resources/demos/style.css">
+<!--     <link rel="stylesheet" href="http://resources/demos/style.css"> -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -51,30 +51,30 @@
                     <div class="wrap" id="pictureBG">
                         <div class="w3-content wrap One_width vh_height100" >
                              
-                            <img class="mySlides P_Bimg" src="img/5.jpg" style="display:none">
-                            <img class="mySlides P_Bimg" src="img/6.jpg">
-                            <img class="mySlides P_Bimg" src="img/7.jpg" style="display:none">
-                            <img class="mySlides P_Bimg" src="img/8.jpg" style="display:none">
+                            <img class="mySlides P_Bimg" src="HTML/img/5.jpg" style="display:none">
+                            <img class="mySlides P_Bimg" src="HTML/img/6.jpg">
+                            <img class="mySlides P_Bimg" src="HTML/img/7.jpg" style="display:none">
+                            <img class="mySlides P_Bimg" src="HTML/img/8.jpg" style="display:none">
 
                             <!-- small picture -->
                             <div class="wrapRow" style="height: 15vh; width: 80%; padding: 2vh;">
                                 <div class="w3-col s4 w3cpicture " >
-                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="img/5.jpg"
+                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="HTML/img/5.jpg"
                                         style="cursor:pointer" onclick="currentDiv(1)">
                                 </div>
 
                                 <div class="w3-col s4 w3cpicture ">
-                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="img/6.jpg"
+                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="HTML/img/6.jpg"
                                         style="cursor:pointer" onclick="currentDiv(2)">
                                 </div>
 
                                 <div class="w3-col s4 w3cpicture" >
-                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100 " src="img/7.jpg"
+                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100 " src="HTML/img/7.jpg"
                                         style="cursor:pointer" onclick="currentDiv(3)">
                                 </div>
 
                                 <div class="w3-col s4  w3cpicture " >
-                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="img/8.jpg"
+                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="HTML/img/8.jpg"
                                         style="cursor:pointer" onclick="currentDiv(4)">
                                 </div>
 
