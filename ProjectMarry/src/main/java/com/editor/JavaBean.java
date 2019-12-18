@@ -10,6 +10,16 @@ public class JavaBean {
 	private String inoutdoor;
 	private String lunchprice;
 	private String dinnerprice;
+	
+	public String getVenuestatus() {
+		return venuestatus;
+	}
+	public void setVenuestatus(String venuestatus) {
+		this.venuestatus = venuestatus;
+	}
+	private String venuestatus;
+	
+	
 	public String getVendorid() {
 		return vendorid;
 	}
