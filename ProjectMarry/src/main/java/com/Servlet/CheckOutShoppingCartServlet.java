@@ -53,52 +53,77 @@ public class CheckOutShoppingCartServlet extends HttpServlet {
 		Integer MemberId = us.getIdFromCookie(request);
 		Integer OrderId = scs.getShoppingCart(MemberId);
 
-		
 		String ODPB = request.getParameter("product");
 		String ODVB = request.getParameter("venue");
 //		System.out.println("ODPB" +ODPB);
 		JSONArray jsonArrayProduct = JSONArray.fromObject(ODPB);
-		JSONArray jsonArrayVenue = JSONArray.fromObject(ODVB);		
-		
+		JSONArray jsonArrayVenue = JSONArray.fromObject(ODVB);
+
 		List<OrderDetailProductsBean> odpbSEND = new ArrayList<>();
 		List<OrderDetailVenuesBean> odvbSEND = new ArrayList<>();
 //		System.out.println("arrayProduct" + arrayProduct.get(0));
-		for(int i = 0; i < jsonArrayProduct.size(); i++) {
-			
+		for (int i = 0; i < jsonArrayProduct.size(); i++) {
+
 			JSONArray arrayProduct = jsonArrayProduct.getJSONArray(i);
 			System.out.println("arrayProduct.get(0) " + arrayProduct.get(0));
 			System.out.println("arrayProduct.get(1) " + arrayProduct.get(1));
-			
+
 			OrderDetailProductsBean odpb = new OrderDetailProductsBean();
 			odpb.setOrderID(OrderId);
-			odpb.setProductID((String)arrayProduct.get(0));
+			odpb.setProductID((String) arrayProduct.get(0));
 			odpb.setQuantity(Integer.parseInt((String) arrayProduct.get(1)));
 			System.out.println(odpb.getProductID());
 			System.out.println(odpb.getQuantity());
 			boolean result = scs.updateQty(odpb);
 			System.out.println(result);
 			odpbSEND.add(odpb);
+
 		}
-		
-		for(int i = 0; i < jsonArrayVenue.size(); i++) {
+
+		for (int i = 0; i < jsonArrayVenue.size(); i++) {
 			JSONArray arrayVenue = jsonArrayVenue.getJSONArray(i);
 			System.out.println("arrayVenue.get(0) " + arrayVenue.get(0));
 			System.out.println("arrayVenue.get(1) " + arrayVenue.get(1));
 			OrderDetailVenuesBean odvb = new OrderDetailVenuesBean();
 			odvb.setOrderID(OrderId);
-			odvb.setProductID((String)arrayVenue.get(0));
-			odvb.setTableCount(Integer.parseInt((String)arrayVenue.get(1)));
+			odvb.setProductID((String) arrayVenue.get(0));
+			odvb.setTableCount(Integer.parseInt((String) arrayVenue.get(1)));
 			boolean r = scs.updateTable(odvb);
 			System.out.println(r);
 			odvbSEND.add(odvb);
 		}
-			request.setAttribute("odpbSEND", odpbSEND);
+		if (odvbSEND.size() == 0) {
+			OrderDetailVenuesBean odvb = new OrderDetailVenuesBean();
+			odvb.setOrderID(0);
+			odvb.setTableCount(0);
+			List<OrderDetailVenuesBean> odvbEmpty = new ArrayList<>();
+			odvbEmpty.add(odvb);
+			request.setAttribute("odvbSEND", odvbEmpty);
+			request.setAttribute("venueDetail", "0");
+			
+				
+			
+		} else {
+			request.setAttribute("venueDetail", scs.showVenue(OrderId));
 			request.setAttribute("odvbSEND", odvbSEND);
-			RequestDispatcher rd = request.getRequestDispatcher("/HTML/Checkout.jsp");
-			rd.forward(request, response);
-			return;
 		}
-	
+		if (odpbSEND.size() == 0) {
+			OrderDetailProductsBean odpb = new OrderDetailProductsBean();
+			List<OrderDetailProductsBean> odpbEmpty = new ArrayList<>();
+			odpb.setOrderID(0);
+			odpb.setQuantity(0);
+			odpbEmpty.add(odpb);
+			request.setAttribute("odvbSEND", odpbEmpty);
+			request.setAttribute("productDetail", 0);
+		} else {
+			request.setAttribute("productDetail", scs.showProduct(OrderId));
+			request.setAttribute("odpbSEND", odpbSEND);
+		}
+
+		RequestDispatcher rd = request.getRequestDispatcher("/HTML/Checkout.jsp");
+		rd.forward(request, response);
+		return;
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

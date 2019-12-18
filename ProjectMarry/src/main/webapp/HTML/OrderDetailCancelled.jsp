@@ -19,7 +19,7 @@
 				<p class="tital">MARY ME | 場地選項</p>
 			</div>
 			<div>
-				<p class="text">場地|配件｜樣式｜婚禮小物｜新秘｜攝影</p>
+				<p class="text">場地｜配件｜樣式｜婚禮小物｜新秘｜攝影</p>
 			</div>
 		</div>
 		<!-- article -->

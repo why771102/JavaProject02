@@ -26,9 +26,6 @@
 		<!-- article -->
 		<div class="wrap" id="cartShopList">
 			<!-- top  -->
-			<div class="wrap" id="chooseAll">
-				<br><br>
-			</div>
 			<!-- content  -->
 			<div class="wrapRow" id="content">
 

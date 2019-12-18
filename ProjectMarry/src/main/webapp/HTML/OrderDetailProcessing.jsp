@@ -19,16 +19,12 @@
 				<p class="tital">MARY ME | 場地選項</p>
 			</div>
 			<div>
-				<p class="text">場地|配件｜樣式｜婚禮小物｜新秘｜攝影</p>
+				<p class="text">場地｜配件｜樣式｜婚禮小物｜新秘｜攝影</p>
 			</div>
 		</div>
 		<!-- article -->
 		<div class="wrap" id="cartShopList">
 			<!-- top  -->
-			<div class="wrap" id="chooseAll">
-				<label for="selectAll"> 全部選取</label>
-				<input type="checkbox" id="selectAll"> 
-			</div>
 			<!-- content  -->
 			<div class="wrapRow" id="content">
 
