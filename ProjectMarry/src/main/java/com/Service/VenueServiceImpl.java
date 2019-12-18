@@ -28,5 +28,10 @@ public class VenueServiceImpl implements VenueService {
 		
 		return vo.VenueDetail(vb);
 	}
+
+	@Override
+	public String VenueName(VenueBean vb) {
+		return vo.VenueName(vb);
+	}
 	
 }

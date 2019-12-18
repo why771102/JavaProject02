@@ -58,6 +58,8 @@ public class ShowVenue extends HttpServlet {
 			productJsonObject.put("InOutdoor", VList.get(i).getInOutdoor());
 			productJsonObject.put("LunchPrice", VList.get(i).getLunchPrice());
 			productJsonObject.put("DinnerPrice", VList.get(i).getDinnerPrice());
+			productJsonObject.put("VenueDesc", VList.get(i).getVenueDesc());
+			productJsonObject.put("Venue", vi.VenueName(VList.get(i)));
 			ja.put(productJsonObject);
 		}
 		
@@ -70,7 +72,12 @@ public class ShowVenue extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(JsonArrayString);
 		
-		
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
