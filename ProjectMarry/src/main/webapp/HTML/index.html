@@ -499,7 +499,7 @@ a#register {
 				txt = "";
 				for (i = 0; i < jsonPro2.length; i++) {
 					var num = (i + 1).toString();
-					txt += "<div class='place'><div class='placeimg'><img class='plassimg1' src='img/Venue" + num + ".jpg'></div><div class='placename' id='pro3'>" + jsonPro2[i]["Venue"] + ' ' + jsonPro2[i]["Hall"] + "</div><div class='placedetail'>" + jsonPro2[i]["VenueDesc"] + "</div></div>";
+					txt += "<a href='../VenueDetail?ProductID=" + jsonPro2[i]["ProductID"]  +   "&VenueID=" + jsonPro2[i]["VendorID"] +  "'><div class='place'><div class='placeimg'><img class='plassimg1' src='img/Venue" + num + ".jpg'></div><div class='placename' id='pro3'>" + jsonPro2[i]["Venue"] + ' ' + jsonPro2[i]["Hall"] + "</div><div class='placedetail'>" + jsonPro2[i]["VenueDesc"] + "</div></div></a>";
 			}
 				$("#ven").html(txt);
 			});

@@ -122,6 +122,14 @@ public class CheckOutShoppingCartServlet extends HttpServlet {
 
 		RequestDispatcher rd = request.getRequestDispatcher("/HTML/Checkout.jsp");
 		rd.forward(request, response);
+		
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return;
 	}
 

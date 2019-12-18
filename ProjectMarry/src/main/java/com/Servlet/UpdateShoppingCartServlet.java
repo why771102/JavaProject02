@@ -42,6 +42,12 @@ public class UpdateShoppingCartServlet extends HttpServlet {
 		session = request.getSession(false);
 		if(session == null) {
 			response.sendRedirect(getServletContext().getContextPath() + "/LogIn.jsp");
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		ShoppingCartService scs = new ShoppingCartServiceImpl(conn);
@@ -86,6 +92,12 @@ public class UpdateShoppingCartServlet extends HttpServlet {
 		}
 		RequestDispatcher rd = request.getRequestDispatcher("/GetShoppingCartFromDBServlet");
 		rd.forward(request, response);
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return;
 	}
 

@@ -50,10 +50,22 @@ public class EditorUpdate extends HttpServlet {
 			request.setAttribute("user", rub);
 			RequestDispatcher rd = request.getRequestDispatcher("JSP");   //JSP
 			rd.forward(request, response);			
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		}else {
 			HttpSession session = request.getSession();
 			response.sendRedirect(request.getContextPath() + "JSP");
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return;			
 		}
 	}

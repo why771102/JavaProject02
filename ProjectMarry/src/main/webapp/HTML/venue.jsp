@@ -15,7 +15,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="../CSS/combine.css">
+<link rel="stylesheet" href="<c:url value='/CSS/combine.css'/>">
  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
  <jsp:useBean id="VB" scope="request" class="com.Bean.VenueBean"/>
 <style>
@@ -56,30 +56,30 @@
                     <div class="wrap" id="pictureBG">
                         <div class="w3-content wrap One_width vh_height100" id="bigpic" >
                              
-                            <img class="mySlides P_Bimg" src="img/1.jpg" style=" display:none">
-                            <img class="mySlides P_Bimg" src="img/2.jpg">
-                            <img class="mySlides P_Bimg" src="img/3.jpg" style="display:none">
-                            <img class="mySlides P_Bimg" src="img/44.jpg" style="display:none">
+                            <img class="mySlides P_Bimg" src="HTML/img/Venue1.jpg" style=" display:none">
+                            <img class="mySlides P_Bimg" src="HTML/img/Venue2.jpg">
+                            <img class="mySlides P_Bimg" src="HTML/img/Venue3.jpg" style="display:none">
+                            <img class="mySlides P_Bimg" src="HTML/img/Venue4.jpg" style="display:none">
 
                             <!-- small picture -->
                             <div class="wrapRow" style="height: 15vh; width: 80%; padding: 2vh; "id="smallpic">
                                 <div class="w3-col s4 w3cpicture " >
-                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="img/1.jpg"
+                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="HTML/img/Venue1.jpg"
                                         style="  cursor:pointer" onclick="currentDiv(1)">
                                 </div>
 
                                 <div class="w3-col s4 w3cpicture ">
-                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="img/2.jpg"
+                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="HTML/img/Venue2.jpg"
                                         style="  cursor:pointer" onclick="currentDiv(2)">
                                 </div>
 
                                 <div class="w3-col s4 w3cpicture" >
-                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100 " src="img/3.jpg"
+                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100 " src="HTML/img/Venue3.jpg"
                                         style="   cursor:pointer" onclick="currentDiv(3)">
                                 </div>
 
                                 <div class="w3-col s4  w3cpicture " >
-                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="img/4.jpg"
+                                    <img class="demo w3-opacity w3-hover-opacity-off height_width100" src="HTML/img/Venue4.jpg"
                                         style="  cursor:pointer" onclick="currentDiv(4)">
                                 </div>
 
@@ -153,7 +153,7 @@
 
                 <!-- right  -->
               <div class="wrapStart " id="product_right">
-                    <form action="../PutItemInShoppingCartServlet" method="post" class="fullwidth" id="VenueForm">
+                    <form action="PutItemInShoppingCartServlet" method="post" class="fullwidth" id="VenueForm">
                         <div class="wrapList">
                             <p class="tital ">${requestScope.Vendor}</p>
                             <input type="hidden" name="vendor" value="paul">

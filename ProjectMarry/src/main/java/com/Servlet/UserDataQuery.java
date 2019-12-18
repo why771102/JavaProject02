@@ -53,6 +53,12 @@ public class UserDataQuery extends HttpServlet {
 
 		RequestDispatcher rd = request.getRequestDispatcher("HTML/UserDataUpdate.jsp");   //JSP
 		rd.forward(request, response);
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

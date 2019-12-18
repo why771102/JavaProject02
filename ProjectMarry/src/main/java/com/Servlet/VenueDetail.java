@@ -68,7 +68,7 @@ public class VenueDetail extends HttpServlet {
 			request.setAttribute("VB", nvb);
 			request.setAttribute("Vendor", item);
 			session = request.getSession();
-			RequestDispatcher rd = request.getRequestDispatcher("HTML/venue22.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("HTML/venue.jsp");
 			rd.forward(request, response);
 			try {
 				conn.close();

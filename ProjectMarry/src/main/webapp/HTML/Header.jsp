@@ -378,7 +378,7 @@
                             <a href="" id="register" onclick='goRegister()'>註冊</a> 
                             <a href="" id="login" onclick='goLogin()' >登入</a> 
                                 <a href=
-                                id="logout" onclick="goLoginOut()">登出</a> <a href="../UserDataQuery" id="Query">會員資料</a>
+                                id="logout" onclick="goLoginOut()">登出</a>  <a href="OrderDetailUnpaid.jsp"  onclick="goData()" id="Query">帳戶</a>
                         </div>
                     </div>
     
@@ -562,6 +562,13 @@
             function  goRegister(){
              	 top.location.href = "UserRegister.jsp";
              }
+            
+            
+            
+            function  goData(){
+            	 top.location.href = "OrderDetailUnpaid.jsp";
+            }
+           
         </script>
     
     

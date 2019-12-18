@@ -124,6 +124,12 @@ public class GetShoppingCartFromDBServlet extends HttpServlet {
 				}
 				RequestDispatcher rd = request.getRequestDispatcher(url);
 				rd.forward(request, response);
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			} else {
 //					System.out.println(OrderId + "2");
 			}
