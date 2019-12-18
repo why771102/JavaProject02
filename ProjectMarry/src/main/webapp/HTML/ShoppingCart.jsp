@@ -26,14 +26,12 @@
 	<form method="POST">
 		<div class="wrap" id="bg">
 			<!-- header -->
-			<div class="wrap" id="head">
-				<div class="wrap">
-					<p class="tital">MARY ME | 場地選項</p>
-				</div>
-				<div>
-					<p class="text" style="display: none;">場地|配件｜樣式｜婚禮小物｜新秘｜攝影</p>
-				</div>
-			</div>
+			  <!-- header -->
+        <div class="wrap end_gray_border" id="head">
+           <iframe class="fullwidth" src="HTML/Header.jsp" frameborder="0"></iframe>
+        </div>
+<br>
+<div><br></div>
 			<!-- article -->
 			<div class="wrap" id="cartShopList">
 				<!-- top  -->

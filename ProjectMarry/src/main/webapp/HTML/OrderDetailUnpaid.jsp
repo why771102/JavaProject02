@@ -14,15 +14,12 @@
 <body>
 	<%--     <jsp:include page="/fragment/" /> --%>
 	<div class="wrap" id="bg">
-		<!-- header -->
-		<div class="wrap" id="head">
-			<div class="wrap">
-				<p class="tital">MARY ME | 場地選項</p>
-			</div>
-			<div>
-				<p class="text">場地｜配件｜樣式｜婚禮小物｜新秘｜攝影</p>
-			</div>
-		</div>
+		       <!-- header -->
+        <div class="wrap end_gray_border" id="head">
+           <iframe class="fullwidth" src="Header.jsp" frameborder="0"></iframe>
+        </div>
+<br>
+<div><br></div>
 		<!-- article -->
 		<div class="wrap" id="cartShopList">
 			<!-- top  -->
@@ -81,11 +78,12 @@
 		</div>
 
 	</div>
-	<!-- foot -->
-	<div class="wrap" id="footBG">
-		<div class="wrap">MARY ME |錢不會消失 ,, 只是變成你喜歡的樣子</div>
-		<div>場地|配件｜樣式｜婚禮小物｜新秘｜攝影</div>
-	</div>
+    <!-- foot -->
+        <div class="wrap" id="footBG" style="background-color: #e2d4b9 !important ;hieght:110px !important;">
+            <div class="wrap " style="color: white">MARY ME |錢不會消失 ,, 只是變成你喜歡的樣子</div>
+            <div style="color: white"> 場地|配件｜樣式｜婚禮小物｜新秘｜攝影</div>
+               </div>
+                 <!-- foot -->
 
 
 	</div>

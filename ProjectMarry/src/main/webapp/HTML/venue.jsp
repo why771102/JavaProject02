@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="../CSS/combine.css">
  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+ <jsp:useBean id="VB" scope="request" class="com.Bean.VenueBean"/>
 <style>
   #map {
       
@@ -35,7 +36,7 @@
   <div class="wrap" id="bg">
         <!-- header -->
         <div class="wrap end_gray_border" id="head">
-           <iframe class="fullwidth" src="Header.jsp" frameborder="0"></iframe>
+           <iframe class="fullwidth" src="HTML/Header.jsp" frameborder="0"></iframe>
         </div>
 <br>
 <div><br></div>
@@ -154,7 +155,7 @@
               <div class="wrapStart " id="product_right">
                     <form action="../PutItemInShoppingCartServlet" method="post" class="fullwidth" id="VenueForm">
                         <div class="wrapList">
-                            <p class="tital ">典華飯店 A廳</p>
+                            <p class="tital ">${requestScope.Vendor}</p>
                             <input type="hidden" name="vendor" value="paul">
                             <input type="hidden" name="Hall" value="a">
                             <input type="hidden" name="Price" value="600">
@@ -163,7 +164,8 @@
                             <input type="hidden" name="VendorID" value="1">
                         </div>
                         <div class="wrapList">
-                            <p class="tital">NT$600</p>
+                            <p class="tital">午場 NT$ ${VB.lunchPrice}</p>
+                            <p class="tital">晚場 NT$ ${VB.dinnerPrice}</p>
                         </div>
 
 
@@ -171,8 +173,8 @@
 
 
                         <div class="wrapList">
-                            <input  class=" fullwidth" type="number" max="100" min="0" name="Table" id="table" required>
-                        </div>
+                            <input  class=" fullwidth" type="number" onchange="Maxtable()" max="100" min="0" name="Table" id="table"  required>
+                       </div>
                         <div class=""> <br></div>
                         <div class="wrapList"> <label for="">選擇日期</label></div>
                         <div class="wrapRowBtw  LR_samll_padding small_padding">
@@ -226,7 +228,7 @@
                                     <p class="text">樓層</p>
                                 </div>
                                 <div class="wrapStart">
-                                    <p class="text">倫倫飯店</p>
+                                    <p class="text">${requestScope.Vendor}</p>
                                     <p class="text">5</p>
                                     <p class="text">2F</p>
                                 </div>
@@ -408,6 +410,19 @@ L.marker([25.0837472,121.5548008],'典華飯店').addTo(map);
        }
    }
        /*塞圖進輪播圖 */
+       
+              var a = ${VB.tableCount};
+       
+       function Maxtable(){
+//動態抓更改的table ID
+
+//			console.log($(tableID).val());
+		//桌數不能超過100
+		if($('#table').val() > a){
+			alert("桌數不能超過" + a);
+		}
+		
+	}
 
     </script>
 

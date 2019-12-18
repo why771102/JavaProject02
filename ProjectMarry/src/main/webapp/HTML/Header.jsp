@@ -371,13 +371,14 @@
                         </div>
                         <div style="position: absolute; right: 0px; top: -3px;">
     
-                            <a href="../GetShoppingCartFromDBServlet"><img
-                                src="img/shoppingcartIcon64.png" width="50px" height="50px"></a>
+                            <a href="../GetShoppingCartFromDBServlet"><img 
+                                src="img/shoppingcartIcon64.png" width="50px" height="50px"  onclick="goshoppingCart()"></a>
                         </div>
                         <div style="clear: both">
-                            <a href="UserRegister.jsp" id="register">註冊</a> <a
-                                href="LogIn.jsp" id="login">登入</a> <a href="../UserLogOut"
-                                id="logout">登出</a> <a href="../UserDataQuery" id="Query">會員資料</a>
+                            <a href="" id="register" onclick='goRegister()'>註冊</a> 
+                            <a href="" id="login" onclick='goLogin()' >登入</a> 
+                                <a href=
+                                id="logout" onclick="goLoginOut()">登出</a> <a href="../UserDataQuery" id="Query">會員資料</a>
                         </div>
                     </div>
     
@@ -547,6 +548,20 @@
                 top.location.href = "index.html";
 
             }
+            
+            function  goshoppingCart(){
+            	 top.location.href = "../GetShoppingCartFromDBServlet";
+            }
+            
+            function  goLogin(){
+           	 top.location.href = "LogIn.jsp";
+           }
+            function  goLoginOut(){
+              	 top.location.href = "../UserLogOut";
+              }
+            function  goRegister(){
+             	 top.location.href = "UserRegister.jsp";
+             }
         </script>
     
     

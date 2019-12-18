@@ -28,7 +28,7 @@
   <div class="wrap" id="bg">
           <!-- header -->
         <div class="wrap end_gray_border" id="head">
-           <iframe class="fullwidth" src="Header.jsp" frameborder="0"></iframe>
+           <iframe class="fullwidth" src="HTML/Header.jsp" frameborder="0"></iframe>
         </div>
 <br>
 <div><br></div>
