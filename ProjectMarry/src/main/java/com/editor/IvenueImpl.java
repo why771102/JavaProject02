@@ -44,12 +44,13 @@ public class IvenueImpl implements Ivenue {
 					
 					eb.setVendorid( rs.getString("vendorid"));
 					eb.setProductid( rs.getString("productid"));
-					eb.setVenueaddress( rs.getString("venueaddress"));
+					eb.setLocation( rs.getString("location"));
 					eb.setHall( rs.getString("hall"));
-					eb.setTables( rs.getString("tables"));
+					eb.setTablecount( rs.getString("tablecount"));
 					eb.setInoutdoor( rs.getString("inoutdoor"));
 					eb.setLunchprice( rs.getString("lunchprice"));
 					eb.setDinnerprice( rs.getString("dinnerprice"));
+					eb.setVenuedesc( rs.getString("venuedesc"));
 				}
 				
 			} catch (SQLException e) {
@@ -60,22 +61,23 @@ public class IvenueImpl implements Ivenue {
 	
 	}
 	
-	public JavaBean addVenue(String vendorid,String venueaddress,String hall,String tables,String inoutdoor,String lunchprice,String dinnerprice
-			,String venuestatus) {
+	public JavaBean addVenue(String productid,String vendorid,String location,String hall,String tablecount,String inoutdoor,String lunchprice,String dinnerprice
+			,String venuestatus,String venuedesc) {
 		
-		String qryStmt = "Insert into Venue(vendorid,venueaddress,hall,tables,inoutdoor,lunchprice,dinnerprice,venuestatus) Values(?,?,?,?,?,?,?,?)";
+		String qryStmt = "Insert into Venue(productid,vendorid,location,hall,tablecount,inoutdoor,lunchprice,dinnerprice,venuestatus,venuedesc) Values(?,?,?,?,?,?,?,?,?,?)";
 		JavaBean eb=new com.editor.JavaBean();
 		try {	
 				PreparedStatement stmt = conn.prepareStatement(qryStmt);
-				stmt.setString(1, vendorid);
-				
-				stmt.setString(2, venueaddress);
-				stmt.setString(3, hall);
-				stmt.setString(4, tables);
-				stmt.setString(5, inoutdoor);
-				stmt.setString(6, lunchprice);
-				stmt.setString(7, dinnerprice);
-				stmt.setString(8, venuestatus);
+				stmt.setString(1,vendorid);
+				stmt.setString(2, productid);
+				stmt.setString(3, location);
+				stmt.setString(4, hall);
+				stmt.setString(5, tablecount);
+				stmt.setString(6, inoutdoor);
+				stmt.setString(7, lunchprice);
+				stmt.setString(8, dinnerprice);
+				stmt.setString(9, venuestatus);
+				stmt.setString(10, venuedesc);
 				
 				stmt.executeUpdate();
 			
@@ -103,21 +105,23 @@ public class IvenueImpl implements Ivenue {
 	
 	
 	
-	public JavaBean updateVenue(String vendorid,String productid,String venueaddress,String hall,String tables,String inoutdoor,String lunchprice,String dinnerprice
-			,String venuestatus) {
-		String qryStmt = "Update Venue Set vendorid=?,venueaddress=?,hall=?,tables=?,inoutdoor=?,lunchprice=?,dinnerprice=? where productid=?";
+	public JavaBean updateVenue(String vendorid,String productid,String location,String hall,String tablecount,String inoutdoor,String lunchprice,String dinnerprice
+			,String venuestatus,String venuedesc) {
+		String qryStmt = "Update Venue Set vendorid=?,productid=?,location=?,hall=?,tablecount=?,inoutdoor=?,lunchprice=?,dinnerprice=? ,venuedesc=? where productid=?";
 		JavaBean eb=new com.editor.JavaBean();
 		try {
 			PreparedStatement stmt = conn.prepareStatement(qryStmt);
-			stmt.setString(1, vendorid);
-			stmt.setString(2, venueaddress);
 			
-			stmt.setString(3, hall);
-			stmt.setString(4, tables);
-			stmt.setString(5, inoutdoor);
-			stmt.setString(6, lunchprice);
-			stmt.setString(7, dinnerprice);
-			stmt.setString(8, productid);
+			stmt.setString(1, vendorid);
+			stmt.setString(2, productid);
+			stmt.setString(3, location);
+			stmt.setString(4, hall);
+			stmt.setString(5, tablecount);
+			stmt.setString(6, inoutdoor);
+			stmt.setString(7, lunchprice);
+			stmt.setString(8, dinnerprice);
+			stmt.setString(9, venuedesc);
+			stmt.setString(10, productid);
 			stmt.executeUpdate();
 //			ResultSet rs = stmt.executeQuery();
 //			while (rs.next()) {
@@ -169,7 +173,7 @@ public class IvenueImpl implements Ivenue {
 	public List<JavaBean> queryallVenue(){
 		List<JavaBean> vens=new ArrayList<>();
 		try {
-			String qryStmt = "SELECT* FROM Venue where venuestatus='1'";
+			String qryStmt = "SELECT* FROM Venue where venuestatus=1";
 //			String qryStmt = "SELECT* FROM Venue where =?;
 			PreparedStatement stmt = conn.prepareStatement(qryStmt);
 		
@@ -178,12 +182,13 @@ public class IvenueImpl implements Ivenue {
 				JavaBean eb=new com.editor.JavaBean();
 				eb.setVendorid( rs.getString("vendorid"));
 				eb.setProductid( rs.getString("productid"));
-				eb.setVenueaddress( rs.getString("venueaddress"));
+				eb.setLocation( rs.getString("location"));
 				eb.setHall( rs.getString("hall"));
-				eb.setTables( rs.getString("tables"));
+				eb.setTablecount( rs.getString("tablecount"));
 				eb.setInoutdoor( rs.getString("inoutdoor"));
 				eb.setLunchprice( rs.getString("lunchprice"));
 				eb.setDinnerprice( rs.getString("dinnerprice"));
+				eb.setVenuedesc( rs.getString("venuedesc"));
 				vens.add(eb);	
 			}
 			

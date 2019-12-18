@@ -4,13 +4,28 @@ public class JavaBean {
 	private static final long serialVersionUID = 1L;
 	private String vendorid;
 	private String productid;
-	private String venueaddress;
+	private String location;
 	private String hall;
-	private String tables;
+	private String tablecount;
 	private String inoutdoor;
 	private String lunchprice;
 	private String dinnerprice;
+	private String venuedesc;
 	
+	public String getTablecount() {
+		return tablecount;
+	}
+	public void setTablecount(String tablecount) {
+		this.tablecount = tablecount;
+	}
+	
+	
+	public String getVenuedesc() {
+		return venuedesc;
+	}
+	public void setVenuedesc(String venuedesc) {
+		this.venuedesc = venuedesc;
+	}
 	public String getVenuestatus() {
 		return venuestatus;
 	}
@@ -32,11 +47,12 @@ public class JavaBean {
 	public void setProductid(String productid) {
 		this.productid = productid;
 	}
-	public String getVenueaddress() {
-		return venueaddress;
+	
+	public String getLocation() {
+		return location;
 	}
-	public void setVenueaddress(String venueaddress) {
-		this.venueaddress = venueaddress;
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	public String getHall() {
 		return hall;
@@ -44,12 +60,7 @@ public class JavaBean {
 	public void setHall(String hall) {
 		this.hall = hall;
 	}
-	public String getTables() {
-		return tables;
-	}
-	public void setTables(String tables) {
-		this.tables = tables;
-	}
+
 	public String getInoutdoor() {
 		return inoutdoor;
 	}
