@@ -33,9 +33,10 @@ public class VenueDaoImpl implements IVenueDao {
 				vb.setLocation(rs.getString("Location"));
 				vb.setHall(rs.getString("Hall"));
 				vb.setTableCount(rs.getInt("TableCount"));
-				vb.setInOutdoor(rs.getInt("TableCount"));
-				vb.setLunchPrice(rs.getInt("LunchPric"));
+				vb.setInOutdoor(rs.getInt("InOutdoor"));
+				vb.setLunchPrice(rs.getInt("LunchPrice"));
 				vb.setDinnerPrice(rs.getInt("DinnerPrice"));
+				vb.setVenueDesc(rs.getString("VenueDesc"));
 				vb1.add(vb);
 			}
 			return vb1;
@@ -67,6 +68,7 @@ public class VenueDaoImpl implements IVenueDao {
 				nvb.setInOutdoor(rs.getInt("InOutdoor"));
 				nvb.setLunchPrice(rs.getInt("LunchPrice"));
 				nvb.setDinnerPrice(rs.getInt("DinnerPrice"));
+				nvb.setVenueDesc(rs.getString("VenueDesc"));
 			}
 			
 			return nvb;			
@@ -76,6 +78,27 @@ public class VenueDaoImpl implements IVenueDao {
 			e.printStackTrace();
 		}
 		
+		return null;
+	}
+
+	@Override
+	public String VenueName(VenueBean vb) {
+		String sqlstmt2 = "Select * from VenueVendor where VendorID = ? ";
+		
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sqlstmt2);
+			stmt.setInt(1, vb.getVendorID());
+			ResultSet rs = stmt.executeQuery();
+			String item = null;
+			if(rs.next()) {
+				item = rs.getString("Vendor") ;
+			}
+			return item;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 

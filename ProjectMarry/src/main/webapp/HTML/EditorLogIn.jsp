@@ -23,8 +23,10 @@
 					value="${param.Pwd}" />${errorMsgMap.PwdNoMatch}</td>
 			</tr>
 		</table>
-		<input type="submit" value="登入"> <input type="reset"
-			value="取消">
+		<input type="submit" value="登入"> 
 	</form>
+		<form method="POST" action="<c:url value='HTML/backstagelogin.html'/>">
+			<input type="submit" value="取消">
+			</form>
 </body>
 </html>

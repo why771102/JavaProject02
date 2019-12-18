@@ -20,9 +20,8 @@ public class getvenue extends HttpServlet {
 		IvenueImpl usedao=new IvenueImpl();
 		JavaBean ven =usedao.queryVenue(request.getParameter("productid"));
 		request.setAttribute("ven", ven);
+		request.getRequestDispatcher("HTML/getvenue.jsp").forward(request, response);
 		
-		request.getRequestDispatcher("getvenue.jsp").forward(request, response);
-
 		
 	}
 
