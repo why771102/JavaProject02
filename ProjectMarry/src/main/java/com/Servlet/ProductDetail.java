@@ -62,15 +62,14 @@ public class ProductDetail extends HttpServlet {
 			session = request.getSession();
 			RequestDispatcher rd = request.getRequestDispatcher("HTML/Product.jsp");
 			rd.forward(request, response);
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-//			response.setCharacterEncoding("UTF-8");
-//			response.getWriter().write(JsonArrayString);
+
+		}
+		
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}

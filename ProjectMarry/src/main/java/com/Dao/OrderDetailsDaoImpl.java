@@ -17,8 +17,8 @@ public class OrderDetailsDaoImpl implements IOrderDetailsDao {
 	}
 
 	@Override
-	// ­pºâ¨C¶µ²£«~ªºÁ`»ù(¼Æ¶q*³æ»ù*§é¦©)
-	// ³õ¦a
+	// ï¿½pï¿½ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½~ï¿½ï¿½ï¿½`ï¿½ï¿½(ï¿½Æ¶q*ï¿½ï¿½ï¿½*ï¿½é¦©)
+	// ï¿½ï¿½ï¿½a
 	public int getVenueTotal(int orderId, int productId) {
 		int price = 0; //Interger price = null;
 		// OrderDetailVenues DB
@@ -34,29 +34,36 @@ public class OrderDetailsDaoImpl implements IOrderDetailsDao {
 					// Venue DB
 					String sqlstr1 = "SELECT LunchPrice FROM Venue WHERE ProductId= ?";
 					PreparedStatement ps1 = conn.prepareStatement(sqlstr1);
-					ps.setInt(1, productId);
+					ps1.setInt(1, productId);
 					ResultSet rs1 = ps.executeQuery();
-					if (rs.next()) {
-						price = rs.getInt("LunchPrice");
+					if (rs1.next()) {
+						price = rs1.getInt("LunchPrice");
 					}
+					rs1.close();
+					ps1.close();
 				} else {
 					String sqlstr1 = "SELECT DinnerPrice FROM Venue WHERE ProductId= ?";
 					PreparedStatement ps1 = conn.prepareStatement(sqlstr1);
-					ps.setInt(1, productId);
+					ps1.setInt(1, productId);
 					ResultSet rs1 = ps.executeQuery();
-					if (rs.next()) {
-						price = rs.getInt("DinnerPrice");
+					if (rs1.next()) {
+						price = rs1.getInt("DinnerPrice");
 					}
+					rs1.close();
+					ps1.close();
 				}
+				rs.close();
+				ps.close();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("¨ú±o³õ¦astartTime¿ù»~");
+			throw new RuntimeException("ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½astartTimeï¿½ï¿½ï¿½~");
 		}
+		
 		return price;
 	}
 
-	// ²£«~ OrderDetailProducts
+	// ï¿½ï¿½ï¿½~ OrderDetailProducts
 	public double getProductTotal(ProductBean pb) {
 		double subtotal = pb.getQuantity() * pb.getUnitPrice() * pb.getDiscount();
 		return subtotal;

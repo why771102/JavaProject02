@@ -35,7 +35,7 @@ public class UserDaoImpl implements IUserDao {
             rs.setString(9, u.getMail());
             rs.setString(10, u.getAddress());
 			int status = rs.executeUpdate();
-			
+			rs.close();
 			return u;
 		} catch (SQLException e) {
 			
@@ -61,6 +61,7 @@ public class UserDaoImpl implements IUserDao {
 		   stmt.setString(6, u.getAddress());
 		   stmt.setString(7, u.getAccount());
 		   stmt.executeUpdate();
+		   stmt.close();
 		   return u;
 		  } catch (SQLException e) {
 		   
@@ -88,6 +89,8 @@ public class UserDaoImpl implements IUserDao {
 				u.setMail(rs.getString("Mail"));
 				u.setAddress(rs.getString("Address"));
 				u.setGender(rs.getString("Gender"));
+				rs.close();
+				stmt.close();
 				return u;
 			}
 			return null;
@@ -109,6 +112,8 @@ public class UserDaoImpl implements IUserDao {
 			if(rs.next()) {
 				exist = true;
 			}
+			rs.close();
+			stmt.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -130,6 +135,8 @@ public class UserDaoImpl implements IUserDao {
 			if(rs.next()) {
 				exist = true;
 			}
+			rs.close();
+			stmt.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -153,6 +160,8 @@ public class UserDaoImpl implements IUserDao {
 			if(rs.next()) {
 				match = true;
 			}
+			rs.close();
+			stmt.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -186,6 +195,8 @@ public class UserDaoImpl implements IUserDao {
 				u.setMail(rs.getString("Mail"));
 				u.setAddress(rs.getString("Address"));
 				u.setGender(rs.getString("Gender"));
+				rs.close();
+				stmt.close();
 				return u;
 			}
 			

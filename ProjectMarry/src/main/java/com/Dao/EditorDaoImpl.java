@@ -24,7 +24,8 @@ public class EditorDaoImpl implements IEditorDao {
 			PreparedStatement rs = conn.prepareStatement(sqlstmt);
             rs.setString(1, u.getAccount());
             rs.setString(2, u.getPwd());
-			int status = rs.executeUpdate();			
+			int status = rs.executeUpdate();
+			rs.close();
 			return u;
 		} catch (SQLException e) {			
 			e.printStackTrace();
@@ -39,6 +40,7 @@ public class EditorDaoImpl implements IEditorDao {
 		try {
 			PreparedStatement stmt = conn.prepareStatement(salstmt3);
 			stmt.setString(1, u.getPwd());
+			stmt.close();
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
@@ -56,6 +58,8 @@ public class EditorDaoImpl implements IEditorDao {
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()) {
 				u.setId(rs.getInt("EditorID"));
+				rs.close();
+				stmt.close();
 				return u;
 			}
 			return null;
@@ -75,10 +79,13 @@ public class EditorDaoImpl implements IEditorDao {
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()) {
 				exist = true;
-			}			
+			}
+			rs.close();
+			stmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();		
-		}		
+		}
+	 	
 		return exist;
 	}
 
@@ -94,6 +101,8 @@ public class EditorDaoImpl implements IEditorDao {
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()) {
 				match = true;
+				rs.close();
+				stmt.close();
 			}			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -110,11 +119,13 @@ public class EditorDaoImpl implements IEditorDao {
 			stmt.setString(1, account);
 			ResultSet rs = stmt.executeQuery();
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				u.setId(rs.getInt("EditorID"));
 				u.setAccount(rs.getString("EAccount"));
-				return u;
 			}
+			rs.close();
+			stmt.close();
+			return u;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

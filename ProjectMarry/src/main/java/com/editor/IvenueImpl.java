@@ -53,6 +53,8 @@ public class IvenueImpl implements Ivenue {
 					eb.setVenuedesc( rs.getString("venuedesc"));
 				}
 				
+				rs.close();
+				stmt.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -80,19 +82,7 @@ public class IvenueImpl implements Ivenue {
 				stmt.setString(10, venuedesc);
 				
 				stmt.executeUpdate();
-			
-//				ResultSet rs = stmt.executeQuery();
-//				while (rs.next()) {
-//					
-//					eb.setVendorid( rs.getString("vendorid"));
-//					eb.setProductid( rs.getString("productid"));
-//					eb.setVenueaddress( rs.getString("venueaddress"));
-//					eb.setHall( rs.getString("hall"));
-//					eb.setTables( rs.getString("tables"));
-//					eb.setInoutdoor( rs.getString("inoutdoor"));
-//					eb.setLunchprice( rs.getString("lunchprice"));
-//					eb.setDinnerprice( rs.getString("dinnerprice"));
-//				}
+				stmt.close();
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -123,19 +113,8 @@ public class IvenueImpl implements Ivenue {
 			stmt.setString(9, venuedesc);
 			stmt.setString(10, productid);
 			stmt.executeUpdate();
-//			ResultSet rs = stmt.executeQuery();
-//			while (rs.next()) {
-//				
-//				eb.setVendorid( rs.getString("vendorid"));
-//				eb.setProductid( rs.getString("productid"));
-//				eb.setVenueaddress( rs.getString("venueaddress"));
-//				eb.setHall( rs.getString("hall"));
-//				eb.setTables( rs.getString("tables"));
-//				eb.setInoutdoor( rs.getString("inoutdoor"));
-//				eb.setLunchprice( rs.getString("lunchprice"));
-//				eb.setDinnerprice( rs.getString("dinnerprice"));
-//				
-//			}
+
+			stmt.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -145,24 +124,12 @@ public class IvenueImpl implements Ivenue {
 	
 	public JavaBean deleteVenue(String productid){
 		String qryStmt = "Update Venue Set venuestatus=0 where productid=?";
-//		String qryStmt = "Delete From Venue where productid=?";
 		JavaBean eb=new com.editor.JavaBean();
 		try {
 			PreparedStatement stmt = conn.prepareStatement(qryStmt);
 			stmt.setString(1, productid);
 			stmt.executeUpdate();
-//			ResultSet rs = stmt.executeQuery();
-//			while (rs.next()) {
-//				eb.setVendorid( rs.getString("vendorid"));
-//				eb.setProductid( rs.getString("productid"));
-//				eb.setVenueaddress( rs.getString("venueaddress"));
-//				eb.setHall( rs.getString("hall"));
-//				eb.setTables( rs.getString("tables"));
-//				eb.setInoutdoor( rs.getString("inoutdoor"));
-//				eb.setLunchprice( rs.getString("lunchprice"));
-//				eb.setDinnerprice( rs.getString("dinnerprice"));
-//						
-//			}
+			stmt.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -174,7 +141,7 @@ public class IvenueImpl implements Ivenue {
 		List<JavaBean> vens=new ArrayList<>();
 		try {
 			String qryStmt = "SELECT* FROM Venue where venuestatus=1";
-//			String qryStmt = "SELECT* FROM Venue where =?;
+
 			PreparedStatement stmt = conn.prepareStatement(qryStmt);
 		
 			ResultSet rs = stmt.executeQuery();
@@ -191,6 +158,8 @@ public class IvenueImpl implements Ivenue {
 				eb.setVenuedesc( rs.getString("venuedesc"));
 				vens.add(eb);	
 			}
+			rs.close();
+			stmt.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

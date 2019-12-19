@@ -39,6 +39,8 @@ public class VenueDaoImpl implements IVenueDao {
 				vb.setVenueDesc(rs.getString("VenueDesc"));
 				vb1.add(vb);
 			}
+			rs.close();
+			stmt.close();
 			return vb1;
 			
 		} catch (SQLException e) {
@@ -70,7 +72,8 @@ public class VenueDaoImpl implements IVenueDao {
 				nvb.setDinnerPrice(rs.getInt("DinnerPrice"));
 				nvb.setVenueDesc(rs.getString("VenueDesc"));
 			}
-			
+			rs.close();
+			stmt.close();
 			return nvb;			
 			
 		} catch (SQLException e) {
@@ -93,6 +96,8 @@ public class VenueDaoImpl implements IVenueDao {
 			if(rs.next()) {
 				item = rs.getString("Vendor") ;
 			}
+			rs.close();
+			stmt.close();
 			return item;
 			
 		} catch (SQLException e) {

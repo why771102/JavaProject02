@@ -244,6 +244,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
             stmt.setString(2, productID);
             stmt.execute();
             result = true;
+            stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
             result = false;
@@ -298,6 +299,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
             stmt.setString(2, productID);
             stmt.execute();
             result = true;
+            stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
             result = false;
@@ -346,6 +348,8 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
                 } else {
                     result = false;
                 }
+                rs.close();
+                stmt.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();

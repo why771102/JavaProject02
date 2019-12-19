@@ -75,7 +75,7 @@ public class UserUpdate extends HttpServlet {
 //			  Cookie cookie = new Cookie("account",rub.getAccount());
 //			    cookie.setMaxAge(7 * 24 * 60 * 60);
 //			    response.addCookie(cookie);
-			    
+			    //這邊會有bug，如果有修改會員資料，只reset一個cookie，將造成cookie失效的時間不同，除非用戶自行重新登入
 			  Cookie cookie = new Cookie("name",rub.getName());
 			    cookie.setMaxAge(7 * 24 * 60 * 60);
 			    response.addCookie(cookie);

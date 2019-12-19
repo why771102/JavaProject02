@@ -42,6 +42,8 @@ public class ProductDaoImpl implements ProductDao {
 					pbl.add(pb);
 				}
 			}
+			rs.close();
+			stmt.close();
 			return pbl;
 			
 		} catch (SQLException e) {
@@ -74,6 +76,8 @@ public class ProductDaoImpl implements ProductDao {
 				npb.setDiscount(rs.getDouble("Discount"));
 				npb.setDepiction(rs.getString("Depiction"));
 			}
+			rs.close();
+			stmt.close();
 			
 			return npb;			
 			
