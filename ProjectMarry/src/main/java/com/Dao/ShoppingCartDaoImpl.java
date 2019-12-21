@@ -348,9 +348,10 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
                 } else {
                     result = false;
                 }
-                rs.close();
-                stmt.close();
             }
+            rs.close();
+            stmt.close();
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -479,6 +480,8 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
                 return stockQty;
 
             } else {
+            	rs.close();
+                state.close();
                 return stockQty;
             }
         } catch (Exception e) {
