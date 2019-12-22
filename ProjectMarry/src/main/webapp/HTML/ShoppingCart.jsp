@@ -257,47 +257,61 @@ $(document).ready(function(){
                     document.forms[0].submit();
                 }
         
-        //動態更改購物車的總金額
-        //目前還有錯誤需要修改
-	function selectClick(myObj) {
-            //get id of div e.g.#stock0
-            let stockID = "#" + myObj.id;
-            //get number in id e.g. #stock0 ==> 0
-            //which is also the index for pObj[]
-            let index = stockID.substring(stockID.length - 1, stockID.length);
-            //get the new quantity given by the user
-            let newQty = $(stockID).val();
+      //動態更改購物車的總金額
+    	function newQty(stockID, index){
             //新修改的數量
             let newP = [];
-            //舊的數量
-            let oldP = [];
-            //之前計算好的subtotal沿用
-            let vpsubtotal = vpsub;
-            console.log(pObj.length);
+            var newPTotal = 0;
             //跑迴圈計算更改新數量後的金額
             //舊數量的金額計算後
             for (let a = 0; a < pObj.length; a++) {
-            	var newPTotal = 0;
+            	let ID = stockID+a;
+            	//get new quantity given by the user
+            	var newQ = $(ID).val();
+    			console.log("newQ: " + newQ);        	
+            	
             	//新數量
-                newP[a] = (pObj[index].UnitPrice) * (newQty) * (1 - (pObj[index].Discount));
-                newPTotal += newPTotal + newP[a];
-                console.log(newPTotal);
-                var oldPTotal = 0;
+            	if(a == index){
+//             		console.log("index in if: " + index);
+            		newP[a] = (pObj[a].UnitPrice) * (newQ) * (1 - (pObj[a].Discount));
+                    var indexA = newP[a];
+//                     console.log("newPTotal + newP[a] = " + newPTotal + "+" +  newP[a])
+                    
+            	}else {
+//             		console.log("index in else: " + index);
+            		newP[a] = (pObj[a].UnitPrice) * (newQ) * (1 - (pObj[a].Discount));
+                    let indexB = newP[a];
+//                     console.log("newPTotal + newP[a] = " + newPTotal + "+" +  newP[a]);
+            	}
+            	newPTotal = newPTotal + newP[a];
+//                 console.log("newP[a]: " + newP[a]);
+//                 console.log("newPTotal: " + newPTotal);
                 //舊數量
-                oldP[a] = (pObj[index].UnitPrice) * (pObj[index].Quantity) * (1 - (pObj[index].Discount));
-                oldPTotal += oldPTotal + oldP[a];
-                console.log(oldPTotal);
             } 
-            //更改的新金額add to vpsubtotal 舊的 subtract from vpsubtotal
-            vpsubtotal = vpsubtotal + newPTotal - oldPTotal;
-            //加上逗號須改為字串
-            let newVPsubtotal = new Number(vpsubtotal).toLocaleString("en-AU");
-            console.log(vpsubtotal + "+" + newPTotal + "-" + oldPTotal + "=" + newVPsubtotal);
-          	//加上逗號須改為字串
-            let subtotal = new Number(vpsubtotal - 50).toLocaleString("en-AU");
-            $('#vpsubtotal').text("NT$ " + newVPsubtotal)
-            $('#subtotal').text("NT$ " + subtotal);
-        }
+//             console.log(newPTotal);
+            return newPTotal;
+    	}
+    	
+    	function selectClick(myObj) {
+    			//get id of div e.g.#stock0
+    	        var stID = "#" + myObj.id;
+    			//get #stock
+    	        var stockID = stID.substring(0, stID.length-1);
+//     	        console.log("stockID: " + stockID);
+    	        //get number in id e.g. #stock0 ==> 0
+    	        //which is also the index for pObj[]
+    	        var index = stID.substring(stID.length - 1, stID.length);
+//     	        console.log("index: " + index);
+                newPTotal = newQty(stockID, index);
+//     			console.log("newPTotal" + newPTotal);
+                //加上逗號須改為字串
+                let newVPsubtotal = new Number(newPTotal).toLocaleString("en-AU");
+//                 console.log("newVPsubtotal" + newVPsubtotal);
+              	//加上逗號須改為字串
+                let subtotal = new Number(newPTotal - 50).toLocaleString("en-AU");
+                $('#vpsubtotal').text("NT$" + newVPsubtotal)
+                $('#subtotal').text("NT$" + subtotal);
+            }
 
 		
 		//更改桌數的onchange function
