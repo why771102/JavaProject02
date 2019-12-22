@@ -4,11 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-<%-- <%=request.getAttribute("venueArray")%> --%>
-<%-- <%="-------------------"%> --%>
-<%-- <%=request.getAttribute("productArray")%> --%>
-<%-- <%="-------------------"%> --%>
-<%-- <%=request.getAttribute("a")%> --%>
+
 
 <!DOCTYPE html>
 <html>
@@ -107,17 +103,11 @@
 	</form>
 
     <script type="text/javascript">
-//         cookieArray = document.cookie.split(";");
-//         console.log(cookieArray);
-//         if (cookieArray == "") {
-//             window.location.replace("LogIn.jsp");
-//         }
 
+//從後端傳來的JSONArray
 var p = ${productArray};
 var v = ${venueArray};
-console.log("++++");
-console.log(p);
-console.log(v);
+
 //product JSON
 const pObjStr = JSON.stringify(p);
 const pObj = (JSON.parse(pObjStr));
@@ -128,11 +118,15 @@ const vObj = (JSON.parse(vObjStr));
 // console.log(vObj);
 console.log(pObj.length);
 console.log(pObj);
+//
 var sTotal= 0; 
 var pTotal= 0;
+var vpsub = 0;
+
 $(document).ready(function(){
-    //Venue
-	   
+    //顯示場地
+	let vpsubtotal = 0;
+	let subtotal = 0;
     var venues = [];
     if(vObj === undefined ){
         console.log("no v");
@@ -152,8 +146,10 @@ $(document).ready(function(){
         		venueTime = "晚上場";
         	}
 			var venueDate = vObj[i].Date;
+			//顯示場地價格 加逗號要轉為字串
         	var vPrice = new Number(vObj[i].Price).toLocaleString("en-AU");
-            $('#sc_left').append("<div class='wrap sc_frame fullwidth CartPadding' ><div class='spacingGeneral' id='chooseAll'><input type='checkbox' id='vendorName' name='Checkbox'> <label for='vendorName'><p class='text3'>"+vObj[i].Vendor+"</p></label><input type='hidden' value='"+vObj[i].VendorID+"' name='vendorID'><div class='remove margin1'><a href='' id='delete'><p class='' id='remove_vendor' onclick='remove_vendor()'>X</p></a></div></div><div class=' wrapRowStart topLine' id='SC_products'> <div class='width25'><div class='Pimg2 fullwidth'><img src='img/venue1.jpg' class='fullwidth' alt='venue1'> </div> </div><div class='wrapRow width80'><div class='width05'></div><div class='width75'><a href='' class='noChangeLine'> <p class='text3'>"+vObj[i].Hall+"</p> <input type='hidden' value='"+vObj[i].ProductID+"' name='vId'> </a><p class='text3 noChangeLine'>"+ vObj[i].Location +"</p><p class='text3 noChangeLine'>"+ venueDate +"</p><p class='text3 noChangeLine'>"+ venueTime +"</p></div><div class='width05'></div><div class='width10 sc_select'><input type='number' max='100' style='width:40px' value='"+vObj[i].TableCount+"' id='tableCount"+i+"' onchange='MaxLimit(this)'></div><div class='width05'></div>         <div class='width30'>             <p class='text3'>NT$ "+ vPrice +"</p>         </div>         <div class='width02'></div>         <div class='width05 margin2'>             <!--                                     <a href='' id='delete'> -->             <p id='remove_venue' onclick='remove_venue()'>X</p>             <!--                                     </a> -->         </div>     </div></div><!-- 以下是新增多個產品div --><!--                             以上是新增多個產品div --><div class='Pimg1'>     <div class='spacing_top adjPadding' id='SC_shipping'>         <p>選擇運送方式</p>         <div class='custom-select spacingGeneral' style='width: 200px;'>             <select>                 <option value='0'>請選擇運送方式</option>                 <option value='1'>宅配</option>                 <option value='2'>超商取貨</option>             </select>             <p class='noChangeLine spacing_top'>通知出貨後約 2 - 3 天寄達 | 提供追蹤</p>         </div>     </div></div></div><br>");
+			//動態新增場地div
+            $('#sc_left').append("<div class='wrap sc_frame fullwidth CartPadding' ><div class='spacingGeneral' id='chooseAll'><input type='checkbox' id='vendorName' name='Checkbox'> <label for='vendorName'><p class='text3'>"+vObj[i].Vendor+"</p></label><input type='hidden' value='"+vObj[i].VendorID+"' name='vendorID'><div class='remove margin1'><p class='' id='remove_vendor' onclick='remove_vendor()'>X</p></div></div><div class=' wrapRowStart topLine' id='SC_products'> <div class='width25'><div class='Pimg2 fullwidth'><img src='img/venue1.jpg' class='fullwidth' alt='venue1'> </div> </div><div class='wrapRow width80'><div class='width05'></div><div class='width75'><a href='' class='noChangeLine'> <p class='text3'>"+vObj[i].Hall+"</p> <input type='hidden' value='"+vObj[i].ProductID+"' name='vId'> </a><p class='text3 noChangeLine'>"+ vObj[i].Location +"</p><p class='text3 noChangeLine'>"+ venueDate +"</p><p class='text3 noChangeLine'>"+ venueTime +"</p></div><div class='width05'></div><div class='width10 sc_select'><input type='number' max='100' style='width:40px' value='"+vObj[i].TableCount+"' id='tableCount"+i+"' onchange='MaxLimit(this)'></div><div class='width05'></div>         <div class='width30'>             <p class='text3'>NT$ "+ vPrice +"</p>         </div>         <div class='width02'></div>         <div class='width05 margin2'>             <!--                                     <a href='' id='delete'> -->             <p id='remove_venue' onclick='remove_venue()'>X</p>             <!--                                     </a> -->         </div>     </div></div><!-- 以下是新增多個產品div --><!--                             以上是新增多個產品div --><div class='Pimg1'>     <div class='spacing_top adjPadding' id='SC_shipping'>         <p>選擇運送方式</p>         <div class='custom-select spacingGeneral' style='width: 200px;'>             <select>                 <option value='0'>請選擇運送方式</option>                 <option value='1'>宅配</option>                 <option value='2'>超商取貨</option>             </select>             <p class='noChangeLine spacing_top'>通知出貨後約 2 - 3 天寄達 | 提供追蹤</p>         </div>     </div></div></div><br>");
 //             console.log("------");
 //             console.log($(tc).val());
 //             venues.push(venue);
@@ -175,7 +171,7 @@ $(document).ready(function(){
                     pTotal = pTotal + (pObj[i].UnitPrice) * (pObj[i].Quantity) * (1-(pObj[i].Discount));
                     console.log("Ptotal: " + pTotal);
                     var pPrice = new Number(pObj[i].UnitPrice).toLocaleString("en-AU");
-                    $('#sc_left').append("<div class='wrap sc_frame fullwidth CartPadding' ><div class='spacingGeneral' id='chooseAll'><input type='checkbox' id='productName' name='Checkbox'> <label for='productName'><p class='text3'>"+pObj[i].PSupplierName+"</p></label><input type='hidden' value='"+pObj[i].pSupplierId+"' name='supplierID'><div class='remove margin1'><input type='hidden' value='DELSUPPLIER' name='cmd'><a href='' id='delete'><p class='' id='remove_shop' onclick='remove_shop()'>X</p></a></div></div><div class=' wrapRowStart topLine' id='SC_products'> <div class='width25'><div class='Pimg2 fullwidth'><img src='HTML/img/Weddinggift1.jpg' class='fullwidth' alt='venue1'> </div> </div><div class='wrapRow width80'><div class='width05'></div><div class='width75'><a href='../ProjectMarry/ProductDetail?ProductID=" + pObj[i]["ProductID"] +  "' class='noChangeLine'> <p class='text3'>"+pObj[i].ProductName+"</p> <input type='hidden' value='"+pObj[i].ProductID+"' name='pId'> </a> </div><div class='width05'></div><div class='width10 sc_select'><select name='stock' id='stock"+i+"' onclick='selectClick(this)'><option hidden value='"+pObj[i].Quantity+"'>"+pObj[i].Quantity+"</option></select></div>         <div class='width05'></div>         <div class='width30'>             <p class='text3'>NT$ "+ pPrice +"</p>         </div>         <div class='width02'></div>         <div class='width05 margin2'>             <!--                                     <a href='' id='delete'> -->             <p id='remove_product' onclick='remove_product()'>X</p>             <!--                                     </a> -->         </div>     </div></div><!-- 以下是新增多個產品div --><!--                             以上是新增多個產品div --><div class='Pimg1'>     <div class='spacing_top adjPadding' id='SC_shipping'>         <p>選擇運送方式</p>         <div class='custom-select spacingGeneral' style='width: 200px;'>             <select>                 <option value='0'>請選擇運送方式</option>                 <option value='1'>宅配</option>                 <option value='2'>超商取貨</option>             </select>             <p class='noChangeLine spacing_top'>通知出貨後約 2 - 3 天寄達 | 提供追蹤</p>         </div>     </div></div></div><br>");    
+                    $('#sc_left').append("<div class='wrap sc_frame fullwidth CartPadding' ><div class='spacingGeneral' id='chooseAll'><input type='checkbox' id='productName' name='Checkbox'> <label for='productName'><p class='text3'>"+pObj[i].PSupplierName+"</p></label><input type='hidden' value='"+pObj[i].pSupplierId+"' name='supplierID'><div class='remove margin1' id='remove_shop'><p class='' onclick='remove_shop()'>X</p></div></div><div class=' wrapRowStart topLine' id='SC_products'> <div class='width25'><div class='Pimg2 fullwidth'><img src='HTML/img/Weddinggift1.jpg' class='fullwidth' alt='venue1'> </div> </div><div class='wrapRow width80'><div class='width05'></div><div class='width75'><a href='../ProjectMarry/ProductDetail?ProductID=" + pObj[i]["ProductID"] +  "' class='noChangeLine'> <p class='text3'>"+pObj[i].ProductName+"</p> <input type='hidden' value='"+pObj[i].ProductID+"' name='pId'> </a> </div><div class='width05'></div><div class='width10 sc_select'><select name='stock' id='stock"+i+"' onclick='selectClick(this)'><option hidden value='"+pObj[i].Quantity+"'>"+pObj[i].Quantity+"</option></select></div>         <div class='width05'></div>         <div class='width30'>             <p class='text3'>NT$ "+ pPrice +"</p>         </div>         <div class='width02'></div>         <div class='width05 margin2'>             <!--                                     <a href='' id='delete'> -->             <p id='remove_product' onclick='remove_product()'>X</p>             <!--                                     </a> -->         </div>     </div></div><!-- 以下是新增多個產品div --><!--                             以上是新增多個產品div --><div class='Pimg1'>     <div class='spacing_top adjPadding' id='SC_shipping'>         <p>選擇運送方式</p>         <div class='custom-select spacingGeneral' style='width: 200px;'>             <select>                 <option value='0'>請選擇運送方式</option>                 <option value='1'>宅配</option>                 <option value='2'>超商取貨</option>             </select>             <p class='noChangeLine spacing_top'>通知出貨後約 2 - 3 天寄達 | 提供追蹤</p>         </div>     </div></div></div><br>");    
                     //動態新增下拉式選單商品數(比對庫存)
                     var pq = "#stock"+i;
                     var quantity = pObj[i].stockQty;
@@ -187,12 +183,12 @@ $(document).ready(function(){
                     }
                 }    
             }
-
-	var vpsubtotal = new Number(pTotal + sTotal).toLocaleString("en-AU");
+	vpsub = pTotal + sTotal;
+	vpsubtotal = new Number(pTotal + sTotal).toLocaleString("en-AU");
 // 	var tester = parseInt(vpsubtotal.split(0,"3"));
 // 	console.log(tester);
 	var vps = pTotal + sTotal;
-	var subtotal = new Number(vps-50).toLocaleString("en-AU");
+	subtotal = new Number(vps-50).toLocaleString("en-AU");
 	console.log(subtotal);
 	
 	console.log("vObj: " + vObj);
@@ -207,7 +203,8 @@ $(document).ready(function(){
 }
 	
 })
-        
+	    //以下四個function由UpdateShoppingCartServlet呼叫 刪除購物車產品
+        //從DB刪除產品店家
         function remove_shop() {
             document.forms[0].action="<c:url value='UpdateShoppingCartServlet?cmd=DELSUPPLIER'/>";
             document.forms[0].method = "POST";
@@ -216,13 +213,12 @@ $(document).ready(function(){
         
 		//從DB刪除產品
         function remove_product() {
-//             document.getElementById("SC_products").remove();
-//             document.getElementById("SC_shipping").remove();
             document.forms[0].action="<c:url value='UpdateShoppingCartServlet?cmd=DELPRODUCT'/>";
             document.forms[0].method = "POST";
             document.forms[0].submit();
         }
         
+        //從DB刪除場地廠商
         function remove_vendor(){
             document.forms[0].action="<c:url value='UpdateShoppingCartServlet?cmd=DELVENDOR'/>";
             document.forms[0].method = "POST";
@@ -236,7 +232,7 @@ $(document).ready(function(){
             document.forms[0].submit();
         }
         
-
+		//按前往結帳後會先更新顧客在購物車更新的商品數量送至CheckOutShoppingCartServlet
         function checkqty(){
                     var venues = [];
                     for(var i = 0; i<vObj.length; i++){
@@ -262,18 +258,47 @@ $(document).ready(function(){
                 }
         
         //動態更改購物車的總金額
-		function selectClick(myObj){
-			var abc = "#"+myObj.id;
-			var length = abc.substring(abc.length-1, abc.length);
-// 			console.log($(abc).val());
-			pObj[length].Quantity = $(abc).val();
-			pTotal = (pObj[length].UnitPrice) * (pObj[length].Quantity) * (1-(pObj[length].Discount));
-			var vpsubtotal = new Number(pTotal + sTotal).toLocaleString("en-AU");
-			var vps = pTotal + sTotal;
-			var subtotal = new Number(vps-50).toLocaleString("en-AU");
-			$('#vpsubtotal').text("NT$ " + vpsubtotal)
-			$('#subtotal').text("NT$ " + subtotal);
-		}
+        //目前還有錯誤需要修改
+	function selectClick(myObj) {
+            //get id of div e.g.#stock0
+            let stockID = "#" + myObj.id;
+            //get number in id e.g. #stock0 ==> 0
+            //which is also the index for pObj[]
+            let index = stockID.substring(stockID.length - 1, stockID.length);
+            //get the new quantity given by the user
+            let newQty = $(stockID).val();
+            //新修改的數量
+            let newP = [];
+            //舊的數量
+            let oldP = [];
+            //之前計算好的subtotal沿用
+            let vpsubtotal = vpsub;
+            console.log(pObj.length);
+            //跑迴圈計算更改新數量後的金額
+            //舊數量的金額計算後
+            for (let a = 0; a < pObj.length; a++) {
+            	var newPTotal = 0;
+            	//新數量
+                newP[a] = (pObj[index].UnitPrice) * (newQty) * (1 - (pObj[index].Discount));
+                newPTotal += newPTotal + newP[a];
+                console.log(newPTotal);
+                var oldPTotal = 0;
+                //舊數量
+                oldP[a] = (pObj[index].UnitPrice) * (pObj[index].Quantity) * (1 - (pObj[index].Discount));
+                oldPTotal += oldPTotal + oldP[a];
+                console.log(oldPTotal);
+            } 
+            //更改的新金額add to vpsubtotal 舊的 subtract from vpsubtotal
+            vpsubtotal = vpsubtotal + newPTotal - oldPTotal;
+            //加上逗號須改為字串
+            let newVPsubtotal = new Number(vpsubtotal).toLocaleString("en-AU");
+            console.log(vpsubtotal + "+" + newPTotal + "-" + oldPTotal + "=" + newVPsubtotal);
+          	//加上逗號須改為字串
+            let subtotal = new Number(vpsubtotal - 50).toLocaleString("en-AU");
+            $('#vpsubtotal').text("NT$ " + newVPsubtotal)
+            $('#subtotal').text("NT$ " + subtotal);
+        }
+
 		
 		//更改桌數的onchange function
 		function MaxLimit(obj){

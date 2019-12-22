@@ -111,10 +111,10 @@ public class putItemInShoppingCartServlet extends HttpServlet {
 		 odvb.setStartTime(Integer.parseInt(request.getParameter("Time")));
 		 odvb.setDate( request.getParameter("Date"));
 		 odvb.setTableCount( Integer.parseInt(request.getParameter("Table")));
+		 //以下拿了值，但是目前沒用上
 		  request.getParameter("Vendor");
 		  request.getParameter("Hall");
 		  request.getParameter("Price");
-		  request.getParameter("Time");
         }
 		//Product
 		  

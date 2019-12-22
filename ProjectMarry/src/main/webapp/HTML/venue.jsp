@@ -159,7 +159,7 @@
                             <input type="hidden" name="vendor" value="paul">
                             <input type="hidden" name="Hall" value="a">
                             <input type="hidden" name="Price" value="600">
-                            <input type="hidden" name="ProductID" value="V1">
+                            <input type="hidden" name="ProductID" value="${VB.productID}">
 
                             <input type="hidden" name="VendorID" value="1">
                         </div>
