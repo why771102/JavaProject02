@@ -24,7 +24,7 @@ public interface ShoppingCartDao {
     // 刪除venue table裡面的資料 (記得要先刪掉fk)
     public boolean deleteVendor(int orderId, int vendorID);
 
-    public boolean deleteVenue(int orderId, String productID);
+    public boolean deleteVenue(int orderId, String productID,int startTime);
 
     // 刪除product table裡面的資料 (記得要先刪掉fk)
     public boolean deleteSupplier(int orderId, int supplierID);

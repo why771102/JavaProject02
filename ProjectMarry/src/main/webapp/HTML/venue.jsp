@@ -155,7 +155,7 @@
               <div class="wrapStart " id="product_right">
                     <form action="PutItemInShoppingCartServlet" method="post" class="fullwidth" id="VenueForm">
                         <div class="wrapList">
-                            <p class="tital ">${requestScope.Vendor}</p>
+                            <p class="tital ">${requestScope.Vendor} ${VB.hall}</p>
                             <input type="hidden" name="vendor" value="paul">
                             <input type="hidden" name="Hall" value="a">
                             <input type="hidden" name="Price" value="600">

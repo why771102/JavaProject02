@@ -48,6 +48,7 @@ public class UpdateShoppingCartServlet extends HttpServlet {
 		UserService us = new UserServiceImpl(conn);
 		Integer MemberId = us.getIdFromCookie(request);
 		Integer OrderId = scs.getShoppingCart(MemberId);
+		Integer StartTime = Integer.parseInt(request.getParameter("startTime"));
 		
 		String cmd = request.getParameter("cmd");
 		System.out.println(cmd);
@@ -71,7 +72,7 @@ public class UpdateShoppingCartServlet extends HttpServlet {
 //			rd.forward(request, response);
 //			return;
 		}else if(cmd.equalsIgnoreCase("DELVENUE")) {
-			scs.deleteVenue(OrderId, vID);
+			scs.deleteVenue(OrderId, vID,StartTime);
 //			RequestDispatcher rd = request.getRequestDispatcher("/GetShoppingCartFromDBServlet");
 //			rd.forward(request, response);
 //			return;

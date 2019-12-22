@@ -236,12 +236,13 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     }
 
     @Override
-    public boolean deleteVenue(int orderId, String productID) {
+    public boolean deleteVenue(int orderId, String productID,int startTime) {
         boolean result = false;
-        String sql = "DELETE FROM OrderDetailVenues WHERE orderId=? and productId=?";
+        String sql = "DELETE FROM OrderDetailVenues WHERE orderId=? and productId=? and StartTime=?";
         try (PreparedStatement stmt = conn.prepareStatement(sql);) {
             stmt.setInt(1, orderId);
             stmt.setString(2, productID);
+            stmt.setInt(3, startTime);
             stmt.execute();
             result = true;
             stmt.close();

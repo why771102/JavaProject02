@@ -53,9 +53,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 	}
 
 	@Override
-	public boolean deleteVenue(int orderId, String productID) {
+	public boolean deleteVenue(int orderId, String productID, int startTime) {
 		// TODO Auto-generated method stub
-		return  scdao.deleteVenue(orderId, productID);
+		return  scdao.deleteVenue(orderId, productID, startTime);
 	}
 
 	@Override
