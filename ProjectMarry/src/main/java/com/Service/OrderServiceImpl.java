@@ -11,8 +11,6 @@ public class OrderServiceImpl implements OrderService {
 	Connection conn;
 	private IOrderDao od;
 
-//	private DataSource ds;
-
 	
 	public OrderServiceImpl(Connection conn) {
 		this.conn = conn;
@@ -30,21 +28,6 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public OrderBean getOrder(int OrderID) {
 		return od.getOrder(OrderID);
-	}
-
-	@Override
-	public List<OrderBean> getAllOrders() {
-		return od.getAllOrders();
-	}
-
-	@Override
-	public List<OrderBean> getMemberOrders(String MemberID) {
-		return od.getMemberOrders(MemberID);
-	}
-
-	@Override
-	public void insertOrder(OrderBean ob) {
-		
 	}
 
 	@Override
@@ -66,4 +49,5 @@ public class OrderServiceImpl implements OrderService {
 	public List<OrderBean> getMemberCancelledOrders(String id) {
 		return od.getMemberCancelledOrders(id);
 	}
+
 }
