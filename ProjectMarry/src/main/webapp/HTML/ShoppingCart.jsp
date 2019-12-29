@@ -196,7 +196,7 @@ $(document).ready(function(){
 	//訂單金額那個div
 	//若是購物車有物品就顯示 else不顯示
 	if(vObj != 0 || pObj != 0){
-            $('#sc_right').append("<div class='wrapStart'><div class='sc_fix CartTrans'><div class='cartFrame1 sc_frame CartTrans'><div class='wrapList cartFrame'><p class='text1'>訂單摘要</p></div><div class='cartFrame2'><div class='wrapRowStart sc_padding1'><p class='text1'>商品總計</p><div class='sc_right' id='vpsubtotal'>NT$" + vpsubtotal + "</div></div><div class='wrapRowStart sc_padding1'><p class='text1'>運費總計</p><div class='sc_right'>NT$ 0</div></div><div class='wrapRowStart sc_padding1'><p class='text1'>其他折抵</p><div class='sc_right'>NT$ -50</div></div><div class='wrapRowStart sc_padding1'><p class='text2'>預留的隱藏欄位</p></div><br><div class='wrapRowStart sc_padding'><p class='text1' id='pColor'>使用優惠劵、紅利或禮物卡</p></div><hr><div class='wrapRowStart sc_padding'><p class='text'>結帳總金額</p><div class='sc_right' id='subtotal'>NT$ " + subtotal + "</div></div><div class='wrapList'><!-- <a href='Checkout.jsp'> --><div class='submitButton' onclick='checkqty()'><p id='sc_center'>前往結帳</p><!-- </a> --></div></div></div></div></div>");    
+            $('#sc_right').append("<div class='wrapStart'><div class='sc_fix CartTrans'><div class='cartFrame1 sc_frame CartTrans'><div class='wrapList cartFrame'><p class='text1'>訂單摘要</p></div><div class='cartFrame2'><div class='wrapRowStart sc_padding1'><p class='text1'>商品總計</p><div class='sc_right' id='vpsubtotal'>NT$" + vpsubtotal + "</div></div><div class='wrapRowStart sc_padding1'><p class='text1'>運費總計</p><div class='sc_right'>NT$ 0</div></div><div class='wrapRowStart sc_padding1'><p class='text1'>其他折抵</p><div class='sc_right'>NT$ -50</div></div><div class='wrapRowStart sc_padding1'><p class='text2'>預留的隱藏欄位</p></div><br><div class='wrapRowStart sc_padding'><p class='text1' id='pColor'>使用優惠劵、紅利或禮物卡</p></div><hr><div class='wrapRowStart sc_padding'><p class='text'>結帳總金額</p><div class='sc_right' id='subtotal'>NT$" + subtotal + "</div></div><div class='wrapList'><div class='submitButton' onclick='checkqty()'><p id='sc_center'>前往結帳</p></div></div></div></div></div>");    
 }else if(vObj === 0 && pObj === 0){
 	$('#sc_left').append("<p class='STital'> 您的購物車內沒有商品!! 歡迎選購😄</p><br><div><a href='HTML/index.html'><p class='STital'>👉回首頁逛逛</p></a></div><br>");
 	console.log("no sc");
@@ -286,7 +286,6 @@ $(document).ready(function(){
             	newPTotal = newPTotal + newP[a];
 //                 console.log("newP[a]: " + newP[a]);
 //                 console.log("newPTotal: " + newPTotal);
-                //舊數量
             } 
 //             console.log(newPTotal);
             return newPTotal;
@@ -305,10 +304,14 @@ $(document).ready(function(){
                 newPTotal = newQty(stockID, index);
 //     			console.log("newPTotal" + newPTotal);
                 //加上逗號須改為字串
-                let newVPsubtotal = new Number(newPTotal).toLocaleString("en-AU");
+                var venueTotal = 0;
+                for(let venue = 0; venue < vObj.length; venue++){
+                	venueTotal += vObj[venue].Price
+                }
+                let newVPsubtotal = new Number(newPTotal + venueTotal).toLocaleString("en-AU");
 //                 console.log("newVPsubtotal" + newVPsubtotal);
               	//加上逗號須改為字串
-                let subtotal = new Number(newPTotal - 50).toLocaleString("en-AU");
+                let subtotal = new Number(newPTotal + venueTotal - 50).toLocaleString("en-AU");
                 $('#vpsubtotal').text("NT$" + newVPsubtotal)
                 $('#subtotal').text("NT$" + subtotal);
             }

@@ -46,7 +46,7 @@ public interface ShoppingCartService {
 //    public double getProductPrice(ProductBean pb);
 
     // 把購物車存進order table status 從0改1
-    public boolean updateStatus(OrderBean ob);
+//    public boolean updateStatus(OrderBean ob);
 
     // 按了購買後 如果有數量的更改
     public boolean updateQty(OrderDetailProductsBean odpb);

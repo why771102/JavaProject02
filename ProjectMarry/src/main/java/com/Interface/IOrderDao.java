@@ -6,13 +6,15 @@ import com.Bean.OrderBean;
 
 public interface IOrderDao {
 	
-	OrderBean getOrder(int OrderID);
+	public OrderBean getOrder(int OrderID);
 
-	List<OrderBean> getMemberUnpaidOrders(String id);
+	public List<OrderBean> getMemberUnpaidOrders(String id);
 
-	List<OrderBean> getMemberPaidOrders(String id);
+	public List<OrderBean> getMemberPaidOrders(String id);
 
-	List<OrderBean> getMemberCompletedOrders(String id);
+	public List<OrderBean> getMemberCompletedOrders(String id);
 
-	List<OrderBean> getMemberCancelledOrders(String id);
+	public List<OrderBean> getMemberCancelledOrders(String id);
+
+	boolean updateStatus(OrderBean ob);
 }

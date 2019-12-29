@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.Bean.OrderBean;
+import com.Dao.OrderDaoImpl;
 import com.Interface.IOrderDao;
-import com.Service.OrderService;
 
 public class OrderServiceImpl implements OrderService {
 	Connection conn;
@@ -14,16 +14,8 @@ public class OrderServiceImpl implements OrderService {
 	
 	public OrderServiceImpl(Connection conn) {
 		this.conn = conn;
+		od = new OrderDaoImpl(conn);
 	}
-
-	public IOrderDao getOdao() {
-		return od;
-	}
-
-	public void setOdao(IOrderDao od) {
-		this.od = od;
-	}
-	
 
 	@Override
 	public OrderBean getOrder(int OrderID) {
@@ -48,6 +40,12 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public List<OrderBean> getMemberCancelledOrders(String id) {
 		return od.getMemberCancelledOrders(id);
+	}
+
+	@Override
+	public boolean updateStatus(OrderBean ob) {
+		// TODO Auto-generated method stub
+		return od.updateStatus(ob);
 	}
 
 }

@@ -94,11 +94,11 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 //		return scdao.getProductPrice(pb);
 //	}
 
-	@Override
-	public boolean updateStatus(OrderBean ob) {
-		// TODO Auto-generated method stub
-		return scdao.updateStatus(ob);
-	}
+//	@Override
+//	public boolean updateStatus(OrderBean ob) {
+//		// TODO Auto-generated method stub
+//		return scdao.updateStatus(ob);
+//	}
 
 	@Override
 	public boolean updateQty(OrderDetailProductsBean odpb) {

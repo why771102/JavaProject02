@@ -18,22 +18,39 @@ public class OrderDaoImpl implements IOrderDao {
 		this.conn = conn;
 	}
 	
+	// 把購物車存進orders table status 從0改1
+    @Override
+    public boolean updateStatus(OrderBean ob) { // 會員下訂單????
+        String sql = " update Orders set Status=1 where ID=? and OrderID=?";
+        try {
+            PreparedStatement state = conn.prepareStatement(sql);
+            state.setInt(1, ob.getID());
+            state.setInt(2, ob.getOrderID());
+            state.execute();
+            state.close();
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+	
 	public OrderBean getOrder(int OrderID) {
-		OrderBean ob = null;
+		OrderBean ob = new OrderBean();
 		String sql = "SELECT * FROM Orders where OrderID=?";
 		try (PreparedStatement ps = conn.prepareStatement(sql);){
 			ps.setInt(1, OrderID);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
-				Integer orderID = rs.getInt("OrderID");
-				Integer ID = rs.getInt("ID");
-				String InvoiceTitle = rs.getString("InvoiceTitle");
-				String VATnumber = rs.getString("VATnumber");
-				Integer Status = rs.getInt("Status");
-				String ShippingAddress = rs.getString("ShippingAddress");
-				Date OrderDate = rs.getDate("OrderDate");
-				Integer ShippingStatus = rs.getInt("ShippingStatus");
-				ob = new OrderBean(orderID, ID, InvoiceTitle, VATnumber, Status, ShippingAddress, OrderDate, ShippingStatus);
+				ob.setOrderID(rs.getInt("OrderID"));
+				ob.setID(rs.getInt("ID"));
+				ob.setInvoiceTitle(rs.getString("InvoiceTitle"));
+				ob.setVATnumber(rs.getString("VATnumber"));
+				ob.setStatus(rs.getInt("Status"));
+				ob.setShippingAddress(rs.getString("ShippingAddress"));
+				ob.setOrderDate(rs.getDate("OrderDate"));
+				ob.setShippingStatus(rs.getInt("ShippingStatus"));
 			}
 			rs.close();
 			ps.close();
@@ -41,7 +58,7 @@ public class OrderDaoImpl implements IOrderDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return ob;
 	}
 
 	public List<OrderBean> getMemberUnpaidOrders(String id) {

@@ -15,4 +15,6 @@ public interface OrderService {
 	List<OrderBean> getMemberCompletedOrders(String id);
 
 	List<OrderBean> getMemberCancelledOrders(String id);
+	
+	public boolean updateStatus(OrderBean ob);
 }

@@ -404,25 +404,6 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 //        return subtotal;
 //    }
 
-    // 把購物車存進orders table status 從0改1
-    @Override
-    public boolean updateStatus(OrderBean ob) { // 會員下訂單????
-        String sql = " update Orders set Status=? where ID=? and OrderID=?";
-//String sql = “UPDATE Orders SET Status = 1 where ID=? and OrderID=?”;
-        try {
-            PreparedStatement state = conn.prepareStatement(sql);
-            state.setInt(1, ob.getStatus());
-            state.setInt(2, ob.getID());
-            state.setInt(3, ob.getOrderID());
-            state.executeUpdate();
-            state.close();
-            return true;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 
     // 按了購買後 如果有數量的更改
     @Override
