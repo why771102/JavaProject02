@@ -51,7 +51,6 @@ public class UpdateShoppingCartServlet extends HttpServlet {
 		Integer MemberId = us.getIdFromCookie(request);
 		
 		Integer OrderId = scs.getShoppingCart(MemberId);
-		Integer StartTime = Integer.parseInt(request.getParameter("startTime"));
 		
 		String cmd = request.getParameter("cmd");
 		String vID = request.getParameter("vId");
@@ -71,7 +70,7 @@ public class UpdateShoppingCartServlet extends HttpServlet {
 			scs.deleteSupplier(OrderId, SupplierId);
 			
 		}else if(cmd.equalsIgnoreCase("DELVENUE")) {
-			
+			Integer StartTime = Integer.parseInt(request.getParameter("startTime"));
 			scs.deleteVenue(OrderId, vID, StartTime);
 			
 		}else if(cmd.equalsIgnoreCase("DELPRODUCT")) {
