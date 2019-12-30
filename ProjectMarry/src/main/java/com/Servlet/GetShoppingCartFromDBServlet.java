@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import org.json.JSONArray;
@@ -37,6 +38,18 @@ public class GetShoppingCartFromDBServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		init();
+		HttpSession session = request.getSession(false);
+		
+		if (session == null) {
+			response.sendRedirect(getServletContext().getContextPath() + "/LogIn.jsp");
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return;
+		}
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 
@@ -52,7 +65,7 @@ public class GetShoppingCartFromDBServlet extends HttpServlet {
 			ShoppingCartService scs = new ShoppingCartServiceImpl(conn);
 			// 依據該ID找相對應的OrderId
 			Integer OrderId = scs.getShoppingCart(MemberId);
-			System.out.println(OrderId);
+			System.out.println("This is GetShoppingCart " + OrderId);
 			// 若OrderId不等於0則有放過購物車,將資料取出
 			if (OrderId != 0) {
 				// 判斷購物車物品是否有venue
@@ -127,6 +140,10 @@ public class GetShoppingCartFromDBServlet extends HttpServlet {
 
 			} else {
 //					System.out.println(OrderId + "2");
+				request.setAttribute("productArray", 0);
+				request.setAttribute("venueArray", 0);
+				RequestDispatcher rd = request.getRequestDispatcher(url);
+				rd.forward(request, response);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
