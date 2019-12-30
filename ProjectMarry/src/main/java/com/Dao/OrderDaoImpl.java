@@ -21,11 +21,14 @@ public class OrderDaoImpl implements IOrderDao {
 	// 把購物車存進orders table status 從0改1
     @Override
     public boolean updateStatus(OrderBean ob) { // 會員下訂單????
-        String sql = " update Orders set Status=1 where ID=? and OrderID=?";
+        String sql = " update Orders set Status=1, OrderDate=? where ID=? and OrderID=?";
         try {
             PreparedStatement state = conn.prepareStatement(sql);
-            state.setInt(1, ob.getID());
-            state.setInt(2, ob.getOrderID());
+            java.util.Date date=new java.util.Date();  
+            
+            state.setLong(1, date);
+            state.setInt(2, ob.getID());
+            state.setInt(3, ob.getOrderID());
             state.execute();
             state.close();
             return true;
@@ -45,7 +48,7 @@ public class OrderDaoImpl implements IOrderDao {
 			if(rs.next()) {
 				ob.setOrderID(rs.getInt("OrderID"));
 				ob.setID(rs.getInt("ID"));
-				ob.setInvoiceTitle(rs.getString("InvoiceTitle"));
+//				ob.setInvoiceTitle(rs.getString("InvoiceTitle"));
 				ob.setVATnumber(rs.getString("VATnumber"));
 				ob.setStatus(rs.getInt("Status"));
 				ob.setShippingAddress(rs.getString("ShippingAddress"));

@@ -8,7 +8,7 @@ public class OrderBean {
 	
 	private Integer OrderID;
 	private Integer ID;
-	private String InvoiceTitle;
+//	private String InvoiceTitle;
 	private String VATnumber;
 	private Integer Status;
 	private String ShippingAddress;
@@ -37,11 +37,11 @@ public class OrderBean {
 		
 	}
 	
-	public OrderBean(Integer OrderID, Integer ID, String InvoiceTitle, String VATnumber, Integer Status,
+	public OrderBean(Integer OrderID, Integer ID, String VATnumber, Integer Status,
 			String ShippingAddress, Date OrderDate, Integer ShippingStatus) {
 		this.OrderID = OrderID;
 		this.ID = ID;
-		this.InvoiceTitle = InvoiceTitle;
+//		this.InvoiceTitle = InvoiceTitle;
 		this.VATnumber = VATnumber;
 		this.Status = Status;
 		this.ShippingAddress = ShippingAddress;
@@ -65,13 +65,13 @@ public class OrderBean {
 		ID = iD;
 	}
 
-	public String getInvoiceTitle() {
-		return InvoiceTitle;
-	}
-
-	public void setInvoiceTitle(String invoiceTitle) {
-		InvoiceTitle = invoiceTitle;
-	}
+//	public String getInvoiceTitle() {
+//		return InvoiceTitle;
+//	}
+//
+//	public void setInvoiceTitle(String invoiceTitle) {
+//		InvoiceTitle = invoiceTitle;
+//	}
 
 	public String getVATnumber() {
 		return VATnumber;

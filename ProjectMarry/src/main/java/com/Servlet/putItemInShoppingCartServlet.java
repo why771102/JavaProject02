@@ -144,7 +144,7 @@ public class putItemInShoppingCartServlet extends HttpServlet {
 				int orderID = scs.getShoppingCart(ID); //如果有status =0的東西 就把orderID取出
 				// 看回傳值如果是0代表沒有購物車
 				 odpb.setOrderID(orderID);
-				OrderBean ob = new OrderBean(orderID, ID, null, null, null, null, null, 0);
+				OrderBean ob = new OrderBean(orderID, ID, null, null, null, null, 0);
 
 				// 如果沒有 新建一個 saveShoppingCart
 

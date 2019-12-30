@@ -43,25 +43,27 @@ public class UploadFiles extends HttpServlet {
 		init();
 		System.out.println("000000");
 		VenueImageService vis = new VenueImageServiceImpl(conn);
-		
-		Part part = request.getPart("photo1");
-		InputStream in = part.getInputStream();
-		String header = part.getHeader("Content-Disposition");
-		System.out.println(header);
-		// header=> form-data; name="photo"; filename="all.png" -- chrome, firefox
-		// use indexOf to catch "filename" position
-		int idx = header.indexOf("filename");
-		System.out.println(idx);
-		// idx=> position 25 will be the start of "filename"
-		// use substring to extract the position of filename => all.png
-		String filename = header.substring(idx + 10, header.length() - 1);
+		for(Part part : request.getParts()) {
+			//ProductID 之後要改成 request.getParameter
+			String ProductID = "V1";
+			InputStream in = part.getInputStream();
+			String header = part.getHeader("Content-Disposition");
+			System.out.println(header);
+			// header=> form-data; name="photo"; filename="all.png" -- chrome, firefox
+			// use indexOf to catch "filename" position
+			int idx = header.indexOf("filename");
+			System.out.println(idx);
+			// idx=> position 25 will be the start of "filename"
+			// use substring to extract the position of filename => all.png
+			String filename = header.substring(idx + 10, header.length() - 1);
 
-		byte[] buf = new byte[1024]; //1024 memory given here
-		int length;
-		while ((length = in.read(buf)) != -1) {
+			byte[] buf = new byte[1024]; //1024 memory given here
+			int length;
+			while ((length = in.read(buf)) != -1) {
+			}
 			try {
 				Blob blob = new SerialBlob(buf);
-				vis.processInsertImage(blob, "V1", filename);
+				vis.processInsertImage(blob, ProductID, filename);
 			} catch (SerialException e) {
 
 				e.printStackTrace();
@@ -69,6 +71,12 @@ public class UploadFiles extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+//		Part part = request.getPart("photo1");
+//		Part part2 = request.getPart("photo2");
+//		Part part3 = request.getPart("photo3");
+//		Part part4 = request.getPart("photo4");
+//		
+		
 //		String savePath = this.getServletContext().getRealPath("Files");
 
 //		List<Byte> photos = (List<Byte>)request.getInputStream();
