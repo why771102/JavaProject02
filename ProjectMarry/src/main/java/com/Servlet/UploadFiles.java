@@ -43,8 +43,8 @@ public class UploadFiles extends HttpServlet {
 		init();
 		System.out.println("000000");
 		VenueImageService vis = new VenueImageServiceImpl(conn);
-		for(Part part : request.getParts()) {
-			//ProductID 之後要改成 request.getParameter
+		for (Part part : request.getParts()) {
+			// ProductID 之後要改成 request.getParameter
 			String ProductID = "V1";
 			InputStream in = part.getInputStream();
 			String header = part.getHeader("Content-Disposition");
@@ -56,19 +56,22 @@ public class UploadFiles extends HttpServlet {
 			// idx=> position 25 will be the start of "filename"
 			// use substring to extract the position of filename => all.png
 			String filename = header.substring(idx + 10, header.length() - 1);
+			if (filename.length() != 0) {
+				byte[] buf = new byte[1024]; // 1024 memory given here
+				int length;
+				while ((length = in.read(buf)) != -1) {
+				}
+				try {
+					Blob blob = new SerialBlob(buf);
+					vis.processInsertImage(blob, ProductID, filename);
+				} catch (SerialException e) {
 
-			byte[] buf = new byte[1024]; //1024 memory given here
-			int length;
-			while ((length = in.read(buf)) != -1) {
-			}
-			try {
-				Blob blob = new SerialBlob(buf);
-				vis.processInsertImage(blob, ProductID, filename);
-			} catch (SerialException e) {
-
-				e.printStackTrace();
-			} catch (SQLException e) {
-				e.printStackTrace();
+					e.printStackTrace();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			} else {
+				continue;
 			}
 		}
 //		Part part = request.getPart("photo1");
@@ -76,7 +79,7 @@ public class UploadFiles extends HttpServlet {
 //		Part part3 = request.getPart("photo3");
 //		Part part4 = request.getPart("photo4");
 //		
-		
+
 //		String savePath = this.getServletContext().getRealPath("Files");
 
 //		List<Byte> photos = (List<Byte>)request.getInputStream();
@@ -91,7 +94,7 @@ public class UploadFiles extends HttpServlet {
 
 //			vis.processInsertImage(photo, "V1", fileName);
 //		}
-		
+
 		response.getWriter().append("Insert Successful!!").append(request.getContextPath());
 
 		try {

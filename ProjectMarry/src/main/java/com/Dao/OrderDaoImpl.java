@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.Bean.OrderBean;
@@ -21,14 +20,11 @@ public class OrderDaoImpl implements IOrderDao {
 	// 把購物車存進orders table status 從0改1
     @Override
     public boolean updateStatus(OrderBean ob) { // 會員下訂單????
-        String sql = " update Orders set Status=1, OrderDate=? where ID=? and OrderID=?";
+        String sql = " update Orders set Status=1, OrderDate=GETDATE() where ID=? and OrderID=?";
         try {
             PreparedStatement state = conn.prepareStatement(sql);
-            java.util.Date date=new java.util.Date();  
-            
-            state.setLong(1, date);
-            state.setInt(2, ob.getID());
-            state.setInt(3, ob.getOrderID());
+            state.setInt(1, ob.getID());
+            state.setInt(2, ob.getOrderID());
             state.execute();
             state.close();
             return true;
