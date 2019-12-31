@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.Bean.OrderBean;
@@ -21,7 +20,7 @@ public class OrderDaoImpl implements IOrderDao {
 	// 把購物車存進orders table status 從0改1
     @Override
     public boolean updateStatus(OrderBean ob) { // 會員下訂單????
-        String sql = " update Orders set Status=1 where ID=? and OrderID=?";
+        String sql = " update Orders set Status=1, OrderDate=GETDATE() where ID=? and OrderID=?";
         try {
             PreparedStatement state = conn.prepareStatement(sql);
             state.setInt(1, ob.getID());
@@ -36,18 +35,18 @@ public class OrderDaoImpl implements IOrderDao {
         return false;
     }
 	
-	public OrderBean getOrder(int OrderID) {
+	public OrderBean getOrder(int OrderID, int Status) {
 		OrderBean ob = new OrderBean();
-		String sql = "SELECT * FROM Orders where OrderID=?";
+		String sql = "SELECT * FROM Orders where OrderID=? and Status=?";
 		try (PreparedStatement ps = conn.prepareStatement(sql);){
 			ps.setInt(1, OrderID);
+			ps.setInt(2, Status);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
 				ob.setOrderID(rs.getInt("OrderID"));
 				ob.setID(rs.getInt("ID"));
-				ob.setInvoiceTitle(rs.getString("InvoiceTitle"));
+//				ob.setInvoiceTitle(rs.getString("InvoiceTitle"));
 				ob.setVATnumber(rs.getString("VATnumber"));
-				ob.setStatus(rs.getInt("Status"));
 				ob.setShippingAddress(rs.getString("ShippingAddress"));
 				ob.setOrderDate(rs.getDate("OrderDate"));
 				ob.setShippingStatus(rs.getInt("ShippingStatus"));

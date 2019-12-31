@@ -6,7 +6,7 @@ import com.Bean.OrderBean;
 
 public interface OrderService {
 
-	OrderBean getOrder(int OrderID);
+	OrderBean getOrder(int OrderID, int Status);
 
 	List<OrderBean> getMemberUnpaidOrders(String id);
 

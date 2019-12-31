@@ -5,20 +5,20 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form,
 	padding: 0;
 }
 
-html, /* ������身摰� ��摮�甇�暺��  銝虫���之撠誑�����  */
+html, /* 嚙踐�蕭��嚙踐城嚙踐�蕭��蕭謘輯澈�嚙� 嚙踝嚙踝�豢謅蕭��冪��蕭��嚙踝蕭  ��嚙踐�蕭謅蕭����隤蕭謒穿蕭嚙踝�蕭���蕭���  */
 	body {
 	margin: 0;
 	padding: 0;
-	font-family: arial, "Microsoft JhengHei", "敺株�迤暺��",
+	font-family: arial, "Microsoft JhengHei", "��嚙踐�縣��嚙踝蕭",
 		sans-serif !important;
 	font-size: 100%;
 }
 
-/* warp 憒���� 蝟餃�� */
+/* warp ���蕭��蕭��蕭嚙� ���蕭嚙� */
 
-/* ����column蝵桐葉 */
+/* 嚙踝蕭��蕭��蕭蹇�olumn�獢�� */
 .wrap {
-	/*Flex撅祆�批�*/
+	/*Flex���蕭�嚙�*/
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
@@ -28,38 +28,38 @@ html, /* ������身摰� ��摮��
 	box-sizing: border-box;
 }
 
-/* ����column��椰 */
+/* 嚙踝蕭��蕭��蕭蹇�olumn嚙踝蕭�璊� */
 .wrapStart {
-	/*Flex撅祆�批�*/
+	/*Flex���蕭�嚙�*/
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: flex-start;
 	align-items: flex-start;
 	/* border: solid 1px black;
        border-block-end-color: brown; */
-	/* ���撖� */
+	/* 嚙踝蕭��蕭����蕭 */
 	height: 100%;
 	/* border and padding in box */
 	box-sizing: border-box;
 }
 
-/* ������ow ��椰 */
+/* 嚙踝蕭��蕭��蕭嚙踝蕭謑w 嚙踝蕭�璊� */
 .wrapRowStart {
-	/*Flex撅祆�批�*/
+	/*Flex���蕭�嚙�*/
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: flex-start;
 	align-items: flex-start;
 	/* border: solid 1px black;
        border-block-end-color: brown; */
-	/* ���撖� */
+	/* 嚙踝蕭��蕭����蕭 */
 	width: 100%;
 	height: 100%;
 	/* border and padding in box */
 	box-sizing: border-box;
 }
 
-/* �����ow 蝵桐葉 */
+/* 嚙踝蕭��蕭��蕭�嚙踐�w �獢�� */
 .wrapRow {
 	display: flex;
 	flex-flow: row nowrap;
@@ -71,14 +71,14 @@ html, /* ������身摰� ��摮��
 
 /* in article have padding */
 .wrapList {
-	/*Flex撅祆�批�*/
+	/*Flex���蕭�嚙�*/
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: flex-start;
 	align-items: flex-start;
 	/* border: solid 1px black;
        border-block-end-color: brown; */
-	/* ���撖� */
+	/* 嚙踝蕭��蕭����蕭 */
 	width: 100%;
 	/* height: 100%; */
 	/* border and padding in box */
@@ -86,15 +86,15 @@ html, /* ������身摰� ��摮��
 	padding: 0% 1% 1% 1%;
 }
 
-/* warp 憒���� 蝟餃�� */
+/* warp ���蕭��蕭��蕭嚙� ���蕭嚙� */
 
-/* ���� ��蝟餃��  */
+/* 嚙踝蕭�嚙踝蕭 嚙踐�蕭謘��蕭嚙�  */
 label {
 	width: 100%;
 }
 
 .submitButton {
-	/* ����� */
+	/* 嚙踐撒�嚙踝蕭�嚙踝蕭 */
 	margin: 0px 0px 0px;
 	border: none;
 	border-radius: 5px;
@@ -106,7 +106,7 @@ label {
 	text-align: center;
 }
 
-/* ���� ��蝟餃�� */
+/* 嚙踝蕭�嚙踝蕭 嚙踐�蕭謘��蕭嚙� */
 
 /* select {
     background-color: #fc6d6d;
@@ -128,7 +128,7 @@ label {
 }
 
 .submitButton {
-	/* ����� */
+	/* 嚙踐撒�嚙踝蕭�嚙踝蕭 */
 	margin: 0px 0px 0px;
 	border: none;
 	border-radius: 5px;
@@ -144,14 +144,14 @@ label {
 	height: 100%;
 }
 
-/*  頝eader 蝬脤 ���頂��� */
+/*  ��隋eader ��赯� 嚙踝蕭�嚙踐鬲��蕭嚙踝蕭 */
 #head {
 	width: 100%;
 	height: 150px;
 	padding: 10px 0px;
 }
 
-/*  頝eader 蝬脤 ���頂��� */
+/*  ��隋eader ��赯� 嚙踝蕭�嚙踐鬲��蕭嚙踝蕭 */
 #cartShopList {
 	width: 65%;
 	height: 100%;
@@ -166,7 +166,7 @@ label {
 	height: 10%;
 }
 
-/* 銝剝���� */
+/* ���蕭��嚙踝蕭嚙� */
 #content {
 	display: flex;
 	flex-flow: row nowrap;
@@ -175,7 +175,7 @@ label {
 	width: 100%;
 }
 
-/* 頝mg ���頂��� */
+/* ��陽mg 嚙踝蕭�嚙踐鬲��蕭嚙踝蕭 */
 #pictureBG {
 	background-color: #d8d8d8;
 	width: 100%;
@@ -195,13 +195,13 @@ label {
 	padding: 1% 1%;
 }
 
-/* 頝mg ���頂��� */
-/* 頝� a ��蝯� ���頂��� */
+/* ��陽mg 嚙踝蕭�嚙踐鬲��蕭嚙踝蕭 */
+/* ��蕭 a 嚙踝蕭�嚙� 嚙踝蕭�嚙踐鬲��蕭嚙踝蕭 */
 a {
 	width: 100%;
 }
 
-/* foot 蝬脤��摨惜����  */
+/* foot ��嚙踐撮嚙賣���蕭嚙踝嚙踝蕭  */
 #footBG {
 	     background-color: #e2d4b9;
 	width: 100%;
@@ -210,7 +210,7 @@ a {
 
 /* foot  */
 
-/* �����之撠�*/
+/* 嚙踝蕭�嚙踐��蕭嚙踐高銋�蕭*/
 p.BTital {
 	color: black;
 	text-align: left;
@@ -240,16 +240,16 @@ p.text {
 	width: 100%;
 }
 
-/*Product嚗������憓������������ */
+/*Product���蕭豲蕭豲蕭豲蕭豲蕭豲蕭豲��竣嚙踐�蕭��蕭豲蕭豲蕭豲蕭豲蕭豲蕭豲蕭豲蕭豲蕭嚙� */
 
-/* map ���身摰� */
+/* map 嚙踐�蕭嚙踐鬼頨急嚙� */
 .map {
 	width: 100%;
 	height: 60vh;
 	background-color: cadetblue;
 }
 
-/* map ���身摰� */
+/* map 嚙踐�蕭嚙踐鬼頨急嚙� */
 .P_Bimg {
 	width: 100%;
 	height: 80%;
@@ -257,7 +257,7 @@ p.text {
 }
 
 div.submitButton {
-	/* ����� */
+	/* 嚙踐撒�嚙踝蕭�嚙踝蕭 */
 	margin: 0px 0px 0px;
 	border: none;
 	border-radius: 5px;
@@ -270,7 +270,7 @@ div.submitButton {
 	padding: 1%;
 }
 
-/* 摨���� 璅�撘� 
+/* ��嚙踐垓謆蕭嚙踝蕭 ��蕭��蕭 
 
    .end_gray_border {
        border-block-end: rgb(179, 179, 179) solid 1px;
@@ -280,7 +280,7 @@ div.submitButton {
        border-block-start: rgb(179, 179, 179) solid 1px;
    } */
 
-/*select 璅�撘�*/
+/*select ��蕭��蕭*/
 select.product_sel {
 	/* background-color: #fc6d6d; */
 	 color: black;
@@ -293,11 +293,11 @@ select.product_sel {
     text-align: center;
     border-radius: 2px;
 	/* box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2); */
-	/*蝘駁蝞剝璅�撘�*/
+	/*������髡��蕭��蕭*/
 	appearance: none;
 	-moz-appearance: none;
 	-webkit-appearance: none;
-	/*�霈��悌�璅�撘�*/
+	/*嚙踐����嚙踝蕭���蕭赯衣�蕭��蕭*/
 	background: url("vnLrSJDngY.jpg") no-repeat right center transparent;
 	background-size: 5% 60%;
 	/* border: 0px; */
@@ -317,7 +317,7 @@ select.product_sel {
 	height: 100%;
 }
 
-/* 銝剝���� ��椰��� ���� ���� */
+/* ���蕭��嚙踝蕭嚙� 嚙踝蕭��什嚙踝蕭嚙� 嚙踝蕭��蕭嚙� 嚙踐嚙踝蕭嚙� */
 #product_left {
 	width: 50%;
 	height: 100%;
@@ -328,7 +328,7 @@ select.product_sel {
 	height: 100%;
 	padding: 0% 3% 2%;
 }
-/* width ���� */
+/* width 嚙踐�蕭嚙踝蕭 */
 .width50 {
 	width: 50%;
 }
@@ -336,7 +336,7 @@ select.product_sel {
 .width60 {
 	width: 60%;
 }
-/* height ���� */
+/* height 嚙踐�蕭嚙踝蕭 */
 .w3cpicture {
 	height: 100%;
 	width: 80%;
@@ -356,7 +356,7 @@ select.product_sel {
 	width: 100%;
 }
 
-/* padding ���� */
+/* padding 嚙踐�蕭嚙踝蕭 */
 .VH_R_padding15 {
 	padding: 0vh 15vh 0vh 0vh;
 }
@@ -373,9 +373,9 @@ select.product_sel {
 	padding: 0vh 4vh;
 }
 
-/*Product嚗������憓������������ */
+/*Product���蕭豲蕭豲蕭豲蕭豲蕭豲蕭豲��竣嚙踐�蕭��蕭豲蕭豲蕭豲蕭豲蕭豲蕭豲蕭豲蕭豲蕭嚙� */
 
-/* order detail & orderlist ��憓�ss */
+/* order detail & orderlist 嚙踐��嚙踐��策嚙踝ss */
 div.text>p.text {
 	text-align: center;
 }
@@ -483,7 +483,7 @@ div.chat_history, div.contact, div.refund, div.cancel_order{
 div.ship_status {
 	border-bottom-color: pink;
 }
-/* 銝����� */
+/* ���蕭�嚙踐垓謆蕭嚙踝蕭 */
 .end_gray_border {
 	border-block-end: rgb(179, 179, 179) solid 1px;
 }
@@ -491,7 +491,7 @@ div.ship_status {
 .star_border {
 	border-block-start: rgb(179, 179, 179) solid 1px;
 }
-/* padding���� */
+/* padding嚙踐�蕭嚙踝蕭 */
 div.order_history>ul {
 	padding-left: 20px;
 }
@@ -517,14 +517,14 @@ div.order_history>ul {
 }
 
 .wrapRowBtw {
-	/*Flex撅祆�批�*/
+	/*Flex���蕭�嚙�*/
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-between;
 	align-items: flex-start;
 	/* border: solid 1px black;
         border-block-end-color: brown; */
-	/* ���撖� */
+	/* 嚙踝蕭��蕭����蕭 */
 	width: 100%;
 	height: 100%;
 	/* border and padding in box */
@@ -532,7 +532,7 @@ div.order_history>ul {
 }
 
 #tabs {
-	/* ���撖� */
+	/* 嚙踝蕭��蕭����蕭 */
 	width: 100%;
 	height: 100%;
 	/* border and padding in box */
@@ -540,7 +540,7 @@ div.order_history>ul {
 	padding: 0% 1% 1% 1%;
 }
 
-/* 銝剝���� */
+/* ���蕭��嚙踝蕭嚙� */
 #content {
 	display: flex;
 	flex-flow: row nowrap;
@@ -549,7 +549,7 @@ div.order_history>ul {
 	width: 100%;
 }
 
-/* 銝剝���� ��椰��� ���� ���� */
+/* ���蕭��嚙踝蕭嚙� 嚙踝蕭��什嚙踝蕭嚙� 嚙踝蕭��蕭嚙� 嚙踐嚙踝蕭嚙� */
 #detail_left {
 	width: 20%;
 	height: 100vh;
@@ -583,13 +583,13 @@ div.order_history>ul {
 	justify-content: flex-end;
 }
 
-/* order detail & orderlist ��憓�ss */
+/* order detail & orderlist 嚙踐��嚙踐��策嚙踝ss */
 
-/* ============ shoppingCart 隞乩��憓ss============== */
+/* ============ shoppingCart ��鼎嚙踝��嚙踐��酗ss============== */
 
-/* div雿蔭 ���身摰� */
+/* div��� 嚙踐�蕭嚙踐鬼頨急嚙� */
 
-/* product &deliver ���身摰� */
+/* product &deliver 嚙踐�蕭嚙踐鬼頨急嚙� */
 #deliverInfo {
 	width: 50%;
 	height: 100%;
@@ -625,14 +625,14 @@ div.order_history>ul {
 	white-space: nowrap;
 }
 
-/* div�摮�蔭銝� */
+/* div嚙踝�謅蕭����蕭 */
 #sc_center {
 	width: 100%;
 	height: 100%;
 	text-align: center;
 }
 
-/* div�摮�� */
+/* div嚙踝�謅蕭��蕭蹎 */
 .pay_right {
 	flex: auto;
 	text-align: right;
@@ -640,7 +640,7 @@ div.order_history>ul {
 	margin-right: 10px;
 }
 
-/* P摮��&憿 */
+/* P�謅蕭嚙�&��� */
 p.text1 {
 	color: black;
 	text-align: left;
@@ -682,7 +682,7 @@ p#pColor:hover {
 	white-space: nowrap;
 }
 
-/* 鞈潛頠ix獢 */
+/* �����ix���斯 */
 .cartFrame {
 	/* border: solid 1px #eeeeef; */
 	background-color: #eeeeef;
@@ -699,14 +699,14 @@ p#pColor:hover {
 
 .sc_fix {
 	/* position: fixed; */
-	/* margin-top:-200px; 銝���� */
+	/* margin-top:-200px; ����蕭嚙踝�蕭嚙� */
 	/* position: -webkit-sticky; */
 	position: sticky;
 	bottom: auto;
 	top: 0;
 }
 
-/* padding���� */
+/* padding嚙踐�蕭嚙踝蕭 */
 .sc_padding {
 	padding: 0% 0% 6%;
 }
@@ -739,9 +739,9 @@ p#pColor:hover {
 	padding: 2% 0% 0% 2%;
 }
 
-/* 鞈潛頠�獢 */
+/* ������蕭�謆��斯 */
 
-/* ����璅�撘� */
+/* 嚙踝蕭��蕭��蕭����蕭��蕭 */
 .sc_frame {
 	border: solid 2px #eeeeef;
 	border-radius: 1%;
@@ -757,7 +757,7 @@ p#pColor:hover {
 	border-top-color: #eeeeef;
 }
 
-/* �������� */
+/* 嚙踐嚙踝蕭蹓鳴蕭謘橘蕭�謆蕭嚙踝蕭 */
 .Pimg1 {
 	width: 100%;
 	/* height: 25%; */
@@ -767,8 +767,10 @@ p#pColor:hover {
 }
 
 .Pimg2>img {
-	height: 180px;
-	width: 200px;
+/* 	height: 180px; */
+/* 	width: 200px; */
+	height: 100%;
+	width: 90%;
 	/* display: block; */
 	margin: 3% 3% 3% 3%;
 	background-color: antiquewhite;
@@ -784,7 +786,7 @@ p#pColor:hover {
 	background-color: antiquewhite;
 }
 
-/* �������� */
+/* 嚙踐嚙踝蕭蹓澗嚙踝蕭�嚙踝�蕭�蹓蕭謘� */
 .sc_select {
 	margin: 0em;
 	font: 400 13.3333px Arial;
@@ -799,7 +801,7 @@ p#pColor:hover {
 	width: 100%;
 }
 
-/* 蝘駁X���� */
+/* ����嚙踝蕭�嚙踝蕭 */
 .remove, #delete {
 	display: inline-block;
 	color: grey;
@@ -812,7 +814,7 @@ p#remove:hover {
 	color: red;
 }
 
-/* margin���� */
+/* margin嚙踐�蕭嚙踝蕭 */
 .spacing_top {
 	margin-top: 10px;
 }
@@ -833,7 +835,7 @@ p#remove:hover {
 	margin: 0% 2.2% 0% 0%;
 }
 
-/* 頞��蝯��� */
+/* ��嚙踝蕭���蕭��蕭嚙� */
 a:link {
 	text-decoration: none;
 }
@@ -887,7 +889,7 @@ textarea {
 	width: 100%;
 }
 
-/* width���� */
+/* width嚙踐�蕭嚙踝蕭 */
 .width02 {
 	width: 2%;
 }
@@ -928,7 +930,7 @@ textarea {
 	width: 100%;
 }
 
-/* 頝喳閬��SS */
+/* ����謘橘蕭謅蕭��S */
 .modal_block1 {
 	background-color: rgb(235, 235, 235);
 	border-block-end: rgb(201, 201, 201) solid 1px;
@@ -958,7 +960,7 @@ div.container {
 	width: 100%;
 }
 
-/* 銝剝����之撠� */
+/* ���蕭��嚙踝蕭�嚙踝���蕭 */
 .shoppingCart_detail_left {
 	width: 75%;
 	height: 100%;
@@ -970,33 +972,33 @@ div.container {
 	justify-content: center;
 }
 
-/* 憒���� 閬����� */
+/* ���蕭謚秋�蕭嚙踝蕭 �蹓選蕭蹎祗嚙踐嚙踝蕭嚙� */
 .wrapRight {
-	/*Flex撅祆�批�*/
+	/*Flex���蕭�嚙�*/
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: flex-start;
-	/* ����身摰�  align-items*/
+	/* 嚙踐�蕭嚙踐�蕭��澈�嚙�  align-items*/
 	align-items: flex-end;
 	/* border: solid 1px black;
             border-block-end-color: brown; */
-	/* ���撖� */
+	/* 嚙踝蕭��蕭����蕭 */
 	/* width: 100%; */
 	height: 100%;
 	/* border and padding in box */
 	box-sizing: border-box;
 }
 
-/* 憒�帖��� 閬����� */
+/* ���蕭謚怠�蕭嚙踝蕭 �蹓選蕭蹎祗嚙踐嚙踝蕭嚙� */
 .wrapRowEnd {
-	/*Flex撅祆�批�*/
+	/*Flex���蕭�嚙�*/
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: flex-end;
 	/* align-items: flex-start; */
 	/* border: solid 1px black;
             border-block-end-color: brown; */
-	/* ���撖� */
+	/* 嚙踝蕭��蕭����蕭 */
 	width: 100%;
 	height: 100%;
 	/* border and padding in box */
@@ -1008,10 +1010,10 @@ div.container {
 }
 
 .wrapSpace {
-	/*Flex撅祆�批�*/
+	/*Flex���蕭�嚙�*/
 	justify-content: space-between;
 	padding: 1vh 0vh 2vh 1vh;
 	border-block-end: solid #eeeeef;
 }
 
-/* shoppingCart 隞乩��憓� */
+/* shoppingCart ��鼎嚙踝��嚙踐��蕭 */
