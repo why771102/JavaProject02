@@ -12,6 +12,7 @@ import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import javax.sql.DataSource;
 
 import com.Bean.OrderDetailProductsBean;
 import com.Bean.OrderDetailVenuesBean;
+import com.Bean.UserBean;
 import com.Service.ShoppingCartService;
 import com.Service.ShoppingCartServiceImpl;
 import com.Service.UserService;
@@ -106,9 +108,7 @@ public class CheckOutShoppingCartServlet extends HttpServlet {
 			odvbEmpty.add(odvb);
 			request.setAttribute("odvbSEND", odvbEmpty);
 			request.setAttribute("venueDetail", "0");
-			
-				
-			
+					
 		} else {
 			request.setAttribute("venueDetail", scs.showVenue(OrderId));
 			request.setAttribute("odvbSEND", odvbSEND);
@@ -126,6 +126,36 @@ public class CheckOutShoppingCartServlet extends HttpServlet {
 			request.setAttribute("odpbSEND", odpbSEND);
 		}
 
+		
+		Cookie[] cookies = request.getCookies();
+		int i=0;
+		String act = "";
+		if(cookies != null) {
+			for (i = 0; i < cookies.length; i++) {
+                Cookie temp = cookies[i];
+                if (temp.getName().equals("account")) {
+                    act = temp.getValue();
+                }
+			}
+		}
+		UserBean u = us.userQuery(act);
+		request.setAttribute("User", u);
+		
+//修改寄件資訊
+//		String Name = request.getParameter("Name");
+//		String Mobile = request.getParameter("Mobile");
+//		String Address = request.getParameter("Address");
+//		String postalCode = request.getParameter("postalCode");
+//		String addr = postalCode + Address;
+//		
+//		System.out.println("NAME=" + Name);
+//		
+//		UserBean ub = new UserBean();
+//		ub.setName(Name);
+//		ub.setMobile(Mobile);
+//		ub.setAddress(addr);
+//		request.setAttribute("updateUser", ub);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/HTML/Checkout.jsp");
 		rd.forward(request, response);
 		
