@@ -67,6 +67,15 @@ public class PlaceOrder extends HttpServlet {
 		System.out.println(result);
 		RequestDispatcher rd = request.getRequestDispatcher("/HTML/OrderDetailUnpaid.jsp");
 		rd.forward(request, response);
+		
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
