@@ -1,6 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=BIG5"
-	pageEncoding="BIG5"%>
+	pageEncoding="BIG5" import="org.json.*"%>
+	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+
+       JSONArray getja = (JSONArray)request.getAttribute("getJa");
+
+//        for(int i=0;i<getja.length();i++ ){
+//     	   JSONArray  ja  = (JSONArray)getja.get(i);//很多個orderID
+    	   
+//     	   for(int j=0;j<ja.length()-1;j++ ){  //預計要拿出這個orderID 的所有商品+orderID訊息
+    		   
+//      	     JSONObject jo = ja.getJSONObject(j);  //  ja[j]某個orderID 的第J個ojbect(prduct)
+//      	     String price = jo.get("price");
+//     	   }
+//        }
+
+
+
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,6 +111,21 @@
 
 
 	<script>
+	var getJaString = ${getJaString};
+	const b = (JSON.parse(getJaString));
+	
+	for(let i=0;i<b.length;i++ ){
+ 	     let  ja  = (JSONArray)b.get(i);//很多個orderID
+ 	   
+     	   for(int j=0;j<ja.length()-1;j++ ){  //預計要拿出這個orderID 的所有商品+orderID訊息
+ 		   
+   	        JSONObject jo = ja.getJSONObject(j);  //  ja[j]某個orderID 的第J個ojbect(prduct)
+   	        String price = jo.get("price");
+   	        String 
+  	     }
+     }
+	
+	
 		
 	</script>
 

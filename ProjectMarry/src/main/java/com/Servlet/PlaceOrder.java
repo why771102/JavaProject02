@@ -3,6 +3,7 @@ package com.Servlet;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -15,6 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.Bean.OrderBean;
 import com.Service.OrderService;
@@ -61,12 +65,55 @@ public class PlaceOrder extends HttpServlet {
 
 		Integer OrderId = scs.getShoppingCart(MemberId);
 		System.out.println("This is orderID=" + OrderId);
-		OrderBean od = os.getOrder(OrderId, 0);
-
+		OrderBean od = os.getOrder(OrderId);
+		//改變status
 		boolean result = os.updateStatus(od);
 		System.out.println(result);
+		
+		//從orders table 取所有status =1 的資料 顯示在尚未付款頁面
+		List<OrderBean> list = os.getAllOrders(MemberId,1);
+		JSONArray getJa = new JSONArray();
+
+		
+		
+		for(int i = 0;i<list.size();i++ ) {
+			 //去取product 
+//			 JSONObject pjo =new  JSONObject();
+//			pjo.put(key, value)
+//			 getJa.put(jo);
+		}
+		
+		for(OrderBean ob: list) {
+         
+		 //去取product 
+         JSONArray ja =  scs.showProduct(ob.getOrderID());//這邊會拿出某個orderID 的所有商品
+         JSONObject pjo =new  JSONObject();//紀錄order訂單資訊
+// 		 JSONObject  jo= (JSONObject) ja.get();//某個商品的資料
+ 		 
+         pjo.put("orderDate", ob.getOrderDate());
+         pjo.put("status", ob.getShippingStatus());
+         pjo.put("shippingAddress", ob.getShippingAddress());
+         pjo.put("orderDate", ob.getVATnumber());
+         pjo.put("orderID",ob.getOrderID());
+ 		 ja.put(pjo);
+		 getJa.put(ja);
+		 
+	
+			 //去取venue
+		}
+		
+		String getJaString = getJa.toString();
+		
+		//按下確認結帳後  跳進訂單頁面
+		request.setAttribute("getJaString", getJaString);
 		RequestDispatcher rd = request.getRequestDispatcher("/HTML/OrderDetailUnpaid.jsp");
 		rd.forward(request, response);
+		
+		
+//		os.getOrder(OrderId,1);
+//		os.getOrder(OrderId, 2);
+//		os.getOrder(OrderId, 3);
+//		os.getOrder(OrderId, 4);
 		
 		try {
 			conn.close();
