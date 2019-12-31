@@ -17,7 +17,8 @@ public class updatevenue extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		IvenueImpl usedao=new IvenueImpl();
 		
-		JavaBean ven =usedao.updateVenue(request.getParameter("vendorid"),request.getParameter("productid"),request.getParameter("venueaddress"),request.getParameter("hall"),request.getParameter("tables"),request.getParameter("inoutdoor"),request.getParameter("lunchprice"),request.getParameter("dinnerprice"));
+		JavaBean ven =usedao.updateVenue(request.getParameter("vendorid"),request.getParameter("productid"),request.getParameter("location"),request.getParameter("hall"),request.getParameter("tablecount"),request.getParameter("inoutdoor"),request.getParameter("lunchprice"),request.getParameter("dinnerprice")
+				,request.getParameter("venuestatus"),request.getParameter("venuedesc"));
 		request.setAttribute("ven", ven);
 		JavaBean ven2 =usedao.queryVenue(request.getParameter("productid"));
 		request.setAttribute("ven", ven2);

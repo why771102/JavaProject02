@@ -10,13 +10,14 @@ public class VenueBean {
 	private Integer InOutdoor;
 	private Integer LunchPrice;
 	private Integer DinnerPrice;
+	private String VenueDesc;
 	
 	public VenueBean() {
 		
 	}
 	
 	public VenueBean (Integer VendorID, String ProductID, String Location, String Hall,
-			Integer TableCount, Integer InOutdoor, Integer LunchPrice, Integer DinnerPrice) {
+			Integer TableCount, Integer InOutdoor, Integer LunchPrice, Integer DinnerPrice, String VenueDesc) {
 		this.VendorID = VendorID;
 		this.ProductID= ProductID;
 		this.Location = Location;
@@ -25,6 +26,7 @@ public class VenueBean {
 		this.InOutdoor = InOutdoor;
 		this.LunchPrice = LunchPrice;
 		this.DinnerPrice = DinnerPrice;
+		this.setVenueDesc(VenueDesc);
 	}
 
 	public Integer getVendorID() {
@@ -89,6 +91,14 @@ public class VenueBean {
 
 	public void setDinnerPrice(Integer dinnerPrice) {
 		DinnerPrice = dinnerPrice;
+	}
+
+	public String getVenueDesc() {
+		return VenueDesc;
+	}
+
+	public void setVenueDesc(String venueDesc) {
+		VenueDesc = venueDesc;
 	}
 
 	

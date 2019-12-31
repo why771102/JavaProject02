@@ -455,7 +455,7 @@ p.text {
 		if (cookieArray == "") {
 			window.location.replace("HTML/LogIn.jsp");
 		} else {
-
+	
 		}
 	</script>
 </body>

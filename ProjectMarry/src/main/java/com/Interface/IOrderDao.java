@@ -1,25 +1,20 @@
 package com.Interface;
 
-import java.sql.Connection;
 import java.util.List;
 
 import com.Bean.OrderBean;
 
 public interface IOrderDao {
 	
-	public void insertOrder(OrderBean ob);
-	
-	public OrderBean getOrder(int orderNo);
-	
-	public List<OrderBean> getAllOrders();
-	
-	public List<OrderBean> getMemberOrders(String id);
+	public OrderBean getOrder(int OrderID, int Status);
 
-	List<OrderBean> getMemberUnpaidOrders(String id);
+	public List<OrderBean> getMemberUnpaidOrders(String id);
 
-	List<OrderBean> getMemberPaidOrders(String id);
+	public List<OrderBean> getMemberPaidOrders(String id);
 
-	List<OrderBean> getMemberCompletedOrders(String id);
+	public List<OrderBean> getMemberCompletedOrders(String id);
 
-	List<OrderBean> getMemberCancelledOrders(String id);
+	public List<OrderBean> getMemberCancelledOrders(String id);
+
+	boolean updateStatus(OrderBean ob);
 }

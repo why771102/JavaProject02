@@ -59,7 +59,12 @@ public class EditorLogOut extends HttpServlet {
 		    
 			RequestDispatcher rd = request.getRequestDispatcher("/HTML/EditorLoginSucess.jsp");   //JSP
 			rd.forward(request, response);
-			
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
 
 			

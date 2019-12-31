@@ -64,6 +64,12 @@ public class EditorLogin extends HttpServlet {
 			request.setAttribute("errorMsgMap", errorMsgMap);
 			RequestDispatcher rd = request.getRequestDispatcher("/HTML/EditorLogIn.jsp");   //JSP
 			rd.forward(request, response);
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return;
 		}
 		
@@ -74,6 +80,12 @@ public class EditorLogin extends HttpServlet {
 			session = request.getSession();
 			session.setAttribute("user", rub);
 			response.sendRedirect(request.getContextPath() + "/HTML/EditorLogin.jsp");
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return;
 		}else {
 			//成功登入，導向登入後頁面
@@ -88,6 +100,13 @@ public class EditorLogin extends HttpServlet {
 			request.setAttribute("user", rub);
 			RequestDispatcher rd = request.getRequestDispatcher("/HTML/EditorLoginSucess.jsp");   //JSP
 			rd.forward(request, response);
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			
 		}
 

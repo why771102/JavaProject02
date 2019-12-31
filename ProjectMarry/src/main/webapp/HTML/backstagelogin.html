@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+
+
+	$( function() {
+	    var dialog, form,
+	 
+	      // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
+	      emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+	      name = $( "#Account" ),
+	      password = $( "#Pwd" ),
+	      allFields = $( [] ).add( name ).add( password ),
+	      tips = $( ".validateTips" );
+	 
+	    function updateTips( t ) {
+	      tips
+	        .text( t )
+	        .addClass( "ui-state-highlight" );
+	      setTimeout(function() {
+	        tips.removeClass( "ui-state-highlight", 1500 );
+	      }, 500 );
+	    }
+	 
+	    function addUser() {
+	      var valid = true;
+	      allFields.removeClass( "ui-state-error" );
+	 
+	     
+	      if ( valid ) {
+	    	document.login.submit();
+	        dialog.dialog( "close" );
+	      }
+	      return valid;
+	    }
+	 
+	    dialog = $( "#dialog-form" ).dialog({
+	      autoOpen: false,
+	      height: 400,
+	      width: 350,
+	      modal: true,
+	      buttons: {
+	        "Login": addUser,
+	        Cancel: function() {
+	          dialog.dialog( "close" );
+	        }
+	      },
+	      close: function() {
+	        form[ 0 ].reset();
+	        allFields.removeClass( "ui-state-error" );
+	      }
+	    });
+	 
+	    form = dialog.find( "form" ).on( "submit", function( event ) {
+	      event.preventDefault();
+	      addUser();
+	    });
+	 
+	    $( "#create-user" ).button().on( "click", function() {
+	      dialog.dialog( "open" );
+	    });
+	  } );
+	
+	cookieArray = document.cookie.split(";");
+	console.log(cookieArray);
+	if (cookieArray == "") {
+		document.getElementById("name").innerText = "訪客";
+		document.getElementById("logout").style.display = "none";
+	} else {
+		nameArrays = cookieArray[1].split("=");
+		document.getElementById("name").innerText = nameArrays[1];
+		document.getElementById("register").style.display = "none";
+		document.getElementById("login").style.display = "none";
+	}
+</script>
+<title>Document</title>
+<style>
+/* CSS reset */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, 
+	fieldset,  textarea, p, blockquote, th, td {
+	margin: 0;
+	padding: 0;
+}
+
+html, /* 這邊做初始化設定 全部字體為正黑體  並且字體大小以百分比控制  */ body {
+	margin: 0;
+	padding: 0;
+	font-family: arial, "Microsoft JhengHei", "微軟正黑體", sans-serif !important;
+	font-size: 100%;
+}
+
+label, input { display:block; }
+    input.text { margin-bottom:12px; width:95%; padding: .4em; }
+    fieldset { padding:0; border:0; margin-top:25px; }
+    h1 { font-size: 1.2em; margin: .6em 0; }
+    div#users-contain { width: 350px; margin: 20px 0; }
+    div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+    div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+    .ui-dialog .ui-state-error { padding: .3em; }
+    .validateTips { border: 1px solid transparent; padding: 0.3em; }
+
+/* warp 如何對齊 系列 */
+
+/* 排版垂直column置中 */
+.wrap {
+	/*Flex屬性區*/
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+	border: solid 1px black;
+	border-block-end-color: brown;
+	box-sizing: border-box;
+}
+
+/* 排版垂直column向左 */
+.wrapStart {
+	/*Flex屬性區*/
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	border: solid 1px black;
+	border-block-end-color: brown;
+	/* 撐開長寬 */
+	/* width: 100%; */
+	height: 100%;
+	/* border and padding in box */
+	box-sizing: border-box;
+}
+/* 排版一列row 向左 */
+.wrapRowStart {
+	/*Flex屬性區*/
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	border: solid 1px black;
+	border-block-end-color: brown;
+	/* 撐開長寬 */
+	width: 100%;
+	height: 100%;
+	/* border and padding in box */
+	box-sizing: border-box;
+}
+
+/* 排版同列row 置中 */
+.wrapRow {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
+	order: solid 1px black;
+	border-block-end-color: brown;
+}
+
+/* in article have padding */
+.wrapList {
+	/*Flex屬性區*/
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	border: solid 1px black;
+	border-block-end-color: brown;
+	/* 撐開長寬 */
+	width: 100%;
+	/* height: 100%; */
+	/* border and padding in box */
+	box-sizing: border-box;
+	padding: 0% 1% 1% 1%;
+}
+/* warp 如何對齊 系列 */
+
+/* 按鈕 選單系列  */
+select {
+	background-color: #fc6d6d;
+	color: white;
+	padding: 0.5% 4%;
+	width: 100%;
+	height: 4vh;
+	border: none;
+	font-size: 100%;
+	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+	-webkit-appearance: button;
+	appearance: button;
+	outline: none;
+	text-align: center;
+	border-radius: 5px;
+}
+
+label {
+	width: 100%;
+}
+
+#create-user{
+	width:200px;
+	height:200px;
+	border:2px;
+	font-size:30px;
+	border-radius:50%;
+}
+
+.submitButton {
+	/* 送出按鈕 */
+	margin: 0px 0px 0px;
+	border: none;
+	border-radius: 5px;
+	background-color: #fc6d6d;
+	width: 100%;
+	height: 100%;
+	color: white;
+	font-size: 2vh;
+}
+/* 按鈕 選單系列 */
+#bg {
+	width: 100%;
+	height: 100%;
+}
+/*  跟header 網頭 有關系列 */
+#head {
+	width: 100%;
+	height: 150px;
+	padding: 10px 0px;
+}
+/*  跟header 網頭 有關系列 */
+#cartShopList {
+	width: 65%;
+	height: 100%;
+}
+
+#chooseAll {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+	height: 10%;
+}
+
+/* 中間內文 */
+#content {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+}
+/* 中間內文 的左邊 還有 右邊 */
+#left {
+	width: 100%;
+	height: 100vh;
+}
+
+#right {
+	width: 50%;
+	height: 100ｂvh;
+	padding: 0% 3% 2%;
+}
+/* 跟img 有關系列 */
+#pictureBG {
+	background-color: #d8d8d8;
+	width: 100%;
+	height: 75%;
+}
+
+.Bimg {
+	width: 100%;
+	height: 65%;
+	background-color: #949393;
+}
+
+.Simg {
+	width: 20%;
+	height: 50%;
+	background-color: #949393;
+	padding: 1% 1%;
+}
+/* 跟img 有關系列 */
+/* 跟 a 連結 有關系列 */
+a {
+	width: 100%;
+}
+/* foot 網頁最底層有關  */
+#footBG {
+	background-color: #d8d8d8;
+	width: 100%;
+	height: 400px;
+}
+/* foot  */
+
+/* 文字相關大小*/
+p.BTital {
+	color: black;
+	text-align: left;
+	font-size: 4.5vh;
+	font-weight: bold;
+}
+
+p.tital {
+	color: black;
+	text-align: left;
+	font-size: 4vh;
+	font-weight: bold;
+	width: 100%;
+}
+
+p.STital {
+	color: black;
+	text-align: left;
+	font-size: 3vh;
+	width: 100%;
+}
+
+p.text {
+	color: black;
+	text-align: left;
+	font-size: 2vh;
+	width: 100%;
+}
+/* 文字相關大小*/
+
+/* map 相關設定 */
+.map {
+	width: 100%;
+	height: 600px;
+	background-color: cadetblue;
+}
+/* map 相關設定 */
+
+/* product &deliver 相關設定 */
+#deliverInfo {
+	width: 50%;
+	height: 100%;
+	background-color: #d8d8d8;
+	padding: 1vh;
+	/* border and padding in box */
+	box-sizing: border-box;
+	border-radius: 5px;
+}
+
+#productInfo {
+	width: 100%;
+	height: 900px;
+	padding: 1vh;
+	/* border and padding in box */
+	box-sizing: border-box;
+}
+
+.headright {
+	/* 	border: 2px green solid; */
+	/* 	 display:block; */
+	/* 	 margin-right: 50px; */
+	position: fixed;
+	top: 40px;
+	right: 0px;
+}
+
+.headcenter {
+	display: inline-block;
+}
+
+table {
+	border-collapse: separate;
+	border-spacing: 4px;
+	font-size: 100px;
+}
+
+#tb_tra {
+	width: 75%;
+	border-collapse: collapse;
+	text-align: center;
+	height: 700px;
+}
+
+#tabs {
+	width: 100%;
+	height: 80%;
+	font-size: 40px;
+}
+
+#tabs1 {
+	width: 100%;
+	height: 100%;
+	font-size: 40px;
+}
+
+/* map 相關設定 */
+</style>
+</head>
+
+<body>
+<div id="dialog-form" title="Editor Login">
+  <p class="validateTips">請輸入員工帳號密碼</p>
+ 
+  <form name="login" action="../EditorLogin">
+    <fieldset>
+      <label for="Account">帳號</label>
+      <input type="text" name="Account" id="name" class="text ui-widget-content ui-corner-all">
+      <label for="Pwd">密碼</label>
+      <input type="password" name="Pwd" id="password" class="text ui-widget-content ui-corner-all">
+ 
+      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </fieldset>
+  </form>
+</div>
+	<div class="wrap" id="bg">
+		<!-- header -->
+		<div class="wrap" id="head">
+			<div class="headcenter">
+				<div class="wrap">
+					<p class="tital">MARY ME | 場地選項</p>
+				</div>
+				<div>
+					<p class="text">場地|配件｜樣式｜婚禮小物｜新秘｜攝影</p>
+
+				</div>
+
+			</div>
+			<div class="headright">
+											
+				
+			</div>
+		</div>
+		</div>
+		
+		<!-- foot -->
+		<div class="wrap" id="footBG">
+			<button id="create-user">Log in</button>
+		</div>
+		
+		
+ 
+
+</body>
+
+</html>

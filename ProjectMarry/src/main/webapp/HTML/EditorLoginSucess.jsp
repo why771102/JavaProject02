@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Refresh"
-	content="3;URL=../ProjectMarry/HTML/backstagemain.html" />
+	content="0;URL=../ProjectMarry/HTML/backstagemain.jsp" />
 <title>登入成功</title>
 </head>
 <body>
@@ -34,9 +34,11 @@
 		console.log(cookieArray);
 		if (cookieArray == "") {
 			document.getElementById("status").innerText = "登出成功";
+			
 		} else {
 			nameArrays = cookieArray[1].split("=");
 			document.getElementById("status").innerText = "登入成功";
+		
 		}
 	</script>
 

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,16 +8,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet"
-	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <script>
 	$(function() {
 		$("#tabs").tabs();
 	});
 	$(function() {
 		$("#tabs1").tabs();
+	});
+	$(document).ready(function() {
+		$("tr:even").css("background-color", "#fdf5e6");
+		$("tr:odd").css("background-color", "#ddffcc");
 	});
 	cookieArray = document.cookie.split(";");
 	console.log(cookieArray);
@@ -192,7 +199,7 @@ label {
 
 #right {
 	width: 50%;
-	height: 100ｂvh;
+	height: 100vh;
 	padding: 0% 3% 2%;
 }
 /* 跟img 有關系列 */
@@ -291,7 +298,7 @@ p.text {
 	/* 	 margin-right: 50px; */
 	position: fixed;
 	top: 40px;
-	right: 0px;
+	right: 30px;
 }
 
 .headcenter {
@@ -301,7 +308,6 @@ p.text {
 table {
 	border-collapse: separate;
 	border-spacing: 4px;
-	font-size: 100px;
 }
 
 #tb_tra {
@@ -323,6 +329,19 @@ table {
 	font-size: 40px;
 }
 
+}
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+	/* float: left; */
+	padding: .5em 1em;
+	text-decoration: none;
+	padding-top: 20px;
+	/* margin: 20px 0px; */
+}
+
+.enter {
+	text-align: center
+}
+
 /* map 相關設定 */
 </style>
 </head>
@@ -341,16 +360,11 @@ table {
 				</div>
 
 			</div>
-		
 			<div class="headright">
-				<p>
-					<span id="name"></span>，你好！
-				</p>
-				
-				<a href="EditorLogIn.jsp"><input type="button"
-					value="立即登入" id="login" /></a> 
-				<a href="../EditorLogOut"><input
-					type="button" value="servlet登出" id="logout" /></a>
+
+
+				<a href="backstagelogin.html"><input type="button" value="登出"
+					id="logout" /></a>
 
 			</div>
 		</div>
@@ -369,7 +383,7 @@ table {
 
 					<div class="wrapRow" style="width: 100%;">
 						<div class="wrapRow" id="productInfo">
-							<div id = "tabs1">
+							<div id="tabs1">
 								<ul>
 									<li><a href="#tabs1-1">場地</a></li>
 									<li><a href="#tabs1-2">商品</a></li>
@@ -382,41 +396,151 @@ table {
 										<li><a href="#tabs-4">刪除</a></li>
 									</ul>
 									<div id="tabs-1">
-										<form method="post" action="../createvenue">
-										廠商編號:<input type="text" name="vendorid"/><p>
-										地址:<input type="text" name="venueaddress"/><p>
-										廳:<input type="text" name="hall"/><p>
-										桌數:<input type="text" name="tables"/><p>
-										室內室外:<input type="text" name="inoutdoor"/><p>
-										午價錢:<input type="text" name="lunchprice"/><p>
-										晚價錢:<input type="text" name="dinnerprice"/><p>
-										<input type="submit" value="確定"/>
+										<form class="enter" method="post" action="../createvenue">
+											<table class="SQl">
+
+												<tr>
+													<td>廠商編號:</td>
+													<td><input type="text" name="vendorid" /></td>
+												</tr>
+												<tr>
+													<td>場地編號:</td>
+													<td><input type="text" name="productid" /></td>
+												</tr>
+												<tr>
+													<td>地址:</td>
+													<td><input type="text" name="location" /></td>
+												</tr>
+												<tr>
+													<td>廳:</td>
+													<td><input type="text" name="hall" /></td>
+												</tr>
+												<tr>
+													<td>桌數:</td>
+													<td><input type="text" name="tablecount" /></td>
+												</tr>
+												<tr>
+													<td>室內室外:</td>
+													<td><input type="text" name="inoutdoor" /></td>
+												</tr>
+												<tr>
+													<td>午價錢:</td>
+													<td><input type="text" name="lunchprice" /></td>
+												</tr>
+												<tr>
+													<td>晚價錢:</td>
+													<td><input type="text" name="dinnerprice" /></td>
+												</tr>
+												<tr>
+													<td>場地描述:</td>
+													<td><input type="text" name="venuedesc" /></td>
+												</tr>
+												<tr>
+													<td>Photo1:</td>
+													<td><input type="file" name="photo1" id="photo1"
+														onclick="getclass(this)"></td>
+													<td><div>
+															<img class="preview1"
+																style="max-width: 150px; max-height: 150px;">
+															<div class="size"></div>
+														</div></td>
+												</tr>
+												<tr>
+													<td>Photo2:</td>
+													<td><input type="file" name="photo2" id="photo2"
+														onclick="getclass(this)"></td>
+													<td><div>
+															<img class="preview2"
+																style="max-width: 150px; max-height: 150px;">
+															<div class="size"></div>
+														</div></td>
+												</tr>
+												<tr>
+													<td>Photo3:</td>
+													<td><input type="file" name="photo3" id="photo3"
+														onclick="getclass(this)"></td>
+													<td><div>
+															<img class="preview3"
+																style="max-width: 150px; max-height: 150px;">
+															<div class="size"></div>
+														</div></td>
+												</tr>
+												<tr>
+													<td>Photo4:</td>
+													<td><input type="file" name="photo4" id="photo4"
+														onclick="getclass(this)"></td>
+													<td><div>
+															<img class="preview4"
+																style="max-width: 150px; max-height: 150px;">
+															<div class="size"></div>
+														</div></td>
+												</tr>
+												<tr></tr>
+												<input type="hidden" value=1 name="venuestatus" />
+											</table>
+											<br> <input type="submit" value="確定" />
 										</form>
-										</div>
+									</div>
 									<div id="tabs-2">
-										<form method="post" action="../updatevenue">
-										場地編號:<input type="text" name="productid"/><p>
-										<br>
-										廠商編號:<input type="text" name="vendorid"/><p>
-										地址:<input type="text" name="venueaddress"/><p>
-										廳:<input type="text" name="hall"/><p>
-										桌數:<input type="text" name="tables"/><p>
-										室內室外:<input type="text" name="inoutdoor"/><p>
-										午價錢:<input type="text" name="lunchprice"/><p>
-										晚價錢:<input type="text" name="dinnerprice"/><p>
-										<input type="submit" value="確定"/>
+										<form method="post" class="enter" action="../updatevenue">
+											<table>
+
+												<tr>
+													<td>廠商編號:</td>
+													<td><input type="text" name="vendorid" /></td>
+												</tr>
+												<tr>
+													<td>場地編號:</td>
+													<td><input type="text" name="productid" /></td>
+												</tr>
+												<tr>
+													<td>地址:</td>
+													<td><input type="text" name="location" /></td>
+												</tr>
+												<tr>
+													<td>廳:</td>
+													<td><input type="text" name="hall" /></td>
+												</tr>
+												<tr>
+													<td>桌數:</td>
+													<td><input type="text" name="tablecount" /></td>
+												</tr>
+												<tr>
+													<td>室內室外:</td>
+													<td><input type="text" name="inoutdoor" /></td>
+												</tr>
+												<tr>
+													<td>午價錢:</td>
+													<td><input type="text" name="lunchprice" /></td>
+												</tr>
+												<tr>
+													<td>晚價錢:</td>
+													<td><input type="text" name="dinnerprice" /></td>
+												</tr>
+												<tr>
+													<td>場地描述:</td>
+													<td><input type="text" name="venuedesc" /></td>
+												</tr>
+												<tr></tr>
+											</table>
+											<input type="submit" value="確定" />
 										</form>
 									</div>
 									<div id="tabs-3">
+										<form method="post" action="../getvenue">
+											場地編號:<input type="text" name="productid" /> <input
+												type="submit" value="確定" />
+										</form>
 										<form method="post" action="../getallvenue">
-										<input type="submit" value="確定"/>
+											<input type="submit" value="搜尋全部" />
 										</form>
 									</div>
 									<div id="tabs-4">
 										<form method="post" action="../deletevenue">
-										場地編號:<input type="text" name="productid"/><p>
-										<input type="submit" value="確定"/>
-									</form>
+											場地編號:<input type="text" name="productid" />
+											<p>
+												<input type="submit" value="確定" />
+										</form>
 									</div>
 								</div>
 							</div>
@@ -444,7 +568,28 @@ table {
 
 
 	</div>
-
+	<script>
+		//onclick function 抓photo id
+		function getclass(obj) {
+			var photo = "#" + obj.id;
+			var p = photo.substring(photo.length - 1, photo.length);
+			$("body").on("change", photo, function() {
+				preview(this, p);
+			})
+			console.log(photo);
+		}
+		function preview(input, p) {
+			if (input.files && input.files[0]) {
+				var image = ".preview" + p;
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$(image).attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+		// 		})
+	</script>
 
 
 

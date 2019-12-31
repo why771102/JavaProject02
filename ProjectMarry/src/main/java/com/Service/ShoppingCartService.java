@@ -26,7 +26,7 @@ public interface ShoppingCartService {
     // 刪除venue table裡面的資料 (記得要先刪掉fk)
     public boolean deleteVendor(int orderId, int vendorID);
 
-    public boolean deleteVenue(int orderId, String productID);
+    public boolean deleteVenue(int orderId, String productID,int startTime);
 
     // 刪除product table裡面的資料 (記得要先刪掉fk)
     public boolean deleteSupplier(int orderId, int supplierID);
@@ -46,7 +46,7 @@ public interface ShoppingCartService {
 //    public double getProductPrice(ProductBean pb);
 
     // 把購物車存進order table status 從0改1
-    public boolean updateStatus(OrderBean ob);
+//    public boolean updateStatus(OrderBean ob);
 
     // 按了購買後 如果有數量的更改
     public boolean updateQty(OrderDetailProductsBean odpb);

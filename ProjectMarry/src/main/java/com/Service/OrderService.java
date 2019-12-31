@@ -6,14 +6,7 @@ import com.Bean.OrderBean;
 
 public interface OrderService {
 
-public void insertOrder(OrderBean ob);
-	
-	public OrderBean getOrder(int orderNo);
-
-	
-	public List<OrderBean> getAllOrders();
-	
-	public List<OrderBean> getMemberOrders(String id);
+	OrderBean getOrder(int OrderID, int Status);
 
 	List<OrderBean> getMemberUnpaidOrders(String id);
 
@@ -22,4 +15,6 @@ public void insertOrder(OrderBean ob);
 	List<OrderBean> getMemberCompletedOrders(String id);
 
 	List<OrderBean> getMemberCancelledOrders(String id);
+	
+	public boolean updateStatus(OrderBean ob);
 }

@@ -4,47 +4,22 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.Bean.OrderBean;
+import com.Dao.OrderDaoImpl;
 import com.Interface.IOrderDao;
-import com.Service.OrderService;
 
 public class OrderServiceImpl implements OrderService {
 	Connection conn;
 	private IOrderDao od;
 
-//	private DataSource ds;
-
 	
 	public OrderServiceImpl(Connection conn) {
 		this.conn = conn;
-	}
-
-	public IOrderDao getOdao() {
-		return od;
-	}
-
-	public void setOdao(IOrderDao od) {
-		this.od = od;
-	}
-	
-
-	@Override
-	public OrderBean getOrder(int OrderID) {
-		return od.getOrder(OrderID);
+		od = new OrderDaoImpl(conn);
 	}
 
 	@Override
-	public List<OrderBean> getAllOrders() {
-		return od.getAllOrders();
-	}
-
-	@Override
-	public List<OrderBean> getMemberOrders(String MemberID) {
-		return od.getMemberOrders(MemberID);
-	}
-
-	@Override
-	public void insertOrder(OrderBean ob) {
-		
+	public OrderBean getOrder(int OrderID, int Status) {
+		return od.getOrder(OrderID, Status);
 	}
 
 	@Override
@@ -66,4 +41,11 @@ public class OrderServiceImpl implements OrderService {
 	public List<OrderBean> getMemberCancelledOrders(String id) {
 		return od.getMemberCancelledOrders(id);
 	}
+
+	@Override
+	public boolean updateStatus(OrderBean ob) {
+		// TODO Auto-generated method stub
+		return od.updateStatus(ob);
+	}
+
 }

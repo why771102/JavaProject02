@@ -131,20 +131,7 @@ public class UserRegister extends HttpServlet {
 
 			session = request.getSession();
 			session.setAttribute("user", rub);
-			System.out.println(request.getContextPath() + "/HTML/UserRegisterSucess.jsp");
 			response.sendRedirect(request.getContextPath() + "/HTML/UserRegisterSucess.jsp");
-
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			return;
-//			request.setAttribute("user", rub);
-//			RequestDispatcher rd = request.getRequestDispatcher("/HTML/UserRegisterSucess.jsp");   //JSP
-//			rd.forward(request, response);
 
 		}
 		
@@ -178,5 +165,7 @@ public class UserRegister extends HttpServlet {
 		}
 
 	}
+
+	
 
 }

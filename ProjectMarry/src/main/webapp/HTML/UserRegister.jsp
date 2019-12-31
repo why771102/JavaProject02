@@ -374,6 +374,10 @@ p.text {
 		color:red;
 		font-size:11px;
 	}
+	
+	a {
+	text-decoration: none;
+}
 
 </style>
 </head>
@@ -385,7 +389,7 @@ p.text {
 			<div class="headleft"></div>
 			<div class="headcenter">
 				<div>
-					<p class="tital">MARY ME</p>
+					<a href="index.html"><p class="tital">MARY ME</p></a>
 				</div>
 				<div>
 					<p class="text">場地｜配件｜樣式｜婚禮小物｜新秘｜攝影</p>
@@ -470,7 +474,7 @@ p.text {
   </tr>
 
  </table>
-<div><input type="submit" value="確定送出"  class="submitButton"/></div><div><input type="reset" value="清除重填"  class="submitButton"/></div>
+<div><input type="submit" value="確定送出"  class="submitButton"/></div><br><div><input type="reset" value="清除重填"  class="submitButton"/></div>
 </form>
 
 </div>

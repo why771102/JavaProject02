@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test Upload Files</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+	integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+	crossorigin="anonymous"></script>
+</head>
+<body>
+	<form method="post" action="../UploadFiles"
+		enctype="multipart/form-data">
+		Photo1:<input type="file" name="photo1" id="photo1"
+			onclick="getclass(this)"><br>
+		<div>
+			<img class="preview1" style="max-width: 150px; max-height: 150px;">
+			<div class="size"></div>
+		</div>
+
+		Photo2:<input type="file" name="photo2" id="photo2" onclick="getclass(this)"><br>
+		<div>
+			<img class="preview2" style="max-width: 150px; max-height: 150px;">
+			<div class="size"></div>
+		</div>
+		Photo3:<input type="file" name="photo3" id="photo3" onclick="getclass(this)"><br>
+		<div>
+			<img class="preview3" style="max-width: 150px; max-height: 150px;">
+			<div class="size"></div>
+		</div>
+		Photo4:<input type="file" name="photo4" id="photo4" onclick="getclass(this)"><br>
+		<div>
+			<img class="preview4" style="max-width: 150px; max-height: 150px;">
+			<div class="size"></div>
+		</div>
+		<input type="submit" value="Upload">
+	</form>
+	<script>
+		//onclick function 抓photo id
+		function getclass(obj) {
+			var photo = "#" + obj.id;
+			var p = photo.substring(photo.length-1, photo.length);
+			$("body").on("change", photo, function() {
+				preview(this, p);
+			})
+			console.log(photo);
+		}
+		function preview(input, p) {
+			if (input.files && input.files[0]) {
+				var image = ".preview"+p;
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$(image).attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+		// 		})
+	</script>
+</body>
+</html>

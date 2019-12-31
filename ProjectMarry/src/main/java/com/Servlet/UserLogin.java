@@ -67,6 +67,12 @@ public class UserLogin extends HttpServlet {
 			request.setAttribute("errorMsgMap", errorMsgMap);
 			RequestDispatcher rd = request.getRequestDispatcher("/HTML/LogIn.jsp");   //JSP
 			rd.forward(request, response);
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return;
 		}
 		

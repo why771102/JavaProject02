@@ -34,84 +34,58 @@ public class UpdateShoppingCartServlet extends HttpServlet {
         
     }
 
-	protected void doGet(HttpServletRequest request, 
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		init();
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		//判斷是否有登入
 		session = request.getSession(false);
 		if(session == null) {
 			response.sendRedirect(getServletContext().getContextPath() + "/LogIn.jsp");
 		}
 		
+		//獲取user的memberID
 		ShoppingCartService scs = new ShoppingCartServiceImpl(conn);
 		UserService us = new UserServiceImpl(conn);
 		Integer MemberId = us.getIdFromCookie(request);
+		
 		Integer OrderId = scs.getShoppingCart(MemberId);
 		
 		String cmd = request.getParameter("cmd");
-<<<<<<< HEAD
-		System.out.println(cmd);
 		String vID = request.getParameter("vId");
-=======
->>>>>>> 22cfe77c303d907baf2002d160e355bad88ae478
 		String productID = request.getParameter("pId");
-//		OrderDetailVenuesBean odvb = request.getParameter("Venue");
+		
 		
 		if(cmd.equalsIgnoreCase("DELVENDOR")) {
+			
 			String VendorID = request.getParameter("vendorID");
 			int vendorID = Integer.parseInt(VendorID);
 			scs.deleteVendor(OrderId, vendorID);
-<<<<<<< HEAD
-//			RequestDispatcher rd = request.getRequestDispatcher("/GetShoppingCartFromDBServlet");
-//			rd.forward(request, response);
-//			return;
+			
 		}else if(cmd.equalsIgnoreCase("DELSUPPLIER")) {
-			String supplierID = request.getParameter("supplierID");
-			int SupplierId = Integer.parseInt(supplierID);
-			System.out.println(SupplierId);
-			scs.deleteSupplier(OrderId, SupplierId);
-//			RequestDispatcher rd = request.getRequestDispatcher("/GetShoppingCartFromDBServlet");
-//			rd.forward(request, response);
-//			return;
-		}else if(cmd.equalsIgnoreCase("DELVENUE")) {
-			scs.deleteVenue(OrderId, vID);
-//			RequestDispatcher rd = request.getRequestDispatcher("/GetShoppingCartFromDBServlet");
-//			rd.forward(request, response);
-//			return;
-		}else if(cmd.equalsIgnoreCase("DELPRODUCT")) {
-			scs.deleteProduct(OrderId, productID);
-			System.out.println(OrderId);
-			System.out.println(productID);
-			System.out.println("THIS IS DELETE PRODUCT");
-//			RequestDispatcher rd = request.getRequestDispatcher("/GetShoppingCartFromDBServlet");
-//			rd.forward(request, response);
-//			return;
-=======
-			RequestDispatcher rd = request.getRequestDispatcher("/ShoppingCart.jsp");
-			rd.forward(request, response);
-			return;
-		}else if(cmd.equalsIgnoreCase("DELSUPPLIER")) {
+			
 			String supplierID = request.getParameter("supplierID");
 			int SupplierId = Integer.parseInt(supplierID);
 			scs.deleteSupplier(OrderId, SupplierId);
-			RequestDispatcher rd = request.getRequestDispatcher("/ShoppingCart.jsp");
-			rd.forward(request, response);
-			return;
+			
 		}else if(cmd.equalsIgnoreCase("DELVENUE")) {
-			scs.deleteVenue(OrderId, productID);
-			RequestDispatcher rd = request.getRequestDispatcher("/ShoppingCart.jsp");
-			rd.forward(request, response);
-			return;
+			Integer StartTime = Integer.parseInt(request.getParameter("startTime"));
+			scs.deleteVenue(OrderId, vID, StartTime);
+			
 		}else if(cmd.equalsIgnoreCase("DELPRODUCT")) {
+			
 			scs.deleteProduct(OrderId, productID);
-			RequestDispatcher rd = request.getRequestDispatcher("/ShoppingCart.jsp");
-			rd.forward(request, response);
-			return;
->>>>>>> 22cfe77c303d907baf2002d160e355bad88ae478
+			
 		}
 		RequestDispatcher rd = request.getRequestDispatcher("/GetShoppingCartFromDBServlet");
 		rd.forward(request, response);
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return;
 	}
 

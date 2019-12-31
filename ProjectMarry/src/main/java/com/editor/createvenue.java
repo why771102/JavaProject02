@@ -18,7 +18,10 @@ public class createvenue extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		IvenueImpl usedao=new IvenueImpl();
-		JavaBean ven=usedao.addVenue(request.getParameter("vendorid"),request.getParameter("venueaddress"),request.getParameter("hall"),request.getParameter("tables"),request.getParameter("inoutdoor"),request.getParameter("lunchprice"),request.getParameter("dinnerprice"));
+		
+		JavaBean ven=usedao.addVenue(request.getParameter("vendorid"),request.getParameter("productid"),request.getParameter("location"),request.getParameter("hall"),request.getParameter("tablecount"),request.getParameter("inoutdoor"),request.getParameter("lunchprice"),request.getParameter("dinnerprice")
+				,request.getParameter("venuestatus"),request.getParameter("venuedesc"));
+
 		request.setAttribute("ven", ven);
 	
 		List<JavaBean> vens =usedao.queryallVenue();

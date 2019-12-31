@@ -53,9 +53,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 	}
 
 	@Override
-	public boolean deleteVenue(int orderId, String productID) {
+	public boolean deleteVenue(int orderId, String productID, int startTime) {
 		// TODO Auto-generated method stub
-		return  scdao.deleteVenue(orderId, productID);
+		return  scdao.deleteVenue(orderId, productID, startTime);
 	}
 
 	@Override
@@ -94,11 +94,11 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 //		return scdao.getProductPrice(pb);
 //	}
 
-	@Override
-	public boolean updateStatus(OrderBean ob) {
-		// TODO Auto-generated method stub
-		return scdao.updateStatus(ob);
-	}
+//	@Override
+//	public boolean updateStatus(OrderBean ob) {
+//		// TODO Auto-generated method stub
+//		return scdao.updateStatus(ob);
+//	}
 
 	@Override
 	public boolean updateQty(OrderDetailProductsBean odpb) {
