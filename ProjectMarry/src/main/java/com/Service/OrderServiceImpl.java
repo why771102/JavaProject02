@@ -18,8 +18,8 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public OrderBean getOrder(int OrderID) {
-		return od.getOrder(OrderID);
+	public OrderBean getOrder(int OrderID, int Status) {
+		return od.getOrder(OrderID, Status);
 	}
 
 	@Override

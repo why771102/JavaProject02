@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;

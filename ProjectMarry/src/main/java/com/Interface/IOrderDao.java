@@ -6,7 +6,7 @@ import com.Bean.OrderBean;
 
 public interface IOrderDao {
 	
-	public OrderBean getOrder(int OrderID);
+	public OrderBean getOrder(int OrderID, int Status);
 
 	public List<OrderBean> getMemberUnpaidOrders(String id);
 

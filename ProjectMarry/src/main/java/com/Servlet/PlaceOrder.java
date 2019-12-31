@@ -61,7 +61,7 @@ public class PlaceOrder extends HttpServlet {
 
 		Integer OrderId = scs.getShoppingCart(MemberId);
 		System.out.println("This is orderID=" + OrderId);
-		OrderBean od = os.getOrder(OrderId);
+		OrderBean od = os.getOrder(OrderId, 0);
 
 		boolean result = os.updateStatus(od);
 		System.out.println(result);
